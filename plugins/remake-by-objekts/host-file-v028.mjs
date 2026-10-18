@@ -59,7 +59,7 @@ export async function analyzeMedia({source_id,bytes,file_id,declared_mime}){
  const sha=[...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,"0")).join("");
  return {schema:"remake.host_file_evidence/0.28",source_id,file_ref:file_id,sha256:sha,byte_length:bytes.length,media:f,acquisition:"HOST_FILE_PARAM_EXPLICIT",received_bytes:true,model_saw_pixels:false,visual_semantics:"NOT_ANALYZED",frame_pts:[],stored:false,transmitted_to_objekts:false,approval_status:"UNVERIFIED"};
 }
-export async function preflightHostFile(a,{fetcher=fetch}={}){
+export async function fetchVerifiedHostBytes(a,{fetcher=fetch}={}){
  if(!a||typeof a!=="object"||Array.isArray(a)||Object.keys(a).some(k=>!["source_id","file"].includes(k)))fail("invalid_arguments");
  const f=a.file;
  if(!f||typeof f!=="object"||Array.isArray(f)||Object.keys(f).some(k=>!["download_url","file_id","mime_type","file_name"].includes(k)))fail("invalid_file_object");
@@ -82,7 +82,11 @@ export async function preflightHostFile(a,{fetcher=fetch}={}){
  }catch(e){try{await reader.cancel()}catch{}throw e}
  const bytes=new Uint8Array(size);let offset=0;
  for(const b of blocks){bytes.set(b,offset);offset+=b.length}
- return analyzeMedia({source_id:a.source_id,bytes,file_id:f.file_id,declared_mime:f.mime_type});
+ return {source_id:a.source_id,file_id:f.file_id,declared_mime:f.mime_type,bytes};
+}
+export async function preflightHostFile(a,opts={}){
+ const evidence=await fetchVerifiedHostBytes(a,opts);
+ return analyzeMedia(evidence);
 }
 export const fileTool={
  name:"remake_host_file_preflight",
