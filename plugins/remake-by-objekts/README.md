@@ -46,3 +46,9 @@ An **experimental fail-closed authenticated account backend** is deployed as the
 - The staging Worker has **workers.dev publishing disabled** after tests. This is not a public auth endpoint or evidence of a connected ChatGPT/Claude account. Private plugin version stays 0.24, public stateless MCP stays 0.2-beta.
 
 G5 acceptance remains **BLOCKED** on verified provider configuration, actual MCP OAuth resource metadata/authorization with a permitted client, cross-user isolation integration tests, explicit UI consent for approvals and revocation/session/delete audits. Do not mark REMAKE as 1.0 or submit the official plugin yet.
+
+## Current engineering status — 18 October 2026
+
+Private REMAKE ChatGPT plugin is now **0.26.0**. It adds [opt-in local video evidence processing](scripts/remake_media_evidence_v026.py): actual PTS, video/audio stream facts, source SHA256, sampled PNG SHA256 and tamper verification. 15/15 FFmpeg tests were run on **synthetic** clips; real video/host AI perception remains untested. **Do not describe this as a ready image/video-understanding product.**
+
+The [live roadmap to v1](ROADMAP_V1_LIVE.md) tracks all G1–G10 gates with explicit blocked status and next proof. This version remains **private** and not a public OpenAI directory listing. Protected G5 account gateway is disabled pending configured OAuth/OIDC. No independent blind directorial evaluations have passed.
