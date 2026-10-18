@@ -56,3 +56,12 @@ The [live roadmap to v1](ROADMAP_V1_LIVE.md) tracks all G1–G10 gates with expl
 ## Private REMAKE 0.27 — grounded source/frame observation association
 
 The latest private plugin adds [frame-claim association tooling](scripts/remake_visual_claims_v027.py), [18 public synthetic tests](eval/test_visual_claims_v027.py), and a [guide](docs/REMAKE_VISUAL_CLAIMS_v027.md). The local test used two real video sources in the owner's Library: 14 sampled PNGs with real PTS and hashes, five direct frame observations, and one separately labelled directing hypothesis. Actual confidential media or its stills were **not** committed here. Public MCP remains descriptor/state-only and does **not** execute these media tools. See the [living roadmap](ROADMAP_V1_LIVE.md) for unfinished G2/G3/G5/brand/catalog gates.
+
+
+## Private REMAKE 0.28 — opt-in ChatGPT file attachment preflight
+
+Public MCP worker `0.3.0-beta` exposes seven tools, including [`remake_host_file_preflight`](host-file-v028.mjs). It uses OpenAI's official `openai/fileParams` file schema and performs bounded transient SHA256 / PNG-JPEG-WebP-MP4 signature checks. It does **not** automatically decode video, inspect image semantics, keep user files or forward content to the studio. The [public privacy notice](https://remake.objekts.ai/privacy) discloses this optional transfer.
+
+Tests: **14/14** hosted fileParam simulation, **17/17** canonical engine and **9/9** prior tools; all synthetic, not verified real ChatGPT attachment calls. Current private plugin release `0.28.0` has updated instructions. Cross-platform file adapter support and host media perception remain unverified. See the [live release gate list](ROADMAP_V1_LIVE.md).
+
+**Important:** `remake_host_file_preflight` uses a ChatGPT-specific file reference format; Claude/Gemini/Alice adapters do not automatically gain that ability from this code. The general REMAKE workflow remains source-count agnostic.
