@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.27.0 · **Public stateless MCP:** 0.2.0-beta (six tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.28.0 · **Public stateless MCP:** 0.3.0-beta (seven tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -54,3 +54,20 @@
 **Roadmap improvement: verified-source observation contract.** For every visual factual statement, record source ID, SHA256, frame index, true PTS, sample PNG SHA256 and the actual surface by which the host saw the sample; force separate hypothesis/approval states. Treat declarations as non-authenticating; semantic truth and third-party rights must be verified independently. Pilot paper cuts may be produced only from permitted media and never marked creator approved.
 
 **Next:** G2.2 host-native frame processing (not just a standalone local script), G3 ≥8-turn external reviewer pilot, and OAuth G5 real-identity integration. No official-directory submission until P0 acceptance.
+
+
+## Cycle 0.28 — G2.2a host fileParams bridge (public MCP, private plugin)
+
+- Public REMAKE MCP `0.3.0-beta` now includes seventh tool, `remake_host_file_preflight`, using ChatGPT's documented `_meta["openai/fileParams"] = ["file"]`. Requires host-provided `file.download_url` and `file.file_id`, with optional declared `mime_type` / `file_name`. This is a per-file call and imposes **no fixed number of references per creative project**.
+- The backend permits only HTTPS `*.oaiusercontent.com` URLs without redirects, streams up to 12MiB, verifies PNG/JPEG/WebP/MP4 signature, computes SHA256 and dimensions when possible, without persisting user bytes or sending anything to objekts. Privacy notice updated to disclose temporary processing. Actual audio/timecodes/film meaning are **not** returned; media evidence says `model_saw_pixels:false` and `visual_semantics:NOT_ANALYZED`.
+- External live smoke tests: `/_file_selftest` **14/14**, `/_core_selftest` **17/17**, `/_selftest` **9/9** = **40/40 SYNTHETIC** Cloudflare tests. These used a stubbed host file URL and synthetic 1×1 PNG; **no actual fileParam object from ChatGPT has reached the server in a verified test**.
+- Private plugin **0.28.0** installed (same ID), verified release `pluginrel_6ad541ca3eb08191b9256d73eae2faa6`. New skill and `REMAKE_HOST_FILE_BRIDGE_v028.md` explicitly separate binary preflight from model vision and user authorization. G2.2 is **PARTIAL**; no submission/official installation/independent directing tests claimed.
+- Official OpenAI `fileParams` reference: https://developers.openai.com/plugins/reference . Public reports have documented missing or partial mobile / other fileParam bindings (GitHub `openai-apps-sdk-examples` issues #185/#237); treat this as a required reliability test, not assumed failure or guaranteed success.
+- Security limitations: allowlisted signed URL is not proof the calling actor is the authenticated owner; an authorized plugin file handoff still needs host/user consent. Model descriptions are not evidence that the server received bytes. A file's SHA only proves byte identity, not its semantics or cinematography.
+
+**Roadmap refinement — split G2.2 into separately gated layers:**
+1. **G2.2a transport**: real host `fileParams` attachment forwarded into the REMAKE server; SHA256 independently agrees with original; test mobile+desktop, lost parameters, unsupported formats and expiry; no raw storage.
+2. **G2.2b perception**: the model actually receives selected, source-bound frames as visual inputs, sees accurate PTS for video, differentiates OBSERVED from PROPOSED, and refrains from hallucinating uninspected content. The metadata-only `remake_host_file_preflight` does not satisfy this.
+3. **G3 qualitative directing**: 20 permissioned projects × ≥8 real turns with two blinded human directors/editors and zero critical LOCK/approval/source hallucinations.
+
+**Remaining blockers:** G5 OAuth is unconfigured, G8 approved v37 asset absent, G7 official host integration/independent distribution not verified, G10 public application not submitted. Continue toward 1.0 by real host file handoff + vision pipeline and then independent G3 pilot. Do not relabel the product until P0 passes.
