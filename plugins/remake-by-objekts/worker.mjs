@@ -1,0 +1,67 @@
+const VERSION="0.1.0";
+const json=(x,status=200)=>new Response(JSON.stringify(x),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}});
+const plain=(s,status=200,type="text/html; charset=utf-8")=>new Response(s,{status,headers:{"content-type":type,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'"}});
+const materialProps={id:{type:"string",minLength:1,maxLength:100},kind:{type:"string",enum:["idea","text","script","image","video","audio","storyboard","document","other"]},description:{type:"string",maxLength:2000},observed:{type:"boolean"}};
+const materialSchema={type:"array",maxItems:100,items:{type:"object",properties:materialProps,required:["id","kind"],additionalProperties:false}};
+const lockSchema={type:"array",maxItems:100,items:{type:"object",properties:{key:{type:"string",minLength:1,maxLength:100},value:{type:"string",maxLength:1000}},required:["key","value"],additionalProperties:false}};
+const changesSchema={type:"array",maxItems:100,items:{type:"object",properties:{key:{type:"string",minLength:1,maxLength:100},new_value:{type:"string",maxLength:1000}},required:["key","new_value"],additionalProperties:false}};
+const shotsSchema={type:"array",maxItems:100,items:{type:"object",properties:{id:{type:"string",minLength:1,maxLength:100},action:{type:"string",maxLength:3000},source_ids:{type:"array",maxItems:100,items:{type:"string"}},camera:{type:"string",maxLength:1000},sound:{type:"string",maxLength:1000}},required:["id","action","source_ids"],additionalProperties:false}};
+const tools=[
+{name:"inventory_creative_materials",description:"Inventory any number of creator-selected source descriptors (including zero). Accepts idea, text, script, image, video, audio and other media references without requiring a screenplay or a fixed image count. Does not upload, view, or infer media contents; only reports supplied metadata and evidence gaps.",inputSchema:{type:"object",properties:{materials:materialSchema},required:["materials"],additionalProperties:false},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}},
+{name:"check_explicit_project_locks",description:"Compare explicit LOCK keys with proposed structured edits, without altering any creative project. Catches exact key collisions only, not semantic continuity or visual changes; the directing model must inspect the actual material separately.",inputSchema:{type:"object",properties:{locks:lockSchema,proposed_changes:changesSchema},required:["locks","proposed_changes"],additionalProperties:false},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}},
+{name:"compile_portable_director_packet",description:"Compile explicitly supplied creator intent, selected material descriptors, user-authored shot cards, and locked constraints into an independent portable JSON brief. Validates source references. Does not store data, generate images, inspect video, certify approval, or send content to objekts.",inputSchema:{type:"object",properties:{title:{type:"string",maxLength:200},intent:{type:"string",maxLength:4000},materials:materialSchema,shots:shotsSchema,locks:lockSchema},required:["title","materials","shots","locks"],additionalProperties:false},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}}
+];
+const invalid=(s)=>{throw Error(s)};
+const stringOk=(v,max=4000)=>typeof v==="string"&&v.length<=max;
+const arr=(a,max)=>Array.isArray(a)&&a.length<=max;
+function validMaterial(a){return a&&typeof a==="object"&&!Array.isArray(a)&&stringOk(a.id,100)&&a.id.length>0&&["idea","text","script","image","video","audio","storyboard","document","other"].includes(a.kind)&&(a.description===undefined||stringOk(a.description,2000))&&(a.observed===undefined||typeof a.observed==="boolean")}
+function validLock(a){return a&&typeof a==="object"&&stringOk(a.key,100)&&a.key.length>0&&stringOk(a.value,1000)}
+function validChange(a){return a&&typeof a==="object"&&stringOk(a.key,100)&&a.key.length>0&&stringOk(a.new_value,1000)}
+function runTool(name,a){
+if(!a||typeof a!=="object"||Array.isArray(a))invalid("arguments must be an object");
+if(name==="inventory_creative_materials"){
+if(!arr(a.materials,100)||!a.materials.every(validMaterial))invalid("invalid material descriptors; accepted kinds: idea/text/script/image/video/audio/storyboard/document/other");
+const ids=a.materials.map(x=>x.id);if(new Set(ids).size!==ids.length)invalid("duplicate material IDs");
+const by_kind={};for(const m of a.materials)by_kind[m.kind]=(by_kind[m.kind]||0)+1;
+return {source_count:ids.length,by_kind,material_ids:ids,unseen_media:a.materials.filter(x=>["image","video","audio"].includes(x.kind)&&x.observed!==true).map(x=>x.id),source_truth:"Descriptors only; never evidence that the server saw source bytes.",creator_controls:"No materials stored or transmitted outside the explicit tool call."};
+}
+if(name==="check_explicit_project_locks"){
+if(!arr(a.locks,100)||!a.locks.every(validLock)||!arr(a.proposed_changes,100)||!a.proposed_changes.every(validChange))invalid("invalid locks or proposed changes");
+const keys=new Map(a.locks.map(x=>[x.key.trim().toLowerCase(),x.value])); const collisions=a.proposed_changes.filter(x=>keys.has(x.key.trim().toLowerCase())&&x.new_value!==keys.get(x.key.trim().toLowerCase())).map(x=>({key:x.key,locked_value:keys.get(x.key.trim().toLowerCase()),proposed_value:x.new_value}));
+return {conflicts:collisions,allow_edit:collisions.length===0,scope:"Only exact keyed conflicts, not semantic or visual QC. Respect user LOCK even when this check passes."};
+}
+if(name==="compile_portable_director_packet"){
+if(!stringOk(a.title,200)||!stringOk(a.intent||"",4000)||!arr(a.materials,100)||!a.materials.every(validMaterial)||!arr(a.shots,100)||!arr(a.locks,100)||!a.locks.every(validLock))invalid("invalid project fields");
+const ids=a.materials.map(x=>x.id);if(new Set(ids).size!==ids.length)invalid("duplicate material IDs");
+if(!a.shots.every(s=>s&&stringOk(s.id,100)&&s.id.length>0&&stringOk(s.action,3000)&&arr(s.source_ids,100)&&s.source_ids.every(x=>stringOk(x,100))&&(s.camera===undefined||stringOk(s.camera,1000))&&(s.sound===undefined||stringOk(s.sound,1000))))invalid("invalid shot cards");
+const sourceSet=new Set(ids);const unknown=[...new Set(a.shots.flatMap(s=>s.source_ids).filter(id=>!sourceSet.has(id)))]; if(unknown.length)invalid("shot sources not present in supplied materials: "+unknown.join(", "));
+return {schema:"remake.director_packet.v1",title:a.title,intent:a.intent||"",materials:a.materials,shots:a.shots,locks:a.locks,approvals:"UNVERIFIED",studio_handoff:"NOT_REQUESTED",sent:false,credit:{tool:"REMAKE by objekts",developer:"objekts",website:"https://objekts.ai/"},limits:"No media bytes received or interpreted. No data stored. Shots and references were supplied by calling client."};
+}
+invalid("unknown tool");
+}
+const rpc=(id,result)=>({jsonrpc:"2.0",id,result});
+const fault=(id,code,message)=>({jsonrpc:"2.0",id,error:{code,message}});
+function page(){return '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index,follow"><title>REMAKE by objekts — Film direction tools</title><meta name="description" content="REMAKE by objekts: source-aware film direction, shot continuity and independent production briefs. Public MCP tools for compatible AI clients."><style>body{margin:0;background:#f3f2ef;color:#121212;font:16px/1.6 system-ui,Arial,sans-serif}main{max-width:840px;margin:6vh auto;padding:24px}h1{font:700 clamp(48px,9vw,106px)/.99 system-ui;margin:30px 0}a{color:#0018a8}.eyebrow{letter-spacing:.13em;text-transform:uppercase;font-size:12px}section{border-top:1px solid #333;padding-top:24px;margin-top:55px}code,pre{font-size:14px;background:#e5e5e1;padding:2px 5px}p{max-width:680px}.meta{color:#454545}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px}.grid div{border-top:1px solid #bbb;padding-top:10px}</style><main><div class="eyebrow">An independent visual-production tool / by objekts</div><h1>REMAKE<span style="color:#0018a8">.</span></h1><p>Film-direction support for material you already have. One idea or many images, a script or no script, storyboard frames, footage, audio, or mixed inputs. The AI client can interpret only assets actually supplied to it.</p><p class="meta">Made by <a href="https://objekts.ai/">objekts</a>, a film, advertising, AI/VFX, CGI and visual-production studio.</p><section><h2>Open MCP endpoint</h2><p>Connect a compatible AI assistant to <code>https://remake.objekts.ai/mcp</code>. Tools inventory selected material descriptors, check keyed continuity locks and compile source-referenced production briefs. They do not independently watch videos or make creative judgments; these remain tasks for the host model and the director.</p><p><a href="/.well-known/remake.json">Machine-readable capabilities</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p></section><section><h2>Works from your actual inputs</h2><div class="grid"><div><b>Idea only</b><p>Find a playable decision before introducing production overhead.</p></div><div><b>Frames & references</b><p>No predetermined image count. Each item is inspected only when available to the host.</p></div><div><b>Film & audio</b><p>Use real observed timecodes and audio; don’t invent footage or measurements.</p></div></div></section><section><h2>Publisher</h2><p>REMAKE is a tool created by objekts. It is not a human review, automatically delivered production service, or an endorsement from any AI platform. Directory availability is subject to each platform’s approval.</p></section></main></html>'}
+export default {async fetch(req){
+const url=new URL(req.url),path=url.pathname;
+if(req.method==="GET"&&path==="/")return plain(page());
+if(req.method==="GET"&&path==="/health")return json({ok:true,service:"REMAKE by objekts",version:VERSION,storage:false,inference:false});
+if(req.method==="GET"&&path==="/.well-known/remake.json")return json({name:"REMAKE by objekts",developer:"objekts",website:"https://objekts.ai/",remote_mcp:"https://remake.objekts.ai/mcp",version:VERSION,tools:tools.map(t=>t.name),source_inputs:"zero or more independently supplied media descriptors; no fixed quantity",independent_media_processing:false,storage:false});
+if(req.method==="GET"&&path==="/privacy")return plain('<h1>REMAKE by objekts — Privacy</h1><p>This version provides stateless MCP tools for user-chosen descriptions and project structures. We do not persist those tool input bodies to an application database, create project accounts, collect contact details, or automatically forward content to objekts. Ordinary hosting/security providers may process technical request metadata as necessary to deliver the service. Do not send sensitive or confidential files without authorization.</p><p>Data controller: objekts. Contact: <a href="mailto:salute@objekts.ai">salute@objekts.ai</a>. Main site: <a href="https://objekts.ai/">objekts.ai</a>.</p>');
+if(req.method==="GET"&&path==="/terms")return plain('<h1>REMAKE by objekts — Terms</h1><p>Free beta tool, provided as-is for filmmaking education and workflow compilation. You retain rights to your materials. Outputs are drafts, not verified by a human director, a legal review, or a guarantee of production feasibility. You are responsible for rights to materials you share with an AI provider. This endpoint does not execute or deliver a production commission.</p><p>Contact: salute@objekts.ai</p>');
+if(path!=="/mcp")return json({error:"not_found"},404);
+if(req.method!=="POST")return new Response("Only POST is supported; this is a stateless MCP endpoint.",{status:405,headers:{"allow":"POST"}});
+if(!(req.headers.get("content-type")||"").toLowerCase().includes("application/json"))return json({error:"application/json required"},415);
+if(Number(req.headers.get("content-length")||0)>131072)return json({error:"request_too_large"},413);
+let text;try{text=await req.text();}catch{return json({error:"unreadable_body"},400)}
+if(text.length>131072)return json({error:"request_too_large"},413);
+let data;try{data=JSON.parse(text);}catch{return json(fault(null,-32700,"invalid JSON"),400)}
+if(!data||typeof data!=="object"||Array.isArray(data))return json(fault(null,-32600,"invalid JSON-RPC request"),400);
+const {id,method,params}=data;
+if(method==="notifications/initialized")return new Response(null,{status:202});
+if(method==="initialize")return json(rpc(id,{protocolVersion:"2025-06-18",capabilities:{tools:{listChanged:false}},serverInfo:{name:"REMAKE by objekts",version:VERSION}}));
+if(method==="ping")return json(rpc(id,{}));
+if(method==="tools/list")return json(rpc(id,{tools}));
+if(method==="tools/call"){const name=params?.name;if(!tools.some(t=>t.name===name))return json(fault(id,-32601,"unknown tool"));try{const result=runTool(name,params?.arguments||{});return json(rpc(id,{content:[{type:"text",text:JSON.stringify(result)}],structuredContent:result,isError:false}));}catch(e){return json(rpc(id,{content:[{type:"text",text:String(e.message||"Invalid input")}],isError:true}));}}
+return json(fault(id,-32601,"unknown method"));
+}};
