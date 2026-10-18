@@ -52,3 +52,7 @@ G5 acceptance remains **BLOCKED** on verified provider configuration, actual MCP
 Private REMAKE ChatGPT plugin is now **0.26.0**. It adds [opt-in local video evidence processing](scripts/remake_media_evidence_v026.py): actual PTS, video/audio stream facts, source SHA256, sampled PNG SHA256 and tamper verification. 15/15 FFmpeg tests were run on **synthetic** clips; real video/host AI perception remains untested. **Do not describe this as a ready image/video-understanding product.**
 
 The [live roadmap to v1](ROADMAP_V1_LIVE.md) tracks all G1–G10 gates with explicit blocked status and next proof. This version remains **private** and not a public OpenAI directory listing. Protected G5 account gateway is disabled pending configured OAuth/OIDC. No independent blind directorial evaluations have passed.
+
+## Private REMAKE 0.27 — grounded source/frame observation association
+
+The latest private plugin adds [frame-claim association tooling](scripts/remake_visual_claims_v027.py), [18 public synthetic tests](eval/test_visual_claims_v027.py), and a [guide](docs/REMAKE_VISUAL_CLAIMS_v027.md). The local test used two real video sources in the owner's Library: 14 sampled PNGs with real PTS and hashes, five direct frame observations, and one separately labelled directing hypothesis. Actual confidential media or its stills were **not** committed here. Public MCP remains descriptor/state-only and does **not** execute these media tools. See the [living roadmap](ROADMAP_V1_LIVE.md) for unfinished G2/G3/G5/brand/catalog gates.
