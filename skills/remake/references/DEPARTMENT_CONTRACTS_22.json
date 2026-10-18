@@ -1,0 +1,366 @@
+{
+  "version": "0.4.0",
+  "source": "First-party objekts methodology with explicitly educational structure, not observed MAGIE departments",
+  "departments": [
+    {
+      "id": "01",
+      "department": "Business strategy",
+      "central_question": "What business or artistic outcome makes this project worth making?",
+      "teach": "Objective vs film idea, awareness vs conversion, who decides",
+      "output": "Owner statement + evidence map",
+      "exit_gate": "An outcome stated without made-up KPIs",
+      "noncommercial_exception": "Story may have no business objective",
+      "common_failure": "A beautiful image can hide a missing proposition",
+      "downstream_ids": [
+        "02",
+        "03",
+        "22"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "02",
+      "department": "Audience and research",
+      "central_question": "Whose situation and knowledge must this film address?",
+      "teach": "Audience circumstance, category conventions, competing experiences, evidence limits",
+      "output": "Research brief and verified/assumed insight list",
+      "exit_gate": "Observed findings separated from suppositions",
+      "noncommercial_exception": "For fiction use intended audience, not segmentation",
+      "common_failure": "An assumed demographic becomes a fake insight",
+      "downstream_ids": [
+        "03",
+        "04"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "03",
+      "department": "Creative and advertising concept",
+      "central_question": "What visual proposition makes this work memorable, distinct and appropriate?",
+      "teach": "Creative territory, visual analogy, product role, distinction and copy",
+      "output": "Chosen one-line premise, message hierarchy, abandoned routes",
+      "exit_gate": "Author knows why this idea rather than a generic spectacular image",
+      "noncommercial_exception": "No CTA imposed on cinema",
+      "common_failure": "Brand added only at the end",
+      "downstream_ids": [
+        "04",
+        "05",
+        "12"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "04",
+      "department": "Screenwriting and dramatic architecture",
+      "central_question": "What unfolds through actions, changes and audience inferences?",
+      "teach": "Want/obstacle/action/shift, image-led narrative, causal and poetic links",
+      "output": "Live synopsis, scene cards, beat graph, treatment",
+      "exit_gate": "Another reader can tell what changes and what remains intentionally open",
+      "noncommercial_exception": "Abstract cinema may have no protagonist",
+      "common_failure": "Confusing chronology with causation",
+      "downstream_ids": [
+        "05",
+        "10",
+        "17"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "05",
+      "department": "Direction and visual storytelling",
+      "central_question": "Why are events shown this way and through whose knowledge?",
+      "teach": "Point of view, dramatic emphasis, temporal withholding, action design",
+      "output": "Directorial treatment, shot functions, scene intent",
+      "exit_gate": "Chosen staging changes the audience inference deliberately",
+      "noncommercial_exception": "Explicitly allow mood as scene function",
+      "common_failure": "Technical coverage mistaken for mise-en-scène",
+      "downstream_ids": [
+        "06",
+        "10",
+        "11"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "06",
+      "department": "Performance, gesture and blocking",
+      "central_question": "What playable action occurs, where, and with which eyelines?",
+      "teach": "Actors act through objective/tactic, spatial relationships, gesture physics",
+      "output": "Playable action list, blocking chart, eye-line notes",
+      "exit_gate": "Gesture physically supports intended dramatic beat",
+      "noncommercial_exception": "If no human characters, track object/material agency",
+      "common_failure": "Asking a performer to just look emotional",
+      "downstream_ids": [
+        "10",
+        "11",
+        "14"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "07",
+      "department": "Character identity and casting bible",
+      "central_question": "Which person or identity must persist through scenes?",
+      "teach": "Visual anatomy, silhouette, wardrobe/age, identity rights and continuity",
+      "output": "Character bible, identity references, consent status",
+      "exit_gate": "Every change is approved and multi-shot identity can be checked",
+      "noncommercial_exception": "Omit casting where no character exists",
+      "common_failure": "Same character described only by generic style",
+      "downstream_ids": [
+        "09",
+        "12",
+        "14"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "08",
+      "department": "World and production design",
+      "central_question": "What geometry, period, spatial logic and material rules control the world?",
+      "teach": "Architecture authority, props, historical accuracy, material interaction",
+      "output": "World bible, plan/geometry, prop masters, palette constraints",
+      "exit_gate": "Scene geometry consistent with approved anchors",
+      "noncommercial_exception": "Single abstract space can be sufficient",
+      "common_failure": "A collage of mood images falsely treated as floor plan",
+      "downstream_ids": [
+        "09",
+        "10",
+        "13"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "09",
+      "department": "Costume and props",
+      "central_question": "What garments and objects communicate meaning and stay materially consistent?",
+      "teach": "Cut, seams, fabric, wear, prop action, product material fidelity",
+      "output": "Wardrobe/prop sheet and continuity rules",
+      "exit_gate": "Construction and interaction survive shot changes",
+      "noncommercial_exception": "Not applicable to fully abstract compositions",
+      "common_failure": "Uncontrolled product/wardrobe morphing",
+      "downstream_ids": [
+        "10",
+        "14",
+        "15"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "10",
+      "department": "Storyboard and previs",
+      "central_question": "Does each image represent a shot with a function and relation to the next?",
+      "teach": "Shot geometry, entrances/exits, focal hierarchy, screen direction, cut points",
+      "output": "Shot cards, board, animatic proposal",
+      "exit_gate": "Editor could reconstruct intended sequence without guessing",
+      "noncommercial_exception": "One-shot film can have one storyboard shot",
+      "common_failure": "Beautiful independent pictures labeled a storyboard",
+      "downstream_ids": [
+        "11",
+        "13",
+        "17"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "11",
+      "department": "Cinematography and light",
+      "central_question": "What viewpoint, optics, perspective and motivated light produce this meaning?",
+      "teach": "Angle, camera height, POV, framing, lens families, depth, WB, contrast",
+      "output": "Camera grammar, lighting plan, format references",
+      "exit_gate": "Optics/light motivation specified, no fabricated EXIF",
+      "noncommercial_exception": "Illustration/animation can use optical analogy selectively",
+      "common_failure": "Arbitrary 35mm 1.4 in all prompts",
+      "downstream_ids": [
+        "12",
+        "14",
+        "15"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "12",
+      "department": "Look development and art direction",
+      "central_question": "Which visual rules define the film across shots?",
+      "teach": "Color separation, materials, tone curve, texture, style sources and negatives",
+      "output": "Look bible, styleframes with authority domains",
+      "exit_gate": "Consistent source priority and reviewed style tests",
+      "noncommercial_exception": "Mixed-media styles may be intentional",
+      "common_failure": "Default neon/gloss or style soup",
+      "downstream_ids": [
+        "13",
+        "14",
+        "19"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "13",
+      "department": "CGI and controlled geometry",
+      "central_question": "What needs persistent and exact 3D spatial truth?",
+      "teach": "Reusable meshes, product geometry, camera tracking, surfaces, rigging",
+      "output": "CG asset specification, geometry masters, render passes",
+      "exit_gate": "Exact subjects survive shot motion with measured acceptance",
+      "noncommercial_exception": "Not every shot needs CGI",
+      "common_failure": "Letting generation mutate logo, packaging or topology",
+      "downstream_ids": [
+        "15",
+        "19"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "14",
+      "department": "Generative visual production",
+      "central_question": "Which variables can be generated and which are locked?",
+      "teach": "Frame/master authority, motion physics, temporal stability, sampling scope",
+      "output": "Generation plan, reference map, negative canon, minimal PoC",
+      "exit_gate": "One high-risk uncertainty tested before shot multiplication",
+      "noncommercial_exception": "Non-generative production route may be best",
+      "common_failure": "Unbounded prompt rerolls for structural failure",
+      "downstream_ids": [
+        "15",
+        "17"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "15",
+      "department": "VFX, compositing and integration",
+      "central_question": "How do altered elements occupy the same physical and optical space?",
+      "teach": "Occlusion, matte, motion vectors, grain, blur, shadows, reflections",
+      "output": "Compositing pass plan, integration acceptance, plate needs",
+      "exit_gate": "Depth/optic consistency checked at cut",
+      "noncommercial_exception": "Entirely illustrated film may have no footage integration",
+      "common_failure": "Sharp insert in optically soft background",
+      "downstream_ids": [
+        "17",
+        "19"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "16",
+      "department": "Motion design, copy and typography",
+      "central_question": "How do graphic elements move and remain legally/visually exact?",
+      "teach": "Hierarchy, typeface licenses, grid, kineticism, supers, logo",
+      "output": "Motion board, brand graphics spec, safe zones",
+      "exit_gate": "Text exact and legible on all versions",
+      "noncommercial_exception": "Narrative film may require no graphic language",
+      "common_failure": "Generated gibberish substituted for approved copy",
+      "downstream_ids": [
+        "17",
+        "21"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "17",
+      "department": "Editing and sequence architecture",
+      "central_question": "How do images connect into one film instead of demos?",
+      "teach": "Temporal topology, action overlap, motivation, variation, duration",
+      "output": "Paper edit, timeline, cutdown topology, pickup list",
+      "exit_gate": "Sequence works as one whole with readable causality/intent",
+      "noncommercial_exception": "Durational film need not maximize cutting",
+      "common_failure": "Selecting pretty clips rather than usable cut states",
+      "downstream_ids": [
+        "18",
+        "19",
+        "21"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "18",
+      "department": "Sound, music and voice",
+      "central_question": "What sounds establish cause, perspective, rhythm or brand?",
+      "teach": "Diegetic/non-diegetic cues, timing, prelap, silence, licensing",
+      "output": "Sound event map, music/voice rights, mix notes",
+      "exit_gate": "Sound supports on-screen actions and rights are accounted for",
+      "noncommercial_exception": "Silent work may be a deliberate decision",
+      "common_failure": "Unlicensed popular track in final advert",
+      "downstream_ids": [
+        "19",
+        "21"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "19",
+      "department": "Color, finishing and mastering",
+      "central_question": "Does light/color/material remain coherent across versions?",
+      "teach": "Color pipeline, displays, grain, halation, contrast, QC and sync",
+      "output": "Grade bible, finishing checklist, master specifications",
+      "exit_gate": "No unintended drift in approved identity/product tones",
+      "noncommercial_exception": "May be deliberately ungraded raw footage",
+      "common_failure": "Shot-by-shot grades conflict with sequence logic",
+      "downstream_ids": [
+        "21"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "20",
+      "department": "Rights, claims and brand approvals",
+      "central_question": "What material is legal, accurate and approved for this use?",
+      "teach": "Assets rights, product claims, likeness/voice, licensed refs, geography",
+      "output": "Rights register, claim provenance, approvals, red flags",
+      "exit_gate": "No fabricated efficacy or unconsented media transfer",
+      "noncommercial_exception": "A personal sketch might not need ad compliance",
+      "common_failure": "Confusing reference permission with reproduction rights",
+      "downstream_ids": [
+        "21",
+        "22"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "21",
+      "department": "Adaptation, QC and delivery",
+      "central_question": "What are the actual media deliverables and acceptance checks?",
+      "teach": "Aspect ratio recomposition, platform specs, subtitles, legal text",
+      "output": "Deliverable matrix, per-version QA, acceptance tests",
+      "exit_gate": "Every requested master/version has checked visual/technical status",
+      "noncommercial_exception": "Artist may only need one master",
+      "common_failure": "Calling all vertical crops derivative by default",
+      "downstream_ids": [
+        "22"
+      ],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    },
+    {
+      "id": "22",
+      "department": "Production and project management",
+      "central_question": "Who approves what and which test reduces risk earliest?",
+      "teach": "Scope, milestones, quote readiness, dependencies, handoff, budget disclosure",
+      "output": "Production roadmap, risks, PoC, decision owner, handoff packet",
+      "exit_gate": "Approval provenance intact, no implied purchase or send",
+      "noncommercial_exception": "DIY route remains valid",
+      "common_failure": "Claiming client sign-off or human estimate from AI model",
+      "downstream": "",
+      "downstream_ids": [],
+      "status": "MISSING_BY_DEFAULT",
+      "roles_are_functions_not_staffing_requirements": true
+    }
+  ]
+}
