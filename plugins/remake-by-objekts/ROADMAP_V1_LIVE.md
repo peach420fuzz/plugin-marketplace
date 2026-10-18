@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.28.0 · **Public stateless MCP:** 0.3.0-beta (seven tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.29.0 · **Public stateless MCP:** 0.4.0-beta (eight tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -71,3 +71,17 @@
 3. **G3 qualitative directing**: 20 permissioned projects × ≥8 real turns with two blinded human directors/editors and zero critical LOCK/approval/source hallucinations.
 
 **Remaining blockers:** G5 OAuth is unconfigured, G8 approved v37 asset absent, G7 official host integration/independent distribution not verified, G10 public application not submitted. Continue toward 1.0 by real host file handoff + vision pipeline and then independent G3 pilot. Do not relabel the product until P0 passes.
+
+## Cycle 0.29 — source-bound pixels via MCP ImageContent (19 Oct 2026)
+
+- The public Worker `0.4.0-beta` includes the **eighth tool**, `remake_host_image_for_review`. It accepts a selected ChatGPT fileParam image (PNG/JPEG), fetches it from an authorized temporary URL, computes SHA256 and returns proper **MCP ImageContent** with actual base64 pixels and separately structured provenance. Earlier `remake_host_file_preflight` only returned hashes/signatures. Inline image transfer is limited to **2 MiB/image**, header image dimensions ≤4096×4096, and does not support MP4 frame extraction. Limits apply to each file/tool call, not the number of creative source items.
+- **54/54 SYNTHETIC live Cloudflare tests PASS:** 14 image-bridge + 14 file-preflight + 17 canonical project + 9 legacy. The image test used synthetic 1×1 PNG and fake/stubbed host URL; it did not test an actual installed ChatGPT plugin file selection or visual model consumption.
+- The host-facing result correctly declares `host_model_observation:UNVERIFIED_UNTIL_CALLING_MODEL_ACTUALLY_INSPECTS_IMAGE`. The server cannot certify a model saw the pixels, and SHA256 is not semantic correctness. No original images are logged in GitHub or forwarded to objekts. Privacy notice updated for host-side pixel processing/retention.
+- The same existing private REMAKE plugin updated **0.29.0** (release `pluginrel_6ad5462d80f08191bfb44cac783b99b7`). Its updated skill prevents falsely marking tool output as observed visual truth; no new public store listing was submitted.
+- **G2.2b transport implemented with synthetic runtime checks; overall G2 remains PARTIAL and host end-to-end acceptance BLOCKED**. G3 independent 8-turn director quality sessions remains **0 verified**, G5 OAuth provider still absent, G8 verified publisher asset still missing, G10 official submission absent.
+
+### Further improvement to roadmap
+
+Split evidence into **received media bytes**, **returned model-facing image block**, **observed image in model runtime**, and **independently semantically verified claim**. Treat each as a different gate with its own receipt; never promote a successful upload, hash, image block, or selftest directly into a director-quality PASS.
+
+Next measurable execution: authorized actual fileParam from a live host; independent SHA matching; proof the resulting ImageContent was received and inspected; 1/2/7 image tests and failure/expiry cases; for video, actual FFmpeg native PTS sample extraction; then professional blind eight-turn evaluation. No 1.0 until those proofs.
