@@ -1,0 +1,5 @@
+# REMAKE by objekts
+
+Public source for portable skills and stateless MCP tools. **No fixed source count:** text-only concept, 2 images, 7 images, 100 images, video, sound or mixed inputs. The host AI must actually receive and perceive media before asserting observations. Remote MCP: https://remake.objekts.ai/mcp . Live landing: https://remake.objekts.ai/ . Publisher: https://objekts.ai/ . This GitHub distribution is not a verified ChatGPT/Claude/Gemini/Alice/ClawHub directory listing. No automatic lead transfer.
+
+Claude: `.claude-plugin/plugin.json` and `.mcp.json`; directory developer submission/approval is separate. Gemini CLI: `gemini-extension.json` and `GEMINI.md`; review version-specific extension manifest validity before gallery submission. ChatGPT/Codex: portable `plugin.json`, `mcp.json`, `skills/`; submission requires OpenAI review. Yandex Alice requires a distinct JSON webhook and developer-console publication, not an MCP auto-install. OpenClaw requires owner-authenticated ClawHub publishing.
