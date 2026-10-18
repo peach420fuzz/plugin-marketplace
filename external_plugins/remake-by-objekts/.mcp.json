@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "remake": {
+      "type": "http",
+      "url": "https://remake.objekts.ai/mcp"
+    }
+  }
+}
