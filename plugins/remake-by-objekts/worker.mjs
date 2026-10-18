@@ -1,5 +1,6 @@
 import {canonicalTools,callCanonical,createProject,validateProject,applyProjectDelta} from "./core-v024.mjs";
-const VERSION="0.2.0-beta";
+import {fileTool,preflightHostFile,filePreflightTests} from "./host-file-v028.mjs";
+const VERSION="0.3.0-beta";
 const json=(x,status=200)=>new Response(JSON.stringify(x),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}});
 const plain=(s,status=200,type="text/html; charset=utf-8")=>new Response(s,{status,headers:{"content-type":type,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'none'; style-src 'unsafe-inline'; script-src 'none'; base-uri 'none'; form-action 'none'"}});
 const materialProps={id:{type:"string",minLength:1,maxLength:100},kind:{type:"string",enum:["idea","text","script","image","video","audio","storyboard","document","other"]},description:{type:"string",maxLength:2000},observed:{type:"boolean"}};
@@ -13,7 +14,7 @@ const tools=[
 {name:"compile_portable_director_packet",description:"Compile explicitly supplied creator intent, selected material descriptors, user-authored shot cards, and locked constraints into an independent portable JSON brief. Validates source references. Does not store data, generate images, inspect video, certify approval, or send content to objekts.",inputSchema:{type:"object",properties:{title:{type:"string",maxLength:200},intent:{type:"string",maxLength:4000},materials:materialSchema,shots:shotsSchema,locks:lockSchema},required:["title","materials","shots","locks"],additionalProperties:false},annotations:{readOnlyHint:true,destructiveHint:false,openWorldHint:false}}
    
 ];
-tools.push(...canonicalTools);
+tools.push(...canonicalTools,fileTool);
 const invalid=(s)=>{throw Error(s)};
 const stringOk=(v,max=4000)=>typeof v==="string"&&v.length<=max;
 const arr=(a,max)=>Array.isArray(a)&&a.length<=max;
@@ -78,6 +79,7 @@ if(req.method==="GET"&&path==="/_core_selftest"){
  await check("approved_shot_immutable",async()=>{let p=structuredClone(base);p.shots=[{id:"s",status:"USER_APPROVED",approval_ref:"host-claim",source_ids:[],fields:{},visible_action:"hold"}];try{await applyProjectDelta({project:p,event:event("set",1,"shot_field_set",{shot_id:"s",field:"camera",value:"zoom"})});return false}catch{return true}});
  return json({service:"REMAKE canonical core",version:VERSION,passed:cases.filter(x=>x.pass).length,total:cases.length,tests:cases,scope:"Synthetic deterministic tests. No authenticated persistence, creative judgment, media perception or cross-host session test."});
 }
+if(req.method==="GET"&&path==="/_file_selftest")return json(await filePreflightTests());
 if(req.method==="GET"&&path==="/health")return json({ok:true,service:"REMAKE by objekts",version:VERSION,storage:false,inference:false});
 if(req.method==="GET"&&path==="/.well-known/remake.json")return json({name:"REMAKE by objekts",developer:"objekts",website:"https://objekts.ai/",remote_mcp:"https://remake.objekts.ai/mcp",version:VERSION,tools:tools.map(t=>t.name),source_inputs:"zero or more independently supplied media descriptors; no fixed quantity",independent_media_processing:false,storage:false});
 if(req.method==="GET"&&path==="/privacy")return plain('<main style="max-width:750px;margin:auto;font:16px/1.65 system-ui;padding:25px"><h1>REMAKE by objekts — Privacy notice</h1><p>REMAKE provides stateless public MCP tools. Categories processed: project titles, selected user-authored descriptors of text/images/video/audio, shot notes, and LOCK values. No media bytes, personal contact fields, payment details, or private account tokens are requested by these tools. Inputs are used only to produce the requested structural results; they are not sent to the studio as a sales lead, not used for model training, and not persisted by this application in a database.</p><p><b>Storage and retention:</b> Tool body content is handled only during request execution; this application does not retain it afterward. Cloudflare provides hosting and may separately process technical connection and security metadata (including IP address and timestamps) according to its own applicable policies and retention schedules; this application does not control those platform logs. The AI host a person uses may separately process their chats under the host’s privacy terms.</p><p><b>Recipients and control:</b> Cloudflare acts as infrastructure provider. No project contents are shared with objekts producers unless the creator independently initiates an expressly authorized enquiry outside this tool. Do not send sensitive material or third-party confidential work without appropriate rights. To ask about privacy or request information regarding data handling, contact <a href="mailto:salute@objekts.ai">salute@objekts.ai</a>.</p><p>Publisher: <a href="https://objekts.ai/">objekts</a>. Public release 18 October 2026.</p></main>');
@@ -95,6 +97,6 @@ if(method==="notifications/initialized")return new Response(null,{status:202});
 if(method==="initialize")return json(rpc(id,{protocolVersion:"2025-06-18",capabilities:{tools:{listChanged:false}},serverInfo:{name:"REMAKE by objekts",version:VERSION}}));
 if(method==="ping")return json(rpc(id,{}));
 if(method==="tools/list")return json(rpc(id,{tools}));
-if(method==="tools/call"){const name=params?.name;if(!tools.some(t=>t.name===name))return json(fault(id,-32601,"unknown tool"));try{const result=name.startsWith("remake_project_")?await callCanonical(name,params?.arguments||{}):runTool(name,params?.arguments||{});return json(rpc(id,{content:[{type:"text",text:JSON.stringify(result)}],structuredContent:result,isError:false}));}catch(e){return json(rpc(id,{content:[{type:"text",text:String(e.message||"Invalid input")}],isError:true}));}}
+if(method==="tools/call"){const name=params?.name;if(!tools.some(t=>t.name===name))return json(fault(id,-32601,"unknown tool"));try{const result=name==="remake_host_file_preflight"?await preflightHostFile(params?.arguments||{}):name.startsWith("remake_project_")?await callCanonical(name,params?.arguments||{}):runTool(name,params?.arguments||{});return json(rpc(id,{content:[{type:"text",text:JSON.stringify(result)}],structuredContent:result,isError:false}));}catch(e){return json(rpc(id,{content:[{type:"text",text:String(e.message||"Invalid input")}],isError:true}));}}
 return json(fault(id,-32601,"unknown method"));
 }};
