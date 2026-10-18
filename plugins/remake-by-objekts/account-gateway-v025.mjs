@@ -138,7 +138,7 @@ async function selfTest(){
  await test("model_cannot_change_locks",()=>{try{restrictEvent({kind:"lock_set",payload:{field:"camera",value:"moving"}});return false;}catch{return true}});
  await test("model_cannot_approve",()=>{try{restrictEvent({kind:"decision_approve",payload:{id:"d"}});return false;}catch{return true}});
  await test("fake_observation_rejected",()=>{try{restrictEvent({kind:"material_add",payload:{id:"m",host_inspected:true,evidence:"OBSERVED"}});return false;}catch{return true}});
- await test("draft_event_allowed",()=>{restrictEvent({kind:"material_add",actor_claim:"MODEL",payload:{id:"x",kind:"image",host_inspected:false,evidence:"USER_STATED"}});return true});
+ await test("draft_event_allowed",()=>{restrictEvent({event_id:"test-e",expected_revision:1,kind:"material_add",actor_claim:"MODEL",payload:{id:"x",kind:"image",host_inspected:false,evidence:"USER_STATED"}});return true});
  const count=tests.filter(t=>t.pass).length;return {version:VERSION,passed:count,total:tests.length,tests,scope:"Ephemeral JWTs signed locally only in selftest; no real OIDC provider configured or user account created."};
 }
 export default {async fetch(request,env){
