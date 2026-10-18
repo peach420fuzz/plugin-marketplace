@@ -58,6 +58,9 @@ if(req.method==="GET"&&path==="/_core_selftest"){
  const event=(event_id,expected_revision,kind,payload,claims={})=>({event_id,expected_revision,kind,payload,...claims});
  const material=(id)=>({id,kind:"image",provenance:"USER_DESCRIBED",host_inspected:false,evidence:"USER_STATED"});
  await check("canonical_create",()=>base.schema_version==="remake.project/0.23"&&base.revision===1&&validateProject(base).ok);
+ await check("python_digest_ascii_parity",async()=>{const e={event_id:"e1",expected_revision:1,kind:"material_add",payload:{id:"i1",kind:"image",provenance:"USER_DESCRIBED",host_inspected:false,evidence:"USER_STATED"}};const out=await applyProjectDelta({project:base,event:e});return out.project.journal[0].event_digest==="01c7d6e5c2d1345396dc57d6530f37f8e07196a3148d6da2ba2133697e0cbb15";});
+ await check("python_digest_unicode_parity",async()=>{let p=structuredClone(base);p.revision=3;const e={event_id:"кино-№1",expected_revision:3,kind:"decision_propose",payload:{id:"d1",topic:"монтаж",value:"тишина",status:"PROPOSED",source_ids:[]}};const out=await applyProjectDelta({project:p,event:e});return out.project.journal[0].event_digest==="5fe72867c054ab8871a61bb6f4ce254dead838be11079fcfd9f7f91ecb33d230";});
+
  await check("zero_images",()=>createProject({project_id:"idea"}).materials.length===0);
  await check("two_images",async()=>{let p=base;for(let i=0;i<2;i++)p=(await applyProjectDelta({project:p,event:event("m"+i,p.revision,"material_add",material("a"+i))})).project;return p.materials.length===2});
  await check("seven_images",async()=>{let p=base;for(let i=0;i<7;i++)p=(await applyProjectDelta({project:p,event:event("m"+i,p.revision,"material_add",material("a"+i))})).project;return p.materials.length===7});
