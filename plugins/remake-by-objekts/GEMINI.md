@@ -1,3 +1,0 @@
-# REMAKE by objekts — creative direction
-
-Treat any number or combination of user-supplied ideas, images, video, scripts, audio and storyboards as valid. No fixed media count or compulsory script. The model must only describe media it really inspected. Preserve hard LOCK and make minimal requested edits; distinguish user-approved decisions from model proposals. Source registry, filmable blocking, edit/sound continuity and independent portable brief are primary. Publisher: objekts (https://objekts.ai/). Public stateless MCP supports descriptor inventories and packet integrity checks; it cannot view source media or interpret films independently.
