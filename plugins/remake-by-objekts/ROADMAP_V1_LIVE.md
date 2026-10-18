@@ -85,3 +85,13 @@
 Split evidence into **received media bytes**, **returned model-facing image block**, **observed image in model runtime**, and **independently semantically verified claim**. Treat each as a different gate with its own receipt; never promote a successful upload, hash, image block, or selftest directly into a director-quality PASS.
 
 Next measurable execution: authorized actual fileParam from a live host; independent SHA matching; proof the resulting ImageContent was received and inspected; 1/2/7 image tests and failure/expiry cases; for video, actual FFmpeg native PTS sample extraction; then professional blind eight-turn evaluation. No 1.0 until those proofs.
+
+
+## Cycle 0.29b — G3 eight-turn consistency preflight (19 Oct 2026)
+
+- Added local standalone `transcript_guard_v029.py` (not deployed into the public MCP). It audits a multi-turn structured directing trace for lock collisions, approved-shot mutation, fake model approval, unverified sending, repeated rejected proposals, missing source/PTS/host observation evidence, and duplicate action IDs.
+- **14/14 local unittest methods PASS**, including one that simulates **20 × 8-turn authored synthetic sessions**. This cannot qualify as 20 real creator sessions, cannot authenticate any claimed human approvals and cannot judge cinema, blocking, sound, edit or emotional effect.
+- G3 actual creative acceptance remains **NOT RUN**: 20 permissioned real projects with ≥8 real interaction turns each, two independent professional directors/editors reviewing blind, explicit quality scores and zero critical hallucinations/LOCK mutations.
+- Pilot next: run one authentic 8-turn user session using an actual verified attachment, capture source-bound visual observations and author feedback with privacy permission, apply guard, send blinded packet to two independent reviewers, and retain full fail/pass receipts. This step requires actual host/plugin user access and participating reviewers, not additional fabricated sessions.
+
+**No public app listing or v1.0 promotion.** Private installed plugin stays 0.29, public eight-tool MCP 0.4-beta.
