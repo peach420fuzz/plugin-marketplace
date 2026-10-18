@@ -34,3 +34,15 @@ Distribution sources for Claude/Gemini/other platforms in this repository are be
 Privacy: https://remake.objekts.ai/privacy
 
 Support: salute@objekts.ai
+
+## G5 OAuth/OIDC staging (0.25.0, *not* available to public users)
+
+An **experimental fail-closed authenticated account backend** is deployed as the separate Worker `objekts-remake-g5-staging`, using the existing internal REMAKE D1 database. Its implementation is in [account-gateway-v025.mjs](account-gateway-v025.mjs) and [oidc-resource-v025.mjs](oidc-resource-v025.mjs).
+
+- Requires a valid resource-audience access token from a configured trusted OIDC issuer and JWKS. Validates RS256 signature, `iss`, `aud`, `sub`, expiry, time and scopes. Tokens cannot carry arbitrary issuer/JWKS URLs.
+- D1 CRUD/CAS is keyed by a hash of the verified issuer and subject, and independent create, list, open, export, draft-update and delete methods are defined. Approval/lock editing is disabled until a trusted user confirmation path exists.
+- In the current deployment **no real OIDC provider is configured**, so account access and writing are **disabled**. Cloudflare Access in this account returns `access.api.error.not_enabled`.
+- 18/18 ephemeral WebCrypto-signed synthetic JWT/policy tests passed on Cloudflare Worker, but no real provider integration or live user login succeeded. Prior D1 owner/CAS tests: 8/8 synthetic, fixture rows deleted.
+- The staging Worker has **workers.dev publishing disabled** after tests. This is not a public auth endpoint or evidence of a connected ChatGPT/Claude account. Private plugin version stays 0.24, public stateless MCP stays 0.2-beta.
+
+G5 acceptance remains **BLOCKED** on verified provider configuration, actual MCP OAuth resource metadata/authorization with a permitted client, cross-user isolation integration tests, explicit UI consent for approvals and revocation/session/delete audits. Do not mark REMAKE as 1.0 or submit the official plugin yet.
