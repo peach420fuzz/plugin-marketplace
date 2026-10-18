@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.26.0 · **Public stateless MCP:** 0.2.0-beta (six tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.27.0 · **Public stateless MCP:** 0.2.0-beta (six tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -40,3 +40,17 @@
 **G8→G7→G10:** verify canonical v37 brand asset, privacy/terms/support + rights, then real cross-host installs and only afterwards submit official catalog applications.
 
 **No relabeling to 1.0 until real external acceptance receipts exist.** Keep negative test outcomes in roadmap.
+
+
+## Cycle 0.27 — genuine source-video evidence, private workspace only
+
+- Two existing **real, locally materialized video files** from the owner's permitted Library were processed without transmitting content to GitHub or the public MCP. Source A: 7.042 s/169 decoded frames (H.264); source B: 4.042 s/97 decoded frames (HEVC); 1920×1080/24fps; both no audio tracks. **8+6 native PTS sampled PNG frames** extracted, source and frame hashes verified.
+- The assistant actually viewed those 14 sampled frame images through the current conversation's internal image viewer, and produced five frame-specific descriptive observations and one explicitly **PROPOSED** directing hypothesis. This is not execution *inside the installed REMAKE plugin*, not inspection of the full video, and not independent semantic/human evaluation.
+- The new local tool `scripts/remake_visual_claims_v027.py` validates source ID, source SHA256, frame index, PTS, PNG SHA256, review-surface declarations and approval boundaries; it expressly **cannot** cryptographically verify what a frame shows or who visually inspected it.
+- **18/18 reproducible generic test fixtures** plus **15/15 real source-bound tests** passed; the 0.26 FFmpeg synthetic regression suite passes **15/15**. Only the generic tests and code are public; client bytes/frames and brand descriptions remain in the owner's private workspace.
+- **G2.1 = PASS in narrow local scope; overall G2 = PARTIAL**, as an actual host plugin media ingestion pipeline is still absent. **G3 remains NOT TESTED**, external experts have not performed blind multi-turn ratings. G5 OAuth, G8 brand, G10 store submission are still blocked.
+- This is a functional private plugin release update `0.27.0`, not a public product launch.
+
+**Roadmap improvement: verified-source observation contract.** For every visual factual statement, record source ID, SHA256, frame index, true PTS, sample PNG SHA256 and the actual surface by which the host saw the sample; force separate hypothesis/approval states. Treat declarations as non-authenticating; semantic truth and third-party rights must be verified independently. Pilot paper cuts may be produced only from permitted media and never marked creator approved.
+
+**Next:** G2.2 host-native frame processing (not just a standalone local script), G3 ≥8-turn external reviewer pilot, and OAuth G5 real-identity integration. No official-directory submission until P0 acceptance.
