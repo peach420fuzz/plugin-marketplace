@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.32.0 · **Public stateless MCP:** 0.6.1-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.33.0 · **Public stateless MCP:** 0.7.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -148,3 +148,15 @@ Next critical work: connect real host file in supported ChatGPT environment; con
 After setting required `interface.supportURL`, an external availability check detected **HTTP 404** for `https://remake.objekts.ai/support`. The source Worker lacked a support route despite a previous old staging implementation. Fixed the live public Worker at **0.6.1-beta**, then externally fetched **200 /support, /privacy, /terms, /health**. MCP integration CI PASS on the Worker fix: https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39245904967 .
 
 Release gate CI now also probes these HTTPS URLs over the network, so static manifest acceptance cannot mask unavailable help, privacy or legal pages. **G8 remains PARTIAL** until original branded icon files are retrieved and installed. Public directory review still not submitted. `/support` existence does not change G2/G3/G5 acceptance.
+
+
+## Cycle 0.33 — security first: public CAS revisions limited to drafts (19 Oct 2026)
+
+- Verified security problem in prior G4 implementation: `actor_claim=USER` and an arbitrary string `approval_ref` were accepted by the unauthenticated public MCP `remake_project_apply_delta` to set/remove LOCK or approve/reject decisions, without actual identity. `material_add` could also claim media `OBSERVED` without any pixel inspection.
+- **Patched production** `objekts-remake-public` v0.7.0-beta (still nine tools, Cloudflare deployment `4f95f60243fb4aa89510856110594cf5`) with [public-delta-guard-v033.mjs](public-delta-guard-v033.mjs) running **before** the old stateless CAS engine. Only draft `material_add`, `shot_add`, `shot_field_set`, and `decision_propose` remain allowed. Draft sources are USER_STATED/HYPOTHESIS/UNKNOWN, not invented media OBSERVED; only PROPOSED shots may be edited. All approvals, LOCK changes, forged human actors and invalid provenance fail closed.
+- **Verification:** GitHub Actions [REMAKE MCP integration success, run 39249304466](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39249304466): **20/20 synthetic public JSON-RPC forged-consent/LOCK/source safety tests** plus previous image and 9-tool dispatcher integration suite. This confirms technical enforcement at the public API boundary, **not** a verified human user, signed approval, or creative usefulness.
+- Private plugin upgraded to **0.33.0** on existing identity `plugins_6ad335019d608191a6412d3b59df10e5` (release `pluginrel_6ad6085ee3d48191a7e4b161e8748180`). Updated skill instructs to leave real author approval in the host dialogue as **not yet cryptographically verified**, not to commit it to public MCP.
+- **G4 status PARTIAL (security improved)**. Public stateless project packets are still caller-supplied and pre-existing claimed approvals cannot be authenticated. A real auth-bound G5 with explicit human confirmation is required for genuinely authoritative LOCKs and approval/edit history.
+- G2 host user fileParams receipt, G3 20×8-turn independent film reviewers, G5 OAuth, G8 original brand binary and G10 official ChatGPT review remain **blocked/open**. No v1.0 and no official publication.
+
+**Roadmap improvement:** authn, author approval, and creative state must be separate planes. A model must be able to propose a change without acquiring edit privilege. All future versions run the 20 abuse regression tests; original brand assets and real host permission receipts remain independent gates.
