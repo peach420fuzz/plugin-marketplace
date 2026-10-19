@@ -1,0 +1,61 @@
+// REMAKE CI: exercise the ACTUAL MCP JSON-RPC dispatcher (not only helper functions).
+// Synthetic 1x1 PNG, injected host file URL fetcher, no customer media or secrets.
+import assert from "node:assert/strict";
+import {webcrypto} from "node:crypto";
+import worker from "../worker.mjs";
+if(!globalThis.crypto)globalThis.crypto=webcrypto;
+const png=Uint8Array.from(Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGP4z8DwHwAFAAH/iZk9HQAAAABJRU5ErkJggg==","base64"));
+const broken=png.slice();broken[50]^=1;
+const originalFetch=globalThis.fetch;
+let incoming=png,requested=false;
+globalThis.fetch=async(url,opts)=>{
+ requested=true;
+ assert.match(url,/^https:\/\/files\.oaiusercontent\.com\/auth\/temporary$/);
+ assert.equal(opts.redirect,"error");
+ return new Response(incoming,{status:200,headers:{"content-length":String(incoming.length)}});
+};
+let counter=0;let passed=0;
+async function rpc(method,params){
+ const id=++counter;
+ const response=await worker.fetch(new Request("https://remake.objekts.ai/mcp",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({jsonrpc:"2.0",id,method,params})}),{});
+ assert.equal(response.status,200);
+ const output=await response.json();
+ assert.equal(output.jsonrpc,"2.0");assert.equal(output.id,id);
+ return output;
+}
+try{
+ const init=await rpc("initialize",{protocolVersion:"2025-06-18",clientInfo:{name:"ci-test",version:"0"},capabilities:{}});
+ assert.equal(init.result.serverInfo.name,"REMAKE by objekts");passed++;
+ const list=await rpc("tools/list",{});
+ const names=list.result.tools.map(t=>t.name);
+ assert.equal(names.length,8);
+ for(const name of ["remake_host_image_for_review","remake_host_file_preflight","remake_project_validate"])assert.ok(names.includes(name));
+ const schema=list.result.tools.find(t=>t.name==="remake_host_image_for_review");
+ assert.deepEqual(schema._meta["openai/fileParams"],["file"]);
+ assert.deepEqual(schema.inputSchema.properties.file.required,["download_url","file_id"]);
+ passed++;
+ const args={source_id:"fixture-01",file:{download_url:"https://files.oaiusercontent.com/auth/temporary",file_id:"file-fixture",mime_type:"image/png"}};
+ const image=await rpc("tools/call",{name:"remake_host_image_for_review",arguments:args});
+ assert.ok(requested);
+ assert.equal(image.result.isError,false);
+ assert.equal(image.result.content[1].type,"image");
+ assert.equal(image.result.content[1].mimeType,"image/png");
+ assert.equal(image.result.content[1].data,Buffer.from(png).toString("base64"));
+ assert.equal(image.result.structuredContent.host_model_observation,"UNVERIFIED_UNTIL_CALLING_MODEL_ACTUALLY_INSPECTS_IMAGE");
+ assert.equal(image.result.structuredContent.source_sha256,(await import("node:crypto")).createHash("sha256").update(png).digest("hex"));
+ passed++;
+ incoming=broken;
+ const corrupt=await rpc("tools/call",{name:"remake_host_image_for_review",arguments:args});
+ assert.equal(corrupt.result.isError,true);
+ assert.match(corrupt.result.content[0].text,/png_crc_mismatch/);passed++;
+ incoming=png;
+ const badHost=await rpc("tools/call",{name:"remake_host_image_for_review",arguments:{...args,file:{...args.file,download_url:"https://evil.com/a"}}});
+ assert.equal(badHost.result.isError,true);passed++;
+ const made=await rpc("tools/call",{name:"remake_project_create",arguments:{project_id:"ci-project",title:"test"}});
+ assert.equal(made.result.structuredContent.project.revision,1);passed++;
+ const conflicts=await rpc("tools/call",{name:"check_explicit_project_locks",arguments:{locks:[{key:"CAMERA",value:"static"}],proposed_changes:[{key:"CAMERA",new_value:"dolly"}]}});
+ assert.equal(conflicts.result.structuredContent.allow_edit,false);passed++;
+ const health=await worker.fetch(new Request("https://remake.objekts.ai/health"),{});
+ assert.equal((await health.json()).storage,false);passed++;
+ process.stdout.write(JSON.stringify({suite:"MCP dispatcher E2E",passed,total:8,synthetic:true,host:"node-inmemory",actual_chatgpt_attachment:false})+"\n");
+}finally{globalThis.fetch=originalFetch;}
