@@ -18,6 +18,8 @@ const tools=[
    
 ];
 tools.push(...canonicalTools,fileTool,visionTool,batchTool);
+const guardedDelta=tools.find(x=>x.name==="remake_project_apply_delta");
+if(guardedDelta)guardedDelta.description="PUBLIC UNAUTHENTICATED DRAFT-ONLY: add unobserved material descriptions, propose unapproved shots/decisions and modify PROPOSED shots with CAS. LOCK set/remove and approve/reject events, USER actor claims and alleged OBSERVED media are always rejected. Caller must save resulting project; no identity, consent, storage or semantic media verification.";
 const invalid=(s)=>{throw Error(s)};
 const stringOk=(v,max=4000)=>typeof v==="string"&&v.length<=max;
 const arr=(a,max)=>Array.isArray(a)&&a.length<=max;
