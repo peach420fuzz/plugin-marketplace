@@ -19,3 +19,5 @@ jobs:
           node-version: '22'
       - name: Exercise MCP JSON-RPC dispatcher and image byte integrity
         run: node plugins/remake-by-objekts/tests/mcp-integration-v030.mjs
+      - name: Assert unauthenticated calls cannot forge approval, LOCK or media observation
+        run: node plugins/remake-by-objekts/tests/public-delta-guard-v033.mjs
