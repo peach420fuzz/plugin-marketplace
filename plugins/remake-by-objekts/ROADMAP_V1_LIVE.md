@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.33.0 · **Public stateless MCP:** 0.7.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.34.0 · **Public stateless MCP:** 0.7.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -160,3 +160,18 @@ Release gate CI now also probes these HTTPS URLs over the network, so static man
 - G2 host user fileParams receipt, G3 20×8-turn independent film reviewers, G5 OAuth, G8 original brand binary and G10 official ChatGPT review remain **blocked/open**. No v1.0 and no official publication.
 
 **Roadmap improvement:** authn, author approval, and creative state must be separate planes. A model must be able to propose a change without acquiring edit privilege. All future versions run the 20 abuse regression tests; original brand assets and real host permission receipts remain independent gates.
+
+
+## Cycle 0.34 — fix bad first-response experience, restructure active skill (19 Oct 2026)
+
+- **Actual user negative signal:** plugin tried by owner; creative quality reported unusable. This is recorded as G3 **FAILED/NOT ACCEPTED from user's actual attempt**, rather than pretending synthetic tests represent usability. The exact failed prompt/output has not yet been recovered, so no claim of reproducible cause or quality win.
+- **Concrete product change:** first-turn directing hot path now opens with source observation → consequential viewer-reading hinge → exactly one filmable change (ENTRY/action/EXIT) → trade-off → cheap pass/fail test. Avoids leading with technical build chronology or onboarding; asks max one truly blocking question. Works from idea only and any number of source references, including none. Genuine LOCK, author approvals and source provenance retained.
+- Previous installed 0.33 main skill **23,709 bytes**, most of the top loaded with technical 0.21–0.33 chronology. Active 0.34 skill is **8,259 bytes**; old material retained as reference `REMAKE_ENGINEERING_CHANGELOG_0.21_TO_0.33.md`. The new prompt reduces irrelevant technical context but quality impact is a **hypothesis, not externally measured improvement**.
+- **Evidence:** reconstructed private local workspace 97/97 Python tests PASS, manifest checks PASS with version 0.34. These validate package/test utilities and do not exercise actual ChatGPT prompt execution. One model-authored paper-edit on owner-permitted ACT/PACK contact sheets used 14 sampled stills, not full video motion/audio and not a two-reviewer evaluation.
+- **Installed:** private Plugin Creator version **0.34.0**, release `pluginrel_6ad6804b75b081918a0d380f31350243`, read-back confirmed. Existing public MCP remains **0.7.0-beta**, nine tools, not changed by this prompt-only update.
+- **Public source sync:** updated own published GitHub Skills, xAI/Grok fork-local skill and standalone Claude/Gemini extension source branches. These are source deployments, NOT official marketplace submissions, installations or real host trials.
+- **Still blocked:** actual installed-host fileParams and visual consumption G2, genuine 8-turn directing pilot & two blind reviewers G3, OAuth user memory G5, genuine v37 packed icons G8, official OpenAI/Claude/Gemini/Grok marketplace submission G10. **No 1.0.**
+
+### New prioritized acceptance
+
+A single authentic source-grounded director answer is required at the beginning; no further growth in plugin metadata should be substituted for creative usefulness. Obtain user's actual failing prompt and answer, rerun on 0.34 in real host, compare factual media accuracy, impact of proposed change, author LOCK preservation, executable shots and one cheap test. If below threshold, keep G3 failed and revise before attempting official release. Then 8-turn pilot and 20×8-turn external blind review.
