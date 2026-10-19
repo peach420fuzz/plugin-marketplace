@@ -10,6 +10,8 @@ async function rpc(method,params){
  return (await r.json()).result;
 }
 async function call(name,args){return await rpc("tools/call",{name,arguments:args});}
+const meta=await rpc("tools/list",{});
+assert.match(meta.tools.find(x=>x.name==="remake_project_apply_delta").description,/DRAFT-ONLY/);
 const make=await call("remake_project_create",{project_id:"project-guard-test"});
 assert.equal(make.isError,false);
 const base=make.structuredContent.project;
