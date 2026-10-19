@@ -1,0 +1,30 @@
+name: REMAKE release gate audit
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'plugins/remake-by-objekts/plugin.json'
+      - 'plugins/remake-by-objekts/assets/**'
+      - 'plugins/remake-by-objekts/scripts/release-gate-v032.mjs'
+      - '.github/workflows/remake-release-gates.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Inspect actual directory requirements (prints blocked state honestly)
+        run: node plugins/remake-by-objekts/scripts/release-gate-v032.mjs
+      - name: Make sure public release cannot pass without authentic packaged images
+        run: |
+          if node plugins/remake-by-objekts/scripts/release-gate-v032.mjs --strict; then
+            echo "Strict gate PASSED: inspect receipt and brand ownership before submission"
+          else
+            echo "Strict publication gate BLOCKED — expected while original brand icons are not in the package"
+          fi
