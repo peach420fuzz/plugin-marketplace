@@ -55,7 +55,17 @@ try{
  assert.equal(made.result.structuredContent.project.revision,1);passed++;
  const conflicts=await rpc("tools/call",{name:"check_explicit_project_locks",arguments:{locks:[{key:"CAMERA",value:"static"}],proposed_changes:[{key:"CAMERA",new_value:"dolly"}]}});
  assert.equal(conflicts.result.structuredContent.allow_edit,false);passed++;
+ const protectedPath="https://remake.objekts.ai/_image_selftest";
+ const blocked=await worker.fetch(new Request(protectedPath),{});
+ assert.equal(blocked.status,404);passed++;
+ const namesOfSuites=["_image_selftest","_file_selftest","_core_selftest","_selftest"];
+ const counts=[19,14,17,9];
+ for(let i=0;i<namesOfSuites.length;i++){
+  const res=await worker.fetch(new Request("https://remake.objekts.ai/"+namesOfSuites[i],{headers:{"x-remake-diag-token":"synthetic-ci-only"}}),{REMAKE_DIAGNOSTIC_TOKEN:"synthetic-ci-only"});
+  assert.equal(res.status,200);
+  const v=await res.json();assert.equal(v.passed,v.total);assert.equal(v.passed,counts[i]);passed++;
+ }
  const health=await worker.fetch(new Request("https://remake.objekts.ai/health"),{});
  assert.equal((await health.json()).storage,false);passed++;
- process.stdout.write(JSON.stringify({suite:"MCP dispatcher E2E",passed,total:8,synthetic:true,host:"node-inmemory",actual_chatgpt_attachment:false})+"\n");
+ process.stdout.write(JSON.stringify({suite:"MCP dispatcher E2E",passed,total:13,synthetic:true,host:"node-inmemory",actual_chatgpt_attachment:false})+"\n");
 }finally{globalThis.fetch=originalFetch;}
