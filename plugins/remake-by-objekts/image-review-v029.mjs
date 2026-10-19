@@ -2,6 +2,7 @@
 // This produces MCP ImageContent, NOT server-side image interpretation.
 // No video frame decoding, file storage, user identity, or authenticated creative approval.
 import {fetchVerifiedHostBytes,fingerprintBytes,analyzeMedia,MAX_BYTES} from "./host-file-v028.mjs";
+import {verifyInlineImage} from "./image-integrity-v030.mjs";
 const LIMIT=1024*1024*2;
 const fail=(code)=>{throw Error(code)};
 const base64=(bytes)=>{
@@ -33,6 +34,8 @@ export async function imageToMCP(a,{fetcher=fetch}={}){
  const format=fingerprintBytes(b);
  if(!["image/png","image/jpeg"].includes(format.mime_type))fail("unsupported_inline_image_type");
  if(!format.width||!format.height||format.width>4096||format.height>4096)fail("inline_image_dimensions_limit");
+ const checked=verifyInlineImage(b,format.mime_type);
+ if(checked.width!==format.width||checked.height!==format.height)fail("image_header_dimension_conflict");
  const meta=await analyzeMedia({...record});
  // A signed host URL and matching file bytes do not prove actual human authorization, model perception or copyright.
  const safe={
@@ -54,7 +57,7 @@ export async function imageToMCP(a,{fetcher=fetch}={}){
  };
 }
 export async function imageSelfTests(){
- const sample=Uint8Array.from(atob("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO5+4N8AAAAASUVORK5CYII="),x=>x.charCodeAt(0));
+ const sample=Uint8Array.from(atob("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGP4z8DwHwAFAAH/iZk9HQAAAABJRU5ErkJggg=="),x=>x.charCodeAt(0));
  const f={download_url:"https://files.oaiusercontent.com/allowed-expiring-link",file_id:"file_fixture",mime_type:"image/png"};
  const args={source_id:"image-s1",file:f};
  const response=()=>new Response(sample,{status:200,headers:{"content-length":String(sample.length)}});
@@ -72,6 +75,11 @@ export async function imageSelfTests(){
  await check("missing_file_error",async()=>{try{await imageToMCP(args,{fetcher:async()=>new Response("not found",{status:404})});return false}catch{return true}});
  await check("unsupported_text_rejected",async()=>{try{await imageToMCP(args,{fetcher:async()=>new Response(new TextEncoder().encode("It is a file not an image."))});return false}catch{return true}});
  await check("huge_image_rejected",async()=>{const huge=new Uint8Array(LIMIT+1);huge.set(sample.slice(0,24));const first=new Uint8Array(huge.slice(0,24));try{await imageToMCP(args,{fetcher:async()=>new Response(huge)});return false}catch{return true}});
+ await check("corrupt_png_crc_rejected",async()=>{const damaged=sample.slice();damaged[50]^=1;try{await imageToMCP(args,{fetcher:async()=>new Response(damaged)});return false}catch{return true}});
+ await check("truncated_png_rejected",async()=>{try{await imageToMCP(args,{fetcher:async()=>new Response(sample.subarray(0,sample.length-4))});return false}catch{return true}});
+ await check("trailing_png_data_rejected",async()=>{const damaged=new Uint8Array(sample.length+3);damaged.set(sample);damaged.set([1,2,3],sample.length);try{await imageToMCP(args,{fetcher:async()=>new Response(damaged)});return false}catch{return true}});
+ await check("png_ihdr_crc_rejected",async()=>{const damaged=sample.slice();damaged[23]^=1;try{await imageToMCP(args,{fetcher:async()=>new Response(damaged)});return false}catch{return true}});
+ await check("fake_jpeg_header_rejected",async()=>{const damaged=Uint8Array.from([255,216,255,192,0,17,8,0,1,0,1,3,1,17,0,2,17,0,3,17,0,255,217]);try{await imageToMCP({...args,file:{...f,mime_type:"image/jpeg"}},{fetcher:async()=>new Response(damaged)});return false}catch{return true}});
  await check("no_timecode_inferred",async()=>{const r=await imageToMCP(args,{fetcher:async()=>response()});return r.structuredContent.source_timecode===null});
  await check("base64_roundtrip",()=>{const src=base64(sample);return Uint8Array.from(atob(src),x=>x.charCodeAt(0)).every((v,i)=>v===sample[i])});
  return {passed:results.filter(x=>x.pass).length,total:results.length,results,scope:"All tests use local synthetic 1x1 PNG and an injected stub fetcher. No real ChatGPT plugin host result rendering has been confirmed."};
