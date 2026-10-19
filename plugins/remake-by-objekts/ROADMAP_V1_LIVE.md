@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.30.0 · **Public stateless MCP:** 0.5.0-beta (eight tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.31.0 · **Public stateless MCP:** 0.6.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -109,3 +109,22 @@ Next measurable execution: authorized actual fileParam from a live host; indepen
 - **Release discipline added:** green actual dispatcher CI on every version change is mandatory, but not a substitute for external end-to-end and human reviewer evidence. The public website and own GitHub build are not a completed official marketplace release.
 
 Next critical work: connect real host file in supported ChatGPT environment; confirm source SHA256 and model-consumed image with 1/2/7 files; run one authentic eight-turn G3 directing pilot with permissions and then 20×8-turn blind professional reviews. No v1.0 without pass receipts.
+
+
+## Cycle 0.31 — multi-source fileParams, source-ID fidelity and G8 asset discovery (19 Oct 2026)
+
+- **Feature implemented:** `remake_host_image_batch` is MCP tool #9. It declares `_meta["openai/fileParams"]: ["files"]` with a **top-level array** of user-selected file references, as supported by the current OpenAI fileParams reference. Optional `source_ids` must align 1:1 with the files; absent IDs default to host `file_id`.
+- **Creative scope:** zero source images is valid; 1, 2, 7, 35, 100+ images may be used across a creative project. Runtime permits **1–8 images per transport invocation**, with 2 MiB PNG/JPEG image limit and 8 MiB per batch. Divide larger collections across calls, preserving source registry and SHA256; there is **no preset scene/image/script minimum**.
+- **Security/consistency:** duplicate source IDs or file IDs, missing URLs, invalid signatures/CRC, untrusted origin and oversized payloads fail without pretending partial visual acceptance. Each result keeps an explicit `source_id → file_id → sha256 → MCP ImageContent` relationship. The model still must truly inspect pixels before reporting `HOST_OBSERVED`. The Worker does not store materials or transfer them to objekts.
+- **Evidence:** GitHub Actions [REMAKE MCP integration run 39240250059](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39240250059) **PASS**. Actual JSON-RPC dispatcher test includes 2- and 7-image batches, correct ordering, duplicate rejection and 5 helper suites: **16/16 new batch synthetic + 59/59 existing synthetic**. Integration dispatcher suite: **17/17 assertions**. Live Cloudflare endpoint `/health` reports **0.6.0-beta**, and unauthenticated `/_batch_selftest` returns **404**.
+- **Private installation:** REMAKE updated **0.31.0** on existing private plugin ID; verified current release `pluginrel_6ad5f66a6b448191b2d0a230f5936323`. Nothing submitted to a public directory.
+- **G8 partial discovery:** studio-hosted assets `https://objekts.ai/media/approved/apple-touch-icon-v37.png` (180×180) and `https://objekts.ai/media/approved/objekts-icon-v37.png` (1254×1254) both returned valid image pages in an independent external fetch; source is official `objekts.ai`. Binary integrity, suitability for OpenAI asset size and user approval for using this mark in REMAKE are **not verified**. No logo file has been installed or modified; never invent a substitute.
+- **No unsupported assertions:** actual ChatGPT user image fileParams invocation, model receipt/perception, cross-platform file bridging, external cinematic reviewer outcome, OAuth account memory and official release are **not verified**. G2 and G3 remain PARTIAL/NOT TESTED respectively.
+
+### Next release candidate gates
+
+**G2.2a / G2.2b:** with an independently authorized actual host, run image upload with 1, 2, 7 images, verify returned hash and host visual observation per image; test expired URL, missing fileParam and multi-call 35+ assets. For video, develop a source-timed frame extraction path rather than inferring footage content from MP4 header. Keep host receipts in private evidence.
+
+**G3:** run one non-simulated 8-turn creator session on permissioned footage and have two independent experienced film directors/editors blind-rate camera, blocking, continuity, edit, sound and minimum effective change; then expand to 20 verified sessions. Synthetic dialog harness is not evidence of creative quality.
+
+**G5/G8:** a real OAuth issuer remains absent; verify original v37 icon bytes and direct approval before embedding. Do not call the release 1.0 or submit a public catalog app before passing required gates.
