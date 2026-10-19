@@ -86,3 +86,10 @@ The previously publicly callable stress-test URLs are now protected: without a s
 Private plugin **0.31.0**, public stateless MCP **0.6.0-beta (nine tools)**. Source: [image-batch-v031.mjs](image-batch-v031.mjs), tests in [MCP dispatcher](tests/mcp-integration-v030.mjs). ChatGPT supports `_meta["openai/fileParams"]` top-level arrays; `remake_host_image_batch` maps each user-selected file to stable source IDs, SHA256, and separate image content for host inspection. Per-call transport is limited to 8 PNG/JPEG images and 8 MiB aggregate, but there is **no creative source-count limit**; invoke in more batches for a large project. No mandatory screenplay.
 
 **CI [PASS](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39240250059)** covers 2- and 7-file JSON-RPC calls and 16/16 new synthetic cases (75/75 combined helper tests). No installed-host real image attachment or independent model perception evidence; G2.2 remains PARTIAL, not passed. Separate original icon resources were located on the official studio domain (`objekts-icon-v37.png`, `apple-touch-icon-v37.png`), but have not been copied or owner-approved for this plugin. See [roadmap](ROADMAP_V1_LIVE.md).
+
+
+## REMAKE 0.33: unauthenticated public revisions are draft-only
+
+A verified G4 privilege flaw in the old public MCP let anyone spoof `actor_claim=USER` and `approval_ref`. Public tool `remake_project_apply_delta` now denies `lock_set`, `lock_remove`, decision approval/rejection, forged image OBSERVED states, and edits to rejected or approved shots. Allowed draft edits remain usable. Source: [public-delta-guard-v033.mjs](public-delta-guard-v033.mjs). [GitHub CI PASS](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39249304466) includes **20 direct synthetic JSON-RPC security tests**. No proof of actual human approval or user authentication; do not confuse the public schema with secure persistent user state.
+
+Installed private REMAKE 0.33.0; public Worker 0.7.0-beta (nine tools). G2 real ChatGPT attachment, G3 independent director quality, G5 real OAuth and official app publication all remain unverified. See [roadmap](ROADMAP_V1_LIVE.md).
