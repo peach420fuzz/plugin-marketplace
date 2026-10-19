@@ -2,7 +2,8 @@ import {canonicalTools,callCanonical,createProject,validateProject,applyProjectD
 import {fileTool,preflightHostFile,filePreflightTests} from "./host-file-v028.mjs";
 import {visionTool,imageToMCP,imageSelfTests} from "./image-review-v029.mjs";
 import {batchTool,processHostImageBatch,batchSelfTests} from "./image-batch-v031.mjs";
-const VERSION="0.6.1-beta";
+import {guardPublicDelta,publicGuardScope} from "./public-delta-guard-v033.mjs";
+const VERSION="0.7.0-beta";
 const json=(x,status=200)=>new Response(JSON.stringify(x),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}});
 const plain=(s,status=200,type="text/html; charset=utf-8")=>new Response(s,{status,headers:{"content-type":type,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'none'; style-src 'unsafe-inline'; script-src 'none'; base-uri 'none'; form-action 'none'"}});
 const materialProps={id:{type:"string",minLength:1,maxLength:100},kind:{type:"string",enum:["idea","text","script","image","video","audio","storyboard","document","other"]},description:{type:"string",maxLength:2000},observed:{type:"boolean"}};
@@ -106,6 +107,6 @@ if(method==="notifications/initialized")return new Response(null,{status:202});
 if(method==="initialize")return json(rpc(id,{protocolVersion:"2025-06-18",capabilities:{tools:{listChanged:false}},serverInfo:{name:"REMAKE by objekts",version:VERSION}}));
 if(method==="ping")return json(rpc(id,{}));
 if(method==="tools/list")return json(rpc(id,{tools}));
-if(method==="tools/call"){const name=params?.name;if(!tools.some(t=>t.name===name))return json(fault(id,-32601,"unknown tool"));try{if(name==="remake_host_image_for_review"){const img=await imageToMCP(params?.arguments||{});return json(rpc(id,img));}if(name==="remake_host_image_batch"){const result=await processHostImageBatch(params?.arguments||{});return json(rpc(id,result));}const result=name==="remake_host_file_preflight"?await preflightHostFile(params?.arguments||{}):name.startsWith("remake_project_")?await callCanonical(name,params?.arguments||{}):runTool(name,params?.arguments||{});return json(rpc(id,{content:[{type:"text",text:JSON.stringify(result)}],structuredContent:result,isError:false}));}catch(e){return json(rpc(id,{content:[{type:"text",text:String(e.message||"Invalid input")}],isError:true}));}}
+if(method==="tools/call"){const name=params?.name;if(!tools.some(t=>t.name===name))return json(fault(id,-32601,"unknown tool"));try{if(name==="remake_host_image_for_review"){const img=await imageToMCP(params?.arguments||{});return json(rpc(id,img));}if(name==="remake_host_image_batch"){const result=await processHostImageBatch(params?.arguments||{});return json(rpc(id,result));}const args=params?.arguments||{};if(name==="remake_project_apply_delta")guardPublicDelta(args);const result=name==="remake_host_file_preflight"?await preflightHostFile(args):name.startsWith("remake_project_")?await callCanonical(name,args):runTool(name,args);return json(rpc(id,{content:[{type:"text",text:JSON.stringify(result)}],structuredContent:result,isError:false}));}catch(e){return json(rpc(id,{content:[{type:"text",text:String(e.message||"Invalid input")}],isError:true}));}}
 return json(fault(id,-32601,"unknown method"));
 }};
