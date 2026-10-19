@@ -109,7 +109,7 @@ export const fileTool={
 export async function filePreflightTests(){
  const tests=[];
  const check=async(name,fn)=>{try{tests.push({name,pass:!!(await fn())})}catch(e){tests.push({name,pass:false,error:String(e.message||e)})}};
- const png=Uint8Array.from(atob("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO5+4N8AAAAASUVORK5CYII="),c=>c.charCodeAt(0));
+ const png=Uint8Array.from(atob("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGP4z8DwHwAFAAH/iZk9HQAAAABJRU5ErkJggg=="),c=>c.charCodeAt(0));
  const mkResponse=()=>new Response(png,{status:200,headers:{"content-type":"image/png","content-length":String(png.length)}});
  const file={download_url:"https://files.oaiusercontent.com/authorized/expiring-123",file_id:"file-test",mime_type:"image/png"};
  await check("valid_1x1_png",()=>fingerprintBytes(png).width===1);
