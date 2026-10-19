@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - 'plugins/remake-by-objekts/plugin.json'
+      - 'plugins/remake-by-objekts/worker.mjs'
       - 'plugins/remake-by-objekts/assets/**'
       - 'plugins/remake-by-objekts/scripts/release-gate-v032.mjs'
       - '.github/workflows/remake-release-gates.yml'
@@ -28,3 +29,11 @@ jobs:
           else
             echo "Strict publication gate BLOCKED — expected while original brand icons are not in the package"
           fi
+      - name: Probe real public mandatory listing URLs
+        run: |
+          set -euo pipefail
+          for route in support privacy terms health; do
+            echo "Checking REMAKE /$route"
+            curl --fail --silent --show-error --location --max-time 15 "https://remake.objekts.ai/$route" > /dev/null
+          done
+          echo "All live listing URLs reachable"
