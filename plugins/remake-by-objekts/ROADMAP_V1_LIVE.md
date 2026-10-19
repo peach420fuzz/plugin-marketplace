@@ -175,3 +175,8 @@ Release gate CI now also probes these HTTPS URLs over the network, so static man
 ### New prioritized acceptance
 
 A single authentic source-grounded director answer is required at the beginning; no further growth in plugin metadata should be substituted for creative usefulness. Obtain user's actual failing prompt and answer, rerun on 0.34 in real host, compare factual media accuracy, impact of proposed change, author LOCK preservation, executable shots and one cheap test. If below threshold, keep G3 failed and revise before attempting official release. Then 8-turn pilot and 20×8-turn external blind review.
+
+
+### 0.34 distribution CI correction
+
+Updating `external_plugins/remake-by-objekts/skills/remake/SKILL.md` changed the description extracted by `scripts/generate-plugin-index.py`. The xAI/Grok fork's `Validate catalog` CI initially **FAILED** because `.grok-plugin/plugin-index.json` was stale. Regenerated its REMAKE record and pushed the index. The latest validator **PASSED**: https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39322359982 . This verifies fork-local source/index consistency, not a merge or official xAI/Grok listing. Keep automatic index regeneration in the next source update.
