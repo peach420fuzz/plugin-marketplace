@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.32.0 · **Public stateless MCP:** 0.6.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.32.0 · **Public stateless MCP:** 0.6.1-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -141,3 +141,10 @@ Next critical work: connect real host file in supported ChatGPT environment; con
 ### Next P0 release steps
 
 (1) obtain original source v37 icon bytes by an authorised route, confirm SHA256 and square image visually, secure owner approval and install actual files to the package; (2) verify real ChatGPT host fileParams and model-observed image with source hashes, 1/2/7 images; (3) one authentic eight-turn project pilot then 20 real × eight turns, two independent blinded expert evaluations; (4) OAuth user identity/persistence security; (5) submit to OpenAI when criteria truly met. Keep original project source count arbitrary, no compulsory script.
+
+
+### 0.32a security/release fix: verify live support page (19 Oct 2026)
+
+After setting required `interface.supportURL`, an external availability check detected **HTTP 404** for `https://remake.objekts.ai/support`. The source Worker lacked a support route despite a previous old staging implementation. Fixed the live public Worker at **0.6.1-beta**, then externally fetched **200 /support, /privacy, /terms, /health**. MCP integration CI PASS on the Worker fix: https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39245904967 .
+
+Release gate CI now also probes these HTTPS URLs over the network, so static manifest acceptance cannot mask unavailable help, privacy or legal pages. **G8 remains PARTIAL** until original branded icon files are retrieved and installed. Public directory review still not submitted. `/support` existence does not change G2/G3/G5 acceptance.
