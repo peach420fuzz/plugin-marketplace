@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.33.0",
-  "description": "REMAKE by objekts — source-grounded film direction with multi-image MCP and draft-only public revisions. Private beta; real ChatGPT vision, approval identity and independent directing evaluation unverified.",
+  "version": "0.34.0",
+  "description": "REMAKE by objekts — practical film direction first, evidence-grounded visuals, meaningful scene/edit decisions and safe draft revisions. Private beta; real installed-host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",
     "email": "salute@objekts.ai",
@@ -31,7 +31,7 @@
       "interface": {
         "displayName": "REMAKE by objekts",
         "shortDescription": "Direct your film with source-grounded creative choices.",
-        "longDescription": "REMAKE by objekts is a source-grounded filmmaking workshop for any combination or count of creative materials. Its stateless public MCP can return selected PNG/JPEG images to AI hosts (up to 8 per transport call), preserve source metadata, and compile unapproved project drafts. Security: the unauthenticated public project revision tool now refuses approvals, rejections, LOCK changes, forged model observations, and actor claims until a real verified human consent mechanism is connected. No cross-chat accounts or independent film-quality validation yet.",
+        "longDescription": "REMAKE by objekts is a source-grounded directing workshop, designed to give actionable film/edit/shot decisions from any available idea, script, images, video or sound without a fixed media count. The director-first v0.34 skill cuts engineering chatter and prioritizes one concrete creative intervention, trade-off and cheapest test. Public MCP tools can support file metadata, selected images and unapproved draft state. Real host image perception, external directing quality and verified cross-session memory are not yet certified.",
         "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
         "category": "Productivity",
         "capabilities": [
