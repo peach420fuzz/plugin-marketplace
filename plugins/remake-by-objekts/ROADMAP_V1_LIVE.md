@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.31.0 · **Public stateless MCP:** 0.6.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.32.0 · **Public stateless MCP:** 0.6.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -128,3 +128,16 @@ Next critical work: connect real host file in supported ChatGPT environment; con
 **G3:** run one non-simulated 8-turn creator session on permissioned footage and have two independent experienced film directors/editors blind-rate camera, blocking, continuity, edit, sound and minimum effective change; then expand to 20 verified sessions. Synthetic dialog harness is not evidence of creative quality.
 
 **G5/G8:** a real OAuth issuer remains absent; verify original v37 icon bytes and direct approval before embedding. Do not call the release 1.0 or submit a public catalog app before passing required gates.
+
+
+## Cycle 0.32 — public listing preflight must fail closed (19 Oct 2026)
+
+- Installed private REMAKE **0.32.0**: release `pluginrel_6ad5fef1e6f08191ae197f5e1f7a1fda`, same plugin ID. Public MCP server remains `0.6.0-beta` with nine tools; no regression or change in hosted inference claims.
+- Official OpenAI release specification requires all four HTTPS links (`websiteURL`, **`supportURL`**, `privacyPolicyURL`, `termsOfServiceURL`) plus an actual packaged primary `logo` and `composerIcon` asset. Added the missing `supportURL: https://remake.objekts.ai/support` to both plugin manifest formats. These four URLs now pass static preflight.
+- The actual approved v37 brand icon binary is still unavailable to the development runtime. Its official URLs and dimensions are confirmed; **do not use fabricated simplified circular graphics or claim visual/owner approval**. Both local release preflight and public repo CI correctly classify the official directory candidate as **BLOCKED**: missing bundled `logo`, `composerIcon`, and independent publisher authority receipt.
+- Added `scripts/release-gate-v032.mjs` and [REMAKE release gate audit CI](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39245238382). **The green CI means the guard executed and surfaced BLOCKED status, not a public release approval.** Corrected public repository manifest that previously remained at v0.21 to the actual installed private v0.32.
+- The last private 0.31 array `openai/fileParams` 1/2/7 scenario tests remain only synthetic. Browser connector was unavailable and user's remote Mac was offline, so **actual installed-host user file transfer and model vision were NOT run**. G3 independent 8-turn reviews: zero. G5 OAuth: no actual provider. G10 official submission: not sent.
+
+### Next P0 release steps
+
+(1) obtain original source v37 icon bytes by an authorised route, confirm SHA256 and square image visually, secure owner approval and install actual files to the package; (2) verify real ChatGPT host fileParams and model-observed image with source hashes, 1/2/7 images; (3) one authentic eight-turn project pilot then 20 real × eight turns, two independent blinded expert evaluations; (4) OAuth user identity/persistence security; (5) submit to OpenAI when criteria truly met. Keep original project source count arbitrary, no compulsory script.
