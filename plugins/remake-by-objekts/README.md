@@ -93,3 +93,8 @@ Private plugin **0.31.0**, public stateless MCP **0.6.0-beta (nine tools)**. Sou
 A verified G4 privilege flaw in the old public MCP let anyone spoof `actor_claim=USER` and `approval_ref`. Public tool `remake_project_apply_delta` now denies `lock_set`, `lock_remove`, decision approval/rejection, forged image OBSERVED states, and edits to rejected or approved shots. Allowed draft edits remain usable. Source: [public-delta-guard-v033.mjs](public-delta-guard-v033.mjs). [GitHub CI PASS](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39249304466) includes **20 direct synthetic JSON-RPC security tests**. No proof of actual human approval or user authentication; do not confuse the public schema with secure persistent user state.
 
 Installed private REMAKE 0.33.0; public Worker 0.7.0-beta (nine tools). G2 real ChatGPT attachment, G3 independent director quality, G5 real OAuth and official app publication all remain unverified. See [roadmap](ROADMAP_V1_LIVE.md).
+
+
+## REMAKE 0.34 — director-first experience (private beta)
+
+The owner tried the previous plugin and reported unsatisfactory creative quality. Current private version **0.34.0** changes the MAIN instruction to prioritize a useful film-directing action and not overwhelm the user with internal 0.21–0.33 release notes. Active skill shrank **23,709 → 8,259 bytes**; history is retained in a reference. Local 97/97 Python utility tests PASS; **no independent improvement in actual model artistic performance was proven**. Public nine-tool MCP Worker remains 0.7-beta. Claude/Gemini/xAI/GitHub Skill files synced as developer source, not official app-store distributions. See [living roadmap](ROADMAP_V1_LIVE.md).
