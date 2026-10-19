@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.29.0 · **Public stateless MCP:** 0.4.0-beta (eight tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.30.0 · **Public stateless MCP:** 0.5.0-beta (eight tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -95,3 +95,17 @@ Next measurable execution: authorized actual fileParam from a live host; indepen
 - Pilot next: run one authentic 8-turn user session using an actual verified attachment, capture source-bound visual observations and author feedback with privacy permission, apply guard, send blinded packet to two independent reviewers, and retain full fail/pass receipts. This step requires actual host/plugin user access and participating reviewers, not additional fabricated sessions.
 
 **No public app listing or v1.0 promotion.** Private installed plugin stays 0.29, public eight-tool MCP 0.4-beta.
+
+
+## Cycle 0.30 — real media integrity bug fixed; MCP dispatcher CI (19 Oct 2026)
+
+- **Negative discovery:** The former 0.29/0.28 base64 fixture was an invalid 1×1 PNG: its `IDAT` CRC did not match. Legacy tests passed because the bridge sniffed only the PNG signature and IHDR size. This is documented as a real failing previous coverage case, not counted as success.
+- Introduced `image-integrity-v030.mjs`: PNG CRC for all chunks, required IHDR/IDAT/IEND structure, size bounds and no extra bytes; JPEG SOI/SOF/SOS/EOI marker envelope. Those checks are not full pixel decoding and cannot prove model perception or film semantics. Replaced synthetic PNG fixture with a CRC-clean one.
+- Cloudflare public stateless MCP **0.5.0-beta**, eight tools retained. Validated **59/59 synthetic tests** before restricting public diagnostic routes. Health remains public.
+- Added GitHub Actions `REMAKE MCP integration`: **13/13 JSON-RPC dispatcher assertions PASS** (including internal 59/59 tests, tool discovery, a valid image result and rejection of corrupt CRC) in GitHub Actions success run https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39213968454 . The host URL uses a stub/mock PNG, **NOT** a real ChatGPT attachment.
+- External unauthenticated diagnostic routes `/_selftest`, `/_core_selftest`, `/_file_selftest`, `/_image_selftest` return 404 unless server secret `REMAKE_DIAGNOSTIC_TOKEN` and the matching header are configured. This reduces unauthenticated test execution on production. CI tests them locally with a synthetic secret.
+- Two permissioned real private PNG contact sheets from earlier video analysis were independently verified locally by Pillow and **48/48** PNG chunk CRCs (28+20). They were not copied into public source code or sent to the public MCP. Private REMAKE plugin installed **0.30.0**, release `pluginrel_6ad5c2424a048191932e9772cb8b1b72`.
+- **G2.2 remains PARTIAL**: real ChatGPT fileParams delivery, host visual inspection and frame-specific semantic verification not independently tested. **G3 0 independent real reviewer sessions**; G5 real OAuth, G8 brand art, G10 official directory receipt remain blocked.
+- **Release discipline added:** green actual dispatcher CI on every version change is mandatory, but not a substitute for external end-to-end and human reviewer evidence. The public website and own GitHub build are not a completed official marketplace release.
+
+Next critical work: connect real host file in supported ChatGPT environment; confirm source SHA256 and model-consumed image with 1/2/7 files; run one authentic eight-turn G3 directing pilot with permissions and then 20×8-turn blind professional reviews. No v1.0 without pass receipts.
