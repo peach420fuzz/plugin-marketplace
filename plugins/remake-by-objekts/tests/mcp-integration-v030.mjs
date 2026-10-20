@@ -29,6 +29,7 @@ try{
  const list=await rpc("tools/list",{});
  const names=list.result.tools.map(t=>t.name);
  assert.equal(names.length,9);
+ for(const tool of list.result.tools)for(const hint of ["readOnlyHint","destructiveHint","openWorldHint"])assert.equal(typeof tool.annotations?.[hint],"boolean",`${tool.name}: ${hint}`);
  for(const name of ["remake_host_image_for_review","remake_host_image_batch","remake_host_file_preflight","remake_project_validate"])assert.ok(names.includes(name));
  const schema=list.result.tools.find(t=>t.name==="remake_host_image_for_review");
  assert.deepEqual(schema._meta["openai/fileParams"],["file"]);
