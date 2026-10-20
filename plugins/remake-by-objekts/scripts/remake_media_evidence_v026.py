@@ -95,7 +95,7 @@ def inspect(media_path: Path, output_folder: Path, samples: int = 6, extract: bo
             continue
         file = out/f"frame_{frame['frame_index']:06d}.png"
         _cmd(['ffmpeg','-v','error','-nostdin','-i',str(path),'-map','0:v:0',
-              '-an','-vf',f"select=eq(n\\,{frame['frame_index']})",'-vsync','0',
+              '-an','-vf',f"select=eq(n\\,{frame['frame_index']})",'-fps_mode','passthrough',
               '-frames:v','1','-y',str(file)], timeout=90)
         if not file.is_file() or file.stat().st_size == 0:
             raise RuntimeError('frame extraction did not produce a nonempty PNG')

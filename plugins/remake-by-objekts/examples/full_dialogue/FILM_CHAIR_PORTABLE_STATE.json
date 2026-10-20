@@ -1,0 +1,46 @@
+{
+  "kind": "narrative",
+  "objective": "Silent 26s observational film of absence, without explanatory backstory",
+  "source_status": {
+    "chair_premise": "DESCRIBED_ONLY"
+  },
+  "approved": {
+    "story": "chair shifts position between shots without shown action",
+    "audio": "offscreen street sound in final shot, no music"
+  },
+  "locks": {
+    "world": "no face, no flashback, no death explanation",
+    "props": "no suitcase",
+    "timing": "three shots 8s + 10s + 8s = 26s",
+    "dialogue": "no voiceover"
+  },
+  "rejected": [
+    "voiceover"
+  ],
+  "proposed": {
+    "gesture": {
+      "domain": "blocking",
+      "value": "hand nearly touches chair, stops",
+      "state": "PROPOSED",
+      "lock_conflict": false
+    }
+  },
+  "claims": {},
+  "unknowns": [
+    "Shot 2 precise hand blocking is not yet approved",
+    "Actual footage not inspected; film quality and viewer reception unmeasured"
+  ],
+  "revalidate": [
+    "art",
+    "cg",
+    "delivery",
+    "direction",
+    "edit",
+    "production",
+    "script",
+    "sound",
+    "storyboard"
+  ],
+  "transfer": "NOT_SENT",
+  "needs_human_editorial_review": true
+}

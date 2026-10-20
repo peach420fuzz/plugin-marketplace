@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.34.0 · **Public stateless MCP:** 0.7.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.34.0; candidate 0.35.0 awaiting guarded save · **Public stateless MCP:** 0.7.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -180,3 +180,20 @@ A single authentic source-grounded director answer is required at the beginning;
 ### 0.34 distribution CI correction
 
 Updating `external_plugins/remake-by-objekts/skills/remake/SKILL.md` changed the description extracted by `scripts/generate-plugin-index.py`. The xAI/Grok fork's `Validate catalog` CI initially **FAILED** because `.grok-plugin/plugin-index.json` was stale. Regenerated its REMAKE record and pushed the index. The latest validator **PASSED**: https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39322359982 . This verifies fork-local source/index consistency, not a merge or official xAI/Grok listing. Keep automatic index regeneration in the next source update.
+
+
+## Cycle 0.35 — full-export regression and release reliability (20 Oct 2026)
+
+Status: CODE_DONE / LOCAL_TECHNICAL_TESTED, remote CI and deployments pending. No G1–G10 gate promoted to PASS.
+
+- Full current Plugin Creator 0.34.0 release `pluginrel_6ad6804b75b081918a0d380f31350243` exported **before edits**, 86 files, SHA256 `5075b13a288e4906eca96a68423cb92f4f943145a34c3402088784ecf985c1d8`. No overlay treated as a full backup. Existing GitHub starting SHA `fe786db9ef2ebdcd24de7f70138ea4b3bfca4ac4`.
+- **Reproducible negative result:** actual full release fails 5/97 Python tests under current local FFmpeg because `-vsync` is no longer recognized. Earlier 97/97 reports remain historical, not current acceptance. Fixed with `-fps_mode passthrough`; candidate **98/98** tests pass, including comparison of extracted PNG pixels to a separate sequential raw decode with frame index and PTS.
+- Restored full package source in this existing REMAKE directory; explicit inventory and deterministic complete ZIP builder. Added complete-package CI. This reduces drift between reconstructed test workspaces and actual Plugin Creator files.
+- Added bounded streamed HTTP input for public/staging routes: cap actual bytes, UTF-8 validation, deadline/cancellation, redacted errors. **13/13** synthetic stream checks; existing actual local dispatcher **17/17**, public privilege guard **20/20**.
+- Found and reproduced staging draft bypass: a PROPOSED shot accepted an invented approval field; rejected-shot edits were not covered by the old account guard. Staging now reuses `guardPublicDelta`, **6/6** synthetic signed-JWT/stub-D1 checks pass. **No real identity, D1 E2E, human confirmation or OAuth acceptance claimed.** Staging remains closed.
+- Actual permitted contact sheets inspected by current Codex model, one source-specific proposed paper edit saved privately. Original videos are absent from handoff; PTS imported from historical manifests, not remeasured. **Not installed ChatGPT, no eight real author turns, zero independent professional scorecards.** No private images/video/contact-sheet hashes copied to GitHub.
+- Candidate blind-review protocol committed before ratings. Real independent reviewers remain required. Strict publication packaging correctly BLOCKED on original icons and brand-authority receipt.
+- Actual ChatGPT browser is logged out; private plugin page cannot load. Required owner action: sign in to ChatGPT in the open browser. Cloudflare Access recheck returns `403 access.api.error.not_enabled`; reconnecting connector is not a fix. Library `files.manage_library` not exposed; canonical Library originals remain pending, not reported updated.
+- Task-by-task statuses: [tasks-v1.json](tasks-v1.json). No official vendor submission, approval, publication or independent install exists from this cycle. **1.0 NOT READY.**
+
+Next: green remote complete-package CI → guarded private update and named Worker deployment → actual signed-in host source trial and genuine author iterations → independent professional review; retain all G5/brand/catalog blockers.

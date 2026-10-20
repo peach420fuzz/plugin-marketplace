@@ -1,0 +1,363 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "REMAKE by objekts — Canonical project packet 0.23",
+  "description": "Structural schema. Does not prove media perception, human approval, delivery or identity.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project_id",
+    "revision",
+    "title",
+    "author_intent",
+    "materials",
+    "locks",
+    "decisions",
+    "shots",
+    "handoff"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "remake.project/0.23"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "author_intent": {
+      "type": "string"
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "provenance",
+          "evidence",
+          "host_inspected"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "idea",
+              "image",
+              "video",
+              "audio",
+              "video_frame",
+              "script",
+              "text",
+              "storyboard",
+              "document",
+              "other"
+            ]
+          },
+          "provenance": {
+            "type": "string",
+            "enum": [
+              "USER_PROVIDED",
+              "USER_DESCRIBED",
+              "EXTERNAL_VERIFIED",
+              "MODEL_PROPOSED",
+              "UNKNOWN"
+            ]
+          },
+          "evidence": {
+            "type": "string",
+            "enum": [
+              "OBSERVED",
+              "USER_STATED",
+              "MODEL_HYPOTHESIS",
+              "UNKNOWN"
+            ]
+          },
+          "host_inspected": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "evidence": {
+                  "const": "OBSERVED"
+                }
+              },
+              "required": [
+                "evidence"
+              ]
+            },
+            "then": {
+              "properties": {
+                "host_inspected": {
+                  "const": true
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "locks": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "topic",
+          "value",
+          "source_ids"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PROPOSED",
+              "USER_APPROVED",
+              "LOCKED",
+              "REJECTED",
+              "SUPERSEDED"
+            ]
+          },
+          "topic": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "approval_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "USER_APPROVED",
+                    "LOCKED"
+                  ]
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "then": {
+              "required": [
+                "approval_ref"
+              ],
+              "properties": {
+                "approval_ref": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "shots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "status",
+          "source_ids",
+          "fields"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "PROPOSED",
+              "USER_APPROVED",
+              "LOCKED",
+              "REJECTED",
+              "SUPERSEDED"
+            ]
+          },
+          "source_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "entry": {
+            "type": "string"
+          },
+          "visible_action": {
+            "type": "string"
+          },
+          "exit": {
+            "type": "string"
+          },
+          "cut": {
+            "type": "string"
+          },
+          "sound": {
+            "type": "string"
+          },
+          "approval_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "status": {
+                  "enum": [
+                    "USER_APPROVED",
+                    "LOCKED"
+                  ]
+                }
+              },
+              "required": [
+                "status"
+              ]
+            },
+            "then": {
+              "required": [
+                "approval_ref"
+              ],
+              "properties": {
+                "approval_ref": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "required": [
+        "status",
+        "consent",
+        "recipient",
+        "delivery_receipt",
+        "selected_material_ids"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "NOT_SENT",
+            "SENT_VERIFIED"
+          ]
+        },
+        "consent": {
+          "type": "boolean"
+        },
+        "recipient": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "delivery_receipt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "selected_material_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "SENT_VERIFIED"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "consent": {
+                "const": true
+              },
+              "recipient": {
+                "type": "string",
+                "minLength": 1
+              },
+              "delivery_receipt": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "journal": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "migration": {
+      "type": "object"
+    }
+  }
+}

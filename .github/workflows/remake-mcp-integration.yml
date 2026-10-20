@@ -21,3 +21,7 @@ jobs:
         run: node plugins/remake-by-objekts/tests/mcp-integration-v030.mjs
       - name: Assert unauthenticated calls cannot forge approval, LOCK or media observation
         run: node plugins/remake-by-objekts/tests/public-delta-guard-v033.mjs
+      - name: Bound hostile request bodies before reading into memory
+        run: node plugins/remake-by-objekts/tests/request-body-v035.mjs
+      - name: Staging draft route shares public approval safety boundary
+        run: node plugins/remake-by-objekts/tests/account-draft-boundary-v035.mjs

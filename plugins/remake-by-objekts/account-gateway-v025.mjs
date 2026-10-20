@@ -1,8 +1,10 @@
+import {readBoundedBody} from "./request-body-v035.mjs";
 // REMAKE by objekts — experimental authenticated MCP project store v0.25
 // DEPLOYED DISABLED BY DEFAULT. Requires independent OIDC issuer, resource audience,
 // issuer-matched JWKS, and existing D1. Until all are configured, /mcp -> HTTP 503.
 // This is an OAuth RESOURCE SERVER, NOT an identity provider or auth-server implementation.
 import {isConfigured,authorizationConfig,loadTrustedJWKS,verifyAccessJWT} from "./oidc-resource-v025.mjs";
+import {guardPublicDelta} from "./public-delta-guard-v033.mjs";
 import {createProject,validateProject,applyProjectDelta} from "./core-v024.mjs";
 const VERSION="0.25.0-g5-staging", LIMIT=70000;
 const RESOURCE="https://remake.objekts.ai/account/mcp";
@@ -69,6 +71,7 @@ async function act(name,a,env,identity){
   assertFields(a,["project_id","event"],["project_id","event"]);restrictEvent(a.event);
   if(!safe(a.event))throw Error("event_too_large");
   const {row,state}=await useProject(db,owner,a.project_id);
+  guardPublicDelta({project:state,event:a.event});
   const out=await applyProjectDelta({project:state,event:a.event});
   if(out.idempotent_replay)return {project:state,idempotent:true,account_bound:true};
   const stateJSON=JSON.stringify(out.project);
@@ -88,9 +91,8 @@ async function act(name,a,env,identity){
 }
 async function executeRPC(request,env,identity){
  if(request.headers.get("origin"))return json({error:"browser_origin_disallowed"},403);
- if(!(request.headers.get("content-type")||"").toLowerCase().includes("application/json"))return json({error:"json_required"},415);
- if(Number(request.headers.get("content-length")||0)>LIMIT)return json({error:"request_too_large"},413);
- const text=await request.text();if(text.length>LIMIT)return json({error:"request_too_large"},413);
+ if((request.headers.get("content-type")||"").split(";")[0].trim().toLowerCase()!=="application/json")return json({error:"json_required"},415);
+ let text;try{text=await readBoundedBody(request,LIMIT);}catch(e){return json({error:e.message},e.status||400)}
  let req;try{req=JSON.parse(text);}catch{return json({jsonrpc:"2.0",id:null,error:{code:-32700,message:"invalid JSON"}},400);}
  if(!record(req)||typeof req.method!=="string")return json({jsonrpc:"2.0",id:null,error:{code:-32600,message:"invalid request"}},400);
  const {id,method,params}=req;

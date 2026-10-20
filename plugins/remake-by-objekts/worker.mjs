@@ -1,9 +1,10 @@
+import {readBoundedBody} from "./request-body-v035.mjs";
 import {canonicalTools,callCanonical,createProject,validateProject,applyProjectDelta} from "./core-v024.mjs";
 import {fileTool,preflightHostFile,filePreflightTests} from "./host-file-v028.mjs";
 import {visionTool,imageToMCP,imageSelfTests} from "./image-review-v029.mjs";
 import {batchTool,processHostImageBatch,batchSelfTests} from "./image-batch-v031.mjs";
 import {guardPublicDelta,publicGuardScope} from "./public-delta-guard-v033.mjs";
-const VERSION="0.7.0-beta";
+const VERSION="0.7.1-beta";
 const json=(x,status=200)=>new Response(JSON.stringify(x),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}});
 const plain=(s,status=200,type="text/html; charset=utf-8")=>new Response(s,{status,headers:{"content-type":type,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'none'; style-src 'unsafe-inline'; script-src 'none'; base-uri 'none'; form-action 'none'"}});
 const materialProps={id:{type:"string",minLength:1,maxLength:100},kind:{type:"string",enum:["idea","text","script","image","video","audio","storyboard","document","other"]},description:{type:"string",maxLength:2000},observed:{type:"boolean"}};
@@ -98,10 +99,8 @@ if(req.method==="GET"&&path==="/privacy")return plain('<main style="max-width:80
 if(req.method==="GET"&&path==="/terms")return plain('<h1>REMAKE by objekts — Terms</h1><p>Free beta tool, provided as-is for filmmaking education and workflow compilation. You retain rights to your materials. Outputs are drafts, not verified by a human director, a legal review, or a guarantee of production feasibility. You are responsible for rights to materials you share with an AI provider. This endpoint does not execute or deliver a production commission.</p><p>Contact: salute@objekts.ai</p>');
 if(path!=="/mcp")return json({error:"not_found"},404);
 if(req.method!=="POST")return new Response("Only POST is supported; this is a stateless MCP endpoint.",{status:405,headers:{"allow":"POST"}});
-if(!(req.headers.get("content-type")||"").toLowerCase().includes("application/json"))return json({error:"application/json required"},415);
-if(Number(req.headers.get("content-length")||0)>131072)return json({error:"request_too_large"},413);
-let text;try{text=await req.text();}catch{return json({error:"unreadable_body"},400)}
-if(text.length>131072)return json({error:"request_too_large"},413);
+if((req.headers.get("content-type")||"").split(";")[0].trim().toLowerCase()!=="application/json")return json({error:"application/json required"},415);
+let text;try{text=await readBoundedBody(req,131072);}catch(e){return json({error:e.message},e.status||400)}
 let data;try{data=JSON.parse(text);}catch{return json(fault(null,-32700,"invalid JSON"),400)}
 if(!data||typeof data!=="object"||Array.isArray(data))return json(fault(null,-32600,"invalid JSON-RPC request"),400);
 const {id,method,params}=data;

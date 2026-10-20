@@ -1,8 +1,16 @@
 {
   "mcpServers": {
     "remake": {
-      "type": "http",
-      "url": "https://remake.objekts.ai/mcp"
+      "type": "streamable-http",
+      "url": "https://remake.objekts.ai/mcp",
+      "headers": {},
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "none"
+          }
+        }
+      }
     }
   }
 }

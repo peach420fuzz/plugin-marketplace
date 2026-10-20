@@ -1,0 +1,87 @@
+{
+  "schema": "objekts.media-review.v1",
+  "source": {
+    "file_display_name": "synthetic_cut.mp4",
+    "consent_statement": "Creator supplied local file for local processing; no external transfer by this tool.",
+    "content_sha256": "1a4aeafad8ada741ef3035cc77fc1f69f4faddb5064709c0a86bbf642feeb404",
+    "content_semantics_reviewed": false,
+    "frame_semantics": "NOT_INTERPRETED",
+    "author_notes": {}
+  },
+  "metadata": {
+    "duration_s": 4.0,
+    "width": 320,
+    "height": 180,
+    "has_audio_stream": false,
+    "video_codec": "h264",
+    "audio_codecs": [],
+    "format": "mov,mp4,m4a,3gp,3g2,mj2",
+    "size_bytes": 3498,
+    "rotation_degrees": null,
+    "provenance": "FFPROBE_MEDIA_METADATA"
+  },
+  "observations": {
+    "cut_candidates_s": [
+      2.0
+    ],
+    "static_intervals": [
+      {
+        "start_s": 0.0,
+        "end_s": 2.0,
+        "duration_s": 2.0
+      },
+      {
+        "start_s": 2.0,
+        "end_s": 4.0,
+        "duration_s": 2.0
+      }
+    ],
+    "silence_intervals": []
+  },
+  "findings": [
+    {
+      "code": "TARGET_DURATION_MISMATCH",
+      "provenance": "MEASURED",
+      "confidence": "HIGH",
+      "timecode": "00:04.00",
+      "time_seconds": 4.0,
+      "evidence": "Decoded file runs 4.00s; creator-supplied target is 3s.",
+      "creative_test": "Revisit authored shot lengths; test a new paper edit. Avoid simply speeding up all action.",
+      "status": "REVIEW_NOT_AUTOMATIC_FAULT"
+    },
+    {
+      "code": "STATIC_INTERVAL_DETECTED",
+      "provenance": "MEASURED",
+      "confidence": "HIGH",
+      "timecode": "00:00.00",
+      "time_seconds": 0.0,
+      "evidence": "Near-identical decoded image detected for approx 2.00s (00:00.00–00:02.00).",
+      "creative_test": "Check if this hold is intentional rhythm, a freeze error, or a desired visual rest. Watch original at normal speed.",
+      "status": "REVIEW_NOT_AUTOMATIC_FAULT"
+    },
+    {
+      "code": "STATIC_INTERVAL_DETECTED",
+      "provenance": "MEASURED",
+      "confidence": "HIGH",
+      "timecode": "00:02.00",
+      "time_seconds": 2.0,
+      "evidence": "Near-identical decoded image detected for approx 2.00s (00:02.00–00:04.00).",
+      "creative_test": "Check if this hold is intentional rhythm, a freeze error, or a desired visual rest. Watch original at normal speed.",
+      "status": "REVIEW_NOT_AUTOMATIC_FAULT"
+    },
+    {
+      "code": "POSSIBLE_VISUAL_CUT",
+      "provenance": "HEURISTIC_MEDIA_SIGNAL",
+      "confidence": "LOW",
+      "timecode": "00:02.00",
+      "time_seconds": 2.0,
+      "evidence": "Automated scene-change detector flagged a visual discontinuity at approximate time 00:02.00.",
+      "creative_test": "Inspect frames on both sides of this boundary. A fast action, flash or effect can trigger this; do not assert a cut.",
+      "status": "REVIEW_NOT_AUTOMATIC_FAULT"
+    }
+  ],
+  "quality_warning": "Tool detects structural audiovisual signals only. It does not identify brand/product, story actions, character identity, AI visual artifacts, or audience reactions. All creative findings remain hypotheses until a person inspects the specific source frames.",
+  "sampling_warning": "Contact-sheet seek times are approximate; candidate scene boundaries are heuristic; ffprobe metadata refers only to the file actually provided.",
+  "export_status": "DRAFT_UNAPPROVED",
+  "shared_with_studio": false
+}

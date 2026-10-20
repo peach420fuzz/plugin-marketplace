@@ -1,0 +1,52 @@
+{
+  "interface": {
+    "displayName": "REMAKE by objekts",
+    "shortDescription": "Direct your film with source-grounded creative choices.",
+    "longDescription": "REMAKE by objekts is a source-grounded directing workshop, designed to give actionable film/edit/shot decisions from any available idea, script, images, video or sound without a fixed media count. The director-first v0.34 skill cuts engineering chatter and prioritizes one concrete creative intervention, trade-off and cheapest test. Public MCP tools can support file metadata, selected images and unapproved draft state. Real host image perception, external directing quality and verified cross-session memory are not yet certified.",
+    "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://remake.objekts.ai/",
+    "privacyPolicyURL": "https://remake.objekts.ai/privacy",
+    "termsOfServiceURL": "https://remake.objekts.ai/terms",
+    "defaultPrompt": [
+      "Develop my film idea without requiring images or a script; identify one meaningful directorial choice.",
+      "Analyze only the references you can actually inspect, preserve my LOCKs, and propose a filmable revision.",
+      "Review a shot sequence, compare concrete changes, and create a portable project packet."
+    ],
+    "brandColor": "#0018A8",
+    "supportURL": "https://remake.objekts.ai/support"
+  },
+  "name": "objekts-creative-companion",
+  "version": "0.35.0",
+  "description": "REMAKE by objekts — practical film direction first, evidence-grounded visuals, meaningful scene/edit decisions and safe draft revisions. Private beta; real installed-host quality remains unverified.",
+  "author": {
+    "name": "objekts — film direction & AI/VFX/CGI production studio",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai/"
+  },
+  "keywords": [
+    "REMAKE by objekts",
+    "objekts",
+    "remake film",
+    "film direction",
+    "AI director",
+    "creative revision",
+    "script development",
+    "visual storytelling",
+    "storyboard",
+    "shot list",
+    "advertising film",
+    "AI VFX",
+    "CGI",
+    "production brief",
+    "film education"
+  ],
+  "homepage": "https://remake.objekts.ai/",
+  "repository": "https://github.com/peach420fuzz/plugin-marketplace/tree/main/plugins/remake-by-objekts",
+  "skills": "./skills",
+  "mcpServers": "./.mcp.json"
+}
