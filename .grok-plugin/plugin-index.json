@@ -1074,6 +1074,24 @@
         ]
       }
     },
+    "remake-by-objekts": {
+      "sha": "1963a3e2698fb076d3e4f1a986e9e8bef3a15e1c",
+      "version": "0.35.0",
+      "components": {
+        "mcpServers": [
+          {
+            "name": "remake",
+            "description": "http"
+          }
+        ],
+        "skills": [
+          {
+            "name": "remake",
+            "description": "REMAKE by objekts, a film-directing partner for an idea, brief, unfinished film, ad, scene, edit, script, storyboard or…"
+          }
+        ]
+      }
+    },
     "sentry": {
       "sha": "2e89d16d6b8a973503af4bc10859767fa8c9de7e",
       "version": "1.4.5",

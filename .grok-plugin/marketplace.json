@@ -460,6 +460,25 @@
       "homepage": "https://clerk.com/docs",
       "keywords": ["clerk", "clerk auth", "clerk authentication", "clerk user management", "clerk organizations", "clerk billing", "clerk webhooks", "clerk mcp"],
       "domains": ["clerk.com", "dashboard.clerk.com"]
+    },
+    {
+      "name": "remake-by-objekts",
+      "description": "REMAKE by objekts helps develop film ideas and revise shots, blocking, edits and sound from creator-provided material while preserving author-approved choices. Beta 0.35.0.",
+      "category": "productivity",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/peach420fuzz/plugin-marketplace.git",
+        "sha": "1963a3e2698fb076d3e4f1a986e9e8bef3a15e1c",
+        "path": "external_plugins/remake-by-objekts"
+      },
+      "homepage": "https://remake.objekts.ai/",
+      "keywords": [
+        "remake by objekts",
+        "objekts remake"
+      ],
+      "domains": [
+        "remake.objekts.ai"
+      ]
     }
   ]
 }
