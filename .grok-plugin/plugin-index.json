@@ -875,7 +875,7 @@
       }
     },
     "remake-by-objekts": {
-      "version": "0.21.0",
+      "version": "0.35.0",
       "components": {
         "mcpServers": [
           {

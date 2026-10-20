@@ -223,3 +223,11 @@ Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker mo
 - Browser control currently reports `transport closed before response` and no enabled browser. This prevents portal form interaction, not internal skill testing or GitHub/Cloudflare API work.
 - Official Gemini gallery documentation uses public-repository indexing with topic `gemini-cli-extension` and a root manifest. A branch-only manifest is insufficient evidence of an indexed listing.
 - No official catalog acceptance or submission receipt asserted at this stage.
+
+### Official submission attempts and registry publishing
+
+- xAI clean submission branch `submit-remake-official-035`, SHA `657ea4cde96232eab965fb991a439cb5a282bcb6`; exactly two catalog files changed. Upstream validator and regenerated-index check PASS. Actual `create_pull_request` call to `xai-org/plugin-marketplace` returned HTTP403 `Resource not accessible by integration`; NO PR or acceptance receipt.
+- OpenAI public candidate prepared with original v37 icons and 5 positive/3 negative cases; not uploaded. Demo recording URL, portal connection/scans, publisher verification and developer attestations remain incomplete.
+- Browser fallbacks checked: CUA transport closed; Opera disconnected; Desktop Commander device offline; TinyFish has no confirmed signed-in profile. No credentials requested or inferred.
+- MCP metadata now supplies boolean read-only, destructive and open-world hints for all nine tools. Dispatcher17/17 and public privilege boundary20/20 pass; CI package and MCP pass. Existing catalog CI correctly caught a stale generated index after adapter synchronization; index regenerated.
+- Added explicit official MCP Registry declaration for `io.github.peach420fuzz/remake-by-objekts` version `0.7.1-beta`, matching current public server. Browser-free publishing uses short-lived GitHub Actions OIDC; no stored publisher secret. Registry listing remains PENDING until a successful publish and independent public API readback. This does not imply AI-host directory approval.
