@@ -231,3 +231,12 @@ Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker mo
 - Browser fallbacks checked: CUA transport closed; Opera disconnected; Desktop Commander device offline; TinyFish has no confirmed signed-in profile. No credentials requested or inferred.
 - MCP metadata now supplies boolean read-only, destructive and open-world hints for all nine tools. Dispatcher17/17 and public privilege boundary20/20 pass; CI package and MCP pass. Existing catalog CI correctly caught a stale generated index after adapter synchronization; index regenerated.
 - Added explicit official MCP Registry declaration for `io.github.peach420fuzz/remake-by-objekts` version `0.7.1-beta`, matching current public server. Browser-free publishing uses short-lived GitHub Actions OIDC; no stored publisher secret. Registry listing remains PENDING until a successful publish and independent public API readback. This does not imply AI-host directory approval.
+
+### Registry attempt and production API compatibility finding
+
+- Official registry pipeline run `39432906604` at `fc7b928b99ed5ee92bf3da2efdb11cde223e001e`: dispatcher/guard PASS, live standard Python HTTP client FAIL403. No registry authentication or publish occurred.
+- Exact edge response: Cloudflare error1010 `browser_signature_banned`. Zone `202c8e4302a796990a6203435ba7a078` has Browser Integrity Check on, no user-agent blocking rules, no existing custom/config entrypoint ruleset. Existing named REMAKE client returned200; the Python signature returned403. No global setting changed.
+- Prepared narrow custom rule: host `remake.objekts.ai`, exact path `/mcp`, POST/GET/OPTIONS; skip only `bic`, logging enabled. Automatic approval review REJECTED creation because this persistent production security-control change requires explicit owner approval. Rule NOT CREATED. Owner asked for this precise permission; awaiting response. No workaround applied to the publication pipeline.
+- Official mcp-publisher1.8.1 binary verified by published SHA256; `validate server.json` PASS. No local publisher login or stored credential created.
+- Fixed canonical catalog CI: run `39432906664` SUCCESS. Full-package CI `39432906596` SUCCESS. Core safety-hint change MCP CI `39432325456` SUCCESS.
+- ClawHub current publishing source confirms a real skill publish requires a ClawHub token; GitHub OIDC for skills is not supported. No token or authenticated publisher is available. Cursor uses a separate manually reviewed portal. These channels are not marked submitted.

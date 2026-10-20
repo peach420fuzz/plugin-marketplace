@@ -363,9 +363,10 @@
       "id": "R-01",
       "task": "Консолидировать **public With MCP** ZIP (полный current Skill + MCP manifest + original icons + rights/privacy/support + 5 positive/3 negative real reviewer cases). Нужен новый публичный draft в организации, не mutation personal PRIVATE.",
       "acceptance": "Portal draft ID + ZIP sha + scan validation details.",
-      "status": "BLOCKED",
+      "status": "PARTIAL",
       "evidence": [
-        "No submission-ready package: real host/evaluation/brand receipts incomplete; no official draft or submission claimed"
+        "No submission-ready package: real host/evaluation/brand receipts incomplete; no official draft or submission claimed",
+        "91-file full public submission candidate, original unchanged v37 artwork, 5 positive/3 negative prepared cases; SHA2569ad3f9ad72277a16ac0ccaff2fdba4ce45ab568ab8c2ce44c2fe65a84d68f395; no public draft uploaded"
       ]
     },
     {
@@ -379,8 +380,10 @@
       "id": "R-03",
       "task": "Подключить MCP, auth (none только для stateless; OAuth для private data), продемонстрировать 5 позитивных и 3 негативных теста **на реальном хосте**, reviewer video walkthrough и sample разрешённые файлы.",
       "acceptance": "Автопроверки PASS, reviewer credentials только в secure dashboard, 5/3 cases accepted.",
-      "status": "NOT_TESTED",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "All nine live tool descriptors have boolean readOnly/openWorld/destructive hints; saved tool-annotations-035.json; actual portal-connected review routing and demo not run"
+      ]
     },
     {
       "id": "R-04",
@@ -393,36 +396,46 @@
       "id": "R-05",
       "task": "Claude: independent public package, verified MCP/Skills, официальный submission, independent install.",
       "acceptance": "Receipt published and actual Claude creative flow PASS.",
-      "status": "NOT_TESTED",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "Existing public adapter synchronized to 0.35.0 at1963a3e2698fb076d3e4f1a986e9e8bef3a15e1c; official portal/browser unavailable; no submission receipt"
+      ]
     },
     {
       "id": "R-06",
       "task": "Gemini: Gemini CLI extension / актуальная Gallery, author install & sample file flows; multimodal adapter host specific.",
       "acceptance": "Gallery link and independent verification.",
-      "status": "NOT_TESTED",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "Official current gallery mechanism verified: public repo topic gemini-cli-extension plus root manifest, daily indexing; branch-only source not accepted as listing; topic mutation not exposed"
+      ]
     },
     {
       "id": "R-07",
       "task": "Grok/xAI: fork local source already; official upstream PR ранее GitHub App 403 — использовать авторизованный GitHub UI/Work browser/publisher path, не дублировать битые PR. Генерировать `plugin-index.json` по Skill.",
       "acceptance": "Upstream review/merge or official store entry, independent install/host test.",
-      "status": "NOT_TESTED",
-      "evidence": []
+      "status": "BLOCKED",
+      "evidence": [
+        "Clean upstream-based branch submit-remake-official-035 at657ea4cde96232eab965fb991a439cb5a282bcb6; validators pass; actual official PR creation HTTP403 Resource not accessible by integration; no PR created"
+      ]
     },
     {
       "id": "R-08",
       "task": "OpenClaw/ClawHub, Alice/Yandex, GigaChat, Cursor, agent networks: каждый официальный host-specific путь, а не «залил ZIP в репо».",
       "acceptance": "Реальные вендорные links/IDs, submitted/review/published/install, QA.",
-      "status": "NOT_TESTED",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "Official MCP Registry declaration validates with publisher1.8.1; OIDC workflow created but standard-client preflight403 blocked before publication. ClawHub real publishing needs account token; Cursor portal/browser unavailable"
+      ]
     },
     {
       "id": "R-09",
       "task": "Multi-language RU/EN и по нужде ES, локальные terms/support, source labels, studio attribution; сохранять качество на русском.",
       "acceptance": "Одинаковые creative benchmarks, человек QA на целевых языках.",
-      "status": "NOT_TESTED",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "Public submission candidate includes EN base listing and RU translation; no platform listing acceptance inferred"
+      ]
     },
     {
       "id": "R-10",
