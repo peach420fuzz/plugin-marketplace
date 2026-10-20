@@ -34,7 +34,8 @@
       "acceptance": "`make/test`/`npm test`/`pytest`/README успешны из clean checkout; зависимости pinned, workflows runnable.",
       "status": "PARTIAL",
       "evidence": [
-        "Complete Plugin Creator source restored under existing plugins/remake-by-objekts; explicit file inventory and deterministic ZIP builder; full Python CI added, remote run pending"
+        "Complete Plugin Creator source restored under existing plugins/remake-by-objekts; explicit file inventory and deterministic ZIP builder; full Python CI added, remote run pending",
+        "Remote complete-package CI SUCCESS39425442432; complete candidate89 files; reproducible ZIP SHA2567d0b3d3e08a7a746841678d535750cc23cf5b71a36272a06611b282a153d8f7b"
       ]
     },
     {
@@ -52,16 +53,18 @@
       "acceptance": "Документ релизных gates; тестовый rollback/health; отсутствие изменений других Workers.",
       "status": "PARTIAL",
       "evidence": [
-        "Guarded Plugin Creator release and Cloudflare rollback baseline saved; remote deployments pending"
+        "Guarded Plugin Creator release and Cloudflare rollback baseline saved; remote deployments pending",
+        "Guarded private save pluginrel_6ad764af5198819195ecec36b7187c71; public deployment87f53299-5614-4c7e-a35a-abe78d9c2770; staging remains closed; rollback not exercised"
       ]
     },
     {
       "id": "FND-06",
       "task": "Запустить весь baseline suite: Python ~97 из 0.34 reconstructed workspace (с корректным `PYTHONPATH`), Node MCP real dispatcher, 20 privilege regression, external `health`, catalog Validator; фиксировать результаты и не считать прежние цифры актуальным CI.",
       "acceptance": "CI URLs, stdout, SHA и воспроизводимые команды; релиз остается 0.34 до реального улучшения.",
-      "status": "PARTIAL",
+      "status": "DONE",
       "evidence": [
-        "Original full package: 97 tests, 5 errors on current FFmpeg; candidate: 98/98 Python; MCP 17/17; public guard20/20; request stream13/13; account draft6/6; all technical checks synthetic"
+        "Original full package: 97 tests, 5 errors on current FFmpeg; candidate: 98/98 Python; MCP 17/17; public guard20/20; request stream13/13; account draft6/6; all technical checks synthetic",
+        "Remote CI39425442432/39425442456/39425442402/39425442438 SUCCESS; original failure preserved; all technical suites pass, no creative acceptance inferred"
       ]
     },
     {
@@ -210,7 +213,8 @@
       "acceptance": "Fuzz + security review; fail closed, не записывать raw asset в logs.",
       "status": "PARTIAL",
       "evidence": [
-        "Bounded streamed body tests13/13; existing image CRC/dispatcher tests pass; broader independent security audit outstanding"
+        "Bounded streamed body tests13/13; existing image CRC/dispatcher tests pass; broader independent security audit outstanding",
+        "Public deployed API refuses forgedLOCK and oversizebody in2 LIVE_API_SYNTHETIC_ARGUMENTS probes"
       ]
     },
     {
@@ -277,7 +281,8 @@
       "acceptance": "Все 20/20 старых abuse tests + новые auth bypass/SSRF/IDOR/CAS tests в production CI.",
       "status": "PARTIAL",
       "evidence": [
-        "Closed account draft route now shares guardPublicDelta; regression reproduces former forged approval field;6/6 synthetic signed-JWT/stub-D1 checks pass; real auth pending"
+        "Closed account draft route now shares guardPublicDelta; regression reproduces former forged approval field;6/6 synthetic signed-JWT/stub-D1 checks pass; real auth pending",
+        "Staging safety patch deployed af9e6df9-ab59-4a0d-80af-2a8a9d3d636c; all5 modules exact readback; no real IdP"
       ]
     },
     {
@@ -319,8 +324,10 @@
       "id": "T-01",
       "task": "Из авторизованного источника получить **оригинал v37** (`apple-touch-icon-v37.png`, `objekts-icon-v37.png`); проверить байты PNG, SHA256, квадратность, отношение стороны, допустимый вес и владелец brand approval. Не рисовать приблизительный знак.",
       "acceptance": "Два исходных файла/хеши, receipt владельца/марки, проверка в плагине/light-dark; отсутствие подмен.",
-      "status": "NOT_TESTED",
-      "evidence": []
+      "status": "PARTIAL",
+      "evidence": [
+        "Original v37 PNG bytes downloaded and checked180x180/1254x1254; actual owner brand approval absent; not packaged"
+      ]
     },
     {
       "id": "T-02",
@@ -452,5 +459,8 @@
       "status": "NOT_TESTED",
       "evidence": []
     }
-  ]
+  ],
+  "source_commit": "d80bfcd4d4ad160008c27e152ad843036a40383e",
+  "private_release": "0.35.0",
+  "public_mcp": "0.7.1-beta"
 }

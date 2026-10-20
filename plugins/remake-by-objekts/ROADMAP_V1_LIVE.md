@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.34.0; candidate 0.35.0 awaiting guarded save · **Public stateless MCP:** 0.7.0-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.35.0 · **Public stateless MCP:** 0.7.1-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -197,3 +197,19 @@ Status: CODE_DONE / LOCAL_TECHNICAL_TESTED, remote CI and deployments pending. N
 - Task-by-task statuses: [tasks-v1.json](tasks-v1.json). No official vendor submission, approval, publication or independent install exists from this cycle. **1.0 NOT READY.**
 
 Next: green remote complete-package CI → guarded private update and named Worker deployment → actual signed-in host source trial and genuine author iterations → independent professional review; retain all G5/brand/catalog blockers.
+
+
+### Cycle 0.35 — verified save/deployment receipts
+
+- Source commit: [`d80bfcd4d4ad160008c27e152ad843036a40383e`](https://github.com/peach420fuzz/plugin-marketplace/commit/d80bfcd4d4ad160008c27e152ad843036a40383e).
+- GitHub CI SUCCESS: [complete package / 98 tests](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39425442432), [MCP + safety suites](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39425442456), [catalog validator](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39425442402), [release audit](https://github.com/peach420fuzz/plugin-marketplace/actions/runs/39425442438). The release audit is green because it reports missing brand evidence correctly; strict public submission remains BLOCKED.
+- Complete 89-file ZIP SHA256 `7d0b3d3e08a7a746841678d535750cc23cf5b71a36272a06611b282a153d8f7b`, identical locally and in remote CI. CI artifact ID `12264264850`.
+- Existing private Plugin Creator release updated to **0.35.0**, `pluginrel_6ad764af5198819195ecec36b7187c71`, still USER/PRIVATE. Full saved export SHA256 `090cb53ffef260a2e408458359dd06d478e719403b2e8b0e166eae43ccb9e3b2`. All 89 files preserved; only generated `.codex-plugin/plugin.json` formatting differs, JSON semantically equal. No real installed-host runtime test claimed.
+- Public Worker **0.7.1-beta** deployment `87f53299-5614-4c7e-a35a-abe78d9c2770`, serving version `ba96a8a0-1719-4a80-9d08-34e051db2eb7` at 100%. All 8 deployed module sources exactly match tested source. Real HTTPS health, support, terms, privacy and MCP initialize/list verified. Two live HTTP checks with **synthetic** arguments reject forged author LOCK and a >128KiB body; these are not host multimodal acceptance.
+- Closed G5 staging safety patch deployment `af9e6df9-ab59-4a0d-80af-2a8a9d3d636c`, version `7daa4fec-131b-4eb9-80cd-d21a82198483`. All 5 deployed sources verified; D1 binding preserved; workers.dev and preview remain disabled. No real IdP, approval UI or public auth-enabled endpoint introduced.
+- Original v37 assets downloaded from supplied studio URLs and PNG chunks checked:180×180 SHA256 `c8e6e2b5a0eba929fecd3aa7cf00c8e996977d59086a2d16157306dae7389deb`;1254×1254 SHA256 `7600ae6d67cd0d4ce03f36f4a45667ce78c2e985b2c0276488336b53f976692e`. Owner approval for REMAKE is **NOT VERIFIED**, so these are not added as logo/composerIcon or licensed to any registry.
+- Library discovery did not expose canonical `files.manage_library`; originals **not updated**. Private report/source review/export receipts retained in owner's local outputs. Do not substitute another provider's files for Library identities.
+- ChatGPT login dialog is open for the owner. Actual private plugin/media trial remains BLOCKED_LOGIN. Local OpenClaw executable found, no actual inference/independent installation confirmed. Claude/Gemini/Grok CLIs not found locally; that does not prove platform unavailability.
+- No official submission, public vendor publication, professional human scorecard or independent install created. G1/G2/G4 PARTIAL; G3/G6 NOT TESTED; G5/G8 BLOCKED; G7 NOT VERIFIED; G9 NOT MEASURED; G10 NOT SUBMITTED. **1.0 NOT READY.**
+
+Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker modules retained privately; prior public Worker version `f7844ce2-860c-4767-be1e-7991947bab97`. A rollback was prepared, not exercised. Next product work is the authentic signed-in host trial and genuine author feedback; more synthetic tests cannot close G3.
