@@ -213,3 +213,13 @@ Next: green remote complete-package CI → guarded private update and named Work
 - No official submission, public vendor publication, professional human scorecard or independent install created. G1/G2/G4 PARTIAL; G3/G6 NOT TESTED; G5/G8 BLOCKED; G7 NOT VERIFIED; G9 NOT MEASURED; G10 NOT SUBMITTED. **1.0 NOT READY.**
 
 Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker modules retained privately; prior public Worker version `f7844ce2-860c-4767-be1e-7991947bab97`. A rollback was prepared, not exercised. Next product work is the authentic signed-in host trial and genuine author feedback; more synthetic tests cannot close G3.
+
+
+## Official distribution work — 2026-10-20
+
+- Owner explicitly requested official public submissions on all supported platforms. Internal GPT execution of Director Mode does not require a new OpenAI login. Portal publisher access and review remain separate operations.
+- Existing portable distribution synchronized to Director Mode 0.35.0 and MCP 0.7.1-beta. No new product or 1.0 label.
+- Preparing a clean xAI official-catalog pull request from current upstream, with a pinned remote adapter subdirectory; no unrelated project history will enter that submission.
+- Browser control currently reports `transport closed before response` and no enabled browser. This prevents portal form interaction, not internal skill testing or GitHub/Cloudflare API work.
+- Official Gemini gallery documentation uses public-repository indexing with topic `gemini-cli-extension` and a root manifest. A branch-only manifest is insufficient evidence of an indexed listing.
+- No official catalog acceptance or submission receipt asserted at this stage.

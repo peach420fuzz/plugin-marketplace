@@ -1,6 +1,6 @@
 {
   "name": "remake-by-objekts",
-  "version": "0.21.0",
+  "version": "0.35.0",
   "description": "Professional source-grounded filmmaking assistance by objekts",
   "contextFileName": "GEMINI.md",
   "mcpServers": {
