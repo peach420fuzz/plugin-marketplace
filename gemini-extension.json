@@ -1,0 +1,11 @@
+{
+  "name": "remake-by-objekts",
+  "version": "0.35.1",
+  "description": "Professional source-grounded filmmaking assistance by objekts",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "remake": {
+      "httpUrl": "https://remake.objekts.ai/mcp"
+    }
+  }
+}

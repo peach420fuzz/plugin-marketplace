@@ -1,0 +1,54 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "objekts-creative-companion",
+  "version": "0.35.1",
+  "description": "REMAKE by objekts — professional source-grounded film direction for any mix of creator-provided ideas, images, scripts, storyboards, audio or video. No predetermined media count, screenplay prerequisite, or compulsory studio handoff.",
+  "author": {
+    "name": "objekts — film direction & AI/VFX/CGI production studio",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai/"
+  },
+  "homepage": "https://remake.objekts.ai/",
+  "keywords": [
+    "REMAKE by objekts",
+    "objekts",
+    "remake film",
+    "film direction",
+    "AI director",
+    "creative revision",
+    "script development",
+    "visual storytelling",
+    "storyboard",
+    "shot list",
+    "advertising film",
+    "AI VFX",
+    "CGI",
+    "production brief",
+    "film education"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "REMAKE by objekts",
+        "shortDescription": "Direct films from the material you actually have.",
+        "longDescription": "REMAKE by objekts, created by the objekts film, advertising and AI/VFX/CGI studio, reviews the user’s available creative material: an idea, any number of images, written scenes, video, audio, or mixed references. It turns observed evidence and author intentions into meaningful directing choices, continuity locks, shot construction, montage and a portable brief. The public MCP provides stateless metadata inventory, exact keyed-lock checks and source-bound packet compilation. It does not automatically see media, store private projects, perform human studio review or submit enquiries.",
+        "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://remake.objekts.ai/",
+        "privacyPolicyURL": "https://remake.objekts.ai/privacy",
+        "termsOfServiceURL": "https://remake.objekts.ai/terms",
+        "defaultPrompt": [
+          "Help me direct this idea using only the material I provide; tell me what is missing.",
+          "Analyze my references, preserve all LOCKs and propose one filmable directing change.",
+          "Turn the approved material into shot decisions and an independently usable brief."
+        ],
+        "brandColor": "#0018A8"
+      }
+    }
+  },
+  "repository": "https://github.com/peach420fuzz/plugin-marketplace/tree/main/plugins/remake-by-objekts"
+}
