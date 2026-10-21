@@ -25,3 +25,5 @@ jobs:
         run: node plugins/remake-by-objekts/tests/request-body-v035.mjs
       - name: Staging draft route shares public approval safety boundary
         run: node plugins/remake-by-objekts/tests/account-draft-boundary-v035.mjs
+      - name: Check portable author constraints and actual submission contract
+        run: node plugins/remake-by-objekts/tests/submission-contract-v0351.mjs

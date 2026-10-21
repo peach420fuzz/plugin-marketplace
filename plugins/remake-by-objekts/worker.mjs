@@ -4,7 +4,7 @@ import {fileTool,preflightHostFile,filePreflightTests} from "./host-file-v028.mj
 import {visionTool,imageToMCP,imageSelfTests} from "./image-review-v029.mjs";
 import {batchTool,processHostImageBatch,batchSelfTests} from "./image-batch-v031.mjs";
 import {guardPublicDelta,publicGuardScope} from "./public-delta-guard-v033.mjs";
-const VERSION="0.7.1-beta";
+const VERSION="0.7.2-beta";
 const json=(x,status=200)=>new Response(JSON.stringify(x),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}});
 const plain=(s,status=200,type="text/html; charset=utf-8")=>new Response(s,{status,headers:{"content-type":type,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'none'; style-src 'unsafe-inline'; script-src 'none'; base-uri 'none'; form-action 'none'"}});
 const materialProps={id:{type:"string",minLength:1,maxLength:100},kind:{type:"string",enum:["idea","text","script","image","video","audio","storyboard","document","other"]},description:{type:"string",maxLength:2000},observed:{type:"boolean"}};
@@ -27,6 +27,11 @@ const arr=(a,max)=>Array.isArray(a)&&a.length<=max;
 function validMaterial(a){return a&&typeof a==="object"&&!Array.isArray(a)&&Object.keys(a).every(k=>["id","kind","description","observed"].includes(k))&&stringOk(a.id,100)&&a.id.length>0&&["idea","text","script","image","video","audio","storyboard","document","other"].includes(a.kind)&&(a.description===undefined||stringOk(a.description,2000))&&(a.observed===undefined||typeof a.observed==="boolean")}
 function validLock(a){return a&&typeof a==="object"&&Object.keys(a).every(k=>["key","value"].includes(k))&&stringOk(a.key,100)&&a.key.length>0&&stringOk(a.value,1000)}
 function validChange(a){return a&&typeof a==="object"&&stringOk(a.key,100)&&a.key.length>0&&stringOk(a.new_value,1000)&&Object.keys(a).every(k=>["key","new_value"].includes(k))}
+function normalizedLocks(locks){
+const values=new Map();
+for(const lock of locks){const key=lock.key.trim().toLowerCase();if(!key)invalid("empty LOCK key");if(values.has(key)&&values.get(key)!==lock.value)invalid("contradictory LOCK values: "+key);values.set(key,lock.value);}
+return values;
+}
 function runTool(name,a){
 if(!a||typeof a!=="object"||Array.isArray(a))invalid("arguments must be an object"); const permitted={inventory_creative_materials:["materials"],check_explicit_project_locks:["locks","proposed_changes"],compile_portable_director_packet:["title","intent","materials","shots","locks"]}; if(!permitted[name]||Object.keys(a).some(k=>!permitted[name].includes(k)))invalid("unsupported argument key");
 if(name==="inventory_creative_materials"){
@@ -37,13 +42,19 @@ return {source_count:ids.length,by_kind,material_ids:ids,unseen_media:a.material
 }
 if(name==="check_explicit_project_locks"){
 if(!arr(a.locks,100)||!a.locks.every(validLock)||!arr(a.proposed_changes,100)||!a.proposed_changes.every(validChange))invalid("invalid locks or proposed changes");
-const keys=new Map(a.locks.map(x=>[x.key.trim().toLowerCase(),x.value])); const collisions=a.proposed_changes.filter(x=>keys.has(x.key.trim().toLowerCase())&&x.new_value!==keys.get(x.key.trim().toLowerCase())).map(x=>({key:x.key,locked_value:keys.get(x.key.trim().toLowerCase()),proposed_value:x.new_value}));
+const keys=normalizedLocks(a.locks); const collisions=a.proposed_changes.filter(x=>keys.has(x.key.trim().toLowerCase())&&x.new_value!==keys.get(x.key.trim().toLowerCase())).map(x=>({key:x.key,locked_value:keys.get(x.key.trim().toLowerCase()),proposed_value:x.new_value}));
 return {conflicts:collisions,allow_edit:collisions.length===0,scope:"Only exact keyed conflicts, not semantic or visual QC. Respect user LOCK even when this check passes."};
 }
 if(name==="compile_portable_director_packet"){
 if(!stringOk(a.title,200)||!stringOk(a.intent||"",4000)||!arr(a.materials,100)||!a.materials.every(validMaterial)||!arr(a.shots,100)||!arr(a.locks,100)||!a.locks.every(validLock))invalid("invalid project fields");
 const ids=a.materials.map(x=>x.id);if(new Set(ids).size!==ids.length)invalid("duplicate material IDs");
 if(!a.shots.every(s=>s&&Object.keys(s).every(k=>["id","action","source_ids","camera","sound"].includes(k))&&stringOk(s.id,100)&&s.id.length>0&&stringOk(s.action,3000)&&arr(s.source_ids,100)&&s.source_ids.every(x=>stringOk(x,100))&&(s.camera===undefined||stringOk(s.camera,1000))&&(s.sound===undefined||stringOk(s.sound,1000))))invalid("invalid shot cards");
+const lockValues=normalizedLocks(a.locks);
+const shotIds=new Set();
+for(const shot of a.shots){
+if(shotIds.has(shot.id))invalid("duplicate shot IDs");shotIds.add(shot.id);
+for(const key of ["camera","sound"])if(shot[key]!==undefined&&lockValues.has(key)&&shot[key]!==lockValues.get(key))invalid("shot conflicts with LOCK: "+shot.id+" / "+key);
+}
 const sourceSet=new Set(ids);const unknown=[...new Set(a.shots.flatMap(s=>s.source_ids).filter(id=>!sourceSet.has(id)))]; if(unknown.length)invalid("shot sources not present in supplied materials: "+unknown.join(", "));
 return {schema:"remake.director_packet.v1",title:a.title,intent:a.intent||"",materials:a.materials,shots:a.shots,locks:a.locks,approvals:"UNVERIFIED",studio_handoff:"NOT_REQUESTED",sent:false,credit:{tool:"REMAKE by objekts",developer:"objekts",website:"https://objekts.ai/"},limits:"No media bytes received or interpreted. No data stored. Shots and references were supplied by calling client."};
 }

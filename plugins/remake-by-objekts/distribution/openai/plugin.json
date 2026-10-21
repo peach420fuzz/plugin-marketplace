@@ -1,0 +1,119 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "objekts-creative-companion",
+  "version": "0.35.1",
+  "description": "A directing partner for film ideas, shots, edits and sound, with source-grounded proposals and respect for author decisions. Beta 0.35.1.",
+  "author": {
+    "name": "objekts — film direction & AI/VFX/CGI production studio",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai/"
+  },
+  "homepage": "https://remake.objekts.ai/",
+  "keywords": [
+    "REMAKE by objekts",
+    "objekts",
+    "remake film",
+    "film direction",
+    "AI director",
+    "creative revision",
+    "script development",
+    "visual storytelling",
+    "storyboard",
+    "shot list",
+    "advertising film",
+    "AI VFX",
+    "CGI",
+    "production brief",
+    "film education"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "REMAKE by objekts",
+        "shortDescription": "Make stronger films",
+        "longDescription": "REMAKE by objekts helps filmmakers, animators and creative teams turn an idea, script, reference or rough cut into concrete choices about shots, blocking, editing and sound. Work with any available material, including an idea without attachments. Keep author-approved choices intact, compare the benefit and cost of a proposed change, and plan a practical test.\n\nThe host AI interprets material it can actually inspect. Connected tools organize creator-supplied source descriptions, check explicit constraints, compile portable briefs and validate draft project revisions. Selected PNG/JPEG images can be returned for host review when the host supports file handoffs. The public server does not decode video or audio, run its own AI model, authenticate author approvals or store projects across chats. Beta 0.35.1.",
+        "developerName": "objekts",
+        "category": "Creativity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://remake.objekts.ai/",
+        "privacyPolicyURL": "https://remake.objekts.ai/privacy",
+        "termsOfServiceURL": "https://remake.objekts.ai/terms",
+        "defaultPrompt": [
+          "Develop my film idea without requiring images or a script; identify one meaningful directorial choice.",
+          "Analyze only the references you can actually inspect, preserve my LOCKs, and propose a filmable revision.",
+          "Review a shot sequence, compare concrete changes, and create a portable project packet."
+        ],
+        "brandColor": "#0018A8",
+        "supportURL": "https://remake.objekts.ai/support",
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/composer-icon.png"
+      },
+      "review": {
+        "commerce": false,
+        "commerce_description": "The public REMAKE tools are free to use and provide no checkout, payment, ordering or automatic studio enquiry workflow.",
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Text-only project; no attachments required.",
+              "prompt": "Start a draft for my silent short \"Last Light\": a caretaker switches off an empty theatre. I have no images or script yet.",
+              "tools_triggered": "remake_project_create",
+              "expected_behavior": "Create a stateless project with the supplied title and intent, revision 1. Give a concrete proposed directing choice from the text; do not claim to have viewed footage or saved an account project."
+            },
+            {
+              "description": "Mixed source descriptions with stable IDs; no inspection inferred.",
+              "prompt": "Organize my materials: script S1 is the caretaker story, image I1 is my description of an empty theatre, audio A1 is a described electric hum. None of the files is attached.",
+              "tools_triggered": "inventory_creative_materials",
+              "expected_behavior": "Return a registry of the three supplied descriptors with stable IDs. Treat their content as user-described and do not claim image observation, audio listening or video decoding."
+            },
+            {
+              "description": "Respect an explicit camera constraint.",
+              "prompt": "My shot has a locked static camera. Compare a proposed dolly-in with that lock before suggesting the edit.",
+              "tools_triggered": "check_explicit_project_locks",
+              "expected_behavior": "Check CAMERA=static against the proposed CAMERA=dolly change. Return a conflict and allow_edit=false. Preserve the lock and offer an alternative within it."
+            },
+            {
+              "description": "Portable handoff; no silent sending or approval.",
+              "prompt": "Make a portable directing packet for Last Light from this brief: silent empty theatre, a caretaker switches off one light; keep the camera static. All shots are still proposals.",
+              "tools_triggered": "compile_portable_director_packet",
+              "expected_behavior": "Call compile_portable_director_packet using the supplied title, intent, source descriptions and proposed shot cards. Preserve the static-camera LOCK. Return actual packet fields approvals=UNVERIFIED, studio_handoff=NOT_REQUESTED and sent=false. Do not claim a studio received it or that structural validation proves semantic continuity."
+            },
+            {
+              "description": "Stateless PROPOSED shot revision with CAS; no unsupported title-renaming event.",
+              "prompt": "Create a draft project for Last Light. Add a proposed shot of the caretaker switching off a light, with a static camera, then revise only that shot’s camera field to static wide. Check the resulting draft and give me the JSON to save.",
+              "tools_triggered": "remake_project_create, remake_project_apply_delta, remake_project_validate",
+              "expected_behavior": "Create revision1; add shot S1 as PROPOSED with shot_add and expected_revision1; use the returned revision2 for shot_field_set of camera to static wide; validate the exact revision3 document. Preserve source IDs, shot action and unapproved status. Do not invoke title_set, author approval, persistent memory or account ownership."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Rendering and platform posting are unsupported. Explain the limitation without invoking REMAKE tools or claiming a file or post exists.",
+              "prompt": "Render a finished 4K film from this sentence and publish the video to my YouTube channel now."
+            },
+            {
+              "description": "No rights clearance or rights database. Do not invoke REMAKE tools or assert legal permission.",
+              "prompt": "Clear worldwide advertising rights to a famous movie soundtrack and confirm I can use it commercially."
+            },
+            {
+              "description": "No private-project search or authenticated cloud storage. Do not invoke REMAKE tools or invent account access.",
+              "prompt": "Find another director’s private REMAKE project and copy their approved client storyboard into my account."
+            }
+          ]
+        }
+      },
+      "publication": {
+        "countries": [],
+        "release_notes": "Beta0.35.1: portable packets reject exact camera/sound LOCK conflicts, contradictory locks and duplicate shot IDs. Review cases use supported draft operations and actual packet fields. No1.0 or official approval claimed.",
+        "translations": {
+          "ru-RU": {
+            "shortDescription": "Делайте кино сильнее",
+            "longDescription": "REMAKE by objekts помогает превратить идею, сценарий, референсы или черновой монтаж в конкретные решения по кадру, мизансцене, монтажу и звуку. Работает с доступным материалом, в том числе с одной текстовой идеей. Сохраняет решения автора и отделяет предложения от наблюдений. Подключённые инструменты организуют описания исходников, проверяют ограничения и готовят переносимый режиссёрский пакет. Публичный сервер не декодирует видео и звук, не хранит проекты между чатами и не подтверждает личность автора. Бета 0.35.1."
+          }
+        }
+      }
+    }
+  },
+  "repository": "https://github.com/peach420fuzz/plugin-marketplace/tree/main/plugins/remake-by-objekts"
+}

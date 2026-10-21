@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.35.0",
+  "version": "0.35.1",
   "description": "REMAKE by objekts — practical film direction first, evidence-grounded visuals, meaningful scene/edit decisions and safe draft revisions. Private beta; real installed-host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",
@@ -30,8 +30,8 @@
     "com.openai": {
       "interface": {
         "displayName": "REMAKE by objekts",
-        "shortDescription": "Direct your film with source-grounded creative choices.",
-        "longDescription": "REMAKE by objekts is a source-grounded directing workshop, designed to give actionable film/edit/shot decisions from any available idea, script, images, video or sound without a fixed media count. The director-first v0.34 skill cuts engineering chatter and prioritizes one concrete creative intervention, trade-off and cheapest test. Public MCP tools can support file metadata, selected images and unapproved draft state. Real host image perception, external directing quality and verified cross-session memory are not yet certified.",
+        "shortDescription": "Make stronger films",
+        "longDescription": "REMAKE by objekts helps develop film ideas and revise shots, blocking, editing and sound from creator-provided material. It preserves author constraints, separates observations from proposals and suggests practical tests. The public MCP provides stateless draft and source-reference checks; real host perception, independent professional quality and authenticated cross-session storage remain separate acceptance requirements.",
         "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
         "category": "Productivity",
         "capabilities": [

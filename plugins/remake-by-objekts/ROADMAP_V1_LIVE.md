@@ -240,3 +240,13 @@ Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker mo
 - Official mcp-publisher1.8.1 binary verified by published SHA256; `validate server.json` PASS. No local publisher login or stored credential created.
 - Fixed canonical catalog CI: run `39432906664` SUCCESS. Full-package CI `39432906596` SUCCESS. Core safety-hint change MCP CI `39432325456` SUCCESS.
 - ClawHub current publishing source confirms a real skill publish requires a ClawHub token; GitHub OIDC for skills is not supported. No token or authenticated publisher is available. Cursor uses a separate manually reviewed portal. These channels are not marked submitted.
+
+
+## Candidate0.35.1 — 21 October2026
+
+- Owner's latest instruction reserves the OpenAI upload for final confirmation after preparation. No upload, legal attestation or review submission is claimed.
+- Reproduced a real packet-export defect: `compile_portable_director_packet` accepted `CAMERA=static` alongside a shot's `camera=dolly`. It also accepted contradictory repeated LOCK keys and duplicate shot IDs. The compiler now rejects exact camera/sound conflicts, contradictory normalized lock values and duplicate shot IDs. Semantic cinematic consistency remains outside this structural check.
+- Corrected public reviewer case5: title-renaming events are unsupported. The case now creates a draft, adds a PROPOSED shot, revises its camera field with correct returned revisions, and validates revision3. Case4 now checks actual legacy packet fields (`approvals=UNVERIFIED`, `studio_handoff=NOT_REQUESTED`, `sent=false`), rather than an invented canonical handoff object.
+- Added11 synthetic contract regressions: PASS. Existing dispatcher17, public guard20, stream13, staging boundary6 and complete Python98 checks PASS locally. No saved OpenAI-host routing or human film-quality acceptance inferred.
+- Public build now derives from the complete source inventory, includes unchanged SHA-pinned v37 PNGs, verifies CRC/dimensions/listing/category/case counts and prohibits private App bindings. It omits redundant private compatibility manifests from the public copy. Two public builds match exactly. Remote CI and deployment still pending at this entry.
+- Rechecked another owner's existing plugin workflow: MARKETS used the actual OpenAI portal and has a saved draft; this confirms the workflow, not REMAKE upload. Browser connection was recovered after CUA reset, but its inventory exposed only the in-app browser. The user requested no embedded-browser opening; no new tab was opened. No independent recording facility was established.

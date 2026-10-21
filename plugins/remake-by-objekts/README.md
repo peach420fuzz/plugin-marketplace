@@ -1,3 +1,17 @@
+# REMAKE by objekts — current beta source
+
+Current candidate: **0.35.1**. Public MCP candidate: **0.7.2-beta**, nine stateless tools. Existing private release remains0.35.0 until a guarded save and readback verifies its update. No official directory listing or1.0 release is asserted.
+
+REMAKE turns creator-provided ideas, scripts and inspectable media into actionable shot, blocking, edit and sound proposals. No fixed source count. Native host perception is separate from server metadata checks. Public drafts are caller-owned JSON, not authenticated project storage.
+
+Version0.35.1 fixes a reproduced portable-export defect: a shot could contradict a static-camera LOCK, contradictory repeated keys could conceal a lock, and duplicate shot IDs could enter a packet. The compiler now rejects these exact structural conflicts. Review examples use supported draft operations and actual returned fields.
+
+Runtime tests and package validation do not prove professional directing quality. Real host recordings, independent author sessions, G5 identity and official review remain separate requirements. Source and evidence are in [the living roadmap](ROADMAP_V1_LIVE.md).
+
+## Historical source notes — preserved verbatim
+
+The following entries describe earlier releases. Their version/status statements are historical and are superseded by the current ledger above.
+
 # REMAKE by objekts — source and engineering beta
 
 REMAKE is a film-direction workshop by [objekts](https://objekts.ai/). It accepts any available combination of idea, text, script, images, video, audio and storyboards, without a predetermined source count.

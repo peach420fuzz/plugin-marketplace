@@ -1,6 +1,6 @@
 {
   "schema": "remake.tasks/1",
-  "updated": "2026-10-20",
+  "updated": "2026-10-21",
   "status_vocabulary": [
     "DONE",
     "PARTIAL",
@@ -366,7 +366,8 @@
       "status": "PARTIAL",
       "evidence": [
         "No submission-ready package: real host/evaluation/brand receipts incomplete; no official draft or submission claimed",
-        "91-file full public submission candidate, original unchanged v37 artwork, 5 positive/3 negative prepared cases; SHA2569ad3f9ad72277a16ac0ccaff2fdba4ce45ab568ab8c2ce44c2fe65a84d68f395; no public draft uploaded"
+        "91-file full public submission candidate, original unchanged v37 artwork, 5 positive/3 negative prepared cases; SHA2569ad3f9ad72277a16ac0ccaff2fdba4ce45ab568ab8c2ce44c2fe65a84d68f395; no public draft uploaded",
+        "Candidate0.35.1: exact original artwork, 5+3 corrected cases, deterministic public builder. Upload awaits final owner confirmation; no saved public draft."
       ]
     },
     {
@@ -382,7 +383,8 @@
       "acceptance": "Автопроверки PASS, reviewer credentials только в secure dashboard, 5/3 cases accepted.",
       "status": "PARTIAL",
       "evidence": [
-        "All nine live tool descriptors have boolean readOnly/openWorld/destructive hints; saved tool-annotations-035.json; actual portal-connected review routing and demo not run"
+        "All nine live tool descriptors have boolean readOnly/openWorld/destructive hints; saved tool-annotations-035.json; actual portal-connected review routing and demo not run",
+        "Corrected unsupported title edit and wrong packet response expectations;11 contract regressions PASS; full reviewer host routing and video remain unrun."
       ]
     },
     {

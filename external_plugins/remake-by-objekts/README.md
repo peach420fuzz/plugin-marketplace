@@ -2,7 +2,7 @@
 
 REMAKE helps turn ideas, scripts, reference images and rough cuts into concrete directing, editing, blocking and sound decisions. It works from any available material, including a text-only idea, and keeps author-approved choices separate from proposed changes.
 
-This is beta 0.35.0, using the same Director Mode instructions as the existing REMAKE plugin and the public stateless MCP 0.7.1-beta. It is not release 1.0. No external professional quality certification or persistent authenticated accounts are claimed.
+This is beta 0.35.1, using the same Director Mode instructions as the existing REMAKE plugin and the public stateless MCP 0.7.2-beta. It is not release 1.0. No external professional quality certification or persistent authenticated accounts are claimed.
 
 ## Connection and privacy
 

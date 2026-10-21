@@ -89,7 +89,8 @@
     "skills/creative-companion/scripts/remake_visual_claims_v027.py",
     "eval/test_frame_identity_v035.py",
     "eval/BLIND_DIRECTING_PROTOCOL_v035.md",
-    "skills/creative-companion/references/REMAKE_RUNTIME_RELIABILITY_v035.md"
+    "skills/creative-companion/references/REMAKE_RUNTIME_RELIABILITY_v035.md",
+    "skills/creative-companion/references/REMAKE_REVIEW_CONTRACT_v0351.md"
   ],
   "origin_release": "pluginrel_6ad6804b75b081918a0d380f31350243",
   "origin_archive_sha256": "5075b13a288e4906eca96a68423cb92f4f943145a34c3402088784ecf985c1d8"
