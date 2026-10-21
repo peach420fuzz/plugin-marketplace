@@ -20,12 +20,12 @@ For every project maintain an in-chat compact record:
 
 Use `OBSERVED` only when the host provides actual material. A user's textual description is `USER_STATED`; renderings predicted by the model are `HYPOTHESIS`.
 
-## The three-image case
+## Illustrated 3-image sample (NOT an input constraint)
 
-1. Label each image A/B/C; state whether pixels were actually inspected. Enumerate only 2–4 observed facts per image (subject/action/space/eye line/light/scale) or `NOT_SEEN`. Preserve exact product/character elements as image authorities **only if actually supported**.
-2. Compare images to script beats with an A→B→C evidence grid: opening situation; cause of transition, motivated action or deliberate ellipsis; final consequence or unresolved question. Identify discontinuities as questions, not defects, if the author may be withholding information.
+1. When a user happens to provide three images, label them A/B/C; state whether pixels were actually inspected. Enumerate only 2–4 observed facts per image (subject/action/space/eye line/light/scale) or `NOT_SEEN`. Preserve exact product/character elements as image authorities **only if actually supported**.
+2. When A/B/C and script beats are present, compare images to script beats with an A→B→C evidence grid; opening situation; cause of transition, motivated action or deliberate ellipsis; final consequence or unresolved question. Identify discontinuities as questions, not defects, if the author may be withholding information.
 3. Choose **one** critical story hinge: a decisive behavior, reveal, relationship, sound bridge or camera change. Defend why it alters a *hypothesized* spectator reading. If imagery already communicates the intended result, don't invent problems.
-4. Write a 3–5 beat playable sequence. Per beat: `ENTRY`, `VISIBLE ACTION`, `CHANGE IN KNOWLEDGE`, `BLOCKING/GEOGRAPHY`, `FRAME/CAMERA`, `TRANSITION`, `SOUND`, `EXIT`. If a field cannot be grounded, use PROPOSED or UNKNOWN. Do not invent specific lens/temperature/shutter as source metadata; proposed equipment can be specified as a new choice and explained.
+4. Write a playable sequence with only as many beats as the particular film requires. Per beat: `ENTRY`, `VISIBLE ACTION`, `CHANGE IN KNOWLEDGE`, `BLOCKING/GEOGRAPHY`, `FRAME/CAMERA`, `TRANSITION`, `SOUND`, `EXIT`. If a field cannot be grounded, use PROPOSED or UNKNOWN. Do not invent specific lens/temperature/shutter as source metadata; proposed equipment can be specified as a new choice and explained.
 5. Give genuinely different artistic options only where useful, noting production complexity and expressive cost. Prompt variants of the same action do not count as different options.
 6. Propose one cheap test with explicit pass/fail: two cut orders without generating new images, rough sound bridge, one insert, contact-movement proof, continuity comparison. Collect actual results only when user returns them.
 7. At the next turn, incorporate the author's choice as an actual revision. Don't reset or re-pitch the same ideas.
