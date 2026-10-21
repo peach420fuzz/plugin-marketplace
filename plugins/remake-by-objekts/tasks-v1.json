@@ -54,7 +54,8 @@
       "status": "PARTIAL",
       "evidence": [
         "Guarded Plugin Creator release and Cloudflare rollback baseline saved; remote deployments pending",
-        "Guarded private save pluginrel_6ad764af5198819195ecec36b7187c71; public deployment87f53299-5614-4c7e-a35a-abe78d9c2770; staging remains closed; rollback not exercised"
+        "Guarded private save pluginrel_6ad764af5198819195ecec36b7187c71; public deployment87f53299-5614-4c7e-a35a-abe78d9c2770; staging remains closed; rollback not exercised",
+        "Cloudflare CLI used existing OAuth after connector internal failure; deployment66519fea-7be3-4d02-8e21-7266395f6689/versiona9d706e9-f273-4a47-aec2-da0d489e6e4c, rollback73ba992e-0a09-4349-adb9-ee089edf9209 saved. No rollback exercise."
       ]
     },
     {
@@ -367,7 +368,8 @@
       "evidence": [
         "No submission-ready package: real host/evaluation/brand receipts incomplete; no official draft or submission claimed",
         "91-file full public submission candidate, original unchanged v37 artwork, 5 positive/3 negative prepared cases; SHA2569ad3f9ad72277a16ac0ccaff2fdba4ce45ab568ab8c2ce44c2fe65a84d68f395; no public draft uploaded",
-        "Candidate0.35.1: exact original artwork, 5+3 corrected cases, deterministic public builder. Upload awaits final owner confirmation; no saved public draft."
+        "Candidate0.35.1: exact original artwork, 5+3 corrected cases, deterministic public builder. Upload awaits final owner confirmation; no saved public draft.",
+        "Reproducible public candidate0.35.1:90 files, source and CI SHA b492d3d54bc68e715ea7109ebaef8e6ff71dbc1d7b4c6d61c079ec8ccc6c0e28. Real host demo missing; upload awaits final owner confirmation."
       ]
     },
     {
@@ -384,7 +386,8 @@
       "status": "PARTIAL",
       "evidence": [
         "All nine live tool descriptors have boolean readOnly/openWorld/destructive hints; saved tool-annotations-035.json; actual portal-connected review routing and demo not run",
-        "Corrected unsupported title edit and wrong packet response expectations;11 contract regressions PASS; full reviewer host routing and video remain unrun."
+        "Corrected unsupported title edit and wrong packet response expectations;11 contract regressions PASS; full reviewer host routing and video remain unrun.",
+        "Five backend reviewer cases PASS via8 actual public HTTP calls on0.7.2-beta; synthetic text fixtures only. Saved-host model routing/negative abstention/demo NOT RUN."
       ]
     },
     {
@@ -400,7 +403,8 @@
       "acceptance": "Receipt published and actual Claude creative flow PASS.",
       "status": "PARTIAL",
       "evidence": [
-        "Existing public adapter synchronized to 0.35.0 at1963a3e2698fb076d3e4f1a986e9e8bef3a15e1c; official portal/browser unavailable; no submission receipt"
+        "Existing public adapter synchronized to 0.35.0 at1963a3e2698fb076d3e4f1a986e9e8bef3a15e1c; official portal/browser unavailable; no submission receipt",
+        "Existing standalone adapter source synchronized to0.35.1, including optional local media helpers; no official directory receipt or independent install."
       ]
     },
     {
@@ -409,7 +413,8 @@
       "acceptance": "Gallery link and independent verification.",
       "status": "PARTIAL",
       "evidence": [
-        "Official current gallery mechanism verified: public repo topic gemini-cli-extension plus root manifest, daily indexing; branch-only source not accepted as listing; topic mutation not exposed"
+        "Official current gallery mechanism verified: public repo topic gemini-cli-extension plus root manifest, daily indexing; branch-only source not accepted as listing; topic mutation not exposed",
+        "Existing standalone adapter source synchronized to0.35.1, including optional local media helpers; no official directory receipt or independent install."
       ]
     },
     {

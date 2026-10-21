@@ -19,3 +19,5 @@ Claude/Grok: standard `.claude-plugin/plugin.json`, `.mcp.json`, and `skills/rem
 Published for objekts by the existing owner account `peach420fuzz`. The repository is a personal-account fork; no GitHub organization ownership is asserted. Product: https://remake.objekts.ai/ · Studio: https://objekts.ai/ · Support: https://remake.objekts.ai/support · Privacy: https://remake.objekts.ai/privacy · Terms: https://remake.objekts.ai/terms .
 
 The existing MIT license is in `LICENSE`.
+
+Optional local media-evidence helpers are included under `skills/remake/scripts/`. They are never run on installation; use them only for explicitly authorized local creator files when the host provides Python and FFmpeg. They do not supply server-side inference or grant media access.

@@ -13,6 +13,9 @@ import subprocess
 
 def rehearse(output):
  traces=[]
+ init={'jsonrpc':'2.0','id':0,'method':'initialize','params':{'protocolVersion':'2025-06-18','capabilities':{},'clientInfo':{'name':'remake-review-rehearsal','version':'0.35.1'}}}
+ process=subprocess.run(['curl','--fail','--silent','--show-error','--max-time','20','--header','content-type: application/json','--data-binary','@-','https://remake.objekts.ai/mcp'],input=json.dumps(init).encode(),capture_output=True,check=True)
+ initialization=json.loads(process.stdout);server_version=initialization['result']['serverInfo']['version']
  def call(case,name,args):
   request={'jsonrpc':'2.0','id':len(traces)+1,'method':'tools/call','params':{'name':name,'arguments':args}}
   process=subprocess.run(['curl','--fail','--silent','--show-error','--max-time','20','--header','content-type: application/json','--data-binary','@-','https://remake.objekts.ai/mcp'],input=json.dumps(request).encode(),capture_output=True,check=True)
@@ -32,7 +35,7 @@ def rehearse(output):
  for event_id,kind,payload in [('shot1','shot_add',{'id':'S1','status':'PROPOSED','source_ids':[],'fields':{'camera':'static'},'visible_action':'PROPOSED: switch off light','entry':'PROPOSED: empty theatre','exit':'PROPOSED: darkness','cut':'PROPOSED: after gesture','sound':'PROPOSED silence'}),('camera1','shot_field_set',{'shot_id':'S1','field':'camera','value':'static wide'})]:
   p=call('positive5','remake_project_apply_delta',{'project':p,'event':{'event_id':event_id,'expected_revision':p['revision'],'kind':kind,'payload':payload,'actor_claim':'MODEL'}})['project']
  valid=call('positive5','remake_project_validate',{'project':p});assert valid['ok'] and p['revision']==3 and p['shots'][0]['status']=='PROPOSED' and p['shots'][0]['fields']['camera']=='static wide';outcomes.append({'id':'positive5','backend':'PASS'})
- result={'checked_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'test_class':'SYNTHETIC_TEXT_FIXTURES_OVER_REAL_PUBLIC_HTTP','positive_backend_cases':outcomes,'tool_calls':len(traces),'saved_openai_host_routing':'NOT_RUN','negative_prompt_abstention':'NOT_RUN','intended_host_demo_recording':'NOT_RECORDED','independent_professional_quality':'NOT_TESTED','private_source_media_transmitted':False,'traces':traces}
+ result={'checked_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'test_class':'SYNTHETIC_TEXT_FIXTURES_OVER_REAL_PUBLIC_HTTP','actual_server_version':server_version,'initialization':initialization,'positive_backend_cases':outcomes,'tool_calls':len(traces),'saved_openai_host_routing':'NOT_RUN','negative_prompt_abstention':'NOT_RUN','intended_host_demo_recording':'NOT_RECORDED','independent_professional_quality':'NOT_TESTED','private_source_media_transmitted':False,'traces':traces}
  output=Path(output);output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');return {k:v for k,v in result.items() if k!='traces'}
 
 if __name__=='__main__':

@@ -1,6 +1,6 @@
-# REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-18)
+# REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-21)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.35.0 · **Public stateless MCP:** 0.7.1-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Product release:** PRIVATE 0.35.0 · **Public stateless MCP:** 0.7.2-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -13,7 +13,7 @@
 | G5 OAuth user projects | BLOCKED | Staged fail-closed JWT verifier 18/18 synthetic, D1 owner/CAS 8/8; real identity provider absent; staging Workers subdomain disabled |
 | G6 production-ready film | NOT TESTED | Real edit/shot/sound continuity and independent producer handoff review required |
 | G7 distribution | NOT VERIFIED | Claude/Gemini GitHub source available, no official catalog receipts or independently installed end user |
-| G8 trust & brand | BLOCKED | Approved original objekts v37 artwork not verified; check support/terms/privacy and legal/rights before release |
+| G8 trust & brand | PARTIAL | Original v37 PNG bytes matched supplied approved URLs and are included in public candidate; publisher verification and required rights/legal attestations are still unverified |
 | G9 usefulness & leads | NOT MEASURED | Track real usefulness/returns and only explicit opt-in studio enquiries; private sources never forwarded by default |
 | G10 official launch | NOT SUBMITTED | All P0 and critical QA must pass, then official OpenAI submission/approval and independent install |
 
@@ -250,3 +250,27 @@ Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker mo
 - Added11 synthetic contract regressions: PASS. Existing dispatcher17, public guard20, stream13, staging boundary6 and complete Python98 checks PASS locally. No saved OpenAI-host routing or human film-quality acceptance inferred.
 - Public build now derives from the complete source inventory, includes unchanged SHA-pinned v37 PNGs, verifies CRC/dimensions/listing/category/case counts and prohibits private App bindings. It omits redundant private compatibility manifests from the public copy. Two public builds match exactly. Remote CI and deployment still pending at this entry.
 - Rechecked another owner's existing plugin workflow: MARKETS used the actual OpenAI portal and has a saved draft; this confirms the workflow, not REMAKE upload. Browser connection was recovered after CUA reset, but its inventory exposed only the in-app browser. The user requested no embedded-browser opening; no new tab was opened. No independent recording facility was established.
+
+
+### Verified follow-through — 21 October2026
+
+# REMAKE: проверенные изменения, 21 октября2026
+
+Исправление работает на публичном MCP0.7.2-beta. Сборщик режиссёрского пакета теперь отказывает при точном противоречии камеры или звука авторскому LOCK, противоречащих повторных LOCK и повторных идентификаторах шотов. Это проверка структуры; смысловая непрерывность и художественная оценка ею не подтверждаются.
+
+## Доказательства
+
+- Исходный коммит: `eaa634a64f3e559cac18c561f5ae698ba4f142cd`.
+- Cloudflare deployment: `66519fea-7be3-4d02-8e21-7266395f6689`; version: `a9d706e9-f273-4a47-aec2-da0d489e6e4c`. Старый идентификатор для отката сохранён. Никаких новых хранилищ или сервисов генерации.
+- 11 регрессионных проверок проходят и локально, и через настоящий публичный HTTP.
+- Пять исправленных сценариев ревью выполнены на сервере0.7.2-beta: 8 реальных вызовов с синтетическими текстовыми примерами. Проверка выбора инструментов моделью внутри OpenAI ещё не выполнена.
+- Полный Python-набор98, MCP dispatcher17, публичная граница20, чтение потока13 и staging-граница6 проходят. Все соответствующие GitHub CI успешны.
+- Публичная сборка0.35.1 содержит90 файлов, исходные значки v37, EN/RU карточку, 5 положительных и3 отрицательных сценария. Локальный и CI SHA256 совпадают: `b492d3d54bc68e715ea7109ebaef8e6ff71dbc1d7b4c6d61c079ec8ccc6c0e28`.
+- Синхронизированы существующие публичный Skill и отдельные ветки Claude/Gemini. Доступность исходников не является публикацией в каталогах.
+
+## Что остаётся до подачи
+
+Настоящая запись демонстрации в целевом хосте и её проверенная ссылка, проверки маршрутизации на сохранённой версии в OpenAI, проверка издателя/домена и необходимые аттестаты. Загрузка в OpenAI оставлена на финальное подтверждение владельца. Демо не подменено видеомакетом или синтетической режиссёрской сессией.
+
+Существующий приватный плагин остаётся0.35.0: новая публичная сборка и исправление сервера не выдаются за загрузку в OpenAI. G1–G10 не приняты, статус1.0 не присвоен. Library недоступна через текущие инструменты; её исходники не отмечены обновлёнными.
+
