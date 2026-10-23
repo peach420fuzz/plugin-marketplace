@@ -66,7 +66,7 @@ def build(output,assets):
  with zipfile.ZipFile(output,'w',compression=zipfile.ZIP_DEFLATED) as z:
   for path,data in sorted(sources.items()):
    info=zipfile.ZipInfo(path,(2026,1,1,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED;info.external_attr=0o100644<<16;z.writestr(info,data)
- receipt={'schema':'remake.public-draft-build/1','version':manifest['version'],'file_count':len(sources),'sha256':hashlib.sha256(output.read_bytes()).hexdigest(),'artwork':artwork,'case_count':{'positive':5,'negative':3},'demo_recording_url_present':bool(review.get('demo_recording_url')),'state':'PREPARED_NOT_UPLOADED','ready_for_review_submission':False,'missing':['actual intended-host demo URL','portal publisher identity, domain connection and scans','saved-version host routing tests','developer attestations'],'files':[{'path':p,'sha256':hashlib.sha256(b).hexdigest()} for p,b in sorted(sources.items())]}
+ receipt={'schema':'remake.public-draft-build/1','version':manifest['version'],'file_count':len(sources),'sha256':hashlib.sha256(output.read_bytes()).hexdigest(),'artwork':artwork,'case_count':{'positive':5,'negative':3},'demo_recording_url_present':bool(review.get('demo_recording_url')),'state':'PREPARED_NOT_UPLOADED','ready_for_review_submission':False,'missing':['actual intended-host demo URL','portal publisher identity, domain connection and scans','saved-version host routing tests','owner-confirmed country targeting','developer attestations'],'files':[{'path':p,'sha256':hashlib.sha256(b).hexdigest()} for p,b in sorted(sources.items())]}
  output.with_suffix('.manifest.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n');return receipt
 
 if __name__=='__main__':

@@ -937,6 +937,16 @@
         ]
       }
     },
+    "skript-by-objekts": {
+      "components": {
+        "skills": [
+          {
+            "name": "script-workshop",
+            "description": "Use SKRIPT by objekts to develop original screenplays from an idea or synopsis, compare genuinely different story direc…"
+          }
+        ]
+      }
+    },
     "stripe": {
       "sha": "27db051dba7cee2e13d2dbf6d65939cf412f5b3c",
       "version": "0.9.6",

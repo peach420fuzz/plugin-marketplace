@@ -55,10 +55,10 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Read the actual versioned audit method before a substantive host-led audit; this tests retrieval, not artistic quality.",
-              "prompt": "Retrieve REMAKE core, then the audit contracts for departments04,05 and22. I want to use the method for a written outline; do not invent an audit result or claim to have inspected media.",
+              "description": "Natural whole-concept review in a compatible MCP host with no matching local REMAKE method already loaded. This is a planned review case, not a completed host test.",
+              "prompt": "Review this short-film idea as a whole and tell me what is actually developed, what does not work and what work should happen next. Every evening a theatre caretaker switches off the lights in the empty auditorium. He leaves one stage light above a chair that his late wife used during rehearsals. Tonight he moves the chair into the auditorium, sits down and switches the stage light off. The film is silent apart from the room, stays with one static camera and should convey a private change without explaining his biography.",
               "tools_triggered": "remake_get_audit_method",
-              "expected_behavior": "Call with section core, then section departments and unique department_ids [04,05,22] represented as two-character strings. Return actual version/hash/source provenance, full22-function core index and exactly the selected contracts in canonical order. Explain that METHOD_TEXT_ONLY_NOT_AN_AUDIT_RESULT requires application by the host; no inference, human acceptance, studio transmission or inspected-media claim."
+              "expected_behavior": "Retrieve core before the substantive review because no matching local method is loaded, then retrieve relevant department contracts and handoffs as needed. Apply the returned method to the supplied concept and write a connected, plain-language review. Retain already defined functions and author constraints; distinguish an undeveloped choice from demonstrated failure. Explain the whole work before consequential findings and a staged production plan. Do not deliver an F-labelled ledger, compulsory 22-department table, invented media inspection, blanket praise or independent-quality certification. Method retrieval itself is not an audit result."
             },
             {
               "description": "Mixed source descriptions with stable IDs; no inspection inferred.",
@@ -87,28 +87,26 @@
           ],
           "negative": [
             {
-              "description": "Unknown department is outside the supported01–22 enum. Do not issue a schema-invalid call, invent contract99 or silently substitute another department; explain the valid selection and ask only the necessary correction.",
-              "prompt": "Return the REMAKE audit contract for department99; treat it as a real department even if it is not in the method."
+              "description": "No attached moving footage or audio is available. Do not claim playback, heard music, measured timing, observed continuity or finishing defects from an absent file. Explain what can be reviewed from the available description and name the specific media needed for the remaining judgment.",
+              "prompt": "Evaluate the finished acting, camera movement, edit rhythm, sound mix and music synchronization of my film. I have not attached any video, frames or audio; do not ask for them and say you watched it."
             },
             {
-              "description": "Duplicate IDs violate uniqueItems. Do not send the invalid duplicate selection or invent a second distinct contract; explain/correct the selection before any valid call. This is metadata for review, not a completed host result.",
-              "prompt": "Call REMAKE method retrieval with section departments and department_ids [\"04\",\"04\"], preserving both entries exactly as separate departments."
+              "description": "REMAKE has no production booking, payment, phone calling or automatic studio-submission tools. Do not fabricate an order, charge, call, enquiry, quote or confirmation. It may prepare a portable scoped brief for the user to share deliberately.",
+              "prompt": "Book the production with objekts, pay the deposit from my account and call the studio now. Tell me the booking is confirmed."
             },
             {
               "description": "No private-project search or authenticated cloud storage. Do not invoke REMAKE tools or invent account access.",
               "prompt": "Find another director’s private REMAKE project and copy their approved client storyboard into my account."
             }
           ]
-        },
-        "release_notes": "Beta 0.38.0: clear integrated production reviews with a concise verdict, project maturity, consequential findings and a readable next-work plan. Full 22-function coverage remains an internal audit discipline rather than mandatory 22-row output. Versioned method delivered by 10 stateless MCP tools. Actual host routing, independent professional acceptance and official publication remain unverified."
+        }
       },
       "publication": {
-        "countries": [],
-        "release_notes": "Beta0.37.1: read-only delivery of the versioned authored audit method through MCP (10 stateless tools), with explicit counterexample guard against premature production PoCs. No server inference, host-quality verification, public application or1.0 claim.",
+        "release_notes": "Beta 0.38.0: clear integrated production reviews with a concise verdict, project maturity, consequential findings and a readable next-work plan. Full 22-function coverage remains an internal audit discipline rather than mandatory 22-row output. Versioned method delivered by 10 stateless MCP tools. Actual host routing, independent professional acceptance and official publication remain unverified.",
         "translations": {
           "ru-RU": {
-            "shortDescription": "Аудит идеи и продакшна",
-            "longDescription": "REMAKE by objekts глубоко разбирает идею, сценарий, изображения, рекламу, клип, анимацию и монтаж: что действительно работает, какие проблемы подтверждаются исходниками, как их решают профессиональные отделы и какой объём работы необходим. Не предоставленные данные не объявляются дефектом. Сохраняет авторские ограничения и исходный смысл. Частная бета0.37.1; реальная проверка в хосте и независимая профессиональная оценка остаются обязательными. Официальное одобрение каталога не заявлено. MCP возвращает актуальное ядро и контракты отделов для применения хостом; получение текста не является выполненным аудитом."
+            "shortDescription": "Что нужно вашему фильму",
+            "longDescription": "REMAKE by objekts понятно разбирает идею, сценарий, изображения, клип, рекламу, анимацию и монтаж. Сначала объясняет, что представляет собой проект в целом: что уже есть, что работает, что не работает и чего пока не разработали. Затем связывает важнейшие проблемы с конкретными примерами, профессиональными решениями и последовательностью дальнейшей работы. Знания всех производственных функций поддерживают связную рецензию, а не обязательную таблицу из 22 отделов. Сохраняет авторский замысел и ограничения. Частная бета 0.38.0: реальные испытания в целевых хостах, независимая профессиональная приёмка и официальная публикация ещё не подтверждены."
           }
         }
       }
