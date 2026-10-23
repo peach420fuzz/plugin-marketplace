@@ -281,3 +281,19 @@ Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker mo
 A malformed portable project containing decision source_ids=null or an integer crashed the Python validator; a string or object could be accepted when its characters/keys matched existing material IDs. The import now returns INVALID_SOURCE_IDS for every non-array value and rejects a delta before touching that malformed project. Forty-two packet tests and the complete 100-test Python suite pass locally, including five malformed JSON types and mutation rejection; these are synthetic structure checks. Full remote CI is required before integration. GitHub branch creation was not executed because automatic approval review could not complete due to a usage limit; no remote branch, commit or CI result is claimed.
 
 This development branch is not deployed and does not replace the immutable 0.35.1 public candidate (SHA256 b492d3d54bc68e715ea7109ebaef8e6ff71dbc1d7b4c6d61c079ec8ccc6c0e28), the private Plugin Creator release, or the public MCP. S-01 remains incomplete: a full schema/migration audit, real owner identity and creative acceptance are still outstanding. Library synchronization is pending because its write tool is unavailable. No G1–G10 acceptance changed.
+
+
+### Private release synchronization — 23 October 2026
+
+Candidate 0.35.2 synchronizes the actual saved private plugin with canonical source after import validation fix7733bfbb6205d391157721e89df50f602e05cace (PR1; full Python100 and reproducible package CI39908560918 PASS). The complete current0.35.0 archive was exported before editing. Existing plugin ID, audience, MCP endpoint/auth and ordered default prompts are preserved. Native external adapters receive the same helper fix and optional support files.
+
+0.35.2 is a private beta candidate pending this change's own CI and guarded Plugin Creator save/readback. That save, public draft preparation and official catalog approval are different events. No public server deployment or1.0 acceptance is performed by this source change. The immutable0.35.1 archive is preserved. Actual host recording, independent real creative trials, author identity and remainingG1–G10 are still required; Library write access remains unavailable.
+
+
+### Directing judgment correction — 23 October 2026
+
+The owner reports automatic praise of weak ideas and judges current artistic performance insufficient. Proposed0.36.0 strengthens direct editorial judgment and repairs at the required scale; preserves working observation, ambiguity, functional voice-over and genre. It separates adequacy, coherence, specificity and originality, does not demand sacrifice or punishment, and scrutinizes its own proposed rewrites. The core plus7optional references remove conflicting microfix caps.
+
+Six original fictional scripts were examined in an open AI diagnostic with disclosed editorial risks. That is not the owner's actual failed script, a blinded test, installed-host interaction, independent professional direction orG3. AI review exposed overprescription about price, brand uniqueness and mandatory tests; the revised method addresses these risks without claiming trained weights or measured artistic improvement. Technical import validation remains intact.0.35.2 was prepared but never saved to Plugin Creator;0.36.0 is the proposed combined private beta update, pending full package review and guarded save. AllG1–G10 requirements still apply.
+
+Owner-reported false praise and weak screenplay revision remain an **UNRESOLVED real G3 quality failure** until the exact failed material and real evaluation establish improvement. The new editorial core, counterexamples and AI peer review are a method candidate correction, not proof of artistic quality. No trained weights, completed author trial, independent expert acceptance or host demo is claimed. Continuation automation was deleted at the owner’s request; earlier roadmap automation records are historical.

@@ -1,5 +1,7 @@
 # Director's Decision Lab · 0.11 · first-party educational method
 
+For substantial script or film criticism, apply `EDITORIAL_JUDGMENT.md` first. This teaching lab is for a focused exercise, not a limit of one small fix for an entire weak script. Meeting a stated intention or avoiding a contradiction does not by itself earn praise; explain the actual mechanism and repair the governing weakness at its necessary scale.
+
 **Purpose:** teach an author to see their *own film* through screenplay, mise-en-scène, editing, sound and advertising truth; never replace their story with a standard ad template. This reference is a methodology proposal by objekts, not a verified external cinema curriculum, user study or trained model.
 
 ## Unit of teaching: a decision, not a department
@@ -38,7 +40,7 @@ Every useful response should move one material production decision forward. Use 
 ### D. Additional advertising layer (only when relevant)
 - Separate **objective** (brand familiarity vs product learning vs purchase) from **narrative premise** and **product truth**.
 - A literal product demonstration must be supported; an emotional metaphor doesn't establish chemical, medical or technical efficacy.
-- The **brand-removal question** is a counterfactual *workshop test*, not measured attribution: if another logo can replace yours without changing meaning, what memorable mechanism could make it ownable?
+- The **brand-removal question** is a counterfactual *workshop test*, not measured attribution: if another logo can replace yours without changing meaning, does the brief require a distinctive mechanism, and what confirmed product action could support it? Replaceability alone does not prove failure; do not invent a brand difference.
 - The commercial can work **without a blunt CTA**. Determine whether placement and business aim call for one. A narrative brand film should not be punished for refusing a sales pitch.
 - Preserve the approved script when adding media deliverables. A six-second cutdown is a fresh editorial design problem, not 'compress every scene'.
 
