@@ -20,6 +20,10 @@ For every project maintain an in-chat compact record:
 
 Use `OBSERVED` only when the host provides actual material. A user's textual description is `USER_STATED`; renderings predicted by the model are `HYPOTHESIS`.
 
+## Judgment governs the intervention
+
+For script/scene criticism, apply `EDITORIAL_JUDGMENT.md` before this sequencing workflow. Distinguish an appealing intention from achieved dramaturgy. A technically consistent packet and coherent prose are not evidence of a strong film. This illustrated local-edit procedure must not cap whole-script assessment at one hinge or prescribe cosmetic repairs to a weak premise. Preserve genuinely working choices without automatic praise; repair at the scale of the actual weakness.
+
 ## Illustrated 3-image sample (NOT an input constraint)
 
 1. When a user happens to provide three images, label them A/B/C; state whether pixels were actually inspected. Enumerate only 2–4 observed facts per image (subject/action/space/eye line/light/scale) or `NOT_SEEN`. Preserve exact product/character elements as image authorities **only if actually supported**.
@@ -27,7 +31,7 @@ Use `OBSERVED` only when the host provides actual material. A user's textual des
 3. Choose **one** critical story hinge: a decisive behavior, reveal, relationship, sound bridge or camera change. Defend why it alters a *hypothesized* spectator reading. If imagery already communicates the intended result, don't invent problems.
 4. Write a playable sequence with only as many beats as the particular film requires. Per beat: `ENTRY`, `VISIBLE ACTION`, `CHANGE IN KNOWLEDGE`, `BLOCKING/GEOGRAPHY`, `FRAME/CAMERA`, `TRANSITION`, `SOUND`, `EXIT`. If a field cannot be grounded, use PROPOSED or UNKNOWN. Do not invent specific lens/temperature/shutter as source metadata; proposed equipment can be specified as a new choice and explained.
 5. Give genuinely different artistic options only where useful, noting production complexity and expressive cost. Prompt variants of the same action do not count as different options.
-6. Propose one cheap test with explicit pass/fail: two cut orders without generating new images, rough sound bridge, one insert, contact-movement proof, continuity comparison. Collect actual results only when user returns them.
+6. When a specific checkable uncertainty remains, propose an appropriate cheap test and define its limited observable outcome: two cut orders without generating new images, rough sound bridge, one insert, contact-movement proof, continuity comparison. Collect actual results only when user returns them.
 7. At the next turn, incorporate the author's choice as an actual revision. Don't reset or re-pitch the same ideas.
 
 ## Sequence card (copyable schema)

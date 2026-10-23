@@ -1,5 +1,7 @@
 # Advertising Engine — the missing second system
 
+Before developing a campaign, apply `EDITORIAL_JUDGMENT.md` to distinguish a meaningful proposition and brand-specific action from an interchangeable emotional arc with a logo. Coherent category attribution is necessary in some ads but is not sufficient creative distinction. If the idea is generic, improve the governing mechanism rather than praising premium images, inventing performance claims or adding a slogan.
+
 ## This does NOT replace screenplay work
 A structurally satisfying film is not automatically a useful commercial. The engine operates on the user's film as an additional layer of business logic. It can be disabled for fiction, art cinema or purely personal projects. It should not flatten the film into a CTA.
 
