@@ -44,6 +44,25 @@ class PacketTests(unittest.TestCase):
   def test_missing_decision_receipt(self):self.err(lambda p:p['decisions'].append({'id':'D1','status':'USER_APPROVED','source_ids':[],'value':'x'}),'DECISION_APPROVAL_REFERENCE_REQUIRED')
   def test_rejected_marked_approved(self):self.err(lambda p:p['decisions'].append({'id':'D1','status':'REJECTED','source_ids':[],'approved':True}),'REJECTED_MARKED_APPROVED')
   def test_unknown_decision_source(self):self.err(lambda p:p['decisions'].append({'id':'D1','status':'PROPOSED','source_ids':['X']}),'UNRESOLVED_SOURCE')
+  def test_malformed_decision_sources_report_error(self):
+    # Import boundaries must reject wrong JSON types even when their keys/characters match real IDs.
+    for value in (None,17,True,'A',{'A':True}):
+      with self.subTest(source_ids=value):
+        p=copy.deepcopy(self.p)
+        p['decisions']=[{'id':'D1','status':'PROPOSED','source_ids':value}]
+        before=copy.deepcopy(p)
+        result=validate(p)
+        self.assertFalse(result['ok'])
+        self.assertIn({'code':'INVALID_SOURCE_IDS','path':'decisions[0].source_ids','detail':''},result['errors'])
+        self.assertEqual(p,before)
+  def test_delta_rejects_malformed_import_without_mutation(self):
+    from remake_packet_v023 import apply_delta
+    p=copy.deepcopy(self.p)
+    p['decisions']=[{'id':'D1','status':'PROPOSED','source_ids':None}]
+    before=copy.deepcopy(p)
+    with self.assertRaisesRegex(ValueError,'invalid canonical packet'):
+      apply_delta(p,{'event_id':'e1','expected_revision':1,'kind':'shot_add','payload':{}})
+    self.assertEqual(p,before)
   def test_handoff_not_sent(self):self.assertEqual(self.p['handoff']['status'],'NOT_SENT')
   def test_handoff_forged_sent(self):self.err(lambda p:p['handoff'].update(status='SENT_VERIFIED'),'UNVERIFIED_DELIVERY')
   def test_handoff_unsolicited_recipient(self):self.err(lambda p:p['handoff'].update(recipient='a@example.com'),'CONTACT_WITHOUT_CONSENT')

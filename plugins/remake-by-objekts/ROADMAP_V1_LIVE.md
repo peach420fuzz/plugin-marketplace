@@ -274,3 +274,10 @@ Rollback: original full 0.34 Plugin Creator archive and seven deployed Worker mo
 
 Существующий приватный плагин остаётся0.35.0: новая публичная сборка и исправление сервера не выдаются за загрузку в OpenAI. G1–G10 не приняты, статус1.0 не присвоен. Library недоступна через текущие инструменты; её исходники не отмечены обновлёнными.
 
+
+
+### Development follow-up — malformed imported decision sources, 21 October 2026
+
+A malformed portable project containing decision source_ids=null or an integer crashed the Python validator; a string or object could be accepted when its characters/keys matched existing material IDs. The import now returns INVALID_SOURCE_IDS for every non-array value and rejects a delta before touching that malformed project. Forty-two packet tests and the complete 100-test Python suite pass locally, including five malformed JSON types and mutation rejection; these are synthetic structure checks. Full remote CI is required before integration. GitHub branch creation was not executed because automatic approval review could not complete due to a usage limit; no remote branch, commit or CI result is claimed.
+
+This development branch is not deployed and does not replace the immutable 0.35.1 public candidate (SHA256 b492d3d54bc68e715ea7109ebaef8e6ff71dbc1d7b4c6d61c079ec8ccc6c0e28), the private Plugin Creator release, or the public MCP. S-01 remains incomplete: a full schema/migration audit, real owner identity and creative acceptance are still outstanding. Library synchronization is pending because its write tool is unavailable. No G1–G10 acceptance changed.

@@ -230,7 +230,9 @@
       "task": "Определить итоговую schema version и Migration Plan (`assets`/`materials`, `shot_id`/`id`, старые JSON revision), отдельные public drafts vs signed author decision.",
       "acceptance": "JSON schema + migration fixtures; old projects open with warnings, no promoted approvals.",
       "status": "NOT_TESTED",
-      "evidence": []
+      "evidence": [
+        "Unreleased development patch: malformed decision source_ids now return INVALID_SOURCE_IDS instead of crashing or accepting object/string keys. Packet suite42 PASS with five invalid types and rejection before mutation; full schema/migration and host acceptance remain outstanding."
+      ]
     },
     {
       "id": "S-02",
