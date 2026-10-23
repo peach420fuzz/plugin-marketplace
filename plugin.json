@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.37.1",
-  "description": "REMAKE by objekts — rigorous creative and production audits: substantiated weaknesses, missing work, department dependencies and professional remedies. Turns findings into a concrete production scope. Private beta; actual host quality remains unverified.",
+  "version": "0.38.0",
+  "description": "REMAKE by objekts — clear, candid film and production reviews. Understand what is there, what fails, what is not yet developed and how professionals resolve it. Deep department knowledge, concrete production work and grounded studio scope.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",
     "email": "salute@objekts.ai",
@@ -28,8 +28,8 @@
     "com.openai": {
       "interface": {
         "displayName": "REMAKE by objekts",
-        "shortDescription": "Audit your film production",
-        "longDescription": "REMAKE by objekts reviews ideas, synopses, scripts, images, ads, music videos, animation and cuts. It explains what works, what fails, what is not yet developed and how professional departments resolve it: writing, direction, performance, design, camera, AI/CGI/VFX, edit, sound, finishing and delivery. Findings become prioritized work, concrete deliverables and a relevant objekts production scope. Unseen evidence stays unassessed; author constraints remain intact. Private beta: real installed-host and independent professional evaluation are still required.",
+        "shortDescription": "Know what your film needs",
+        "longDescription": "REMAKE by objekts reviews ideas, synopses, scripts, images, music videos, ads, animation and cuts. It explains the project as a whole in clear language: what already works, what fails, what has not been developed, and why. Evidence and deep production-department knowledge support a readable argument, concrete next steps and a relevant studio scope. The creator retains their intent and constraints. Private beta; real host execution and independent professional acceptance remain separate requirements.",
         "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
         "category": "Productivity",
         "capabilities": [
