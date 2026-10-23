@@ -83,7 +83,9 @@ def validate(packet: object) -> dict:
         if not is_one(d.get('status'),STATUSES):add('INVALID_DECISION_STATUS',p+'.status')
         if is_one(d.get('status'),{'USER_APPROVED','LOCKED'}) and not d.get('approval_ref'):
             add('DECISION_APPROVAL_REFERENCE_REQUIRED',p+'.approval_ref')
-        for source in d.get('source_ids',[]):
+        refs=d.get('source_ids',[])
+        if not isinstance(refs,list):add('INVALID_SOURCE_IDS',p+'.source_ids');refs=[]
+        for source in refs:
             if not source_known(source,material_ids):add('UNRESOLVED_SOURCE',p+'.source_ids',str(source))
         if d.get('status')=='REJECTED' and d.get('approved') is True:
             add('REJECTED_MARKED_APPROVED',p)
