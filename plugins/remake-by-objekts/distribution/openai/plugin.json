@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.36.1",
-  "description": "A directing partner for film ideas, shots, edits and sound, with source-grounded proposals and respect for author decisions. Beta 0.35.1.",
+  "version": "0.37.0",
+  "description": "REMAKE by objekts — rigorous creative and production audits: substantiated weaknesses, missing work, department dependencies and professional remedies. Turns findings into a concrete production scope. Private beta; actual host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",
     "email": "salute@objekts.ai",
@@ -12,26 +12,24 @@
   "keywords": [
     "REMAKE by objekts",
     "objekts",
-    "remake film",
-    "film direction",
-    "AI director",
-    "creative revision",
-    "script development",
-    "visual storytelling",
-    "storyboard",
-    "shot list",
-    "advertising film",
+    "production audit",
+    "script analysis",
+    "film critique",
+    "production readiness",
+    "department review",
+    "music video",
+    "advertising",
+    "animation",
     "AI VFX",
     "CGI",
-    "production brief",
-    "film education"
+    "production brief"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "REMAKE by objekts",
-        "shortDescription": "Make stronger films",
-        "longDescription": "REMAKE by objekts helps filmmakers, animators and creative teams turn an idea, script, reference or rough cut into concrete choices about shots, blocking, editing and sound. Work with any available material, including an idea without attachments. Keep author-approved choices intact, compare the benefit and cost of a proposed change, and plan a practical test.\n\nThe host AI interprets material it can actually inspect. Connected tools organize creator-supplied source descriptions, check explicit constraints, compile portable briefs and validate draft project revisions. Selected PNG/JPEG images can be returned for host review when the host supports file handoffs. The public server does not decode video or audio, run its own AI model, authenticate author approvals or store projects across chats. Beta 0.35.1.",
+        "shortDescription": "Audit your film production",
+        "longDescription": "REMAKE by objekts reviews ideas, synopses, scripts, images, ads, music videos, animation and cuts. It explains what works, what fails, what is not yet developed and how professional departments resolve it: writing, direction, performance, design, camera, AI/CGI/VFX, edit, sound, finishing and delivery. Findings become prioritized work, concrete deliverables and a relevant objekts production scope. Unseen evidence stays unassessed; author constraints remain intact. Private beta: real installed-host and independent professional evaluation are still required.",
         "developerName": "objekts",
         "category": "Creativity",
         "capabilities": [
@@ -46,10 +44,10 @@
           "Analyze only the references you can actually inspect, preserve my LOCKs, and propose a filmable revision.",
           "Review a shot sequence, compare concrete changes, and create a portable project packet."
         ],
-        "brandColor": "#0018A8",
+        "brandColor": "#242321",
         "supportURL": "https://remake.objekts.ai/support",
-        "logo": "./assets/logo.png",
-        "composerIcon": "./assets/composer-icon.png"
+        "logo": "./assets/objekts-remake-charcoal.png",
+        "composerIcon": "./assets/objekts-remake-charcoal.png"
       },
       "review": {
         "commerce": false,
@@ -60,7 +58,7 @@
               "description": "Text-only project; no attachments required.",
               "prompt": "Start a draft for my silent short \"Last Light\": a caretaker switches off an empty theatre. I have no images or script yet.",
               "tools_triggered": "remake_project_create",
-              "expected_behavior": "Create a stateless project with the supplied title and intent, revision 1. Give a concrete proposed directing choice from the text; do not claim to have viewed footage or saved an account project."
+              "expected_behavior": "Create a stateless draft from supplied title/intent. Audit the idea at idea-stage with a specific provisional judgment, consequential uncertainty and a bounded professional next step. Do not require a complete screenplay, invent viewed footage or claim persisted account storage."
             },
             {
               "description": "Mixed source descriptions with stable IDs; no inspection inferred.",
@@ -105,11 +103,11 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "Beta0.35.1: portable packets reject exact camera/sound LOCK conflicts, contradictory locks and duplicate shot IDs. Review cases use supported draft operations and actual packet fields. No1.0 or official approval claimed.",
+        "release_notes": "Beta0.37.0: production-audit method, 22 evidence-led department contracts, bounded professional work scope and source-owned charcoal brand derivative. Technical/source distribution only; real installed-host quality, G3 and official approval remain unverified.",
         "translations": {
           "ru-RU": {
-            "shortDescription": "Делайте кино сильнее",
-            "longDescription": "REMAKE by objekts помогает превратить идею, сценарий, референсы или черновой монтаж в конкретные решения по кадру, мизансцене, монтажу и звуку. Работает с доступным материалом, в том числе с одной текстовой идеей. Сохраняет решения автора и отделяет предложения от наблюдений. Подключённые инструменты организуют описания исходников, проверяют ограничения и готовят переносимый режиссёрский пакет. Публичный сервер не декодирует видео и звук, не хранит проекты между чатами и не подтверждает личность автора. Бета 0.35.1."
+            "shortDescription": "Аудит идеи и продакшна",
+            "longDescription": "REMAKE by objekts глубоко разбирает идею, сценарий, изображения, рекламу, клип, анимацию и монтаж: что действительно работает, какие проблемы подтверждаются исходниками, как их решают профессиональные отделы и какой объём работы необходим. Не предоставленные данные не объявляются дефектом. Сохраняет авторские ограничения и исходный смысл. Частная бета0.37.0; реальная проверка в хосте и независимая профессиональная оценка остаются обязательными. Официальное одобрение каталога не заявлено."
           }
         }
       }

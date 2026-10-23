@@ -1,6 +1,6 @@
 # REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-21)
 
-**Owner:** objekts · **Product release:** PRIVATE 0.35.0 · **Public stateless MCP:** 0.7.2-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Saved private release:**0.37.0 (`pluginrel_6adbcaead72081919a3cf2b3559c274c`); source/CI integration in progress · **Public stateless MCP:** 0.7.2-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -8,12 +8,12 @@
 |---|---|---|
 | G1 creator inputs | PARTIAL | Accept 0/1/2/7/35/100 creative sources in skill; independent host intake with real attachments not measured |
 | G2 media ground truth | PARTIAL | Local opt-in FFmpeg v0.26: 15/15 tests on synthetic audio/video; SHA256 source/frame, measured PTS, tamper detection; real video and AI-host visual observation NOT RUN |
-| G3 director quality | NOT TESTED | 20 permissioned projects × 8+ turns × 2 blinded independent professional reviewers required; currently zero verified |
+| G3 director quality | UNRESOLVED REAL FAILURE; independent protocol NOT RUN | 20 permissioned projects × 8+ turns × 2 blinded independent professional reviewers required; currently zero verified |
 | G4 canonical revision engine | PARTIAL | Runtime state schema 0.23, stateless MCP six tools; 17/17 canonical + 9/9 legacy synthetic tests; no verified human approval/persistent storage |
 | G5 OAuth user projects | BLOCKED | Staged fail-closed JWT verifier 18/18 synthetic, D1 owner/CAS 8/8; real identity provider absent; staging Workers subdomain disabled |
 | G6 production-ready film | NOT TESTED | Real edit/shot/sound continuity and independent producer handoff review required |
 | G7 distribution | NOT VERIFIED | Claude/Gemini GitHub source available, no official catalog receipts or independently installed end user |
-| G8 trust & brand | PARTIAL | Original v37 PNG bytes matched supplied approved URLs and are included in public candidate; publisher verification and required rights/legal attestations are still unverified |
+| G8 trust & brand | PARTIAL | Owner-selected charcoal derivative is source-owned and hash-verified; original and edit provenance recorded. Publisher verification, human brand/legal attestations and actual host display remain unverified |
 | G9 usefulness & leads | NOT MEASURED | Track real usefulness/returns and only explicit opt-in studio enquiries; private sources never forwarded by default |
 | G10 official launch | NOT SUBMITTED | All P0 and critical QA must pass, then official OpenAI submission/approval and independent install |
 
@@ -322,3 +322,16 @@ This is a substantive method correction, not evidence of trained taste, author a
 The same USER/PRIVATE plugin now has saved0.36.1 release `pluginrel_6adbc211ccbc8191bc6acb374f2b8805`. Root reviewed the complete94-file candidate against the freshly exported0.36.0 archive: only intended existing edits plus the new music-video reference, with full presentation, prompts and MCP configuration preserved. Saved readback verified the exact94-file inventory and10selected files (9byte-exact, legacy manifest JSON-semantically equal). Archive SHA256 is `f2734d52e1375406834cc81e194d6712cd5799d2d004c5e5151c0451542c0965`. This supersedes the earlier candidate-save-pending statement.
 
 PR3 source integration and exact-head remote validation are pending at this record's creation; their final receipts will be recorded separately without repeated status-only source commits. The failed source-context alternative remains an actual unresolved quality regression, not a completed good film. No installed-host demo, blind professionalG3 acceptance, trained weights, official directory approval, public server deployment or1.0 acceptance is established by the private save. Third-party source distributions still use0.36.0 until the0.36.1 source is validated.
+
+
+## Cycle0.37.0 — evidence-led production audit, source candidate (23 October2026)
+
+- Owner clarified REMAKE as deep audit of ideas, scripts, images, animation and production: candid source-specific diagnosis, professional remedy and concrete production scope. Sustained original screenplay generation is reserved for a future separate SKRIPT product; no claim that it is published.
+- Frozen complete97-file method candidate preserves77 files byte-for-byte, including starter prompts, MCP bindings and import/media helpers. Changes cover the core audit procedure, production engine, department playbook,22 contracts, handoffs and conflicting older workshop routes. Unprovided evidence is not declared a defect; no mandatory crew, artificial gaps or sales pressure.
+- Service scope connects an evidenced problem to a bounded artifact, affected unit, dependency and acceptance. Objekts opportunity follows useful work; actual studio capabilities/capacity, estimates and legal/specialist services still require real confirmation. DIY/existing-team routes remain valid.
+- Charcoal icon is an owner-selected imagegen derivative of the original studio icon, with source ownership/hash provenance. It is not a byte-exact geometry claim or a legal/publisher approval.
+- Prior0.36.1 source merged as`b29786b9f6b89cad77279f357e97f79af77ed5bc`; main package40020996183/catalog40020996286/gate40020996179 SUCCESS,100 structural/media tests and reproducible builds. Private0.36.1 readback is94 exact inventory,9 byte-exact selected files plus one JSON-semantic manifest. No prior CI result is claimed for this new candidate.
+- Owner-reported weak editorial judgment/false praise and a source-context failure remain unresolved real G3 failures. The0.37 method is a correction candidate, not trained weights, a read-all-books corpus, proof of artistic quality, actual host evaluation or professional acceptance. Private user screenplay, contactsheets and identifying source evidence remain excluded from public source.
+- This source/CI change does not deploy public runtime, alter Cloudflare protection, save Plugin Creator or submit official catalogs. Public runtime remains0.7.2-beta pending a separately reviewed copy change. Actual installed-host audits, permissioned independent professional evaluation, production handoff and publication gates remain outstanding.1.0 is not ready.
+
+**0.37.0 saved-private evidence:** existing Plugin Creator release `pluginrel_6adbcaead72081919a3cf2b3559c274c`; complete97-file ZIP SHA256`6329987a90f15a6f9299f7a1bb8a65ebceeb60df89db9156a5cd84f6034cc1fa`. Fresh saved TAR inventory97:96 files byte-exact against the frozen candidate and legacy manifest JSON-semantically equal. This verifies saved bytes only, not installed-host execution, artistic quality or official publication.

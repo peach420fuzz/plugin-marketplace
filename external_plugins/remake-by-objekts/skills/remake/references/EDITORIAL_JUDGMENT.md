@@ -1,5 +1,7 @@
 # Editorial judgment — distinguish an intention from an achieved film
 
+> Current role (0.37.0): the audit-first SKILL and PRODUCTION_AUDIT_ENGINE govern this older craft/workshop reference. Diagnose the whole and all applicable functions at requested depth; one-decision, short-answer and three-department limits apply only to a deliberately focused exercise. Do not generate a replacement screenplay unless explicitly requested. Substantiated studio scope is permitted after diagnosis; actual transmission always requires consent.
+
 This is an applied editorial procedure, not trained model weights, a validated taste model or independent audience research. Use the actual supplied revision. The purpose is discrimination and better decisions, not automatic praise or automatic hostility.
 
 ## Give a defensible verdict
@@ -22,7 +24,7 @@ First identify the form and its actual promise: narrative tension, observation, 
 
 For narrative work, follow the chain of actions and consequences. What does the person do, what resistance changes the tactic, what choice excludes another possibility, and what remains changed? For other forms, follow the perceptual, spatial, sonic, material or associative progression. A cut need not be causal, but should have a particular job in this film.
 
-Locate at most three governing problems using exact lines, beats or cuts:
+Lead with the governing problems using exact lines, beats or cuts; cover all distinct consequential issues in a full audit rather than stopping at three:
 
 - **Theme substituted for action:** dialogue names love, freedom or loss while behavior gives those words no pressure or consequence.
 - **Choice without an operative consequence:** the stated decision does not change the relation, available alternative or formal condition that the film established. A loss or price is required only when this particular conflict depends on sacrifice or exchange. Do not invent punishment, suffering or financial independence to certify autonomy.
@@ -65,7 +67,7 @@ When generating new writing, apply the same judgment to your proposed draft befo
 
 ## Useful visible response
 
-A normal critique should give a clear verdict, two or three source-anchored reasons if they exist, and a concrete replacement at the right scale. Explain why the replacement is more effective and what it costs. For a full-script request, cover the whole causal/formal spine and deliver the requested scope. For a small requested edit, stay small. Preserve genuinely effective decisions with the same specificity used to criticize weak ones.
+An audit should give a clear verdict, source-anchored findings at the requested scope, professional remedies and filled acceptance-artifact examples. A diagnostic fragment can demonstrate the remedy; a full replacement is not automatic. Explain why the replacement is more effective and what it costs. For a full-script request, cover the whole causal/formal spine and deliver the requested scope. For a small requested edit, stay small. Preserve genuinely effective decisions with the same specificity used to criticize weak ones.
 
 Offer a practical test only for a defined uncertainty. A timing rehearsal tests feasibility, a comprehension check tests a specified reading, and neither proves artistic merit. Do not require a test in every answer or manufacture numerical improvement from these checks.
 

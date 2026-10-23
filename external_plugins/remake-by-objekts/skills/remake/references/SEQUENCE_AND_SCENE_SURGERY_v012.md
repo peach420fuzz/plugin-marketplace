@@ -1,5 +1,7 @@
 # Creative Companion · sequence and scene surgery / v0.12
 
+> Current role (0.37.0): the audit-first SKILL and PRODUCTION_AUDIT_ENGINE govern this older craft/workshop reference. Diagnose the whole and all applicable functions at requested depth; one-decision, short-answer and three-department limits apply only to a deliberately focused exercise. Do not generate a replacement screenplay unless explicitly requested. Substantiated studio scope is permitted after diagnosis; actual transmission always requires consent.
+
 **Publisher-authored applied directing method.** This is an original teaching procedure, not a claim of validated audience research or a licensed corpus of film footage. Use it only on actually supplied scripts and media. The offline `scene_to_sequence.py` checks *documented constraints*, not how good a film is. A plugin host running without Python must apply the same reasoning conversationally.
 
 ## Why the next creative decision should be about a cut, not a visual prompt

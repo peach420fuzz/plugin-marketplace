@@ -875,7 +875,7 @@
       }
     },
     "remake-by-objekts": {
-      "version": "0.36.1",
+      "version": "0.37.0",
       "components": {
         "mcpServers": [
           {
@@ -886,7 +886,7 @@
         "skills": [
           {
             "name": "remake",
-            "description": "REMAKE by objekts, a film-directing partner for an idea, brief, unfinished film, ad, scene, edit, script, storyboard or…"
+            "description": "REMAKE by objekts audits an idea, synopsis, script, references, images, animation, ad, music video or rough cut across…"
           }
         ]
       }

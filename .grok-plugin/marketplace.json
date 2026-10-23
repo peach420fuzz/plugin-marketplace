@@ -626,7 +626,7 @@
     },
     {
       "name": "remake-by-objekts",
-      "description": "REMAKE by objekts — directing workshop and source-aware continuity tools for arbitrary creator inputs.",
+      "description": "REMAKE by objekts audits ideas, scripts, images and cuts across creative and production functions. Source-grounded diagnosis, professional remedies, dependencies and bounded production scope; no automatic studio transmission.",
       "category": "productivity",
       "source": {
         "type": "local",
@@ -635,12 +635,23 @@
       "homepage": "https://remake.objekts.ai/",
       "keywords": [
         "REMAKE by objekts",
-        "objekts REMAKE"
+        "objekts",
+        "production audit",
+        "script analysis",
+        "film critique",
+        "production readiness",
+        "department review",
+        "music video",
+        "advertising",
+        "animation",
+        "AI VFX",
+        "CGI",
+        "production brief"
       ],
       "domains": [
         "remake.objekts.ai"
       ],
-      "version": "0.21.0",
+      "version": "0.37.0",
       "author": "objekts"
     }
   ]

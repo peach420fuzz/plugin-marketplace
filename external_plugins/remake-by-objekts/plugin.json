@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.36.1",
-  "description": "REMAKE by objekts — professional source-grounded film direction for any mix of creator-provided ideas, images, scripts, storyboards, audio or video. No predetermined media count, screenplay prerequisite, or compulsory studio handoff.",
+  "version": "0.37.0",
+  "description": "REMAKE by objekts — rigorous creative and production audits: substantiated weaknesses, missing work, department dependencies and professional remedies. Turns findings into a concrete production scope. Private beta; actual host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",
     "email": "salute@objekts.ai",
@@ -12,26 +12,24 @@
   "keywords": [
     "REMAKE by objekts",
     "objekts",
-    "remake film",
-    "film direction",
-    "AI director",
-    "creative revision",
-    "script development",
-    "visual storytelling",
-    "storyboard",
-    "shot list",
-    "advertising film",
+    "production audit",
+    "script analysis",
+    "film critique",
+    "production readiness",
+    "department review",
+    "music video",
+    "advertising",
+    "animation",
     "AI VFX",
     "CGI",
-    "production brief",
-    "film education"
+    "production brief"
   ],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "REMAKE by objekts",
-        "shortDescription": "Direct films from the material you actually have.",
-        "longDescription": "REMAKE by objekts, created by the objekts film, advertising and AI/VFX/CGI studio, reviews the user’s available creative material: an idea, any number of images, written scenes, video, audio, or mixed references. It turns observed evidence and author intentions into meaningful directing choices, continuity locks, shot construction, montage and a portable brief. The public MCP provides stateless metadata inventory, exact keyed-lock checks and source-bound packet compilation. It does not automatically see media, store private projects, perform human studio review or submit enquiries.",
+        "shortDescription": "Audit your film production",
+        "longDescription": "REMAKE by objekts reviews ideas, synopses, scripts, images, ads, music videos, animation and cuts. It explains what works, what fails, what is not yet developed and how professional departments resolve it: writing, direction, performance, design, camera, AI/CGI/VFX, edit, sound, finishing and delivery. Findings become prioritized work, concrete deliverables and a relevant objekts production scope. Unseen evidence stays unassessed; author constraints remain intact. Private beta: real installed-host and independent professional evaluation are still required.",
         "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
         "category": "Productivity",
         "capabilities": [
@@ -42,11 +40,14 @@
         "privacyPolicyURL": "https://remake.objekts.ai/privacy",
         "termsOfServiceURL": "https://remake.objekts.ai/terms",
         "defaultPrompt": [
-          "Help me direct this idea using only the material I provide; tell me what is missing.",
-          "Analyze my references, preserve all LOCKs and propose one filmable directing change.",
-          "Turn the approved material into shot decisions and an independently usable brief."
+          "Develop my film idea without requiring images or a script; identify one meaningful directorial choice.",
+          "Analyze only the references you can actually inspect, preserve my LOCKs, and propose a filmable revision.",
+          "Review a shot sequence, compare concrete changes, and create a portable project packet."
         ],
-        "brandColor": "#0018A8"
+        "brandColor": "#242321",
+        "supportURL": "https://remake.objekts.ai/support",
+        "logo": "./assets/objekts-remake-charcoal.png",
+        "composerIcon": "./assets/objekts-remake-charcoal.png"
       }
     }
   },

@@ -1,5 +1,7 @@
 # The continuous directing session — eight-turn rehearsal v0.15
 
+> Current role (0.37.0): the audit-first SKILL and PRODUCTION_AUDIT_ENGINE govern this older craft/workshop reference. Diagnose the whole and all applicable functions at requested depth; one-decision, short-answer and three-department limits apply only to a deliberately focused exercise. Do not generate a replacement screenplay unless explicitly requested. Substantiated studio scope is permitted after diagnosis; actual transmission always requires consent.
+
 Scope clarification: the usual one-decision turn is a collaboration rhythm, not a cap on a requested whole-script critique or rewrite. Apply `EDITORIAL_JUDGMENT.md`: preserve the author’s identity and explicit decisions, but do not treat approval as proof of quality or postpone a necessary structural repair through eight cosmetic turns.
 
 **Priority:** develop one real user-owned film over multiple changes. This rule outranks introductory lessons, optional video review and plugin distribution. Creative output should be good filmmaking instruction, not merely a trace of departments. The worked dialogues under `examples/full_dialogue/` are original **fictional** calibrated examples, not users or evaluation results.
@@ -25,7 +27,7 @@ Use no more than one high-leverage decision in a typical turn:
 2. Trace **entry state → playable action → exit state → what an uninformed viewer can infer**. Film does not need explicit explanation where ambiguity is intentional.
 3. State the pivotal directorial choice and its aesthetic price. For advertising: add **source-grounded product action**, not an invented brand promise or compulsory CTA.
 4. Only if genuinely distinct, give alternate **mechanisms**: revealed choice vs revealed consequence; continuous blocking vs motivated ellipsis; prelap sound vs scene-bound sound. Different adjectives or model prompts are not alternate treatments.
-5. Show how selected meaning goes to at most 3 relevant departments. A storyboard needs gaze/contacts/geography; a scene description that cannot be boarded is not a finished directing lesson.
+5. Show how selected meaning affects the relevant departments. A focused exercise may show three; a full audit must cover the applicable dependencies. A storyboard needs gaze/contacts/geography; a scene description that cannot be boarded is not a finished directing lesson.
 6. Preserve earlier approvals and rejections. Ask only one consequential question if necessary; otherwise generate a useful miniature/exercise.
 
 ## The shot contract

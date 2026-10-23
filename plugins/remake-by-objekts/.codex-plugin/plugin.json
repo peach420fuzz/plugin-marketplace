@@ -1,8 +1,8 @@
 {
   "interface": {
     "displayName": "REMAKE by objekts",
-    "shortDescription": "Make stronger films",
-    "longDescription": "REMAKE by objekts helps develop film ideas and revise shots, blocking, editing and sound from creator-provided material. It preserves author constraints, separates observations from proposals and suggests practical tests. The public MCP provides stateless draft and source-reference checks; real host perception, independent professional quality and authenticated cross-session storage remain separate acceptance requirements.",
+    "shortDescription": "Audit your film production",
+    "longDescription": "REMAKE by objekts reviews ideas, synopses, scripts, images, ads, music videos, animation and cuts. It explains what works, what fails, what is not yet developed and how professional departments resolve it: writing, direction, performance, design, camera, AI/CGI/VFX, edit, sound, finishing and delivery. Findings become prioritized work, concrete deliverables and a relevant objekts production scope. Unseen evidence stays unassessed; author constraints remain intact. Private beta: real installed-host and independent professional evaluation are still required.",
     "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
     "category": "Productivity",
     "capabilities": [
@@ -17,12 +17,14 @@
       "Analyze only the references you can actually inspect, preserve my LOCKs, and propose a filmable revision.",
       "Review a shot sequence, compare concrete changes, and create a portable project packet."
     ],
-    "brandColor": "#0018A8",
-    "supportURL": "https://remake.objekts.ai/support"
+    "brandColor": "#242321",
+    "supportURL": "https://remake.objekts.ai/support",
+    "logo": "./assets/objekts-remake-charcoal.png",
+    "composerIcon": "./assets/objekts-remake-charcoal.png"
   },
   "name": "objekts-creative-companion",
-  "version": "0.36.1",
-  "description": "REMAKE by objekts — practical film direction first, evidence-grounded visuals, meaningful scene/edit decisions and safe draft revisions. Private beta; real installed-host quality remains unverified.",
+  "version": "0.37.0",
+  "description": "REMAKE by objekts — rigorous creative and production audits: substantiated weaknesses, missing work, department dependencies and professional remedies. Turns findings into a concrete production scope. Private beta; actual host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",
     "email": "salute@objekts.ai",
@@ -31,19 +33,17 @@
   "keywords": [
     "REMAKE by objekts",
     "objekts",
-    "remake film",
-    "film direction",
-    "AI director",
-    "creative revision",
-    "script development",
-    "visual storytelling",
-    "storyboard",
-    "shot list",
-    "advertising film",
+    "production audit",
+    "script analysis",
+    "film critique",
+    "production readiness",
+    "department review",
+    "music video",
+    "advertising",
+    "animation",
     "AI VFX",
     "CGI",
-    "production brief",
-    "film education"
+    "production brief"
   ],
   "homepage": "https://remake.objekts.ai/",
   "repository": "https://github.com/peach420fuzz/plugin-marketplace/tree/main/plugins/remake-by-objekts",
