@@ -1,5 +1,7 @@
 # Editorial judgment — distinguish an intention from an achieved film
 
+> 0.38 reading rule: these fields are the internal analysis/handoff completeness check. The main client review is a coherent argument about the whole, using ordinary language; do not print repeated source/operation/acceptance labels, IDs or a 22-row ledger by default. Technical schedules belong in an explicitly useful appendix. Current SKILL and PRODUCTION_AUDIT_ENGINE govern presentation.
+
 > Current role (0.37.0): the audit-first SKILL and PRODUCTION_AUDIT_ENGINE govern this older craft/workshop reference. Diagnose the whole and all applicable functions at requested depth; one-decision, short-answer and three-department limits apply only to a deliberately focused exercise. Do not generate a replacement screenplay unless explicitly requested. Substantiated studio scope is permitted after diagnosis; actual transmission always requires consent.
 
 This is an applied editorial procedure, not trained model weights, a validated taste model or independent audience research. Use the actual supplied revision. The purpose is discrimination and better decisions, not automatic praise or automatic hostility.

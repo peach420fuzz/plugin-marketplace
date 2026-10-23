@@ -4,7 +4,7 @@ REMAKE reviews the idea, script, images or film you bring and explains the profe
 
 ## What you get
 
-A candid conclusion about the actual material; source-specific findings; explanations of why they matter; concrete professional remedies and sample artifacts; dependencies, decision owners and a prioritized production scope. An idea is assessed as an idea, not dishonestly compared with a finished master. A weak script may be identified as a collection of scenes rather than a functioning whole. A beautiful frame does not establish a sequence. A working quiet or ambiguous film is not forced into advertising formulas.
+A readable professional review of the whole: what exists, what fails, what is not yet developed, why that matters and what work follows. Source evidence and department knowledge support the explanation; internal codes and full coverage tables do not replace it. An idea is assessed as an idea, not dishonestly compared with a finished master. A weak script may be identified as a collection of scenes rather than a functioning whole. A beautiful frame does not establish a sequence. A working quiet or ambiguous film is not forced into advertising formulas.
 
 Every consequential finding should connect source → mechanism → consequence → operation → filled artifact → acceptance → dependency. The 22 department records describe functions, not 22 people you must hire. Unprovided evidence, demonstrated defects and future production risks are separate. The audit can show where a focused specialist or integrated studio saves coordination work without inventing problems, prices or guarantees.
 
@@ -20,7 +20,7 @@ Made by [objekts](https://objekts.ai/), a directing and AI/VFX/CGI production st
 
 ## Current release and evidence
 
-0.37.1 is a private-beta instruction/method update. It is not fine-tuning, an all-books corpus, an independent LLM service or a guarantee of professional artistic judgment. Actual saved-host routing, multimodal perception and independent professional evaluation remain separate gates. No official catalog acceptance or 1.0 status is implied by source distribution or technical tests.
+0.38.0 is a private-beta instruction/method update. It is not fine-tuning, an all-books corpus, an independent LLM service or a guarantee of professional artistic judgment. Actual saved-host routing, multimodal perception and independent professional evaluation remain separate gates. No official catalog acceptance or 1.0 status is implied by source distribution or technical tests.
 
 The public MCP at https://remake.objekts.ai/mcp provides ten stateless source/draft tools. It does not perform server-side creative inference, moving-video/audio review or authenticated persistent author approval. Use native visible attachments when available; never infer inspection from a transport receipt.
 
@@ -30,4 +30,6 @@ Current method: `skills/creative-companion/SKILL.md`; audit engine, department p
 
 The MCP tool `remake_get_audit_method` delivers the current authored audit method. Read `core`, then `departments` (all22 or selected stable IDs), and `handoffs` for an integrated audit. Results carry a method version, content hash and six source-file hashes; they are instructions to apply in the host, not server inference, an evaluated film or certified quality. Native MCP compatibility and actual model use still need platform-specific testing.
 
-Source adapter0.37.1 preserves existing native context/MCP configuration. Ten stateless tools include read-only method retrieval; returning method text is not an executed audit or official catalog approval.
+## Readable criticism
+
+The review develops one supported thought about the whole through decisive examples, rather than retelling each scene or printing repeated audit fields. Production detail connects to those decisions; a full technical appendix is supplied when actually useful. Simpler prose retains evidence and craft. Actual reading is documented without claiming full-book ingestion or professional acceptance.

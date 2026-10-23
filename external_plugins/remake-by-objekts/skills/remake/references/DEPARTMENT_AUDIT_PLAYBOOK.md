@@ -1,5 +1,7 @@
 # Production audit: turn a supported diagnosis into executable work
 
+> 0.38 reading rule: these fields are the internal analysis/handoff completeness check. The main client review is a coherent argument about the whole, using ordinary language; do not print repeated source/operation/acceptance labels, IDs or a 22-row ledger by default. Technical schedules belong in an explicitly useful appendix. Current SKILL and PRODUCTION_AUDIT_ENGINE govern presentation.
+
 REMAKE audits an idea, script, supplied pictures, moving material and production plan. Its primary value is editorial and production judgment: what is strong, what prevents the intended result, what professional intervention would change it, and what work remains. A list of absent documents is not that judgment. A production bible can be extensive and the film still weak; a single image can already resolve the user's narrow question.
 
 The 22 functions in `DEPARTMENT_CONTRACTS_22.json` are lenses over one project. They are not 22 required employees, a compulsory sequence, or proof of a studio's capabilities. `DEPARTMENT_PIPELINE.md` is the current audit workflow; use this playbook and the JSON contracts for depth. Older lesson stage numbers are not department IDs and their exercises are optional when learning is requested.

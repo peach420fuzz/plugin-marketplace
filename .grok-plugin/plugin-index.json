@@ -875,7 +875,7 @@
       }
     },
     "remake-by-objekts": {
-      "version": "0.37.1",
+      "version": "0.38.0",
       "components": {
         "mcpServers": [
           {
@@ -886,7 +886,7 @@
         "skills": [
           {
             "name": "remake",
-            "description": "REMAKE by objekts audits an idea, synopsis, script, references, images, animation, ad, music video or rough cut across…"
+            "description": "REMAKE by objekts gives a clear, candid professional review of an idea, script, images, ad, music video, animation or c…"
           }
         ]
       }
