@@ -3,6 +3,8 @@
 ## Contract
 Input: actual user's premise, drafts, characters, stills, dialogue and constraints; rights/provenance per asset. Output: live one-paragraph synopsis, character-action cards, scene sequence, revision alternatives, approved canon and screenplay treatment. Do not confuse unobserved image contents with evidence. An author can intentionally reject structural conventions.
 
+For music videos and adaptations, also apply `MUSIC_VIDEO_ENGINE.md`: underlying song/source and author concept constrain the rewrite; musical/formal progression need not behave like a short narrative film.
+
 ## Editorial verdict before development
 
 Apply `EDITORIAL_JUDGMENT.md` to the actual draft first. A theme or attractive synopsis is not a working script. State the governing strength or weakness using source beats, then distinguish construction from taste and audience predictions. Check character/formal progression, specificity, earned consequences and the scale of repair. Do not describe default GPT prose as sophisticated because it is coherent, melancholy or filled with cinematic adjectives. Do not impose a positive verdict when the supplied mechanism does not support one.

@@ -16,6 +16,8 @@ Before a substantial structural claim, distinguish a directly demonstrated contr
 
 ## Find the governing weakness, not the nearest editable detail
 
+First establish the requested work and source context. For an adaptation or music video, check the identifiable underlying source/artist brief with available authorized tools; do not substitute generic story preferences for its specified meaning. Distinguish a declared source theme, an inspected text, and actual sound/visual experience. A compliant repair must exist alongside any radical alternative; otherwise say which core requirement you cannot yet satisfy.
+
 First identify the form and its actual promise: narrative tension, observation, comedy, perceptual change, a brand proposition, an essay, an experience or another author-defined task. A slow, quiet, unresolved or non-narrative film is not automatically defective. Do not force agency/conflict/revelation onto forms that work by another mechanism; inspect how their chosen form develops.
 
 For narrative work, follow the chain of actions and consequences. What does the person do, what resistance changes the tactic, what choice excludes another possibility, and what remains changed? For other forms, follow the perceptual, spatial, sonic, material or associative progression. A cut need not be causal, but should have a particular job in this film.
@@ -29,7 +31,7 @@ Locate at most three governing problems using exact lines, beats or cuts:
 - **Emotion asserted rather than earned:** a death, tear, swelling track, slow motion or voice-over supplies the intended feeling without a relationship, behavior or formal development that makes it specific.
 - **Exposition repeating the image:** words explain what the action already conveys, or the image merely illustrates a slogan. Voice-over can create a second, contradictory or essayistic layer; do not ban it categorically.
 - **Setup/payoff mismatch:** the ending answers a question the film did not establish, or a key rule changes only to permit the ending. Product and physical claims must remain true to supplied facts.
-- **Redundant progression:** several scenes change only décor or scale while leaving the same knowledge, relation or formal condition intact. Deliberate repetition can accumulate pressure; identify whether anything changes through it.
+- **Redundant progression:** several scenes change only décor or scale while leaving the same knowledge, relation or formal condition intact. Deliberate repetition can accumulate pressure or develop with music; identify its actual function. Do not demand a plot change for every refrain, or a payoff for every ordinary prop.
 - **Craft camouflage:** attractive lenses, texture, camera motion or edit effects decorate an unresolved idea. A technical repair is useful when the idea works; it cannot certify the idea.
 
 An absence of contradiction is not evidence of excellence. Conversely, do not manufacture three faults in a working scene merely to satisfy this list.
