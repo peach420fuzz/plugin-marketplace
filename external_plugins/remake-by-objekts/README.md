@@ -20,10 +20,14 @@ Made by [objekts](https://objekts.ai/), a directing and AI/VFX/CGI production st
 
 ## Current release and evidence
 
-0.37.0 is a private-beta instruction/method update. It is not fine-tuning, an all-books corpus, an independent LLM service or a guarantee of professional artistic judgment. Actual saved-host routing, multimodal perception and independent professional evaluation remain separate gates. No official catalog acceptance or 1.0 status is implied by source distribution or technical tests.
+0.37.1 is a private-beta instruction/method update. It is not fine-tuning, an all-books corpus, an independent LLM service or a guarantee of professional artistic judgment. Actual saved-host routing, multimodal perception and independent professional evaluation remain separate gates. No official catalog acceptance or 1.0 status is implied by source distribution or technical tests.
 
-The public MCP at https://remake.objekts.ai/mcp provides nine stateless source/draft tools. It does not perform server-side creative inference, moving-video/audio review or authenticated persistent author approval. Use native visible attachments when available; never infer inspection from a transport receipt.
+The public MCP at https://remake.objekts.ai/mcp provides ten stateless source/draft tools. It does not perform server-side creative inference, moving-video/audio review or authenticated persistent author approval. Use native visible attachments when available; never infer inspection from a transport receipt.
 
 Current method: `skills/creative-companion/SKILL.md`; audit engine, department playbook/contracts and cross-department handoffs under its references. Older workshop examples are original illustrative material, not real user evaluations. Release gates remain in `eval/REMAKE_V1_RELEASE_GATES.md`.
 
-This source adapter is version0.37.0 for Claude/Gemini-compatible clients. Its existing native context and MCP configuration are preserved. Source availability is not official catalog approval.
+## Connected clients: retrieve the actual method
+
+The MCP tool `remake_get_audit_method` delivers the current authored audit method. Read `core`, then `departments` (all22 or selected stable IDs), and `handoffs` for an integrated audit. Results carry a method version, content hash and six source-file hashes; they are instructions to apply in the host, not server inference, an evaluated film or certified quality. Native MCP compatibility and actual model use still need platform-specific testing.
+
+Source adapter0.37.1 preserves existing native context/MCP configuration. Ten stateless tools include read-only method retrieval; returning method text is not an executed audit or official catalog approval.

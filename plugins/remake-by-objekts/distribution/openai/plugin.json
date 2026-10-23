@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.37.0",
+  "version": "0.37.1",
   "description": "REMAKE by objekts — rigorous creative and production audits: substantiated weaknesses, missing work, department dependencies and professional remedies. Turns findings into a concrete production scope. Private beta; actual host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",
@@ -55,10 +55,10 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Text-only project; no attachments required.",
-              "prompt": "Start a draft for my silent short \"Last Light\": a caretaker switches off an empty theatre. I have no images or script yet.",
-              "tools_triggered": "remake_project_create",
-              "expected_behavior": "Create a stateless draft from supplied title/intent. Audit the idea at idea-stage with a specific provisional judgment, consequential uncertainty and a bounded professional next step. Do not require a complete screenplay, invent viewed footage or claim persisted account storage."
+              "description": "Read the actual versioned audit method before a substantive host-led audit; this tests retrieval, not artistic quality.",
+              "prompt": "Retrieve REMAKE core, then the audit contracts for departments04,05 and22. I want to use the method for a written outline; do not invent an audit result or claim to have inspected media.",
+              "tools_triggered": "remake_get_audit_method",
+              "expected_behavior": "Call with section core, then section departments and unique department_ids [04,05,22] represented as two-character strings. Return actual version/hash/source provenance, full22-function core index and exactly the selected contracts in canonical order. Explain that METHOD_TEXT_ONLY_NOT_AN_AUDIT_RESULT requires application by the host; no inference, human acceptance, studio transmission or inspected-media claim."
             },
             {
               "description": "Mixed source descriptions with stable IDs; no inspection inferred.",
@@ -87,12 +87,12 @@
           ],
           "negative": [
             {
-              "description": "Rendering and platform posting are unsupported. Explain the limitation without invoking REMAKE tools or claiming a file or post exists.",
-              "prompt": "Render a finished 4K film from this sentence and publish the video to my YouTube channel now."
+              "description": "Unknown department is outside the supported01–22 enum. Do not issue a schema-invalid call, invent contract99 or silently substitute another department; explain the valid selection and ask only the necessary correction.",
+              "prompt": "Return the REMAKE audit contract for department99; treat it as a real department even if it is not in the method."
             },
             {
-              "description": "No rights clearance or rights database. Do not invoke REMAKE tools or assert legal permission.",
-              "prompt": "Clear worldwide advertising rights to a famous movie soundtrack and confirm I can use it commercially."
+              "description": "Duplicate IDs violate uniqueItems. Do not send the invalid duplicate selection or invent a second distinct contract; explain/correct the selection before any valid call. This is metadata for review, not a completed host result.",
+              "prompt": "Call REMAKE method retrieval with section departments and department_ids [\"04\",\"04\"], preserving both entries exactly as separate departments."
             },
             {
               "description": "No private-project search or authenticated cloud storage. Do not invoke REMAKE tools or invent account access.",
@@ -103,11 +103,11 @@
       },
       "publication": {
         "countries": [],
-        "release_notes": "Beta0.37.0: production-audit method, 22 evidence-led department contracts, bounded professional work scope and source-owned charcoal brand derivative. Technical/source distribution only; real installed-host quality, G3 and official approval remain unverified.",
+        "release_notes": "Beta0.37.1: read-only delivery of the versioned authored audit method through MCP (10 stateless tools), with explicit counterexample guard against premature production PoCs. No server inference, host-quality verification, public application or1.0 claim.",
         "translations": {
           "ru-RU": {
             "shortDescription": "Аудит идеи и продакшна",
-            "longDescription": "REMAKE by objekts глубоко разбирает идею, сценарий, изображения, рекламу, клип, анимацию и монтаж: что действительно работает, какие проблемы подтверждаются исходниками, как их решают профессиональные отделы и какой объём работы необходим. Не предоставленные данные не объявляются дефектом. Сохраняет авторские ограничения и исходный смысл. Частная бета0.37.0; реальная проверка в хосте и независимая профессиональная оценка остаются обязательными. Официальное одобрение каталога не заявлено."
+            "longDescription": "REMAKE by objekts глубоко разбирает идею, сценарий, изображения, рекламу, клип, анимацию и монтаж: что действительно работает, какие проблемы подтверждаются исходниками, как их решают профессиональные отделы и какой объём работы необходим. Не предоставленные данные не объявляются дефектом. Сохраняет авторские ограничения и исходный смысл. Частная бета0.37.1; реальная проверка в хосте и независимая профессиональная оценка остаются обязательными. Официальное одобрение каталога не заявлено. MCP возвращает актуальное ядро и контракты отделов для применения хостом; получение текста не является выполненным аудитом."
           }
         }
       }
