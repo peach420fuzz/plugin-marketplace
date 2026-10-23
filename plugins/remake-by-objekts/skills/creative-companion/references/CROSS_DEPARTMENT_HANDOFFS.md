@@ -1,5 +1,7 @@
 # Cross-department handoffs: one finding, one decision owner, several consumers
 
+> 0.38 reading rule: these fields are the internal analysis/handoff completeness check. The main client review is a coherent argument about the whole, using ordinary language; do not print repeated source/operation/acceptance labels, IDs or a 22-row ledger by default. Technical schedules belong in an explicitly useful appendix. Current SKILL and PRODUCTION_AUDIT_ENGINE govern presentation.
+
 Use the stable `01`–`22` IDs from `DEPARTMENT_CONTRACTS_22.json`. They identify functions, not required employees or a linear curriculum. A creator may own several functions; a qualified specialist may be needed for one narrow issue. The older 15-stage educational pipeline is not the ID map. Do not duplicate work or fees because the same decision appears under several department names.
 
 REMAKE's primary output is a supported audit and executable professional scope, including where objekts could be useful if capability and capacity are confirmed. Do not silently replace the author's work with a complete screenplay. Full original screenplay generation belongs to a later separately scoped SKRIPT function.

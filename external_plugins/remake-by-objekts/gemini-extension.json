@@ -1,7 +1,7 @@
 {
   "name": "remake-by-objekts",
-  "version": "0.37.1",
-  "description": "Evidence-led creative and production audit: source-specific defects, professional remedies, dependencies and bounded work scope by objekts.",
+  "version": "0.38.0",
+  "description": "Clear, evidence-led film and production reviews: what exists, what does not work and what professional work comes next. By objekts.",
   "contextFileName": "GEMINI.md",
   "mcpServers": {
     "remake": {

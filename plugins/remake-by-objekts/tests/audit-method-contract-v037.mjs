@@ -21,7 +21,7 @@ const rpc=async args=>{
  assert.equal(r.status,200);return (await r.json()).result;
 };
 await test('core delivers full canonical text, engine and 22-function index',()=>{
- const r=getAuditMethod({section:'core'});assert.equal(r.method_version,'0.37.1');assert.equal(r.core,readFileSync(join(canonical,expectedSources[0]),'utf8'));assert.equal(r.audit_engine,readFileSync(join(canonical,expectedSources[1]),'utf8'));assert.deepEqual(r.department_index.map(d=>d.id),ids);assert.equal(r.server_inference,false);assert.equal(r.host_application_required,true);assert.equal(r.execution,'METHOD_TEXT_ONLY_NOT_AN_AUDIT_RESULT');
+ const r=getAuditMethod({section:'core'});assert.equal(r.method_version,'0.38.0');assert.equal(r.core,readFileSync(join(canonical,expectedSources[0]),'utf8'));assert.equal(r.audit_engine,readFileSync(join(canonical,expectedSources[1]),'utf8'));assert.deepEqual(r.department_index.map(d=>d.id),ids);assert.equal(r.server_inference,false);assert.equal(r.host_application_required,true);assert.equal(r.execution,'METHOD_TEXT_ONLY_NOT_AN_AUDIT_RESULT');
 });
 await test('all departments returns all 22 exact canonical contracts',()=>{
  const r=getAuditMethod({section:'departments'});assert.deepEqual(r.returned_department_ids,ids);assert.deepEqual(r.omitted_department_ids,[]);assert.deepEqual(r.contract,JSON.parse(readFileSync(join(canonical,expectedSources[2]),'utf8')));

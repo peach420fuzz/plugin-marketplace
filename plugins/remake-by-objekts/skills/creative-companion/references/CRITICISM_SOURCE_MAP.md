@@ -1,0 +1,32 @@
+# Critical reading behind the clear-review method
+
+Research performed 23–24 October 2026. These are bounded readings of named publications, not model fine-tuning, a claim to have read all criticism, or endorsement by their publishers. REMAKE's instructions and examples are independently written. No source article, translated handout, magazine issue or screenplay is bundled here. Films discussed by the articles were not watched for this research.
+
+## Cahiers du cinéma: public editorial essays
+
+The main magazine website could not be opened with the available research tool. The following are the institution's own accessible essays on Google Arts & Culture. Their embedded magazine excerpts do not constitute reading the original full articles or issues.
+
+- [The Fabelmans](https://artsandculture.google.com/story/wwWRbNOemm4wQQ): the substantive public essay was read in full. It connects the desire to control an image with an unintended discovery. Our application: follow how an image's meaning changes, instead of grading isolated departments. The page has inconsistent issue numbering; no issue number is relied upon here.
+- [Summer with Monika](https://artsandculture.google.com/story/iQWhEmKdEFLkWQ): the substantive public essay and displayed attributed excerpts were read. Related journeys let camera movement and a changing relationship illuminate each other. Our application: compare related moments to explain development. Neither the complete Godard essay nor the cited magazine issues were read; the French original was not independently checked.
+- [Megalopolis](https://artsandculture.google.com/story/AAURA6rkag6qlQ): the whole substantive public essay was read. It considers the participation a work asks of its audience. Our application: identify a project's own organizing principle before imposing conventional realism. This does not exempt an unclear choice from explanation.
+- [How Do You Create a Cinema Magazine?](https://artsandculture.google.com/story/NwWhj4W_qrYEmw): the whole substantive process description was read. Our application: separate the completeness pass from the language and comprehension pass. No unpublished editorial guide was accessed.
+
+## Reviews and editorial guidance
+
+- [Nick James on Perfect Days, Sight and Sound, 22 February 2024](https://www.bfi.org.uk/sight-and-sound/reviews/perfect-days-wim-wenders-captures-beauty-everyday-his-best-fiction-film-since-wings-desire): the full open review was read. It supports an overall judgment through routines, performance, music and accumulating details. Our application: explain why a familiar device works or fails here; familiarity alone is not a diagnosis. Referenced books were not read.
+- [Roger Luckhurst on The Zone of Interest, Sight and Sound, 2 February 2024](https://www.bfi.org.uk/sight-and-sound/reviews/zone-interest-second-look-review-horrors-auschwitz-are-ever-present-jonathan-glazers-haunting-family-drama): the full open review was read. Image boundaries, offscreen sound and domestic activity serve one argument. Our application: explain how specialties work together inside a meaningful choice, rather than displaying a departmental inventory. The novel was not read for this work.
+- [Sight and Sound: How to pitch](https://www.bfi.org.uk/sight-and-sound/how-to-pitch): public editorial guidance was read. Our application: make a specific argument accessible without flattening its subject. This is a magazine's guidance, not a universal production-review standard.
+
+## Analysis and development feedback
+
+- [Film Analysis, University of Toronto](https://advice.writing.utoronto.ca/types-of-writing/film-analysis/): the full substantive guide was read. Our application: explain how choices create meaning and support a thesis with specific details; non-narrative work can have another organizing principle. Books in its further-reading list were not read.
+- [Film Analysis, UNC Writing Center](https://writingcenter.unc.edu/tips-and-tools/film-analysis/): the full substantive guide was consulted. No text, translation or adapted handout is included; its CC BY-NC-ND terms do not license a commercial adaptation. Our separate editorial check asks whether a reader can state the review's central judgment and next decision. Embedded clips and cited books were not studied.
+- [Matt Tabak: Screenplay coverage example](https://screenwritingconsultant.com/blog/script-coverage-example/): the displayed sample and explanatory sections were read. The provider explicitly identifies the sample as fictional. Our application: distinguish acquisition coverage from help developing a draft, and support a structural note with actual recurring actions. No real client script was accessed; credentials and industry-wide claims were not independently verified.
+- [Coverage, Ink.: Action Sample](https://coverageink.com/wp-content/samples/ActionSample.pdf): extracted substantive text through pages 1–14 was read; page 15 was not separately inspected. Our application: examine the assumptions supporting a central situation. The sample also contains inconsistent character information and narrow prescriptions; neither these nor its unverified technical assertions are adopted as rules. The underlying screenplay was not read.
+- [Australian Writers' Guild: Script Assessment](https://awg.com.au/Script-Assessment/) and [Austin Film Festival: Coverage Program](https://austinfilmfestival.com/coverage-program/): their substantive service descriptions were read. They establish different uses and report formats, not a compulsory format for all reviews. Private reports and member-only processes were not accessed.
+
+## What changed in REMAKE
+
+The resulting product method is our own: identify the actual material and its organizing question; test a coherent judgment against related details; distinguish an ineffective choice from undeveloped work and unavailable evidence; explain the professional decisions in their real order; edit the review for comprehension. The 22-function audit remains an internal completeness check. It is not the default reading order.
+
+These sources teach forms of reasoning, not a critic's persona to imitate. They do not prove that any REMAKE review is accurate or useful. That requires source-specific review, challenge, revision and real creator feedback. Original fictional teaching examples are in `WRITING_A_CLEAR_REVIEW.md` and must never be presented as client cases or audience tests.
