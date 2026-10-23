@@ -1,25 +1,33 @@
 # REMAKE by objekts
 
-REMAKE helps turn ideas, scripts, reference images and rough cuts into concrete directing, editing, blocking and sound decisions. It works from any available material, including a text-only idea, and keeps author-approved choices separate from proposed changes.
+REMAKE reviews the idea, script, images or film you bring and explains the professional work needed to make it function as intended. It audits creative construction and production across writing, direction, performance, design, camera, animation, AI/CGI/VFX, editing, sound, finishing and delivery.
 
-This is beta 0.36.1, using the same Director Mode instructions as the existing REMAKE plugin and the public stateless MCP 0.7.2-beta. It is not release 1.0. No external professional quality certification or persistent authenticated accounts are claimed.
+## What you get
 
-## Connection and privacy
+A candid conclusion about the actual material; source-specific findings; explanations of why they matter; concrete professional remedies and sample artifacts; dependencies, decision owners and a prioritized production scope. An idea is assessed as an idea, not dishonestly compared with a finished master. A weak script may be identified as a collection of scenes rather than a functioning whole. A beautiful frame does not establish a sequence. A working quiet or ambiguous film is not forced into advertising formulas.
 
-The only remote service is `https://remake.objekts.ai/mcp`. The nine stateless tools support draft project JSON, validation and explicitly selected image/file handoffs. No API key is required. Files are sent only when selected and authorized by the creator; do not send secret URLs or tokens. The server does not decode video/audio, perform its own model inference, store projects, contact the studio or authenticate author approvals. The host model uses its own media capabilities and must distinguish inspected material from descriptions and proposals.
+Every consequential finding should connect source → mechanism → consequence → operation → filled artifact → acceptance → dependency. The 22 department records describe functions, not 22 people you must hire. Unprovided evidence, demonstrated defects and future production risks are separate. The audit can show where a focused specialist or integrated studio saves coordination work without inventing problems, prices or guarantees.
 
-No hooks, shell execution, installation scripts or telemetry are included in this adapter. Optional reference documents are loaded only when relevant.
+## What to provide
 
-## Platforms
+An idea, synopsis, script, several images, storyboard, rough cut or animation are all valid starting points. No mandatory number of files. Include the intended format/use and important constraints if known. For a music video or adaptation, identify the actual source and intended version. REMAKE should work from the accessible material first and ask only the question that controls the next meaningful decision. It cannot evaluate unheard sound or motion from stills.
 
-Claude/Grok: standard `.claude-plugin/plugin.json`, `.mcp.json`, and `skills/remake/`. Gemini CLI: `gemini-extension.json` and `GEMINI.md`. Installation or GitHub source availability is separate from official directory review and publication.
+For a comprehensive review, ask for the whole-work diagnosis, applicable department findings, acceptance-artifact examples and ordered scope. A narrow follow-up can focus on the changed choice and its dependencies. REMAKE does not automatically rewrite an entire screenplay when an audit is requested. A separate future SKRIPT product is planned for sustained screenplay authorship; it is not claimed published here.
 
-## Publisher and support
+## Studio and privacy
 
-Published for objekts by the existing owner account `peach420fuzz`. The repository is a personal-account fork; no GitHub organization ownership is asserted. Product: https://remake.objekts.ai/ · Studio: https://objekts.ai/ · Support: https://remake.objekts.ai/support · Privacy: https://remake.objekts.ai/privacy · Terms: https://remake.objekts.ai/terms .
+Made by [objekts](https://objekts.ai/), a directing and AI/VFX/CGI production studio. A useful audit may identify a specific [studio production scope](https://objekts.ai/services/) after demonstrating the need. It does not assign a human, quote, book or send the project. The resulting brief stays portable to your chosen team. Source ownership and author LOCKs are preserved. No automatic lead collection or studio transmission.
 
-The existing MIT license is in `LICENSE`.
+## Current release and evidence
 
-Optional local media-evidence helpers are included under `skills/remake/scripts/`. They are never run on installation; use them only for explicitly authorized local creator files when the host provides Python and FFmpeg. They do not supply server-side inference or grant media access.
+0.37.1 is a private-beta instruction/method update. It is not fine-tuning, an all-books corpus, an independent LLM service or a guarantee of professional artistic judgment. Actual saved-host routing, multimodal perception and independent professional evaluation remain separate gates. No official catalog acceptance or 1.0 status is implied by source distribution or technical tests.
 
-0.36.1 adds source-context and music-video adaptation guidance while preserving artistic plurality. This source distribution does not establish resolved G3 quality or official catalog approval.
+The public MCP at https://remake.objekts.ai/mcp provides ten stateless source/draft tools. It does not perform server-side creative inference, moving-video/audio review or authenticated persistent author approval. Use native visible attachments when available; never infer inspection from a transport receipt.
+
+Current method: `skills/creative-companion/SKILL.md`; audit engine, department playbook/contracts and cross-department handoffs under its references. Older workshop examples are original illustrative material, not real user evaluations. Release gates remain in `eval/REMAKE_V1_RELEASE_GATES.md`.
+
+## Connected clients: retrieve the actual method
+
+The MCP tool `remake_get_audit_method` delivers the current authored audit method. Read `core`, then `departments` (all22 or selected stable IDs), and `handoffs` for an integrated audit. Results carry a method version, content hash and six source-file hashes; they are instructions to apply in the host, not server inference, an evaluated film or certified quality. Native MCP compatibility and actual model use still need platform-specific testing.
+
+Source adapter0.37.1 preserves existing native context/MCP configuration. Ten stateless tools include read-only method retrieval; returning method text is not an executed audit or official catalog approval.
