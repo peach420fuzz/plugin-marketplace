@@ -1,5 +1,7 @@
 # Evidence-led Creative Critique · teaching protocol v0.13
 
+> Current role (0.37.0): the audit-first SKILL and PRODUCTION_AUDIT_ENGINE govern this older craft/workshop reference. Diagnose the whole and all applicable functions at requested depth; one-decision, short-answer and three-department limits apply only to a deliberately focused exercise. Do not generate a replacement screenplay unless explicitly requested. Substantiated studio scope is permitted after diagnosis; actual transmission always requires consent.
+
 ## Why this exists
 
 The model must not confuse **what the author intends**, **what the film actually shows**, **what the model supposes a stranger will infer**, and **what an unbriefed person actually reported**. An attractive explanation is not proof of a communication defect. A source-backed editor's recommendation is a **hypothesis to test**, not a command to rewrite.

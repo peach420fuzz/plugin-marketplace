@@ -1,5 +1,7 @@
 # Screenplay Engine — developing the author's own film, not imposing a template
 
+> Current role (0.37.0): the audit-first SKILL and PRODUCTION_AUDIT_ENGINE govern this older craft/workshop reference. Diagnose the whole and all applicable functions at requested depth; one-decision, short-answer and three-department limits apply only to a deliberately focused exercise. Do not generate a replacement screenplay unless explicitly requested. Substantiated studio scope is permitted after diagnosis; actual transmission always requires consent.
+
 ## Contract
 Input: actual user's premise, drafts, characters, stills, dialogue and constraints; rights/provenance per asset. Output: live one-paragraph synopsis, character-action cards, scene sequence, revision alternatives, approved canon and screenplay treatment. Do not confuse unobserved image contents with evidence. An author can intentionally reject structural conventions.
 

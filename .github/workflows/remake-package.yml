@@ -74,13 +74,10 @@ jobs:
             /tmp/remake-a.zip
             /tmp/remake-a.manifest.json
           retention-days: 14
-      - name: Build and validate full public review candidate with original artwork
+      - name: Build and validate full public review candidate with source-owned artwork
         run: |
-          mkdir -p /tmp/remake-brand
-          curl --fail --silent --show-error --location --max-time 30 https://objekts.ai/media/approved/objekts-icon-v37.png --output /tmp/remake-brand/objekts-icon-v37.png
-          curl --fail --silent --show-error --location --max-time 30 https://objekts.ai/media/approved/apple-touch-icon-v37.png --output /tmp/remake-brand/apple-touch-icon-v37.png
-          python plugins/remake-by-objekts/scripts/build-public-review-v0351.py --assets /tmp/remake-brand --out /tmp/remake-public-a.zip
-          python plugins/remake-by-objekts/scripts/build-public-review-v0351.py --assets /tmp/remake-brand --out /tmp/remake-public-b.zip
+          python plugins/remake-by-objekts/scripts/build-public-review-v0351.py --assets plugins/remake-by-objekts/assets --out /tmp/remake-public-a.zip
+          python plugins/remake-by-objekts/scripts/build-public-review-v0351.py --assets plugins/remake-by-objekts/assets --out /tmp/remake-public-b.zip
           cmp /tmp/remake-public-a.zip /tmp/remake-public-b.zip
       - uses: actions/upload-artifact@v4
         with:

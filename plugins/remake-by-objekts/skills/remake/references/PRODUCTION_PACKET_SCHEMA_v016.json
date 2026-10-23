@@ -1,0 +1,265 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Creative Companion portable production packet v0.16",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "project_id",
+    "revision",
+    "source_status",
+    "author_intent",
+    "script",
+    "materials",
+    "decisions",
+    "shots",
+    "verification",
+    "handoff"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "cc.production-packet/0.16"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_status": {
+      "type": "string",
+      "enum": [
+        "user_provided",
+        "file_extracted",
+        "model_inferred",
+        "mixed"
+      ]
+    },
+    "author_intent": {
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "genre": {
+      "type": "string"
+    },
+    "viewer_intent": {
+      "type": "string"
+    },
+    "narrative_or_ad_goal": {
+      "type": "string"
+    },
+    "script": {
+      "type": "object",
+      "required": [
+        "original_excerpt",
+        "current_revision",
+        "status"
+      ],
+      "properties": {
+        "original_excerpt": {
+          "type": "string"
+        },
+        "current_revision": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "draft",
+            "author_approved"
+          ]
+        }
+      }
+    },
+    "materials": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id",
+          "kind",
+          "provenance",
+          "rights_status",
+          "observed"
+        ],
+        "properties": {
+          "asset_id": {
+            "type": "string"
+          },
+          "kind": {
+            "enum": [
+              "image",
+              "video",
+              "audio",
+              "text",
+              "other"
+            ]
+          },
+          "provenance": {
+            "enum": [
+              "user_provided",
+              "verified_external",
+              "described_only",
+              "unknown"
+            ]
+          },
+          "rights_status": {
+            "enum": [
+              "granted",
+              "restricted",
+              "unknown"
+            ]
+          },
+          "observed": {
+            "type": "boolean"
+          },
+          "role": {
+            "type": "string"
+          },
+          "reference": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "topic",
+          "value",
+          "status"
+        ],
+        "properties": {
+          "topic": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "proposed",
+              "author_approved",
+              "locked",
+              "rejected",
+              "superseded",
+              "unknown"
+            ]
+          },
+          "source": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "shots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "shot_id",
+          "entry",
+          "action",
+          "viewer_information",
+          "exit",
+          "cut",
+          "sound",
+          "status"
+        ],
+        "properties": {
+          "shot_id": {
+            "type": "string"
+          },
+          "entry": {
+            "type": "string"
+          },
+          "action": {
+            "type": "string"
+          },
+          "viewer_information": {
+            "type": "string"
+          },
+          "exit": {
+            "type": "string"
+          },
+          "cut": {
+            "type": "string"
+          },
+          "sound": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "smallest_proof": {
+          "type": "string"
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "claims_unverified": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "contact",
+        "consent",
+        "selected_assets"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_SENT",
+            "SENT_VERIFIED"
+          ]
+        },
+        "contact": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "consent": {
+          "type": "boolean"
+        },
+        "selected_assets": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "receipt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

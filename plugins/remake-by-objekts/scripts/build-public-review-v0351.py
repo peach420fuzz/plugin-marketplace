@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reproducibly build an OpenAI public draft from the full existing REMAKE source.
 
-Original artwork is verified by SHA256. No private compatibility bindings or
+Repository-owned owner-selected artwork derivative is verified by SHA256. No private compatibility bindings or
 review demo URL are invented. This builder does not upload or submit anything.
 """
 import argparse
@@ -15,8 +15,7 @@ import zlib
 
 ROOT=Path(__file__).resolve().parents[1]
 ARTWORK={
- 'logo.png':('objekts-icon-v37.png','7600ae6d67cd0d4ce03f36f4a45667ce78c2e985b2c0276488336b53f976692e',256),
- 'composer-icon.png':('apple-touch-icon-v37.png','c8e6e2b5a0eba929fecd3aa7cf00c8e996977d59086a2d16157306dae7389deb',48),
+ 'objekts-remake-charcoal.png':('objekts-remake-charcoal.png','677e4dd7f5215aaaa5dcada8a4326ec611024a6d9be1d6619435692be566ec44',256),
 }
 CATEGORIES={'Business & Operations','Communication','Creativity','Data & Analytics','Developer Tools','Education & Research','Entertainment','Finance','Healthcare','Other','Productivity','Scientific Research','Security','Travel'}
 
@@ -54,7 +53,7 @@ def build(output,assets):
  artwork=[]
  for target,(original,expected,min_size) in ARTWORK.items():
   data=(Path(assets)/original).read_bytes();actual=hashlib.sha256(data).hexdigest()
-  if actual!=expected:raise ValueError('original brand hash mismatch')
+  if actual!=expected:raise ValueError('source-owned brand hash mismatch')
   sources['assets/'+target]=data;artwork.append({'file':'assets/'+target,'source':original,'sha256':actual,**check_png(data,min_size)})
  for field in ['logo','composerIcon']:
   if listing[field].removeprefix('./') not in sources:raise ValueError('unresolvable icon')

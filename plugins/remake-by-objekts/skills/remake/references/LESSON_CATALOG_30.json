@@ -1,0 +1,779 @@
+{
+  "schema_version": "0.4.0",
+  "kind": "educational_pilot",
+  "verified_real_work_case_count": 0,
+  "lessons": [
+    {
+      "id": "CC-L01",
+      "stage": "BRIEF",
+      "departments": [
+        "01"
+      ],
+      "title": "Business outcome vs visual idea",
+      "theory": "An outcome is the desired change in the market or mind, not a description of what the camera will show. Begin with one user-stated objective; label any numerical KPI unknown until a source establishes it.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What must the viewer understand, remember or do after viewing?",
+        "source_url": "https://ipa.co.uk/knowledge/publications-reports/the-long-and-the-short-of-it-balancing-short-and-long-term-marketing-strategies"
+      },
+      "failure": "Treats spectacle as proof of sales.",
+      "exercise": "Write two endings for the same concept: one for memory, one for immediate response.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Business-objective statement and measurement hypothesis.",
+      "do_not_force_when": "If no commercial outcome exists, develop an authored film rather than invent a CTA.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L02",
+      "stage": "BRIEF",
+      "departments": [
+        "01"
+      ],
+      "title": "Audience and usage situation",
+      "theory": "A target group does not determine how a film is encountered. Define concrete viewing situation, prior category knowledge, sound and channel conditions; audience generalisations are research hypotheses.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Where, by whom, and under what viewing conditions is the piece experienced?",
+        "source_url": "https://www.thinkwithgoogle.com/_qs/documents/6165/_Playbook_for_Creative_Advertising_-UK-_DEx45cw.pdf"
+      },
+      "failure": "Asserts an imagined target customer as researched fact.",
+      "exercise": "Compare a silent mobile feed with a cinema screen for the same idea.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Audience hypothesis and viewing context map.",
+      "do_not_force_when": "No demographic assumptions if user supplied none.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L03",
+      "stage": "BRIEF",
+      "departments": [
+        "01",
+        "15"
+      ],
+      "title": "Product truth and evidence",
+      "theory": "The product may possess exact geometry and legally constrained claims. Separate measurable benefit, emotional interpretation and figurative fantasy; only sourced product facts can become statements of performance.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What can the product legally and demonstrably claim?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Writes unsupported functional or medical claims.",
+      "exercise": "For every benefit in the script, mark VERIFIED / USER_CLAIM / UNKNOWN and a required source.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Claim ledger with authority and prohibited assertions.",
+      "do_not_force_when": "A purely mood-driven brand film may not require a functional claim.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L04",
+      "stage": "BRIEF",
+      "departments": [
+        "01",
+        "14"
+      ],
+      "title": "Formats and version topology",
+      "theory": "A version is not automatically a crop. Changing format can alter actor blocking, negative space, graphic hierarchy, POV and even production units; scope the master and recompositions separately.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Which deliveries require an editorial variant rather than a mechanical crop?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Assumes vertical is free crop of wide master.",
+      "exercise": "Mark master, derived version, recomposition and genuinely new production unit.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Delivery/version matrix and critical composition risks.",
+      "do_not_force_when": "If no target channels exist, keep format undecided.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L05",
+      "stage": "INSIGHT",
+      "departments": [
+        "02"
+      ],
+      "title": "Tension rather than demographic",
+      "theory": "An insight connects an observed real tension to a relevant choice, not an attractive psychological slogan. Test whether the creative tension has a plausible connection to this product and context.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What is felt, desired or resisted in a situation the film depicts?",
+        "source_url": "https://ipa.co.uk/knowledge/publications-reports/the-long-and-the-short-of-it-balancing-short-and-long-term-marketing-strategies"
+      },
+      "failure": "Invents consumer research from one brief.",
+      "exercise": "Replace a demographic label with observable contradiction or routine.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "One falsifiable creative tension and source status.",
+      "do_not_force_when": "For demonstration-led ads, tension may be an irrelevant layer.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L06",
+      "stage": "INSIGHT",
+      "departments": [
+        "02",
+        "04"
+      ],
+      "title": "Observation versus interpretation",
+      "theory": "Treat direct observation, anecdote, desk research and model speculation as distinct evidence classes. A plausible story is not a discovered consumer truth.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What in the given material supports the proposed human reading?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Turns creator intention into an on-screen fact.",
+      "exercise": "Label three claims as seen, author-described, inferred or missing.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Evidence/assumption register.",
+      "do_not_force_when": "Ambiguity may be intended instead of a defect.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L07",
+      "stage": "INSIGHT",
+      "departments": [
+        "02",
+        "03"
+      ],
+      "title": "Category cliché interrogation",
+      "theory": "Category conventions provide recognition but can make work interchangeable. Keep one necessary code, then seek an ownable turn instead of replacing it with vague surrealism.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What familiar category picture does the idea inherit?",
+        "source_url": "https://www.wk.com/work/nike-risk-everything/"
+      },
+      "failure": "Mistakes novelty for relevance.",
+      "exercise": "List two borrowed category signals and invert one without losing legibility.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Category prior and candidate transformation.",
+      "do_not_force_when": "Keep a convention if it is functional evidence or brand code.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L08",
+      "stage": "INSIGHT",
+      "departments": [
+        "02",
+        "05"
+      ],
+      "title": "Relevance and brand distinctiveness",
+      "theory": "Brand distinctiveness requires a recognisable memory cue or specific association, not just being visually unusual. Compare what a viewer can attribute with and without the brand.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Would the creative logic still work unchanged for a rival brand?",
+        "source_url": "https://www.thinkwithgoogle.com/_qs/documents/6165/_Playbook_for_Creative_Advertising_-UK-_DEx45cw.pdf"
+      },
+      "failure": "Assumes logo lock-up creates distinctive proposition.",
+      "exercise": "Remove the logo and identify what remains distinctive.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Brand-removal test with two implications.",
+      "do_not_force_when": "An art-led or awareness-only film can deliberately prioritize emotion.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L09",
+      "stage": "IDEA",
+      "departments": [
+        "03"
+      ],
+      "title": "One-sentence cinematic premise",
+      "theory": "A cinematic premise names an observable situation and change; theme names a possible meaning. Keep both distinct, and avoid turning every personal film into a thesis statement.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What changes in visible reality, for whom, and through what mechanism?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "A paragraph of adjectives replaces scene logic.",
+      "exercise": "State the premise as observable action, not an abstract mood.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "One-sentence visual premise with open decisions.",
+      "do_not_force_when": "Poetic pieces may organize by sound/material instead of narrative.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L10",
+      "stage": "IDEA",
+      "departments": [
+        "03",
+        "12"
+      ],
+      "title": "Rules of the visual metaphor",
+      "theory": "Visual metaphors need explicit transformation or association rules so multiple shots remain one authored world. Decide which parts transform, when, and what must remain invariant.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Which parts of the image transform and which remain stable?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Impossible transformation has no controllable boundaries.",
+      "exercise": "Write three visual rules and one deliberate exception.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Mechanism/authority rule sheet.",
+      "do_not_force_when": "Unpredictability may be intentional when exact fidelity is unnecessary.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L11",
+      "stage": "IDEA",
+      "departments": [
+        "03",
+        "07"
+      ],
+      "title": "Creative route alternatives",
+      "theory": "Two credible creative routes should differ in viewer inference, tone, form or production topology—not just camera adjectives. Preserve the tradeoff and original option.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Can two different forms express the same intention?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Presents cosmetic variants as different ideas.",
+      "exercise": "Draft one actor-led and one object-led route, naming one sacrifice each.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Route choice and rejected alternative log.",
+      "do_not_force_when": "Present only one route if others are materially weaker.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L12",
+      "stage": "IDEA",
+      "departments": [
+        "03",
+        "06"
+      ],
+      "title": "From visual novelty to action",
+      "theory": "Novelty may be a visual event with no action. Introduce a gesture, choice, change of state or deliberately subjective perceptual shift when the project needs progression.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Can the premise be expressed as a playable decision?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Describes only emotional labels without filmable behavior.",
+      "exercise": "Give the protagonist an intention and change a physical action accordingly.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "One staged micro-scene with observable choices and physical consequences.",
+      "do_not_force_when": "Pure abstract motion may not need human agency.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L13",
+      "stage": "HOOK",
+      "departments": [
+        "04",
+        "07"
+      ],
+      "title": "First information, not universal first-second hook",
+      "theory": "The first useful beat is whatever information the format and viewing context need, not an automatic universal shock at second one. Short paid media and a durational film differ.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What should the audience infer from the first image or sound?",
+        "source_url": "https://www.thinkwithgoogle.com/_qs/documents/6165/_Playbook_for_Creative_Advertising_-UK-_DEx45cw.pdf"
+      },
+      "failure": "Imposes hard 2-second rules on every film.",
+      "exercise": "Write a silent opening and an audio-led opening for the same scene.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "An opening inference map: image/sound, viewer expectation and withholding.",
+      "do_not_force_when": "Intentional withholding and slow cinema are legitimate.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L14",
+      "stage": "HOOK",
+      "departments": [
+        "06",
+        "11"
+      ],
+      "title": "Point of view and audience knowledge",
+      "theory": "POV determines what the audience knows and when. Define whose perception controls off-screen information, dramatic irony, uncertainty and reaction space.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Who discovers the event first: character or spectator?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Changes POV without meaning or screen geography.",
+      "exercise": "Re-block a reveal with character-first and audience-first eyelines.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "POV selection and eyeline plan.",
+      "do_not_force_when": "Observational film may refuse privileged POV.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L15",
+      "stage": "HOOK",
+      "departments": [
+        "08",
+        "13"
+      ],
+      "title": "Attention hierarchy and duration",
+      "theory": "One dominant image or action should remain legible within the intended shot function. Competing visual signals can be productive chaos or accidental loss of proposition; choose deliberately.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Can the principal piece of information be read before the cut?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Treats movement as attention or assigns invented exposure times.",
+      "exercise": "Remove two competing visual elements from a storyboard frame; state what viewer now reads.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Readability/attention test with uncertain timing.",
+      "do_not_force_when": "Dense simultaneous information may be deliberate.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L16",
+      "stage": "HOOK",
+      "departments": [
+        "04",
+        "13"
+      ],
+      "title": "Expectation and sonic prelap",
+      "theory": "A sonic prelap can prepare a cut before its source is visible, while sound after an action can reveal consequence. Design audience expectation, do not just add music.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "How can sound set up an image without explaining it?",
+        "source_url": "https://filmmakermagazine.com/61389-walter-murch-discusses-the-rule-of-6-and-the-perfect-cut/"
+      },
+      "failure": "Adds generic whooshes unrelated to action.",
+      "exercise": "Compare tab click before cut vs click after reveal; articulate inferred cause.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "A/B paper-edit with audio events.",
+      "do_not_force_when": "Silence can carry a better dramatic choice.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L17",
+      "stage": "STORY",
+      "departments": [
+        "04"
+      ],
+      "title": "Action and consequence",
+      "theory": "Chronology alone does not establish cause. Examine each beat: because, but, then, association or intentional omission—and whether the selected relationship is legible.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Does event B occur because a character did A?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Mistakes chronological order for causality.",
+      "exercise": "Turn two adjacent beats into explicit cause, counteraction and changed state.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Causal beat graph, including intentional omissions.",
+      "do_not_force_when": "Elliptical or associative films can resist causal exposition.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L18",
+      "stage": "STORY",
+      "departments": [
+        "04",
+        "06"
+      ],
+      "title": "Want, obstruction and change of tactic",
+      "theory": "A character is revealed by shifting tactics under resistance, not a biography paragraph. Externalize a specific decision or counteraction; abstract forms may use material agency instead.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What does the on-screen person try, and what blocks them?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Adds arbitrary conflict when nothing requires it.",
+      "exercise": "Rewrite a passive reaction as an attempt, resistance and choice.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Character action chain with blocking notes.",
+      "do_not_force_when": "Product demonstrations may rely on mechanical action, not a protagonist arc.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L19",
+      "stage": "STORY",
+      "departments": [
+        "04",
+        "07"
+      ],
+      "title": "Theme versus statement",
+      "theory": "Theme is an interpretive pattern, not a slogan that a character has to pronounce. Ask what recurring decisions or visual operations create this meaning.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What theme is visible in choices rather than spoken as a slogan?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Labels a theme but cannot dramatize it.",
+      "exercise": "Replace explanatory voiceover with one consequential gesture.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Theme-to-action example and loss/gain of exposition.",
+      "do_not_force_when": "Explanatory voiceover can be correct in instructional work.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L20",
+      "stage": "STORY",
+      "departments": [
+        "04",
+        "08"
+      ],
+      "title": "Beat time and film length",
+      "theory": "Film duration follows how long audiences need to infer events and experience rhythm. Make alternative paper edits based on information load, not invented ideal shot lengths.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What viewer inference must fit in the actual time budget?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Confuses beautiful stills with temporal progression.",
+      "exercise": "For a hypothetical 15s cut, assign minimum readable beats without manufacturing shot durations.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Beat ledger and open timing tests.",
+      "do_not_force_when": "No fixed structure for every genre/format.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L21",
+      "stage": "STORY",
+      "departments": [
+        "07",
+        "13"
+      ],
+      "title": "Payoff and afterimage",
+      "theory": "Payoff pays or strategically subverts a perceptual, causal or emotional promise. Check what the ending changes about earlier images and what viewers are likely to remember.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What returns changed, and what final image remains meaningful?",
+        "source_url": "https://collab.sundance.org/catalog/Directing-Workshopping-Your-Film/June-2022"
+      },
+      "failure": "Ending is merely a logo unrelated to story.",
+      "exercise": "Write a payoff that transforms an image or action established earlier.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Setup/payoff connection and last frame hypothesis.",
+      "do_not_force_when": "An unresolved ending may be artistically intended.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L22",
+      "stage": "BRAND",
+      "departments": [
+        "05"
+      ],
+      "title": "Product as cause versus decoration",
+      "theory": "A brand may cause the narrative event, frame its consequences or be a credible mnemonic cue. Pure logo overlays can be sufficient for some formats but not a substitute for attribution testing.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Would removing the product change the story mechanism?",
+        "source_url": "https://www.thinkwithgoogle.com/_qs/documents/6165/_Playbook_for_Creative_Advertising_-UK-_DEx45cw.pdf"
+      },
+      "failure": "Counts logo seconds as brand effectiveness.",
+      "exercise": "Delete the product from a storyboard and identify exactly what breaks.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Brand causality map and one alternative.",
+      "do_not_force_when": "Subtle brand films may work through distinctive assets rather than use.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L23",
+      "stage": "BRAND",
+      "departments": [
+        "05",
+        "14"
+      ],
+      "title": "Distinctive assets and precise typography",
+      "theory": "Identify packaging, color, shape, logo, sonic codes and exact type as separate authority domains. Protect legibility and truth rather than delegating exactness to uncontrolled generation.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Which product and brand attributes are immutable?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Treats mood JPG as pack geometry master.",
+      "exercise": "Extract authoritative pack / logo / label constraints from supplied approved assets.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Asset truth map with explicit missing sources.",
+      "do_not_force_when": "A noncommercial work need not include branding.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L24",
+      "stage": "BRAND",
+      "departments": [
+        "05"
+      ],
+      "title": "Brand building vs activation",
+      "theory": "Long-horizon memory effects differ from immediate behavioral response. Determine which objective the author has before choosing how strongly to foreground proposition, offer or CTA.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Is the goal future preference or immediate measured action?",
+        "source_url": "https://ipa.co.uk/knowledge/publications-reports/the-long-and-the-short-of-it-balancing-short-and-long-term-marketing-strategies"
+      },
+      "failure": "Conflates short-term conversion and long-term memory.",
+      "exercise": "Develop a memorability-oriented ending and a response-oriented ending.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Objective/CTA rationale with measurement caveat.",
+      "do_not_force_when": "Do not infer media-budget allocation from one spot.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L25",
+      "stage": "BRAND",
+      "departments": [
+        "05",
+        "13"
+      ],
+      "title": "Ad legibility and audience test",
+      "theory": "Do not confuse attention, comprehension, brand attribution and sales. Design an appropriate small diagnostic probe and call unrepresentative feedback only exploratory.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What did a viewer remember unprompted?",
+        "source_url": "https://www.thinkwithgoogle.com/_qs/documents/6165/_Playbook_for_Creative_Advertising_-UK-_DEx45cw.pdf"
+      },
+      "failure": "Claims a test was run when no viewer was asked.",
+      "exercise": "Specify a three-question test: what happened, why, and which brand?",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Viewer-test protocol; results UNKNOWN until tested.",
+      "do_not_force_when": "Artist-led films may intentionally resist simple answers.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L26",
+      "stage": "EXECUTION",
+      "departments": [
+        "08",
+        "09"
+      ],
+      "title": "Storyboard as sequence not gallery",
+      "theory": "A storyboard is a communication contract across shots: entry state, action, revelation, exit state, angle and cut connection. A gallery of isolated moods cannot specify editorial logic.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What does each image do before and after the cut?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Treats attractive images as a shot list.",
+      "exercise": "Create three cards with incoming state, action, exiting state, and attention.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Shot cards with unresolved gaps.",
+      "do_not_force_when": "A one-shot sequence may need only one card.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L27",
+      "stage": "EXECUTION",
+      "departments": [
+        "09",
+        "10",
+        "11"
+      ],
+      "title": "Continuity bible and camera geography",
+      "theory": "Character/product and architectural anchors carry across cuts; establish spatial direction, shot relationship and source-of-truth priority. Do not invent lens EXIF from pixels.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Which spatial and character properties cannot drift across angles?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Mixes conflicting references into one style soup.",
+      "exercise": "Map product/character/world masters and one camera axis/eyeline test.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Authority map with hard locks and permissible deviations.",
+      "do_not_force_when": "Deliberate spatial break may serve subjectivity.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L28",
+      "stage": "EXECUTION",
+      "departments": [
+        "12"
+      ],
+      "title": "AI/VFX truth-layer routing",
+      "theory": "Different truth layers need different technologies: exact geometry in controlled assets, atmosphere in generation, graphic text in typography, and composite in integration. Choose cheapest decisive PoC.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What must be exact, and what can be generated or approximated?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Tries to generate immutable logos and exact SKU text without control.",
+      "exercise": "Split one effect into SOURCE / CGI / GENERATED / GRAPHICS / COMPOSITE layers.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "One PoC and acceptance conditions.",
+      "do_not_force_when": "Simple motion design may not need VFX layer separation.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L29",
+      "stage": "EXECUTION",
+      "departments": [
+        "13",
+        "14"
+      ],
+      "title": "Paper edit, sound and adaptive delivery",
+      "theory": "Edit and sound create one sequence; master formats can require new compositions. Plan paper cut, action-to-sound synchronization, safe zones and separately scoped adaptations.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "Can one sequence play and retain meaning across intended versions?",
+        "source_url": "https://filmmakermagazine.com/61389-walter-murch-discusses-the-rule-of-6-and-the-perfect-cut/"
+      },
+      "failure": "Conflates encoding an aspect ratio with preserving composition.",
+      "exercise": "Make a sound-event map, then mark the changes required in 9:16.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Editorial/sound map and version risk list.",
+      "do_not_force_when": "An abstract audiovisual piece may use rhythm as its sole organizing function.",
+      "source_kind": "public_source_or_course_outline",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    },
+    {
+      "id": "CC-L30",
+      "stage": "EXECUTION",
+      "departments": [
+        "15"
+      ],
+      "title": "QC, approvals and optional handoff",
+      "theory": "Technical completion, creative approvals, rights clearance and client handoff are separate gates. Export a complete portable project; no media or contacts leave without explicit informed confirmation.",
+      "anatomy": {
+        "cases_policy": "Use 3–6 real, independently traceable works only when actual rights-cleared/source-verifiable case notes exist; otherwise compare 2–3 authored variants of the user scene and explicitly label them as hypotheses, NOT real-work examples.",
+        "specific_probe": "What can be sent, published or changed, and what remains unknown?",
+        "source_url": "https://github.com/peach420fuzz/objekts-production-desk/blob/main/docs/ONE_FILM_NOT_CLIPS.md"
+      },
+      "failure": "Turns proposed decisions into approvals and sends material without consent.",
+      "exercise": "Compile permissioned source inventory, LOCK ledger and owner-approved next action.",
+      "mutation": "Generate a materially different execution that changes the meaning or production method, then state what is lost.",
+      "compression": "At the end give the author one decision and one test that can be done without an external vendor.",
+      "deliverable": "Portable project pack and optional consented studio packet.",
+      "do_not_force_when": "DIY route must remain complete without studio engagement.",
+      "source_kind": "first_party_studio",
+      "source_limit": "Source offers context, not a validated rule for this particular user project.",
+      "learning_objective": "By the end the author can apply this distinction to an observable part of their own project, state a chosen or rejected route, and describe why.",
+      "approval_policy": "Lesson outcome remains PROPOSED until owner explicitly approves; rejected branches never reappear as canon.",
+      "source_verification": "Source URL supports context only; never attribute this original teaching wording verbatim to source."
+    }
+  ]
+}

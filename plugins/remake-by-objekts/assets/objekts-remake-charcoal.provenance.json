@@ -1,0 +1,12 @@
+{
+  "schema": "remake.brand-asset/1",
+  "asset": "objekts-remake-charcoal.png",
+  "sha256": "677e4dd7f5215aaaa5dcada8a4326ec611024a6d9be1d6619435692be566ec44",
+  "bytes": 1858903,
+  "source": "Owner-provided original objekts overlapping-squares icon; public original https://objekts.ai/media/approved/objekts-icon-v37.png",
+  "method": "Imagegen edit to charcoal backdrop selected in the owner-authorized project workflow; not byte-identical geometry.",
+  "source_original_sha256": "7600ae6d67cd0d4ce03f36f4a45667ce78c2e985b2c0276488336b53f976692e",
+  "pixel_exact_geometry": false,
+  "public_review_approved": false,
+  "legal_attestation": false
+}
