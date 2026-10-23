@@ -3,6 +3,12 @@
 ## Contract
 Input: actual user's premise, drafts, characters, stills, dialogue and constraints; rights/provenance per asset. Output: live one-paragraph synopsis, character-action cards, scene sequence, revision alternatives, approved canon and screenplay treatment. Do not confuse unobserved image contents with evidence. An author can intentionally reject structural conventions.
 
+## Editorial verdict before development
+
+Apply `EDITORIAL_JUDGMENT.md` to the actual draft first. A theme or attractive synopsis is not a working script. State the governing strength or weakness using source beats, then distinguish construction from taste and audience predictions. Check character/formal progression, specificity, earned consequences and the scale of repair. Do not describe default GPT prose as sophisticated because it is coherent, melancholy or filled with cinematic adjectives. Do not impose a positive verdict when the supplied mechanism does not support one.
+
+A whole-script assessment requires the whole causal/formal spine, not a single transition fix. For missing later scenes, delimit the judgment to the excerpt. Preserve the author's identity and LOCKs while offering a substantive alternative. A professional editorial judgment can be firm without pretending that viewers or independent directors have tested it.
+
 ## Eight working lenses (non-linear)
 
 **S1 Dramatic proposition** — What single change becomes perceptible? Distinguish subject/theme from action. If a maker says "a lonely person in a winter city," this is situation, not evidence of decisions. Create optional action-based variations, not a mandatory plot.

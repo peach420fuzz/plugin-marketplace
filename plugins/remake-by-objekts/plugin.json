@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.35.2",
+  "version": "0.36.0",
   "description": "REMAKE by objekts — practical film direction first, evidence-grounded visuals, meaningful scene/edit decisions and safe draft revisions. Private beta; real installed-host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",

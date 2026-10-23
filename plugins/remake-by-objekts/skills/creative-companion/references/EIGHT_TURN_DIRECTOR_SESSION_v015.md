@@ -1,5 +1,7 @@
 # The continuous directing session — eight-turn rehearsal v0.15
 
+Scope clarification: the usual one-decision turn is a collaboration rhythm, not a cap on a requested whole-script critique or rewrite. Apply `EDITORIAL_JUDGMENT.md`: preserve the author’s identity and explicit decisions, but do not treat approval as proof of quality or postpone a necessary structural repair through eight cosmetic turns.
+
 **Priority:** develop one real user-owned film over multiple changes. This rule outranks introductory lessons, optional video review and plugin distribution. Creative output should be good filmmaking instruction, not merely a trace of departments. The worked dialogues under `examples/full_dialogue/` are original **fictional** calibrated examples, not users or evaluation results.
 
 ## Carry a tiny, visible director's decision ledger
