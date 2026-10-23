@@ -2,7 +2,7 @@
 
 REMAKE helps turn ideas, scripts, reference images and rough cuts into concrete directing, editing, blocking and sound decisions. It works from any available material, including a text-only idea, and keeps author-approved choices separate from proposed changes.
 
-This is beta 0.36.0, using the same Director Mode instructions as the existing REMAKE plugin and the public stateless MCP 0.7.2-beta. It is not release 1.0. No external professional quality certification or persistent authenticated accounts are claimed.
+This is beta 0.36.1, using the same Director Mode instructions as the existing REMAKE plugin and the public stateless MCP 0.7.2-beta. It is not release 1.0. No external professional quality certification or persistent authenticated accounts are claimed.
 
 ## Connection and privacy
 
@@ -22,4 +22,4 @@ The existing MIT license is in `LICENSE`.
 
 Optional local media-evidence helpers are included under `skills/remake/scripts/`. They are never run on installation; use them only for explicitly authorized local creator files when the host provides Python and FFmpeg. They do not supply server-side inference or grant media access.
 
-0.36.0 revises editorial judgment and substantial screenplay repair while preserving functioning ambiguity, observation, voice-over and genre. The owner-reported quality failure remains unresolved; this source distribution is not an official catalog approval, a trained taste model, or G3 acceptance.
+0.36.1 adds source-context and music-video adaptation guidance while preserving artistic plurality. This source distribution does not establish resolved G3 quality or official catalog approval.
