@@ -1,10 +1,6 @@
 name: Publish REMAKE to official MCP Registry
+# Publication is an explicit release action after live preflight and owner readiness.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'plugins/remake-by-objekts/server.json'
-      - '.github/workflows/remake-registry-publish.yml'
   workflow_dispatch:
 permissions:
   contents: read
