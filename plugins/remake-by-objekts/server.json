@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.peach420fuzz/remake-by-objekts",
   "title": "REMAKE by objekts",
-  "description": "Organize film sources, check directing constraints and validate portable project drafts.",
-  "version": "0.7.1-beta",
+  "description": "Read authored film-audit methods; organize sources and validate stateless production drafts.",
+  "version": "0.7.3-beta",
   "websiteUrl": "https://remake.objekts.ai/",
   "repository": {
     "url": "https://github.com/peach420fuzz/plugin-marketplace",
@@ -12,9 +12,11 @@
   },
   "icons": [
     {
-      "src": "https://objekts.ai/media/approved/objekts-icon-v37.png",
+      "src": "https://raw.githubusercontent.com/peach420fuzz/plugin-marketplace/main/plugins/remake-by-objekts/assets/objekts-remake-charcoal.png",
       "mimeType": "image/png",
-      "sizes": ["1254x1254"]
+      "sizes": [
+        "1254x1254"
+      ]
     }
   ],
   "remotes": [
