@@ -1,4 +1,4 @@
-# Production audit engine — REMAKE 0.37
+# Production audit engine — REMAKE 0.37.1
 
 ## Three judgments, never one misleading score
 
@@ -52,6 +52,12 @@ Use normal readable prose and compact tables where they compare real things. Do 
 ## Minimal-versus-integrated route
 
 For each expensive concern ask whether the creative intent survives a simpler route. One person may cover multiple functions; a small project may use a locked camera and one location. The integrated route earns its value through decisions, consistency and accountable review, not arbitrary crew count. Explain the work and trade-offs so the user can weigh their own time. Never invent “impossible alone”, time saved, a studio price or guaranteed quality.
+
+## Two observed calibration risks
+
+An early idea can justify development work without justifying a technical studio proof yet. Choose the governing proposition and production-control question before making a paid-test recommendation; label a possible later package as conditional. Do not sell an unresolved decision twice.
+
+A functioning written scene may be adequate to rehearse or board, not certified as an effective finished video. Name the stage and next decision whenever saying “sufficient” or “ready”; real staging, duration, sound and reception remain untested unless inspected.
 
 ## Audit self-review
 

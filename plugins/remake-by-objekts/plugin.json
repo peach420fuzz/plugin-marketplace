@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.37.0",
+  "version": "0.37.1",
   "description": "REMAKE by objekts — rigorous creative and production audits: substantiated weaknesses, missing work, department dependencies and professional remedies. Turns findings into a concrete production scope. Private beta; actual host quality remains unverified.",
   "author": {
     "name": "objekts — film direction & AI/VFX/CGI production studio",

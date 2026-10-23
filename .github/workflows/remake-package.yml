@@ -55,6 +55,10 @@ jobs:
           ffmpeg -version
           ffprobe -version
           ffmpeg -nostdin -v error -f lavfi -i color=c=black:s=16x16:r=1 -frames:v 1 -f null -
+      - name: Verify generated public audit method matches its six canonical sources
+        run: |
+          python plugins/remake-by-objekts/scripts/build-audit-method-v037.py --out /tmp/remake-audit-method.mjs
+          cmp /tmp/remake-audit-method.mjs plugins/remake-by-objekts/audit-method-data-v037.mjs
       - name: Full exported Python regression including pixel/frame identity
         env:
           PYTHONPATH: plugins/remake-by-objekts/skills/creative-companion/scripts
