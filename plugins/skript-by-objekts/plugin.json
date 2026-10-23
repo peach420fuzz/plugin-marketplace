@@ -1,0 +1,53 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "skript-by-objekts",
+  "version": "0.1.0",
+  "description": "Develop original screenplays collaboratively from a synopsis: distinct story directions, scenes, complete drafts and revisions for film, series, advertising, music videos and animation.",
+  "author": {
+    "name": "objekts",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai/"
+  },
+  "keywords": [
+    "screenwriting",
+    "film",
+    "series",
+    "advertising",
+    "music-video",
+    "animation",
+    "objekts"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "SKRIPT by objekts",
+        "shortDescription": "Сценарии из замысла",
+        "longDescription": "Сценарный соавтор для работы от идеи до связного текста. SKRIPT предлагает содержательно разные варианты, помогает выбрать направление, развивает персонажей, действие и форму, пишет сцены и перерабатывает весь сценарий. Отдельные рабочие подходы учитывают кино, сериалы, рекламу, музыкальные клипы и анимацию. Метод сохраняет авторские ограничения, проверяет собственные банальности и объясняет решения понятным языком. В пакете — оригинальные рабочие материалы и краткие карточки открытых профессиональных источников с указанием реально прочитанного объёма. Работа выполняется моделью и инструментами текущего хоста; отдельной дообученной модели, базы всех книг или гарантии художественного качества нет. Для проверки производственной готовности проекта используется отдельный REMAKE by objekts.",
+        "developerName": "objekts",
+        "category": "Creativity",
+        "capabilities": [],
+        "defaultPrompt": [
+          "Вот мой синопсис. Предложи три разные версии истории и объясни, какую стоит развивать.",
+          "Помоги написать сценарий: сохрани мой замысел и ограничения, начни с конкретного материала.",
+          "Перепиши этот сценарий: найди причину банальности и предложи более точные действия и форму."
+        ],
+        "logo": "./assets/objekts-squares-charcoal.png",
+        "composerIcon": "./assets/objekts-squares-charcoal.png",
+        "brandColor": "#242321"
+      },
+      "review": {
+        "prompts": [
+          "Вот мой синопсис и ограничения. Предложи три разные версии, сам выбери одну и напиши законченный короткий сценарий.",
+          "Для нашей услуги нужен 30-секундный рекламный ролик и отдельная 15-секундная версия. Не придумывай свойства и доказательства.",
+          "Разработай пилот драмеди, его конец и три последующих эпизода: покажи, как действия героев создают продолжение.",
+          "Перепиши эту сцену без добавления травмы и объясняющей морали; сохрани действующих лиц и исходные отношения.",
+          "У меня есть синопсис клипа, но аудио пока нет. Предложи варианты формы и обозначь, чего нельзя решить без записи."
+        ]
+      },
+      "publication": {
+        "release_notes": "First private beta: collaborative screenplay development, five format-specific methods, scene/rewrite craft, scoped source cards and original calibration/revision exercises. Package and AI paper exercises do not establish host compliance or professional artistic acceptance."
+      }
+    }
+  },
+  "homepage": "https://objekts.ai/"
+}
