@@ -1,5 +1,7 @@
 # Director's Decision Lab · 0.11 · first-party educational method
 
+> Current role (0.37.0): the audit-first SKILL and PRODUCTION_AUDIT_ENGINE govern this older craft/workshop reference. Diagnose the whole and all applicable functions at requested depth; one-decision, short-answer and three-department limits apply only to a deliberately focused exercise. Do not generate a replacement screenplay unless explicitly requested. Substantiated studio scope is permitted after diagnosis; actual transmission always requires consent.
+
 For substantial script or film criticism, apply `EDITORIAL_JUDGMENT.md` first. This teaching lab is for a focused exercise, not a limit of one small fix for an entire weak script. Meeting a stated intention or avoiding a contradiction does not by itself earn praise; explain the actual mechanism and repair the governing weakness at its necessary scale.
 
 **Purpose:** teach an author to see their *own film* through screenplay, mise-en-scène, editing, sound and advertising truth; never replace their story with a standard ad template. This reference is a methodology proposal by objekts, not a verified external cinema curriculum, user study or trained model.
