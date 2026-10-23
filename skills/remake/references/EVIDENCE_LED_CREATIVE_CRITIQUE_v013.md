@@ -14,14 +14,18 @@ The model must not confuse **what the author intends**, **what the film actually
 
 **Absolute rule:** model-authored simulated audience quotations, self-role-play, imaginary friends and unperformed “tests” cannot be promoted to `VIEWER_TESTIMONY`. An absence of data means **UNKNOWN**, not **FAILED** or **PASSED**.
 
-## Creative clinic in one answer, maximum
+## Editorial judgment and evidence have different jobs
+
+Source evidence supports what the draft contains; editorial judgment assesses how its construction works. You may directly criticize a generic mechanism, unearned choice or redundant scene from the text without claiming an audience test. This evidence protocol must not neutralize criticism or turn an absence of measured harm into praise. A plausible interpretation is not proof of audience response; equally, the absence of viewer testimony does not prevent a firm, reasoned craft judgment. Use `EDITORIAL_JUDGMENT.md` for that judgment.
+
+## Creative clinic — scale to the actual problem
 
 1. Restate the source action and creator's outcome in one sentence, with provenance. Say what hasn't been inspected.
-2. Formulate ONE conditional viewer-perception hypothesis connected to a precise beat or cut. If nothing justifies a defect, state the strongest already-working element and a specific acceptance test instead.
-3. Give a **minimal change** as an editorial or blocking operation on the actual scene (e.g. “show the phone selection before the bag crosses the frame”), and explain how this changes the viewer's available information. Do NOT prescribe a full regeneration when the cut or sound can solve it.
+2. Give a defensible editorial verdict tied to the actual construction. Keep unmeasured viewer-perception claims conditional, but do not weaken text-grounded findings into evasive praise. If the scene genuinely works, identify the specific choice worth preserving; do not invent a strength merely because no audience study exists.
+3. Give the **smallest change that actually fixes the governing problem**, at the appropriate premise, sequence, scene, edit or blocking scale. Explain how the changed action/form addresses the diagnosis. A decorative insert cannot repair a generic or causally empty script; conversely, do not prescribe a full regeneration when a cut or sound change genuinely solves it.
 4. Give at most one alternative that changes narrative mechanism or POV rather than mood adjectives; include a clear *aesthetic cost* and a *production cost* for each option.
 5. Show a 3–5-beat playable miniature including entry state, action, what the viewer can infer, exit state, and sound/edit consequence.
-6. Define a **falsifiable acceptance test** and who can run it. Film: what changed/what remains deliberately unresolved? Ad: product/category vs brand memory; sound-on/off; claim legibility. Do not fabricate outcomes.
+6. When a specific uncertainty warrants a check, define the limited **observable test** and who can run it; do not equate comprehension or feasibility with artistic merit. Film: what changed/what remains deliberately unresolved? Ad: product/category vs brand memory; sound-on/off; claim legibility. Do not fabricate outcomes.
 7. One author choice, optional. Nothing becomes LOCK automatically.
 
 ## Genre policy — different expectations
@@ -54,7 +58,7 @@ The model must not confuse **what the author intends**, **what the film actually
 
 `EDIT → DELIVERY/BRAND`: silent comprehension, claim clearance, logo/pack proof, actual medium safe area, versions and scope. Do not turn consumer response *hypotheses* into brand effectiveness facts.
 
-Each handoff must identify `SOURCE / HUMAN_APPROVED / PROPOSED / UNKNOWN`, a precise creative gain, failure mode, and one low-cost acceptance test.
+Each handoff must identify `SOURCE / HUMAN_APPROVED / PROPOSED / UNKNOWN`, a precise creative gain, failure mode, and, when warranted by a checkable uncertainty, a low-cost test with stated limits.
 
 ## Two verified **contexts**, not evidence about the user's film
 
