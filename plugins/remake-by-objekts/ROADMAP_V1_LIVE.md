@@ -1,6 +1,6 @@
-# REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-21)
+# REMAKE by objekts — roadmap to 1.0 (live status, 2026-10-23)
 
-**Owner:** objekts · **Saved private release:**0.37.0 (`pluginrel_6adbcaead72081919a3cf2b3559c274c`); source/CI integration in progress · **Public stateless MCP:** 0.7.2-beta (nine tools) · **G5 OIDC staging:** 0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
+**Owner:** objekts · **Saved private release:**0.37.1 (`pluginrel_6adbceac5aa881919fa5c87ad6739fe1`) · **Public stateless MCP:**0.7.3-beta (10 tools; actual read-only authored method delivery). **G5 OIDC staging:**0.25.0-g5-staging, unpublished. **1.0 NOT READY.**
 
 ## Current gates
 
@@ -12,7 +12,7 @@
 | G4 canonical revision engine | PARTIAL | Runtime state schema 0.23, stateless MCP six tools; 17/17 canonical + 9/9 legacy synthetic tests; no verified human approval/persistent storage |
 | G5 OAuth user projects | BLOCKED | Staged fail-closed JWT verifier 18/18 synthetic, D1 owner/CAS 8/8; real identity provider absent; staging Workers subdomain disabled |
 | G6 production-ready film | NOT TESTED | Real edit/shot/sound continuity and independent producer handoff review required |
-| G7 distribution | NOT VERIFIED | Claude/Gemini GitHub source available, no official catalog receipts or independently installed end user |
+| G7 distribution | SOURCE VERIFIED; OFFICIAL/HOST UNVERIFIED |0.37.1 skills/Claude/Gemini refs synchronized with full source-hash and selected-content readback; no official catalog receipt or independent installed-host acceptance |
 | G8 trust & brand | PARTIAL | Owner-selected charcoal derivative is source-owned and hash-verified; original and edit provenance recorded. Publisher verification, human brand/legal attestations and actual host display remain unverified |
 | G9 usefulness & leads | NOT MEASURED | Track real usefulness/returns and only explicit opt-in studio enquiries; private sources never forwarded by default |
 | G10 official launch | NOT SUBMITTED | All P0 and critical QA must pass, then official OpenAI submission/approval and independent install |
@@ -287,7 +287,7 @@ This development branch is not deployed and does not replace the immutable 0.35.
 
 Candidate 0.35.2 synchronizes the actual saved private plugin with canonical source after import validation fix7733bfbb6205d391157721e89df50f602e05cace (PR1; full Python100 and reproducible package CI39908560918 PASS). The complete current0.35.0 archive was exported before editing. Existing plugin ID, audience, MCP endpoint/auth and ordered default prompts are preserved. Native external adapters receive the same helper fix and optional support files.
 
-0.35.2 is a private beta candidate pending this change's own CI and guarded Plugin Creator save/readback. That save, public draft preparation and official catalog approval are different events. No public server deployment or1.0 acceptance is performed by this source change. The immutable0.35.1 archive is preserved. Actual host recording, independent real creative trials, author identity and remainingG1–G10 are still required; Library write access remains unavailable.
+0.35.2 is a private beta candidate pending this change's own CI and guarded Plugin Creator save/readback. That save, public draft preparation and official catalog approval are different events. No public server deployment or 1.0 acceptance is performed by this source change. The immutable0.35.1 archive is preserved. Actual host recording, independent real creative trials, author identity and remainingG1–G10 are still required; Library write access remains unavailable.
 
 
 ### Directing judgment correction — 23 October 2026
@@ -321,7 +321,7 @@ This is a substantive method correction, not evidence of trained taste, author a
 
 The same USER/PRIVATE plugin now has saved0.36.1 release `pluginrel_6adbc211ccbc8191bc6acb374f2b8805`. Root reviewed the complete94-file candidate against the freshly exported0.36.0 archive: only intended existing edits plus the new music-video reference, with full presentation, prompts and MCP configuration preserved. Saved readback verified the exact94-file inventory and10selected files (9byte-exact, legacy manifest JSON-semantically equal). Archive SHA256 is `f2734d52e1375406834cc81e194d6712cd5799d2d004c5e5151c0451542c0965`. This supersedes the earlier candidate-save-pending statement.
 
-PR3 source integration and exact-head remote validation are pending at this record's creation; their final receipts will be recorded separately without repeated status-only source commits. The failed source-context alternative remains an actual unresolved quality regression, not a completed good film. No installed-host demo, blind professionalG3 acceptance, trained weights, official directory approval, public server deployment or1.0 acceptance is established by the private save. Third-party source distributions still use0.36.0 until the0.36.1 source is validated.
+PR3 source integration and exact-head remote validation are pending at this record's creation; their final receipts will be recorded separately without repeated status-only source commits. The failed source-context alternative remains an actual unresolved quality regression, not a completed good film. No installed-host demo, blind professionalG3 acceptance, trained weights, official directory approval, public server deployment or 1.0 acceptance is established by the private save. Third-party source distributions still use0.36.0 until the0.36.1 source is validated.
 
 
 ## Cycle0.37.0 — evidence-led production audit, source candidate (23 October2026)
@@ -347,3 +347,15 @@ PR3 source integration and exact-head remote validation are pending at this reco
 - G3 owner-reported quality failures remain unresolved; G1–G10 and official publication gates remain open. Private user scripts/media/evaluations are not included in the method bundle, source, tests or public review archive. No protection/BIC changes or official submission are part of this source change.
 
 **0.37.1 preparation state at source commit:** Cloudflare version`91dd1005-4e96-431e-aa1d-4cef4c4c026e` uploaded to staging only;10 module readbacks verified by the runtime agent. Active runtime remains0.7.2-beta until guarded deployment and real HTTP checks; private saved plugin remains0.37.0 until that succeeds. No staging upload is represented as traffic deployment.
+
+
+## Verified 0.37.1 rollout — saved bytes, live method delivery and source distribution
+
+- **Saved private plugin:**`pluginrel_6adbceac5aa881919fa5c87ad6739fe1`, USER/PRIVATE. Full 98-file saved export verified:97 byte-exact files and one legacy manifest JSON-semantically equal. Frozen ZIP SHA256`03e79ad19b08b9f33f6d4741bf31090ec1e4259db2e86930afcfea7df2410ed4`; saved TAR SHA256`d6b25c9943b401a3c4fd43157484354f7ba2f9144c06307d3be91d25722394d0`. Starter prompts and MCP configuration preserved. Saved-file verification is not installed-host execution.
+- **Actual public runtime:**0.7.3-beta, deployment`a0283966-9400-43ba-a05d-ba964d6725dc`, version`91dd1005-4e96-431e-aa1d-4cef4c4c026e`, 100% traffic.13 actual HTTP checks passed, including full core/all 22 departments/handoffs, selected contracts and invalid-request rejection. Ten remote module hashes match candidate; seven prior guard/core/media modules are byte-exact. No BIC/protection/auth/storage settings changed.
+- **Method identity:**0.37.1, SHA256`a0fc922aae29ee104b100c35491256c7ff7cf25a37bdd82262f739e1331cfe45`, generated only from six allowlisted public authored files. HTTP proves exact delivery, not that an installed host selected, followed or artistically applied it.
+- **Functional source:**PR5 merged`a42164d5e6f6b1f5fa2c671e924a39e591a8b653`; package40025184320/MCP40025184217/catalog40025184116/gate40025184197 SUCCESS.100 Python structural/media tests, all seven Node suites, method-generator drift check and repeated exact private/public builds passed. These are not directing-quality/G3 results.
+- **Source distributions:**skills/main`af9423725d1d0e5b1673366bf5bfd115ee44734d`; Claude branch`cf670517e31c4a62aba6bb38d71df8e2d56ac75c`; Gemini branch`30b267ae6573e48af7b937fd8663deae4680ed75`. All 50 skill and 59 + 59 native target Git blob hashes exact; 39 selected file-content readbacks exact. 3235 unrelated skills files preserved. These GitHub refs are not official gallery acceptances.
+- **Publication failure retained:**auto registry run40025184358 failed live initialize preflight with HTTP403 before publisher installation/authentication/publishing, all skipped. The log does not identify the precise protection mechanism. PR6 merge`8bdd9b3f8bee05fd3676ac4902cdd75a72ddba92` made that publication workflow manual-only without removing any safeguard; catalog40025572402 SUCCESS. The failed run is not called green and no registry application/acceptance is claimed.
+- **Public preparation:**96-file unsubmitted review archive SHA256`bfa98a493e7ab567fbafb84d5a751e7dc0ceb3470c95cdef9b114850bd8541d7`, with 5 positive / 3 negative review cases including actual method retrieval and unsupported/duplicate department selection. These cases are prepared metadata, not completed host trials or a demo. Required host demo, publisher/domain/scans, saved-version host routing and developer attestations remain unresolved.
+- **Remaining acceptance:**owner-reported weak judgment/false praise and source-context failures remain unresolved G3 failures; independent professional evaluation, actual host use and production usefulness remain unproven. No private user script/media/contactsheet is published, no official catalog approval or 1.0 claimed. Machine-readable public source evidence:`eval/REMAKE_AUDIT_ROLLOUT_EVIDENCE_v037.json`.
