@@ -1,0 +1,24 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cinema-taste-intelligence",
+  "version": "0.3.2",
+  "description": "Personal cinema research from actual ratings, watchlists and distinct film tastes, by objekts.",
+  "author": {"name":"objekts","email":"salute@objekts.ai","url":"https://objekts.ai"},
+  "license": "MIT",
+  "keywords": ["cinema-taste-intelligence","objekts","film taste intelligence","objekts cinema recommendations"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Cinema Taste Intelligence",
+        "shortDescription": "Film research shaped by you",
+        "longDescription": "Analyze a person's actual movie ratings, rewatches, dislikes and watchlist from Letterboxd, Kinopoisk, IMDb or MyShows. Research distinctive cinematographic affinities, create several taste facets and find watchlist picks plus independently sourced discoveries. Marks incomplete profile coverage, uses verified festival archives and cites the artistic evidence behind every recommendation. Free with the assistant's own capabilities. Created by objekts.ai.",
+        "developerName": "objekts",
+        "category": "Entertainment",
+        "capabilities": [],
+        "logo": "./assets/cinema-taste-mark.svg",
+        "composerIcon": "./assets/cinema-taste-mark.svg",
+        "brandColor": "#1236A6"
+      }
+    }
+  }
+}
