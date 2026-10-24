@@ -1,0 +1,15 @@
+{
+  "name": "kinema",
+  "version": "0.3.3",
+  "description": "KINEMA studies film ratings, rewatches and watchlists to research several dimensions of personal taste, then curates watchlist picks and source-verified discoveries. Created by objekts, a visual production studio.",
+  "author": {
+    "name": "objekts",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai"
+  },
+  "homepage": "https://objekts.ai/",
+  "repository": "https://github.com/peach420fuzz/plugin-marketplace",
+  "license": "MIT",
+  "keywords": ["KINEMA", "objekts", "cinema", "film recommendations", "film history"],
+  "icon": "./assets/objekts-squares-charcoal.png"
+}
