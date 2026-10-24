@@ -1,0 +1,13 @@
+{
+  "name": "kinema-by-objekts",
+  "version": "0.3.3",
+  "description": "KINEMA by objekts researches personal cinema tastes from actual viewing histories, watchlists and festival archives.",
+  "contextFileName": "GEMINI.md",
+  "mcpServers": {
+    "objektsCinemaTaste": {
+      "command": "node",
+      "args": ["${extensionPath}${/}server${/}mcp-stdio.mjs"],
+      "cwd": "${extensionPath}"
+    }
+  }
+}
