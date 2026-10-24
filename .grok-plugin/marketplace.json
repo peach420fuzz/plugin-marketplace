@@ -486,6 +486,20 @@
         "email": "support@videogen.io",
         "url": "https://github.com/video-gen"
       }
+    },
+    {
+      "name": "kinema",
+      "description": "KINEMA by objekts researches personal film tastes from actual ratings, rewatches and watchlists. It curates known-watchlist picks and source-verified discoveries across several cinematic interests and relevant festival archives.",
+      "category": "productivity",
+      "source": {
+        "type": "local",
+        "path": "./external_plugins/kinema"
+      },
+      "homepage": "https://objekts.ai/",
+      "keywords": ["KINEMA by objekts", "objekts KINEMA", "kinema film recommendations"],
+      "domains": ["objekts.ai"],
+      "version": "0.3.3",
+      "author": "objekts"
     }
   ]
 }

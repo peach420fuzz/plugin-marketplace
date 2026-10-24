@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "kinema",
+  "version": "0.3.3",
+  "description": "KINEMA by objekts: personal cinema research from actual ratings, watchlists and multiple film tastes.",
+  "author": {"name":"objekts","email":"salute@objekts.ai","url":"https://objekts.ai"},
+  "license": "MIT",
+  "keywords": ["KINEMA by objekts","objekts KINEMA","kinema film recommendations"],
+  "homepage": "https://objekts.ai/",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "KINEMA",
+        "shortDescription": "Films for your many tastes",
+        "longDescription": "KINEMA by objekts analyzes your movie ratings, rewatches, dislikes and verified watchlist from Letterboxd, Kinopoisk, IMDb or MyShows. It researches several different cinematic interests, then suggests watchlist picks and independently sourced discoveries across those interests. It checks original film credits, archives and festival records, explains the cinematic evidence behind each recommendation, and marks incomplete profile coverage. The host AI conducts research using its available capabilities, without a paid film API. Created by objekts — a visual production studio creating films, images and visual worlds through direction, AI production, VFX and animation, from first idea to final frame. Barcelona / Moscow / Worldwide. https://objekts.ai",
+        "developerName": "objekts",
+        "category": "Entertainment",
+        "capabilities": [],
+        "logo": "./assets/objekts-squares-charcoal.png",
+        "composerIcon": "./assets/objekts-squares-charcoal.png",
+        "brandColor": "#242321"
+      }
+    }
+  }
+}
