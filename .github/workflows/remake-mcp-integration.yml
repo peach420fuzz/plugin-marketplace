@@ -37,3 +37,5 @@ jobs:
           node plugins/remake-by-objekts/tests/audit-method-contract-v037.mjs
       - name: Verify SKRIPT information routes, links, privacy scope and unchanged origin policy
         run: node plugins/remake-by-objekts/tests/skript-site-v077.mjs
+      - name: Verify exact public OpenAI domain challenge on the REMAKE HTTPS origin
+        run: node plugins/remake-by-objekts/tests/domain-challenge-v078.mjs
