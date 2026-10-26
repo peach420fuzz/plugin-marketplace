@@ -1,0 +1,8 @@
+{
+  "asset": "objekts-squares-charcoal.png",
+  "source_repository": "peach420fuzz/plugin-marketplace",
+  "source_commit": "82d38448574bdcfa2814be1b0c53263a4ba8d423",
+  "source_path": "external_plugins/kinema/assets/objekts-squares-charcoal.png",
+  "operation": "byte-for-byte reuse; no redraw or regeneration",
+  "sha256": "677e4dd7f5215aaaa5dcada8a4326ec611024a6d9be1d6619435692be566ec44"
+}

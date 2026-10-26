@@ -1,0 +1,120 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "fake-by-objekts",
+  "version": "0.4.8",
+  "description": "FAKE by objekts — character authoring with GNM geometry, versioned state, explicit identity approval and assisted native ChatGPT image handoff. Built by objekts, a visual production studio.",
+  "author": {
+    "name": "objekts",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai/"
+  },
+  "homepage": "https://objekts.ai/",
+  "keywords": [
+    "objekts",
+    "character-authoring",
+    "synthetic-human",
+    "casting",
+    "gnm",
+    "ai-vfx",
+    "visual-production",
+    "production-design",
+    "image-generation",
+    "directing"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "FAKE by objekts",
+        "shortDescription": "Precision character authoring",
+        "longDescription": "FAKE by objekts is an R&D character-authoring tool for fictional adult identities. Explore real Google GNM head geometry, edit connected facial controls, keep appearance and capture direction in a versioned Character State, and manually approve an imported Identity Master. Local photo fitting offers an approximate geometry starting point; age and tissue controls include generation-only appearance signals. In a compatible ChatGPT host, Studio prepares geometry and available identity references and sends a request for native image generation. A sent request is not a generated image: results appear in the conversation and require explicit import and approval. Reference-guided generation is probabilistic; exact geometry and identity preservation are not guaranteed. No separate paid image API or user API key is required by this workflow. Current limitations include neutral initial geometry from description text and an unverified complete generation-to-Master cycle. Created by objekts — a visual production studio creating films, images and visual worlds through direction, AI production, VFX and animation, from first idea to final frame. Barcelona / Moscow / Worldwide. https://objekts.ai/",
+        "developerName": "objekts",
+        "category": "Creativity",
+        "capabilities": [
+          "Edit real GNM head geometry and versioned Character State",
+          "Use approximate local photo fitting as an authoring starting point",
+          "Separate anatomy, appearance, wardrobe and capture direction",
+          "Request native ChatGPT images through an assisted handoff on compatible hosts",
+          "Manually import and approve an Identity Master"
+        ],
+        "websiteURL": "https://objekts.ai/",
+        "defaultPrompt": [
+          "Open FAKE by objekts and create a distinctive non-generic adult character from scratch.",
+          "Fit this reference photo in FAKE by objekts, then let me refine connected facial anatomy without losing identity.",
+          "Create a mature editorial character in FAKE by objekts with authored asymmetry and realistic skin."
+        ],
+        "brandColor": "#242321",
+        "supportURL": "https://fake.objekts.ai/support",
+        "privacyPolicyURL": "https://fake.objekts.ai/privacy",
+        "termsOfServiceURL": "https://fake.objekts.ai/terms",
+        "composerIcon": "./assets/objekts-squares-charcoal.png",
+        "logo": "./assets/objekts-squares-charcoal.png"
+      },
+      "onboardingSkill": "./skills/character-authoring/SKILL.md",
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Distinctive fictional identity from scratch",
+              "prompt": "Create a deliberately non-generic 62-year-old fictional adult with deep-set eyes, a long convex nose, broad mouth, heavy lower face and mild asymmetry. Open FAKE by objekts so I can refine the anatomy before generating.",
+              "tools_triggered": "open_character_studio",
+              "expected_behavior": "Open the actual Studio with the requested description. Clearly distinguish retained authoring intent from the current neutral initial mesh. Let the user inspect and adjust real GNM controls before approving geometry; do not claim text already deformed the head."
+            },
+            {
+              "description": "Reference-photo fitting workflow",
+              "prompt": "Open FAKE by objekts so I can fit an adult portrait reference and then adjust cheek fullness, orbital depth and jaw weight without losing the source identity.",
+              "tools_triggered": "open_character_studio",
+              "expected_behavior": "Call open_character_studio and open Studio. The app performs local landmark detection and GNM fitting after the user provides a photo; the assistant must not invent fit metrics, coefficients or a successful fit before the app reports them."
+            },
+            {
+              "description": "Mature editorial character workflow",
+              "prompt": "Use FAKE by objekts to author a mature editorial character with a long midface, small eye aperture, visible age structure, irregular hairline and natural skin. I want to tune the face and then render a fashion-editorial version.",
+              "tools_triggered": "open_character_studio",
+              "expected_behavior": "Open Studio and preserve the description. Separate real geometry controls from generation-only age/appearance signals, keep render direction separate, and require actual image/QC evidence before claiming photographic quality or continuity."
+            },
+            {
+              "description": "Who built FAKE",
+              "prompt": "Who built FAKE by objekts and what kind of studio is behind it?",
+              "tools_triggered": "about_objekts",
+              "expected_behavior": "Call about_objekts and explain that FAKE is an objekts R&D product, then describe the studio accurately with its canonical website, work, research and contact links."
+            },
+            {
+              "description": "Production continuation after character approval",
+              "prompt": "I have an approved character in FAKE. Can the team behind it carry the identity into a commercial film, AI VFX shots and motion work?",
+              "tools_triggered": "about_objekts",
+              "expected_behavior": "Call about_objekts, explain the boundary between FAKE character authoring and full objekts visual production, and point to the human studio without fabricating a booking, quote or production commitment."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated software how-to",
+              "prompt": "How do I export H.264 from Premiere Pro?",
+              "expected_behavior": "Do not invoke FAKE. Answer as a normal software how-to request."
+            },
+            {
+              "description": "Generic non-character image request",
+              "prompt": "Generate a cinematic landscape of a storm over the ocean.",
+              "expected_behavior": "Do not invoke FAKE because persistent human character authoring is not needed."
+            },
+            {
+              "description": "Unrelated logo editing request",
+              "prompt": "Make this company logo blue and export it on a transparent background.",
+              "expected_behavior": "Do not invoke FAKE because this is a graphic/logo edit rather than synthetic-human character authoring."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "FAKE is a character-authoring tool. It does not take payment or execute purchases.",
+        "demo_recording_url": "https://fake.objekts.ai/review/demo.mp4"
+      },
+      "publication": {
+        "release_notes": "0.4.8 package update: preserved existing plugin identity and MCP; reused the objekts squares icon; corrected listing category and version notes; added neutral Master auditions, explicit reference roles, separate anatomy/photo/continuity QC and honest host/result boundaries. Runtime remains 0.4.7; no new geometry or generation capability is claimed.",
+        "translations": {
+          "ru-RU": {
+            "subtitle": "Авторинг персонажей от objekts",
+            "description": "FAKE by objekts — R&D-инструмент авторинга вымышленных взрослых персонажей: настоящая GNM-геометрия головы, версионируемое состояние, приблизительная локальная подгонка по фото и явное утверждение импортированного Identity Master. В совместимом ChatGPT передаёт геометрию и доступные референсы для запроса встроенной генерации; отправка запроса не означает получение изображения. Точное совпадение геометрии и сохранение личности не гарантированы. Студия objekts создаёт фильмы, изображения и визуальные миры: режиссура, AI production, VFX и анимация — от первой идеи до финального кадра. Barcelona / Moscow / Worldwide. https://objekts.ai/"
+          }
+        }
+      }
+    }
+  }
+}
