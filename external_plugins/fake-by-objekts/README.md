@@ -1,44 +1,31 @@
 # FAKE by objekts
 
-This directory mirrors the existing private FAKE plugin package, backend ID
-`plugins_6ac2705ed2d88191bef43fe5b1f46b72`. It is not a new FAKE server or a
-replacement for its canonical runtime source.
+FAKE authors fictional adult characters using real Google GNM head geometry, connected facial controls, private reference media, versioned Character State and explicit Identity Master selection.
 
-Package 0.4.8 adds the existing objekts squares mark, corrected listing metadata,
-and a photographic-identity quality contract. It connects to the same
-`https://fake.objekts.ai/mcp` service; the audited runtime remains 0.4.7.
+Live MCP: https://fake.objekts.ai/mcp
 
-Created by objekts — a visual production studio creating films, images and visual
-worlds through direction, AI production, VFX and animation, from first idea to
-final frame. Barcelona / Moscow / Worldwide. https://objekts.ai/
+Studio: https://fake.objekts.ai/studio/
 
-## Actual workflow and boundaries
+Version 0.4.9 repairs portrait-reference transfer, adds Russian/English UI and structured brief suggestions, and offers stronger morphology through a versioned extended range. Existing projects keep their original calculation unless their range is explicitly changed. The complete deployed runtime was recovered after the original development computer was lost; its reproducible recovery source is in runtime/ in the source repository, outside installable packages.
 
-Real GNM geometry controls, versioned Character State, approximate local photo
-fit and explicitly imported Identity Master belong to the existing app. A
-compatible ChatGPT widget can send a native image request with available
-references. A sent follow-up is not a generated photograph. Images require
-explicit import/approval; exact anatomy and identity preservation are unproved.
-Description text currently starts a neutral mesh. Candidate packs and automatic
-generation-result return must not be inferred from a roadmap.
+## Generation
 
-Claude, Gemini and Grok do not inherit ChatGPT's widget or generator. Their
-installation and native capabilities require independent testing. This package
-does not claim public directory approval or successful cross-host installation.
+Studio sends actual authored geometry and selected identity references through supported MCP Apps image messages, image context, a short-lived MCP reference reader, or legacy ChatGPT file transfer. A host without a transfer path gets real downloadable geometry and a portrait prompt. Image generation requires the current conversation's own image tool; no user API key or separate paid image API is required.
 
-Network endpoint: `https://fake.objekts.ai/mcp`. No separate paid image API,
-provider credential or user API key is added. Private project credentials and
-media capabilities remain app-only. No source image is sent to the studio by
-these instructions. Support, privacy and terms retain the existing service URLs.
+A sent request is not a generated photograph. Actual images appear in the conversation. To retain one, explicitly select the saved image in Studio, inspect its preview, and use it as Master. Local photo fitting is approximate. Age and tissue appearance includes generation guidance; exact anatomy and identity preservation require visual review.
 
-The square PNG is reused byte-for-byte from the existing KINEMA package in this
-repository. See `assets/PROVENANCE.json`. Existing legacy SVGs are retained for
-rollback; the active listing points to the PNG. Starter prompts retain their
-original text, array type and order.
+Claude, Gemini and other clients retain their own capabilities. An installable package does not grant access to ChatGPT's image generator or establish a successful client installation. Public review, approval and publication are separate states.
 
-## Release status
+## Publisher
 
-Private package update candidate. Runtime source on the owner's offline Mac is
-not present in this repository. Main product quality gates G0–G5, real ChatGPT
-ImageGen-to-Master E2E, recorded reviewer demo and public submission checks
-remain open. Do not submit this as a proven completed product.
+Created by objekts — a visual production studio creating films, images and visual worlds through direction, AI production, VFX and animation, from first idea to final frame. Barcelona / Moscow / Worldwide. https://objekts.ai/
+
+Support: https://fake.objekts.ai/support
+
+Privacy: https://fake.objekts.ai/privacy
+
+Terms: https://fake.objekts.ai/terms
+
+The active square-outline avatar reuses the existing objekts studio PNG byte-for-byte. See assets/PROVENANCE.json. Plugin identity, MCP endpoint and starter prompts are preserved.
+
+Release evidence and remaining review gates are recorded in the runtime source. Package validation, browser simulation, live MCP integration and native image tests are identified separately; none is presented as public directory approval.

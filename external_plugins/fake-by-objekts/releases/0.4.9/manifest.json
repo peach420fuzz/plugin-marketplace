@@ -1,0 +1,44 @@
+{
+  "product": "FAKE by objekts",
+  "version": "0.4.9",
+  "mcp": "https://fake.objekts.ai/mcp",
+  "packages": [
+    {
+      "platform": "openai",
+      "file": "fake-by-objekts-openai-0.4.9.zip",
+      "bytes": 1739854,
+      "sha256": "eb2f57d66b891e4bee9d2b2ddb7fba7114ae141a4b4786a90090dda63ff8844d",
+      "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
+    },
+    {
+      "platform": "claude",
+      "file": "fake-by-objekts-claude-0.4.9.zip",
+      "bytes": 11106,
+      "sha256": "488a6c55d9817c65c20dffa6e074ce767fd210e898765aaa06b347129f47cd38",
+      "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
+    },
+    {
+      "platform": "gemini",
+      "file": "fake-by-objekts-gemini-0.4.9.zip",
+      "bytes": 9772,
+      "sha256": "8b5dcc4e3aaad60c30e5bdbf75935142bf47b36bde6d2a6b70e0e04ba604ac64",
+      "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
+    },
+    {
+      "platform": "agent",
+      "file": "fake-by-objekts-agent-0.4.9.zip",
+      "bytes": 1739854,
+      "sha256": "eb2f57d66b891e4bee9d2b2ddb7fba7114ae141a4b4786a90090dda63ff8844d",
+      "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
+    },
+    {
+      "platform": "public",
+      "file": "fake-by-objekts-public-0.4.9.zip",
+      "bytes": 1741482,
+      "sha256": "2714cfd3827a61988739eed99b17b173b2ffc4d81d5df0d5a16ff54910e4858a",
+      "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
+    }
+  ],
+  "publicReview": "NOT_SUBMITTED",
+  "nativeGeneration": "Requires a compatible host; package creation does not prove client installation or generation."
+}
