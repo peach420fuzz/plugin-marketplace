@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "fake-by-objekts": {
+      "type": "streamable-http",
+      "url": "https://fake.objekts.ai/mcp"
+    }
+  }
+}
+
