@@ -11,11 +11,13 @@ node --check dist/worker.mjs
 node --input-type=module --check < dist/studio.js
 ```
 
-Deployment retains the current static asset namespace (`keep_assets: true`), D1, R2, secrets, rate limiter and custom domain. The Worker overrides only Studio's main module and three new small modules. All original model binaries, face-fitting dependencies and download archives retain their existing URLs. No database migration or existing character rewrite is required.
+Deployment retains the current static asset namespace (`keep_assets: true`), D1, R2, secrets, rate limiter and custom domain. The Worker overrides only Studio's main module and three new small modules. All original model binaries, face-fitting dependencies and download archives retain their existing URLs. No database migration or existing character rewrite is required. The text-only host fallback stores short-lived, project-scoped geometry requests in the existing generation_jobs table and private R2, then exposes actual reference bytes through read_portrait_request. Tokens expire after 15 minutes, validate the saved revision and selected Master, and do not grant general project access.
 
 Version 0.4.9 changes: live host capability negotiation; standard MCP Apps image transport plus legacy ChatGPT file transport; a real downloadable geometry/prompt fallback; one photographic portrait audition; a Russian/English UI selector; opt-in extended morphology for old projects and extended defaults for new projects; optional structured brief suggestions; project ownership validation for references; a reference-image size limit compatible with the MCP request limit; graceful WebGL startup errors.
 
 Original project solvers v1/v2 remain unchanged. v3 raises semantic geometry strength by 1.8 before bounding each axis to [-1,1]. Fixed overrides remain fixed. Age/surface signals remain generation guidance, not newly invented GNM tissue simulation.
+
+A native photographic acceptance image was generated from the real exported board on 26 October 2026. This proves that test generation, not the complete interactive host integration.
 
 Native image generation remains the conversation host's operation. A transport unit test, QA-host file ID, HTTP health response or screenshot does not prove a real generated image, photographic quality or identity continuity. Public 1.0 review must include actual generation and explicit Master reuse in the intended hosts.
 

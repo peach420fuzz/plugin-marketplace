@@ -33,6 +33,11 @@ test('state changes cancel before sending images',async()=>{
 test('hostless use provides actual reference files and prompt for export',async()=>{
   let exported;const result=await sendHandoff({...fixture(),exportFiles:async value=>{exported=value;}});assert.equal(result.status,'EXPORTED');assert.equal(exported.files[0].file,file);assert.match(exported.prompt,/fictional adult/);
 });
+test('text-only MCP hosts use an authenticated server ticket without native upload methods',async()=>{
+  let sent,prepared=false;const app={getHostCapabilities:()=>({message:{text:{}},serverTools:{}}),callServerTool(){},sendMessage:async value=>{sent=value;return {};}};
+  const result=await sendHandoff({...fixture(),app,prepareOnServer:async({geometry})=>{assert.equal(geometry,file);prepared=true;return{requestId:'frequest-test',requestToken:'a'.repeat(64)};}});
+  assert.equal(result.route,'mcp-server-ticket');assert.equal(prepared,true);assert.match(sent.content[0].text,/read_portrait_request/);assert.doesNotMatch(sent.content[0].text,/projectKey/);
+});
 test('audition asks for one actual photographic image and preserves shape',()=>{
   const prompt=auditionPrompt('Create one photorealistic fictional adult character image, candidate 1. Wide jaw.',7);assert.match(prompt,/ONE photorealistic portrait/);assert.match(prompt,/Return the actual generated image/);assert.match(prompt,/Wide jaw/);assert.match(prompt,/v7/);assert.doesNotMatch(prompt,/FOUR|candidate 1/);
 });

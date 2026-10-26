@@ -13,7 +13,7 @@ async function S3(t) {
   t.assertLocalSnapshot();
   Ou(snapshot,await t.readProject());
   const prompt=auditionPrompt(m3(snapshot.state,{hasIdentityMaster:!!master,hasSourceReference:!!source},0),snapshot.currentVersion);
-  return sendHandoff({app:Ur,getNativeHost:()=>V2?wA:window.openai,files,prompt,stateVersion:snapshot.currentVersion,modelContent:`FAKE by objekts. Saved state v${snapshot.currentVersion}. ${files.map((f,i)=>`Image ${i+1}: ${f.role}`).join('. ')}`,assertCurrent:t.assertLocalSnapshot,exportFiles:async pack=>showGenerationExport(pack)});
+  return sendHandoff({app:Ur,getNativeHost:()=>V2?wA:window.openai,files,prompt,stateVersion:snapshot.currentVersion,modelContent:`FAKE by objekts. Saved state v${snapshot.currentVersion}. ${files.map((f,i)=>`Image ${i+1}: ${f.role}`).join('. ')}`,assertCurrent:t.assertLocalSnapshot,exportFiles:async pack=>showGenerationExport(pack),prepareOnServer:async({geometry,prompt})=>{const image=await imageBlock(geometry);t.assertLocalSnapshot();const result=await uo('prepare_portrait_request',{projectId:snapshot.projectId,projectKey:Os,expectedVersion:snapshot.currentVersion,geometryDataUrl:`data:${image.mimeType};base64,${image.data}`,prompt});if(result.isError)throw new Error(result.content?.find(item=>item.type==='text')?.text??'Reference transfer failed.');return result.structuredContent;}});
 }
 
 let generationPending=false;

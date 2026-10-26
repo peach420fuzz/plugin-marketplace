@@ -3,6 +3,7 @@ export function handoffRoute(app, nativeHost) {
   const caps = app?.getHostCapabilities?.() ?? {};
   if (caps.message?.image && typeof app?.sendMessage === 'function') return 'mcp-message-images';
   if (caps.updateModelContext?.image && caps.message && typeof app?.updateModelContext === 'function' && typeof app?.sendMessage === 'function') return 'mcp-context-images';
+  if (caps.message && caps.serverTools && typeof app?.callServerTool === 'function' && typeof app?.sendMessage === 'function') return 'mcp-server-ticket';
   if (typeof nativeHost?.uploadFile === 'function' && typeof nativeHost?.setWidgetState === 'function' && typeof nativeHost?.sendFollowUpMessage === 'function') return 'chatgpt-files';
   return 'export';
 }
@@ -21,13 +22,21 @@ export async function imageBlock(file) {
   return { type: 'image', mimeType: file.type, data: btoa(binary) };
 }
 
-export async function sendHandoff({app, getNativeHost, files, prompt, modelContent, stateVersion, assertCurrent, exportFiles}) {
+export async function sendHandoff({app, getNativeHost, files, prompt, modelContent, stateVersion, assertCurrent, exportFiles, prepareOnServer}) {
   assertCurrent();
   const nativeHost = getNativeHost(); // Resolve on every click, after host initialization.
   const route = handoffRoute(app, nativeHost);
   if (route === 'export') {
     await exportFiles({files, prompt});
     return {status: 'EXPORTED', route};
+  }
+  if(route==='mcp-server-ticket'){
+    if(typeof prepareOnServer!=='function')throw new Error('Server reference transfer is not connected.');
+    const ticket=await prepareOnServer({geometry:files.at(-1).file,prompt});
+    if(!ticket?.requestId||!ticket?.requestToken)throw new Error('The server did not return a portrait reference request.');
+    assertCurrent();
+    accepted(await app.sendMessage({role:'user',content:[{type:'text',text:`Generate my authored FAKE portrait now. First call FAKE read_portrait_request with requestId ${ticket.requestId} and requestToken ${ticket.requestToken}; it returns the actual geometry and identity image references plus portrait direction. Then use the built-in image-generation tool to create ONE photorealistic image. Return the real image. If the conversation cannot generate images, state that explicitly. Do not ask for project credentials, do not use a paid external API and do not claim completion from a reference transfer.`}]}),'Generation request');
+    return {status:'SENT_TO_HOST',route,referenceCount:files.length};
   }
   if (route === 'mcp-message-images' || route === 'mcp-context-images') {
     const content = [];

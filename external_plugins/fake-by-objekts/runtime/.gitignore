@@ -3,3 +3,4 @@ node_modules/
 recovered/*.mjs
 recovered/*.js
 !recovered/*.gz
+qa-artifacts/

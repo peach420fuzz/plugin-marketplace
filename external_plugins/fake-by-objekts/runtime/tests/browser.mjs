@@ -14,6 +14,7 @@ const server=http.createServer(async(req,res)=>{try{
     let source=local?await fs.readFile(new URL('../dist/studio.js',import.meta.url),'utf8'):await response.text();
     // Test-only evidence tap: no credentials; never included in the deployed module.
     source=source.replace('return sendHandoff({app:Ur',`window.__FAKE_TEST_REFERENCES=await Promise.all(files.map(async item=>({role:item.role,name:item.file.name,type:item.file.type,base64:await new Promise(resolve=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result.split(',')[1]);reader.readAsDataURL(item.file);})})));return sendHandoff({app:Ur`);
+    source=source.replace('OA();setInterval', 'window.__FAKE_TEST_APP=Ur;OA();setInterval');
     source=source.replace('bt=safeViewport(n,c0)','bt=safeViewport(n,c0),window.__FAKE_TEST_VIEWPORT=bt');
     res.writeHead(200,{'content-type':'text/javascript'});res.end(source);return;
   }
@@ -58,6 +59,14 @@ try{
   await fs.writeFile(new URL('portrait-prompt.txt',out),evidence.followup.prompt);
   // QA IDs only demonstrate transport; no image generation claim is made.
   report.steps.push({handoff:'SENT_TO_SIMULATED_HOST',referenceCount:evidence.files.length,promptBytes:evidence.followup.prompt.length});
+  await page.evaluate(()=>{const app=window.__FAKE_TEST_APP;app.getHostCapabilities=()=>({message:{text:{}},serverTools:{}});app.sendMessage=async message=>{window.__FAKE_TEST_TICKET_MESSAGE=message;return {};};});
+  await page.locator('#generate').click();
+  await page.waitForFunction(()=>window.__FAKE_TEST_TICKET_MESSAGE,{timeout:45000});
+  const ticketMessage=await page.evaluate(()=>window.__FAKE_TEST_TICKET_MESSAGE.content[0].text);
+  const ticketMatch=ticketMessage.match(/requestId (\S+) and requestToken ([a-f0-9]{64})/);assert.ok(ticketMatch);
+  const ticketResponse=await fetch('http://127.0.0.1:8794/mcp',{method:'POST',headers:{'content-type':'application/json',accept:'application/json, text/event-stream'},body:JSON.stringify({jsonrpc:'2.0',id:88,method:'tools/call',params:{name:'read_portrait_request',arguments:{requestId:ticketMatch[1],requestToken:ticketMatch[2]}}})});
+  const ticketResult=(await ticketResponse.json()).result;assert.ok(!ticketResult.isError);assert.equal(ticketResult.content.filter(item=>item.type==='image').length,1);assert.equal(ticketResult.structuredContent.imageGenerationPerformed,false);
+  report.steps.push({serverTicketReferenceRead:'PASS',conversationHost:'SIMULATED',imageGenerationPerformed:false});
   await page.screenshot({path:new URL('handoff-ru.png',out).pathname,fullPage:true});
   await page.locator('#fake-language').selectOption('en');await page.waitForFunction(()=>document.querySelector('#generate').textContent==='GENERATE PORTRAIT');
   await page.setViewportSize({width:390,height:844});await page.locator('[data-tab="quick"]').click();
