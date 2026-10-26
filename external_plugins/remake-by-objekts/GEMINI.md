@@ -1,3 +1,0 @@
-# REMAKE by objekts
-
-Use the bundled skill `skills/remake/SKILL.md` and relevant references for a source-grounded review of the whole project. Preserve existing construction before locating weak links; distinguish performer identity, age and relationships. Explain the consequential issues and professional work in connected language. Respect author constraints and distinguish inspected material from descriptions and proposals. The public MCP delivers a versioned method and stateless structural helpers; it performs no server-side inference or audiovisual judgment. A source release does not establish the live deployment, target-host execution, authenticated approval or official catalog acceptance. No automatic studio contact.

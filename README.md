@@ -1,126 +1,47 @@
-# xAI Plugin Marketplace
+# KINEMA by objekts
 
-The official catalog of plugins for Grok Build. This repo is an index that points at plugin sources so Grok Build can browse, install, and update them.
+Free personal cinema research for skill-aware AI assistants. Start with a Letterboxd, Kinopoisk, IMDb or MyShows username/profile link, or your own film list. The assistant studies actual ratings, likes, dislikes and reviews, maps different interests, researches candidates, and explains watchlist picks and further discoveries through film form and verified sources.
 
-> [!WARNING]
-> Third-party plugins listed here or other third-party materials are solely developed or provided by their respective authors, not xAI. xAI does not author, control, endorse, or verify third-party plugins or materials, makes no guarantees about their security, functionality, fitness, content, outputs, or data practices for any purpose, and disclaims all liability for any damages, losses, claims, or harms related to your use of any third-party plugins or materials. xAI provides plugins or materials AS-IS, without any express or implied warranties, and plugins or materials may execute code and access data on your system — install and use them at your own risk. Each plugin is governed by its own license and terms. xAI has its own [Terms of Service](https://x.ai/legal/terms-of-service) and [Privacy Policy](https://x.ai/legal/privacy-policy).
+History coverage is stated explicitly. A recent feed is a sample; a title missing from it has unknown watched/watchlist status. The assistant checks finalists individually where permitted access allows. KINEMA requires the host's research capabilities for source verification. No paid external model or movie API key is required by the package. The host service may have its own subscription or usage charges.
 
-## Repo layout
+## Install
 
-| Path | Purpose |
-|---|---|
-| `.grok-plugin/marketplace.json` | The catalog index — the source of truth |
-| `.grok-plugin/plugin-index.json` | Generated component catalog — never hand-edit |
-| `plugins/` | First-party plugins owned and maintained by xAI |
-| `external_plugins/` | Third-party plugins |
+### ChatGPT
 
-Every plugin must have a corresponding entry in `.grok-plugin/marketplace.json`. A plugin's ownership determines where it lives:
+The public-upload package is skills-only and uses the host's permitted research/file tools. Public directory review and approval are separate from source publication. The existing private development plugin has its own App identity; do not create duplicate private plugins while submitting an update.
 
-- **First-party** (`plugins/`) — plugins authored and maintained by xAI, vendored in this repo.
-- **Third-party** (`external_plugins/`) — plugins owned by an external party. Vendor a local copy here, or reference the upstream repo directly with a remote source (see below).
+### Claude / Cowork / Claude Code
 
-## What a plugin is
+This folder includes `.claude-plugin/plugin.json` and `skills/kinema/SKILL.md`. Submit the GitHub repository `peach420fuzz/plugin-marketplace`, branch `main`, plugin path `external_plugins/kinema` through the Claude directory portal. Directory approval is required for an official listing. For local imports and evidence auditing, a separate MCPB bundle includes the Node.js server.
 
-A plugin is a directory bundling any combination of:
+### Gemini CLI
 
-| Component | Location | Purpose |
-|---|---|---|
-| Skills | `skills/` | `SKILL.md` capabilities |
-| Commands | `commands/` | Slash commands |
-| Agents | `agents/` | Subagent definitions |
-| Hooks | `hooks/hooks.json` | Lifecycle hooks |
-| MCP servers | `.mcp.json` | MCP server configs |
-| LSP servers | `.lsp.json` | Language server configs |
+A self-contained extension release branch places `gemini-extension.json` at its root:
 
-An optional `plugin.json` manifest adds metadata or overrides component paths.
-
-## Catalog format
-
-`.grok-plugin/marketplace.json`:
-
-```json
-{
-  "name": "my-marketplace",
-  "description": "Short description of this marketplace",
-  "owner": { "name": "My Org" },
-  "plugins": []
-}
+```sh
+gemini extensions install https://github.com/peach420fuzz/plugin-marketplace --ref kinema-gemini-v0.4.0
 ```
 
-Each entry in `plugins`:
+Restart the client after installation. This is direct source installation. Gallery inclusion requires Google's discovery and validation process; it is not claimed here.
 
-| Field | Required | Description |
-|---|---|---|
-| `name` | yes | kebab-case plugin id |
-| `source` | yes | Where to fetch the plugin (see below) |
-| `description` | recommended | Shown when browsing |
-| `category` | no | e.g. `development`, `deployment`, `monitoring` |
-| `homepage` | no | Project URL |
-| `keywords` | no | Terms that suggest this plugin for a request |
-| `domains` | no | Hosts/URLs that suggest this plugin when pasted |
-| `version`, `author`, `tags` | no | Display metadata |
+### Other local MCP clients
 
-### Source types
+With Node.js 22 or newer, configure a stdio MCP server using `node /absolute/path/to/server/mcp-stdio.mjs`. For a different viewer set a distinct `CINEMA42_DATA_FILE`. The server exposes seven tools for profile pointers/recent RSS, imports, dossiers, research planning, candidate auditing, feedback and scoped deletion. It does not generate recommendations autonomously or verify source pages.
 
-Both source types are just an entry appended to the `plugins` array in `.grok-plugin/marketplace.json` — that single file is the only catalog. The `source` field decides where the plugin's actual files come from.
+The portable skill can guide other assistants that accept user instructions, subject to their actual tool support. A local MCP bundle does not automatically create a voice skill for Alice or a public listing in any service.
 
-**Remote** — references an upstream repo, pinned to a full commit SHA. Common for third-party plugins. Nothing is vendored in this repo: the plugin's own files (its `plugin.json`, `skills/`, etc.) live in the upstream repo and are cloned at install time. You only add the catalog entry:
+## Development
 
-```json
-{
-  "name": "my-plugin",
-  "description": "What the plugin does.",
-  "category": "development",
-  "source": {
-    "source": "url",
-    "url": "https://github.com/my-org/my-plugin.git",
-    "sha": "0000000000000000000000000000000000000000"
-  },
-  "homepage": "https://github.com/my-org/my-plugin",
-  "keywords": ["my-plugin"],
-  "domains": ["example.com"]
-}
+```sh
+node --test tests/*.test.mjs
 ```
 
-**Local** — the plugin's files are vendored in this repo under `plugins/<name>/` (first-party) or `external_plugins/<name>/` (third-party), and `source.path` points to that directory:
+The version 0.4.0 release fixes rating changes, contradictory ratings, negative rewatches, localized-title matching, duplicate evidence scoring and calendar-date validation. Tests check deterministic behavior. Personal recommendation quality still needs real-viewer evaluation; no accuracy percentage is claimed.
 
-```json
-{
-  "name": "my-plugin",
-  "source": { "type": "local", "path": "./plugins/my-plugin" }
-}
-```
+## Support
 
-### SHA pinning (required for remote sources)
+Contact [objekts](https://objekts.ai/contact) or salute@objekts.ai. Provide redacted data only. [Privacy and data handling](PRIVACY.md). [MIT license and usage terms](LICENSE).
 
-Every `url` source must pin a full 40-character lowercase commit `sha`. Without a pin, a vendor force-push or repo compromise would silently ship new code to everyone who installs or updates the plugin. Grok Build re-verifies `git rev-parse HEAD == sha` after cloning.
+## Studio
 
-Find the commit to pin:
-
-```bash
-git ls-remote https://github.com/my-org/my-plugin.git HEAD
-```
-
-## Plugin component index
-
-`.grok-plugin/plugin-index.json` lists what each plugin provides (skills, commands, agents, MCP servers, hooks, LSP servers) so clients can show plugin contents before install. It is **generated — never hand-edit it**. After adding or updating a plugin entry, regenerate it:
-
-```bash
-python3 scripts/generate-plugin-index.py
-```
-
-CI runs `python3 scripts/generate-plugin-index.py --check` and fails if the committed file is stale. Generation fetches each pinned remote source (with retries), so CI depends on the upstream repos being reachable — by design, a missing pinned commit fails loudly rather than going silently stale. For remote sources the index records the pinned `sha` it was generated from; clients ignore index data whose `sha` no longer matches the catalog entry.
-
-## Add or update a plugin
-
-1. Place first-party plugins in `plugins/` and third-party plugins in `external_plugins/` (local sources), or reference an upstream repo with a remote source.
-2. Add or edit the entry in `.grok-plugin/marketplace.json`.
-3. For remote sources, set `sha` to the exact commit you want to ship.
-4. Regenerate the component index and validate locally:
-   ```bash
-   python3 scripts/generate-plugin-index.py
-   python3 scripts/validate-catalog.py
-   ```
-5. Open a PR. CI runs the validator and code-owner review is required.
-
-To roll out a plugin update, bump its `sha` (remote) or commit the changes (local).
+Created by [objekts](https://objekts.ai), a visual production studio creating films, images and visual worlds. Direction, AI production, VFX and animation — from first idea to final frame. Barcelona / Moscow / Worldwide. [Work and studio](https://objekts.ai) · [Contact](https://objekts.ai/contact).
