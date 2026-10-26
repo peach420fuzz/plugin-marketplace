@@ -1,10 +1,10 @@
-# SKRIPT by objekts — 0.1.0 private beta
+# SKRIPT by objekts — 0.2.0 private beta
 
 SKRIPT is a collaborative screenwriting plugin. Bring an idea or synopsis: develop materially different directions, choose one, write scenes and a complete draft at the requested scale, and revise its actual weaknesses. Film, series, advertising, music videos and animation have separate working references. REMAKE by objekts remains the distinct review and production-audit product.
 
 The package contains one portable skill and supporting original method files. It runs through the model and supported tools of the host where it is selected; it supplies no separate inference server, API key, account system, media generator or proprietary trained model. No MCP connection is required. Account creation, installation and tool routing must not be inferred from this source folder.
 
-The source map records the actual extent of reading. Complete books, courses and films were not consumed merely because an author is listed. Sixteen source cards include full articles, partial readings and indexed excerpts; inaccessible sources and publisher descriptions are explicitly separate. The plugin does not redistribute their full text. Fictional calibration cases and the writing/revision exercise are original teaching material, not client cases, measured artistic results or tests of an installed release.
+The source map records the actual extent of reading. Complete books, courses and films were not consumed merely because an author is listed. Seventeen source cards include full articles, partial readings and indexed excerpts; inaccessible sources and publisher descriptions are explicitly separate. The plugin does not redistribute their full text. Fictional calibration cases and the writing/revision exercise are original teaching material, not client cases, measured artistic results or tests of an installed release.
 
 Start naturally:
 

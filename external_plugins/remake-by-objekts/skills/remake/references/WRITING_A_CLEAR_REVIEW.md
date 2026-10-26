@@ -18,6 +18,8 @@ In a fictional silent scene, a person notices a dark line on a plate, turns it, 
 
 For music videos compare recurrences in their musical/formal context when available. A gesture can change meaning through its partner, space, duration or context. Lack of plot action does not prove redundancy. An unheard track cannot establish a precise rhythm claim.
 
+Read the opening against the rest of your review. If the middle explains a real development or the ending adds information, do not start by saying the whole has no development. State the existing construction and the exact link that needs work. For example, an original fictional treatment may already move from a rehearsal to a public performance and its aftermath; unclear behavior during the performance does not make the rehearsal and aftermath disappear. A stricter review is useful only when its distinctions remain accurate.
+
 ## Remove scaffolding from the main prose
 
 - Repeated source/mechanism/operation/artifact/acceptance labels: preserve reasoning, remove the scaffolding.

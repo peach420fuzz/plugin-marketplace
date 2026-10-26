@@ -1,6 +1,6 @@
 {
   "schema": "remake.tasks/1",
-  "updated": "2026-10-21",
+  "updated": "2026-10-26",
   "status_vocabulary": [
     "DONE",
     "PARTIAL",
@@ -482,7 +482,16 @@
       "evidence": []
     }
   ],
-  "source_commit": "d80bfcd4d4ad160008c27e152ad843036a40383e",
-  "private_release": "0.35.0",
-  "public_mcp": "0.7.1-beta"
+  "source_commit": "3f579f7e5eb7f3b7f2b17f17201dd00d5d685874",
+  "private_release": "0.38.0",
+  "public_mcp": "0.7.3-beta",
+  "source_commit_role": "Verified baseline before this source revision; merge evidence is recorded separately",
+  "prepared_source_release": "0.39.0",
+  "prepared_runtime": "0.7.5-beta",
+  "skript": {
+    "current_private_release": "0.1.0",
+    "prepared_source_release": "0.2.0",
+    "official_submission": false
+  },
+  "OpenAI_account_update": "Not persisted; separate confirmation condition remains"
 }

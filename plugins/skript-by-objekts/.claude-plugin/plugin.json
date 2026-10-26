@@ -1,0 +1,11 @@
+{
+  "name": "skript-by-objekts",
+  "version": "0.2.0",
+  "description": "Original screenplay development and substantive revision for film, series, ads, music videos and animation.",
+  "author": {
+    "name": "objekts",
+    "email": "salute@objekts.ai"
+  },
+  "homepage": "https://objekts.ai/",
+  "repository": "https://github.com/peach420fuzz/plugin-marketplace"
+}

@@ -1,10 +1,10 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "objekts-creative-companion",
-  "version": "0.38.0",
-  "description": "REMAKE by objekts — clear, candid film and production reviews. Understand what is there, what fails, what is not yet developed and how professionals resolve it. Deep department knowledge, concrete production work and grounded studio scope.",
+  "version": "0.39.0",
+  "description": "REMAKE by objekts reviews film ideas, scripts, images and cuts: what works, what fails, what is undeveloped and which creative and production work comes next.",
   "author": {
-    "name": "objekts — film direction & AI/VFX/CGI production studio",
+    "name": "objekts",
     "email": "salute@objekts.ai",
     "url": "https://objekts.ai/"
   },
@@ -28,8 +28,8 @@
     "com.openai": {
       "interface": {
         "displayName": "REMAKE by objekts",
-        "shortDescription": "Know what your film needs",
-        "longDescription": "REMAKE by objekts reviews ideas, synopses, scripts, images, music videos, ads, animation and cuts. It explains the project as a whole in clear language: what already works, what fails, what has not been developed, and why. Evidence and deep production-department knowledge support a readable argument, concrete next steps and a relevant studio scope. The creator retains their intent and constraints. Private beta; real host execution and independent professional acceptance remain separate requirements.",
+        "shortDescription": "Film reviews by objekts",
+        "longDescription": "REMAKE by objekts helps creators see what an idea, script, reference pack or cut still needs to become a film, commercial, music video or animation. It explains the material as a whole: what works, what fails, what has not been developed and which decisions matter first. Reviews connect story and direction with performance, design, camera, animation, VFX, editing, sound, finishing and delivery. Findings use material available in the conversation and lead to concrete revision and production work. When relevant, it outlines a specific scope for objekts. The creator keeps their intent and creative decisions; a review does not book a team or send the project to the studio.",
         "developerName": "objekts",
         "category": "Creativity",
         "capabilities": [
@@ -50,8 +50,6 @@
         "composerIcon": "./assets/objekts-remake-charcoal.png"
       },
       "review": {
-        "commerce": false,
-        "commerce_description": "The public REMAKE tools are free to use and provide no checkout, payment, ordering or automatic studio enquiry workflow.",
         "test_cases": {
           "positive": [
             {
@@ -102,11 +100,11 @@
         }
       },
       "publication": {
-        "release_notes": "Beta 0.38.0: clear integrated production reviews with a concise verdict, project maturity, consequential findings and a readable next-work plan. Full 22-function coverage remains an internal audit discipline rather than mandatory 22-row output. Versioned method delivered by 10 stateless MCP tools. Actual host routing, independent professional acceptance and official publication remain unverified.",
+        "release_notes": "Beta 0.39.0: reviews preserve the draft’s existing development before locating its weak links, distinguish casting, age and relationships, and keep the opening consistent with the evidence. Clear whole-project criticism and product-first objekts listing. Ten stateless MCP tools deliver the authored method; source and package checks do not establish real host execution, professional artistic acceptance or official publication.",
         "translations": {
           "ru-RU": {
-            "shortDescription": "Что нужно вашему фильму",
-            "longDescription": "REMAKE by objekts понятно разбирает идею, сценарий, изображения, клип, рекламу, анимацию и монтаж. Сначала объясняет, что представляет собой проект в целом: что уже есть, что работает, что не работает и чего пока не разработали. Затем связывает важнейшие проблемы с конкретными примерами, профессиональными решениями и последовательностью дальнейшей работы. Знания всех производственных функций поддерживают связную рецензию, а не обязательную таблицу из 22 отделов. Сохраняет авторский замысел и ограничения. Частная бета 0.38.0: реальные испытания в целевых хостах, независимая профессиональная приёмка и официальная публикация ещё не подтверждены."
+            "shortDescription": "Разбор фильма от objekts",
+            "longDescription": "REMAKE by objekts разбирает идею, сценарий, изображения, клип, рекламу, анимацию или монтаж как целое. Объясняет, что работает, где конкретные решения не достигают замысла и какую творческую и производственную работу нужно выполнить дальше. Связывает сценарий и режиссуру с исполнением, оформлением, камерой, анимацией, VFX, монтажом, звуком и выпуском. Сохраняет уже построенные связи, авторские решения и ограничения. Когда есть обоснованная задача, показывает возможный объём работы objekts. Разбор не отправляет проект в студию и не бронирует команду."
           }
         }
       }
