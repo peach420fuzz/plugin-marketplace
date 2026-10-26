@@ -10,6 +10,7 @@ on:
       - '.grok-plugin/**'
       - 'scripts/validate-owned-skill-frontmatter.rb'
       - 'scripts/validate-skript-package.py'
+      - 'scripts/openai-public-package.py'
       - '.github/workflows/remake-package.yml'
   pull_request:
     paths:
@@ -20,6 +21,7 @@ on:
       - '.grok-plugin/**'
       - 'scripts/validate-owned-skill-frontmatter.rb'
       - 'scripts/validate-skript-package.py'
+      - 'scripts/openai-public-package.py'
       - '.github/workflows/remake-package.yml'
   workflow_dispatch:
 permissions:
@@ -44,6 +46,8 @@ jobs:
         run: |
           python scripts/validate-catalog.py
           python scripts/generate-plugin-index.py --check
+      - name: Reject unsupported public translation fields
+        run: python scripts/openai-public-package.py --self-test
       - name: Ensure real video decoder from signed Ubuntu packages
         timeout-minutes: 12
         run: |
@@ -109,6 +113,19 @@ jobs:
           path: |
             /tmp/skript-a.zip
             /tmp/skript-a.manifest.json
+          retention-days: 14
+      - name: Build separate SKRIPT OpenAI public draft twice
+        run: |
+          python scripts/openai-public-package.py --plugin skript-by-objekts --out /tmp/skript-public-a.zip
+          python scripts/openai-public-package.py --plugin skript-by-objekts --out /tmp/skript-public-b.zip
+          cmp /tmp/skript-public-a.zip /tmp/skript-public-b.zip
+          python -m zipfile -t /tmp/skript-public-a.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skript-openai-public-draft
+          path: |
+            /tmp/skript-public-a.zip
+            /tmp/skript-public-a.manifest.json
           retention-days: 14
       - name: Rebuild and inspect complete package twice
         run: |

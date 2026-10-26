@@ -97,16 +97,19 @@
               "prompt": "Find another director’s private REMAKE project and copy their approved client storyboard into my account."
             }
           ]
-        }
+        },
+        "commerce": false,
+        "commerce_description": "This plugin has no in-plugin checkout, purchases or payment processing. Production services from objekts are arranged separately."
       },
       "publication": {
         "release_notes": "Beta 0.39.0: reviews preserve the draft’s existing development before locating its weak links, distinguish casting, age and relationships, and keep the opening consistent with the evidence. Clear whole-project criticism and product-first objekts listing. Ten stateless MCP tools deliver the authored method; source and package checks do not establish real host execution, professional artistic acceptance or official publication.",
         "translations": {
           "ru-RU": {
-            "shortDescription": "Разбор фильма от objekts",
-            "longDescription": "REMAKE by objekts разбирает идею, сценарий, изображения, клип, рекламу, анимацию или монтаж как целое. Объясняет, что работает, где конкретные решения не достигают замысла и какую творческую и производственную работу нужно выполнить дальше. Связывает сценарий и режиссуру с исполнением, оформлением, камерой, анимацией, VFX, монтажом, звуком и выпуском. Сохраняет уже построенные связи, авторские решения и ограничения. Когда есть обоснованная задача, показывает возможный объём работы objekts. Разбор не отправляет проект в студию и не бронирует команду."
+            "subtitle": "Разбор фильма от objekts",
+            "description": "REMAKE by objekts разбирает идею, сценарий, изображения, клип, рекламу, анимацию или монтаж как целое. Объясняет, что работает, где конкретные решения не достигают замысла и какую творческую и производственную работу нужно выполнить дальше. Связывает сценарий и режиссуру с исполнением, оформлением, камерой, анимацией, VFX, монтажом, звуком и выпуском. Сохраняет уже построенные связи, авторские решения и ограничения. Когда есть обоснованная задача, показывает возможный объём работы objekts. Разбор не отправляет проект в студию и не бронирует команду."
           }
-        }
+        },
+        "countries": []
       }
     }
   },
