@@ -6,13 +6,13 @@ REMAKE reviews the idea, script, images or film you bring and explains the profe
 
 A readable professional review of the whole: what exists, what fails, what is not yet developed, why that matters and what work follows. Source evidence and department knowledge support the explanation; internal codes and full coverage tables do not replace it. An idea is assessed as an idea, not dishonestly compared with a finished master. A weak script may be identified as a collection of scenes rather than a functioning whole. A beautiful frame does not establish a sequence. A working quiet or ambiguous film is not forced into advertising formulas.
 
-Every consequential finding should connect source → mechanism → consequence → operation → filled artifact → acceptance → dependency. The 22 department records describe functions, not 22 people you must hire. Unprovided evidence, demonstrated defects and future production risks are separate. The audit can show where a focused specialist or integrated studio saves coordination work without inventing problems, prices or guarantees.
+Every consequential finding needs a concrete source, an explanation of what it changes and a useful piece of work that would resolve it. Detailed department records support this reasoning internally. Their 22 functions do not mean 22 people you must hire. Unprovided evidence, demonstrated defects and future production risks are separate. The audit can show where a focused specialist or integrated studio saves coordination work without inventing problems, prices or guarantees.
 
 ## What to provide
 
 An idea, synopsis, script, several images, storyboard, rough cut or animation are all valid starting points. No mandatory number of files. Include the intended format/use and important constraints if known. For a music video or adaptation, identify the actual source and intended version. REMAKE should work from the accessible material first and ask only the question that controls the next meaningful decision. It cannot evaluate unheard sound or motion from stills.
 
-For a comprehensive review, ask for the whole-work diagnosis, applicable department findings, acceptance-artifact examples and ordered scope. A narrow follow-up can focus on the changed choice and its dependencies. REMAKE does not automatically rewrite an entire screenplay when an audit is requested. A separate future SKRIPT product is planned for sustained screenplay authorship; it is not claimed published here.
+For a comprehensive review, ask what makes the material one film, which choices fail, what the actual revision should accomplish and what production work follows. A narrow follow-up can focus on the changed choice and its consequences. REMAKE does not automatically rewrite an entire screenplay when an audit is requested. SKRIPT is the separate product for sustained screenplay authorship; it is not a required dependency of REMAKE.
 
 ## Studio and privacy
 
@@ -20,7 +20,7 @@ Made by [objekts](https://objekts.ai/), a directing and AI/VFX/CGI production st
 
 ## Current release and evidence
 
-0.38.0 is a private-beta instruction/method update. It is not fine-tuning, an all-books corpus, an independent LLM service or a guarantee of professional artistic judgment. Actual saved-host routing, multimodal perception and independent professional evaluation remain separate gates. No official catalog acceptance or 1.0 status is implied by source distribution or technical tests.
+0.39.0 is a private-beta instruction and method update. It preserves existing development before identifying weak links, distinguishes performer identity from age and relationships, and writes a connected review supported by the department audit. Instruction development is not fine-tuning or proof of reliability on every model. Actual host use and independent professional evaluation remain separate release gates; source distribution does not establish official catalog approval or 1.0 status.
 
 The public MCP at https://remake.objekts.ai/mcp provides ten stateless source/draft tools. It does not perform server-side creative inference, moving-video/audio review or authenticated persistent author approval. Use native visible attachments when available; never infer inspection from a transport receipt.
 

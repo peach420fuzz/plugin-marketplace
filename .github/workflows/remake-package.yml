@@ -4,10 +4,22 @@ on:
     branches: [main]
     paths:
       - 'plugins/remake-by-objekts/**'
+      - 'plugins/skript-by-objekts/**'
+      - 'external_plugins/remake-by-objekts/**'
+      - 'external_plugins/skript-by-objekts/**'
+      - '.grok-plugin/**'
+      - 'scripts/validate-owned-skill-frontmatter.rb'
+      - 'scripts/validate-skript-package.py'
       - '.github/workflows/remake-package.yml'
   pull_request:
     paths:
       - 'plugins/remake-by-objekts/**'
+      - 'plugins/skript-by-objekts/**'
+      - 'external_plugins/remake-by-objekts/**'
+      - 'external_plugins/skript-by-objekts/**'
+      - '.grok-plugin/**'
+      - 'scripts/validate-owned-skill-frontmatter.rb'
+      - 'scripts/validate-skript-package.py'
       - '.github/workflows/remake-package.yml'
   workflow_dispatch:
 permissions:
@@ -15,12 +27,23 @@ permissions:
 jobs:
   python-and-package:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Parse actual owned skill YAML and colon-space regressions
+        run: |
+          ruby --version
+          ruby scripts/validate-owned-skill-frontmatter.rb
+      - name: Validate catalog and regenerate the complete component index
+        run: |
+          python scripts/validate-catalog.py
+          python scripts/generate-plugin-index.py --check
       - name: Ensure real video decoder from signed Ubuntu packages
         timeout-minutes: 12
         run: |
@@ -65,6 +88,28 @@ jobs:
         run: |
           ffmpeg -version | head -1
           python -m unittest discover -s plugins/remake-by-objekts/eval -p 'test*.py' -v
+      - name: Exercise all MCP dispatcher, safety, method and compatibility checks
+        run: |
+          node plugins/remake-by-objekts/tests/mcp-integration-v030.mjs
+          node plugins/remake-by-objekts/tests/public-delta-guard-v033.mjs
+          node plugins/remake-by-objekts/tests/request-body-v035.mjs
+          node plugins/remake-by-objekts/tests/account-draft-boundary-v035.mjs
+          node plugins/remake-by-objekts/tests/submission-contract-v0351.mjs
+          node plugins/remake-by-objekts/tests/audit-runtime-compat-v037.mjs
+          node plugins/remake-by-objekts/tests/audit-method-contract-v037.mjs
+      - name: Validate and reproducibly package authored SKRIPT source
+        run: |
+          python scripts/validate-skript-package.py --self-test --out /tmp/skript-a.zip
+          python scripts/validate-skript-package.py --out /tmp/skript-b.zip
+          cmp /tmp/skript-a.zip /tmp/skript-b.zip
+          python -m zipfile -t /tmp/skript-a.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: skript-source-candidate
+          path: |
+            /tmp/skript-a.zip
+            /tmp/skript-a.manifest.json
+          retention-days: 14
       - name: Rebuild and inspect complete package twice
         run: |
           python plugins/remake-by-objekts/scripts/build-plugin-v035.py --out /tmp/remake-a.zip

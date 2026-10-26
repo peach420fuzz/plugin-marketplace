@@ -626,7 +626,7 @@
     },
     {
       "name": "remake-by-objekts",
-      "description": "REMAKE by objekts gives clear, source-grounded film and production reviews: what exists, what fails, what is missing and what professional work comes next. Ten stateless MCP tools deliver a versioned method; the host applies it. No automatic studio transmission.",
+      "description": "REMAKE by objekts reviews film ideas, scripts, images and cuts: what works, what fails, what is undeveloped and which creative and production work comes next.",
       "category": "productivity",
       "source": {
         "type": "local",
@@ -651,12 +651,12 @@
       "domains": [
         "remake.objekts.ai"
       ],
-      "version": "0.38.0",
+      "version": "0.39.0",
       "author": "objekts"
     },
     {
       "name": "skript-by-objekts",
-      "description": "SKRIPT by objekts develops original screenplays collaboratively from a synopsis, with distinct story directions, scenes, full drafts and revisions for film, series, advertising, music videos and animation. Instruction-led private beta; actual host compliance and professional quality remain unverified.",
+      "description": "SKRIPT by objekts develops original screenplays from an idea or synopsis: different story directions, complete scenes and coherent drafts, followed by substantive revisions.",
       "category": "productivity",
       "source": {
         "type": "local",
@@ -672,7 +672,7 @@
         "animation",
         "objekts"
       ],
-      "version": "0.1.0",
+      "version": "0.2.0",
       "author": "objekts"
     },
     {
@@ -689,7 +689,9 @@
         "objekts KINEMA",
         "kinema film recommendations"
       ],
-      "domains": ["objekts.ai"],
+      "domains": [
+        "objekts.ai"
+      ],
       "version": "0.3.3",
       "author": "objekts"
     }

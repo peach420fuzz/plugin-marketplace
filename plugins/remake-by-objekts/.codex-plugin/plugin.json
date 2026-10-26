@@ -1,10 +1,10 @@
 {
   "interface": {
     "displayName": "REMAKE by objekts",
-    "shortDescription": "Know what your film needs",
-    "longDescription": "REMAKE by objekts reviews ideas, synopses, scripts, images, music videos, ads, animation and cuts. It explains the project as a whole in clear language: what already works, what fails, what has not been developed, and why. Evidence and deep production-department knowledge support a readable argument, concrete next steps and a relevant studio scope. The creator retains their intent and constraints. Private beta; real host execution and independent professional acceptance remain separate requirements.",
-    "developerName": "objekts — film, advertising, AI/VFX & CGI production studio",
-    "category": "Productivity",
+    "shortDescription": "Film reviews by objekts",
+    "longDescription": "REMAKE by objekts helps creators see what an idea, script, reference pack or cut still needs to become a film, commercial, music video or animation. It explains the material as a whole: what works, what fails, what has not been developed and which decisions matter first. Reviews connect story and direction with performance, design, camera, animation, VFX, editing, sound, finishing and delivery. Findings use material available in the conversation and lead to concrete revision and production work. When relevant, it outlines a specific scope for objekts. The creator keeps their intent and creative decisions; a review does not book a team or send the project to the studio.",
+    "developerName": "objekts",
+    "category": "Creativity",
     "capabilities": [
       "Read",
       "Write"
@@ -23,10 +23,10 @@
     "composerIcon": "./assets/objekts-remake-charcoal.png"
   },
   "name": "objekts-creative-companion",
-  "version": "0.38.0",
-  "description": "REMAKE by objekts — clear, candid film and production reviews. Understand what is there, what fails, what is not yet developed and how professionals resolve it. Deep department knowledge, concrete production work and grounded studio scope.",
+  "version": "0.39.0",
+  "description": "REMAKE by objekts reviews film ideas, scripts, images and cuts: what works, what fails, what is undeveloped and which creative and production work comes next.",
   "author": {
-    "name": "objekts — film direction & AI/VFX/CGI production studio",
+    "name": "objekts",
     "email": "salute@objekts.ai",
     "url": "https://objekts.ai/"
   },

@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skript-by-objekts",
-  "version": "0.1.0",
-  "description": "Develop original screenplays collaboratively from a synopsis: distinct story directions, scenes, complete drafts and revisions for film, series, advertising, music videos and animation.",
+  "version": "0.2.0",
+  "description": "SKRIPT by objekts develops original screenplays from an idea or synopsis: different story directions, complete scenes and coherent drafts, followed by substantive revisions.",
   "author": {
     "name": "objekts",
     "email": "salute@objekts.ai",
@@ -21,8 +21,8 @@
     "com.openai": {
       "interface": {
         "displayName": "SKRIPT by objekts",
-        "shortDescription": "Сценарии из замысла",
-        "longDescription": "Сценарный соавтор для работы от идеи до связного текста. SKRIPT предлагает содержательно разные варианты, помогает выбрать направление, развивает персонажей, действие и форму, пишет сцены и перерабатывает весь сценарий. Отдельные рабочие подходы учитывают кино, сериалы, рекламу, музыкальные клипы и анимацию. Метод сохраняет авторские ограничения, проверяет собственные банальности и объясняет решения понятным языком. В пакете — оригинальные рабочие материалы и краткие карточки открытых профессиональных источников с указанием реально прочитанного объёма. Работа выполняется моделью и инструментами текущего хоста; отдельной дообученной модели, базы всех книг или гарантии художественного качества нет. Для проверки производственной готовности проекта используется отдельный REMAKE by objekts.",
+        "shortDescription": "Screenwriting by objekts",
+        "longDescription": "SKRIPT by objekts helps writers and creators turn an idea or synopsis into original screen material. Compare meaningfully different directions, choose one, develop the whole and write complete scenes and drafts at the agreed scale. Film, series, advertising, music videos and animation use separate methods for their different forms and purposes. Revisions address actual action, character relationships, dialogue and structure while preserving the author’s decisions. Source references distinguish what was read from what remains unverified. When a story moves toward production, the written material can form a brief for the team you choose, including objekts.",
         "developerName": "objekts",
         "category": "Creativity",
         "capabilities": [],
@@ -45,7 +45,7 @@
         ]
       },
       "publication": {
-        "release_notes": "First private beta: collaborative screenplay development, five format-specific methods, scene/rewrite craft, scoped source cards and original calibration/revision exercises. Package and AI paper exercises do not establish host compliance or professional artistic acceptance."
+        "release_notes": "0.2.0: develops actions from established knowledge, distinguishes character knowledge from audience access, preserves limited perspective and nonlinear disclosure, and checks prop continuity. Adds a scoped reading of one complete short screenplay and an original revision exercise. Workplace-comedy revision addresses scenes replaced by exemplary business communication. Studio listing follows the objekts naming and avatar pattern. Structural checks and AI writing exercises are not professional artistic or target-host acceptance."
       }
     }
   },

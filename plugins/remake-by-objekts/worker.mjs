@@ -5,7 +5,7 @@ import {fileTool,preflightHostFile,filePreflightTests} from "./host-file-v028.mj
 import {visionTool,imageToMCP,imageSelfTests} from "./image-review-v029.mjs";
 import {batchTool,processHostImageBatch,batchSelfTests} from "./image-batch-v031.mjs";
 import {guardPublicDelta,publicGuardScope} from "./public-delta-guard-v033.mjs";
-const VERSION="0.7.4-beta";
+const VERSION="0.7.5-beta";
 const json=(x,status=200)=>new Response(JSON.stringify(x),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}});
 const plain=(s,status=200,type="text/html; charset=utf-8")=>new Response(s,{status,headers:{"content-type":type,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'none'; style-src 'unsafe-inline'; img-src https://raw.githubusercontent.com; script-src 'none'; base-uri 'none'; form-action 'none'"}});
 const materialProps={id:{type:"string",minLength:1,maxLength:100},kind:{type:"string",enum:["idea","text","script","image","video","audio","storyboard","document","other"]},description:{type:"string",maxLength:2000},observed:{type:"boolean"}};

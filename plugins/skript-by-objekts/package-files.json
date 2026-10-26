@@ -1,0 +1,23 @@
+{
+  "schema": "skript.package-files/1",
+  "files": [
+    "README.md",
+    "assets/objekts-squares-charcoal.png",
+    "plugin.json",
+    "skills/script-workshop/SKILL.md",
+    "skills/script-workshop/agents/openai.yaml",
+    "skills/script-workshop/references/ADVERTISING_ENGINE.md",
+    "skills/script-workshop/references/ANIMATION_ENGINE.md",
+    "skills/script-workshop/references/EDITORIAL_STANDARD.md",
+    "skills/script-workshop/references/EXERCISE_KNOWLEDGE_AND_ACTION.md",
+    "skills/script-workshop/references/FILM_ENGINE.md",
+    "skills/script-workshop/references/MUSIC_VIDEO_ENGINE.md",
+    "skills/script-workshop/references/ORIGINAL_CALIBRATION_CASES.md",
+    "skills/script-workshop/references/SCENE_AND_REWRITE.md",
+    "skills/script-workshop/references/SERIES_ENGINE.md",
+    "skills/script-workshop/references/SOURCE_CARD_GOD.md",
+    "skills/script-workshop/references/SOURCE_MAP.md",
+    "skills/script-workshop/references/WRITING_AND_REVISION_EXERCISE.md"
+  ],
+  "purpose": "Explicit authored account package; excludes source-only platform wrappers and generated compatibility files."
+}

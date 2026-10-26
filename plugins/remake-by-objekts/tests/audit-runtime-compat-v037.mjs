@@ -22,7 +22,7 @@ await test('exact tool names/schemas/annotations/descriptions retained',async()=
 });
 await test('initialize changes only version and optional client instructions',async()=>{
   const a=await call(before,'initialize'),b=await call(after,'initialize');
-  assert.equal(b.result.serverInfo.version,'0.7.4-beta');
+  assert.equal(b.result.serverInfo.version,'0.7.5-beta');
   assert.match(b.result.instructions,/production audit/);assert.match(b.result.instructions,/no inference/);assert.match(b.result.instructions,/retrieve remake_get_audit_method section core/);
   b.result.serverInfo.version=a.result.serverInfo.version;delete b.result.instructions;assert.deepEqual(b,a);
 });
@@ -41,7 +41,7 @@ await test('privacy discloses static external asset and existing data boundaries
 });
 await test('discovery metadata aligns without inference/storage claims',async()=>{
   const r=await (await after.fetch(req('/.well-known/remake.json'),{})).json();
-  assert.equal(r.version,'0.7.4-beta');assert.equal(r.storage,false);assert.equal(r.inference,false);assert.equal(r.independent_media_processing,false);assert.equal(r.tools.length,10);assert.match(r.audit_role,/Host-led/);
+  assert.equal(r.version,'0.7.5-beta');assert.equal(r.storage,false);assert.equal(r.inference,false);assert.equal(r.independent_media_processing,false);assert.equal(r.tools.length,10);assert.match(r.audit_role,/Host-led/);
 });
 await test('llms method explains professional work and host boundary',async()=>{
   const html=await (await after.fetch(req('/llms.txt'),{})).text();
@@ -49,7 +49,7 @@ await test('llms method explains professional work and host boundary',async()=>{
 });
 await test('health version only; storage/inference unchanged',async()=>{
   const a=await (await before.fetch(req('/health'),{})).json(),b=await (await after.fetch(req('/health'),{})).json();
-  assert.equal(b.version,'0.7.4-beta');b.version=a.version;assert.deepEqual(b,a);
+  assert.equal(b.version,'0.7.5-beta');b.version=a.version;assert.deepEqual(b,a);
 });
 await test('diagnostic endpoints remain closed with absent configuration',async()=>{
   for(const path of ['/_selftest','/_core_selftest','/_file_selftest','/_image_selftest','/_batch_selftest']) assert.equal((await after.fetch(req(path),{})).status,404);
@@ -69,5 +69,5 @@ await test('public draft-only approval and observation guards remain closed',asy
     const out=await call(after,'tools/call',{name:'remake_project_apply_delta',arguments:{project:p,event:{event_id:'e',expected_revision:1,kind,payload,actor_claim:'USER',approval_ref:'not-real'}}});assert.equal(out.result.isError,true);
   }
 });
-const receipt={suite:'REMAKE 0.7.4-beta method/compatibility alignment',passed,total:results.length,results,execution:'Node in-memory Worker requests; synthetic fixtures, no network, no private media',host_routing:false,directorial_quality:false};
+const receipt={suite:'REMAKE 0.7.5-beta method/compatibility alignment',passed,total:results.length,results,execution:'Node in-memory Worker requests; synthetic fixtures, no network, no private media',host_routing:false,directorial_quality:false};
 console.log(JSON.stringify(receipt));

@@ -1,0 +1,3 @@
+# SKRIPT by objekts
+
+Use `skills/script-workshop/SKILL.md` and its format-specific references to develop original screen material. Preserve the author’s chosen premise and restrictions. When asked for a complete short script or scene, write it rather than returning only a plan. Distinguish source reading from summaries and unknown material. Revise substantive faults in the actual scene; self-criticism does not replace a new draft. This extension provides instructions, not a separate inference service, media generator or fine-tuned model. No MCP endpoint or API key is required. Source distribution does not prove actual target-host compliance, professional artistic acceptance or official catalog approval.

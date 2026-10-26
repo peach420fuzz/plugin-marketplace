@@ -26,5 +26,10 @@ jobs:
       - name: Validate catalog
         run: python3 scripts/validate-catalog.py
 
+      - name: Parse owned skill YAML and check colon regression
+        run: |
+          ruby --version
+          ruby scripts/validate-owned-skill-frontmatter.rb
+
       - name: Check plugin index is up to date
         run: python3 scripts/generate-plugin-index.py --check

@@ -14,6 +14,8 @@ Trace how the whole organizes change: action and consequence, viewer knowledge, 
 
 Choose a defensible thesis about that relationship, then seek evidence against it. If the strongest alternative reading is equally supported, explain the precise uncertainty. If a complete draft never develops a necessary relationship, say so directly. Lack of viewer testing is not a reason to avoid editorial judgment. A purposeful unresolved ending is not an error by default.
 
+Reconstruct the written movement before deciding that there is none. If the material already moves from an earlier experience to a present repetition and new information, preserve those stages; identify what remains unworked between them. Do not open by denying development and later describe a functioning development as if the claims agreed. For character identity, separate actor, age and relationship. Several ages are not automatically several relationships, and one actor across several people is not automatically a contradiction. Locate the particular assignment or audiovisual connection that remains unclear, without inventing a missing genealogy.
+
 Summary says the protagonist enters, reads, leaves and returns. Criticism explains why those actions fail to change our understanding, or how the return changes the first entrance. Use enough summary to locate the point, then do the interpretive work. Do not review an unseen film as though its script were its actual performance, sound, light and editing.
 
 ## Draft the readable argument first
