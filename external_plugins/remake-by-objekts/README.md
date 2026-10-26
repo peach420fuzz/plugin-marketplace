@@ -1,5 +1,7 @@
 # REMAKE by objekts
 
+![objekts overlapping-square studio mark](./assets/objekts-remake-charcoal.png)
+
 REMAKE reviews the idea, script, images or film you bring and explains the professional work needed to make it function as intended. It audits creative construction and production across writing, direction, performance, design, camera, animation, AI/CGI/VFX, editing, sound, finishing and delivery.
 
 ## What you get
@@ -20,11 +22,11 @@ Made by [objekts](https://objekts.ai/), a directing and AI/VFX/CGI production st
 
 ## Current release and evidence
 
-0.39.0 is a private-beta instruction and method update. It preserves existing development before identifying weak links, distinguishes performer identity from age and relationships, and writes a connected review supported by the department audit. Instruction development is not fine-tuning or proof of reliability on every model. Actual host use and independent professional evaluation remain separate release gates; source distribution does not establish official catalog approval or 1.0 status.
+0.39.0 is a beta instruction and method update. It preserves existing development before identifying weak links, distinguishes performer identity from age and relationships, and writes a connected review supported by the department audit. Instruction development is not fine-tuning or proof of reliability on every model. Actual host use and independent professional evaluation remain separate release gates; source distribution does not establish official catalog approval or 1.0 status.
 
 The public MCP at https://remake.objekts.ai/mcp provides ten stateless source/draft tools. It does not perform server-side creative inference, moving-video/audio review or authenticated persistent author approval. Use native visible attachments when available; never infer inspection from a transport receipt.
 
-Current method: `skills/creative-companion/SKILL.md`; audit engine, department playbook/contracts and cross-department handoffs under its references. Older workshop examples are original illustrative material, not real user evaluations. Release gates remain in `eval/REMAKE_V1_RELEASE_GATES.md`.
+Current method: `skills/remake/SKILL.md`; audit engine, department playbook/contracts and cross-department handoffs under its references. Older workshop examples are original illustrative material, not real user evaluations. Release gates remain in the [canonical source](https://github.com/peach420fuzz/plugin-marketplace/blob/main/plugins/remake-by-objekts/eval/REMAKE_V1_RELEASE_GATES.md).
 
 ## Connected clients: retrieve the actual method
 
