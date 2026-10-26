@@ -6,6 +6,17 @@
     "name": "objekts",
     "email": "salute@objekts.ai"
   },
-  "homepage": "https://objekts.ai/",
-  "repository": "https://github.com/peach420fuzz/plugin-marketplace"
+  "homepage": "https://remake.objekts.ai/skript/",
+  "repository": "https://github.com/peach420fuzz/plugin-marketplace",
+  "license": "MIT",
+  "displayName": "SKRIPT by objekts",
+  "icon": "./assets/objekts-squares-charcoal.png",
+  "keywords": [
+    "skript by objekts",
+    "objekts skript"
+  ],
+  "documentationUrl": "https://remake.objekts.ai/skript/",
+  "supportUrl": "https://remake.objekts.ai/skript/support",
+  "privacyPolicyUrl": "https://remake.objekts.ai/skript/privacy",
+  "termsOfServiceUrl": "https://remake.objekts.ai/skript/terms"
 }
