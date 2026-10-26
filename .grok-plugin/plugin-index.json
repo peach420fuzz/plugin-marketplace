@@ -1075,7 +1075,7 @@
       }
     },
     "remake-by-objekts": {
-      "sha": "ad0264953b1968ec392537f36f65b5ed844a1333",
+      "sha": "181e8623817de6aa09007f000dfca39045231a77",
       "version": "0.39.0",
       "components": {
         "mcpServers": [
