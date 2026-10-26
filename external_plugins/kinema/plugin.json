@@ -1,24 +1,54 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "kinema",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "KINEMA by objekts: personal cinema research from actual ratings, watchlists and multiple film tastes.",
-  "author": {"name":"objekts","email":"salute@objekts.ai","url":"https://objekts.ai"},
+  "author": {
+    "name": "objekts",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai"
+  },
   "license": "MIT",
-  "keywords": ["KINEMA by objekts","objekts KINEMA","kinema film recommendations"],
+  "keywords": [
+    "KINEMA by objekts",
+    "objekts KINEMA",
+    "kinema film recommendations"
+  ],
   "homepage": "https://objekts.ai/",
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "KINEMA",
         "shortDescription": "Films for your many tastes",
-        "longDescription": "KINEMA by objekts analyzes your movie ratings, rewatches, dislikes and verified watchlist from Letterboxd, Kinopoisk, IMDb or MyShows. It researches several different cinematic interests, then suggests watchlist picks and independently sourced discoveries across those interests. It checks original film credits, archives and festival records, explains the cinematic evidence behind each recommendation, and marks incomplete profile coverage. The host AI conducts research using its available capabilities, without a paid film API. Created by objekts — a visual production studio creating films, images and visual worlds through direction, AI production, VFX and animation, from first idea to final frame. Barcelona / Moscow / Worldwide. https://objekts.ai",
+        "longDescription": "KINEMA by objekts helps your AI assistant research personal film choices from ratings, likes, dislikes, reviews and watchlists. Start with a Letterboxd, Kinopoisk, IMDb or MyShows profile, or supply your own film list. Public access varies by platform and privacy settings. It maps several interests, checks watched titles where evidence permits, researches film form and archives, and suggests watchlist picks alongside further discoveries. It marks incomplete history and independently verifies factual sources through the host assistant’s available tools. The skills-only plugin has no separate account or paid external API. Optional local MCP packages support imports and evidence auditing. Created by objekts — a visual production studio creating films, images and visual worlds. Direction, AI production, VFX and animation — from first idea to final frame. Barcelona / Moscow / Worldwide. https://objekts.ai",
         "developerName": "objekts",
         "category": "Entertainment",
         "capabilities": [],
         "logo": "./assets/objekts-squares-charcoal.png",
         "composerIcon": "./assets/objekts-squares-charcoal.png",
-        "brandColor": "#242321"
+        "brandColor": "#242321",
+        "websiteURL": "https://github.com/peach420fuzz/plugin-marketplace/blob/main/external_plugins/kinema/README.md",
+        "supportURL": "https://github.com/peach420fuzz/plugin-marketplace/blob/main/external_plugins/kinema/README.md#support",
+        "privacyPolicyURL": "https://github.com/peach420fuzz/plugin-marketplace/blob/main/external_plugins/kinema/PRIVACY.md",
+        "termsOfServiceURL": "https://github.com/peach420fuzz/plugin-marketplace/blob/main/external_plugins/kinema/LICENSE"
+      },
+      "review": {
+        "prompts": [
+          "Recommend films from my ratings and watchlist, with sources and clear history coverage.",
+          "Use my Kinopoisk profile to map several different film interests.",
+          "I have only ten ratings. Explain what can be inferred and suggest a cautious starting selection."
+        ],
+        "commerce": false
+      },
+      "publication": {
+        "release_notes": "Improved rating chronology, negative rewatch handling, title aliases, candidate evidence checks and coverage-aware recommendations. Corrected privacy documentation and preserved original objekts branding.",
+        "countries": [],
+        "translations": {
+          "ru-RU": {
+            "shortDescription": "Кино под разные грани вкуса",
+            "longDescription": "KINEMA by objekts помогает ИИ-ассистенту исследовать ваш киновкус по реальным оценкам, отзывам и спискам. Начните с профиля Letterboxd, Кинопоиска, IMDb или MyShows либо собственного списка фильмов. Доступность истории зависит от платформы и приватности. KINEMA исследует разные интересы, проверяет просмотренное по доступным данным, сочетает подборку из watchlist с другими находками и объясняет связи через киноязык. Отмечает неполную историю и требует проверки источников. Бесплатный навык использует возможности вашего ассистента. Создано objekts — студией визуальных решений: фильмы, изображения и визуальные миры; режиссура, AI-продакшн, VFX и анимация от идеи до финального кадра. Барселона / Москва / весь мир. objekts.ai"
+          }
+        }
       }
     }
   }
