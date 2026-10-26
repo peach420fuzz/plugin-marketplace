@@ -415,7 +415,7 @@
         "skills": [
           {
             "name": "kinema",
-            "description": "Research personal film choices from ratings, watchlists and verified sources. By objekts, a visual production studio."
+            "description": "Research personal film recommendations from a cinema-service profile, ratings, watchlist, reviews, or named favorites.…"
           }
         ]
       }
