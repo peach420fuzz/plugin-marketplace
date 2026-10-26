@@ -33,7 +33,11 @@
         ],
         "logo": "./assets/objekts-squares-charcoal.png",
         "composerIcon": "./assets/objekts-squares-charcoal.png",
-        "brandColor": "#242321"
+        "brandColor": "#242321",
+        "websiteURL": "https://remake.objekts.ai/skript/",
+        "supportURL": "https://remake.objekts.ai/skript/support",
+        "privacyPolicyURL": "https://remake.objekts.ai/skript/privacy",
+        "termsOfServiceURL": "https://remake.objekts.ai/skript/terms"
       },
       "review": {
         "prompts": [
