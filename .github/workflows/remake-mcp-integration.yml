@@ -35,3 +35,5 @@ jobs:
         run: |
           node plugins/remake-by-objekts/tests/audit-runtime-compat-v037.mjs
           node plugins/remake-by-objekts/tests/audit-method-contract-v037.mjs
+      - name: Verify SKRIPT information routes, links, privacy scope and unchanged origin policy
+        run: node plugins/remake-by-objekts/tests/skript-site-v077.mjs

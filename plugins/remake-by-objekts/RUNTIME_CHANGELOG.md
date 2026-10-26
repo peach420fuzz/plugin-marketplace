@@ -1,5 +1,11 @@
 # REMAKE public runtime changes
 
+## 0.7.7-beta — SKRIPT information pages
+
+Adds four SKRIPT pages on the existing Worker: `/skript/`, `/skript/support`, `/skript/privacy` and `/skript/terms`, with canonical GET/HEAD routes, navigable links, the existing studio image and bounded writing/host/data-handling descriptions. The privacy page names the existing Cloudflare request/security metadata, raw GitHub image and WebMCP C2PA delivery component; it does not import REMAKE MCP file-processing claims into SKRIPT. There is no SKRIPT upload, account, checkout, inference endpoint or automatic studio handoff.
+
+Origin CSP/referrer policy, service settings, security, all nine other runtime modules, method0.39 and private REMAKE0.39/SKRIPT0.2 packages remain unchanged. New origin route/link/HEAD/CSP tests are separate from actual edge/browser and public-directory acceptance. This source change does not itself establish deployment or official publication.
+
 ## 0.7.6-beta — delivery privacy disclosure
 
 The origin privacy copy previously made an unconditional no-scripts claim. A real public HTTP check observed Cloudflare adding its same-origin WebMCP bridge with only `data-packs="c2pa"` to delivered HTML. This patch distinguishes origin-generated markup from that delivery component, names the browser-local Content Credentials behavior and its image-host request implications, and avoids promising signature verification or browser execution. [Cloudflare describes the edge injection and pack](https://blog.cloudflare.com/webmcp/).
