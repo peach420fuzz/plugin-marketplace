@@ -22,11 +22,11 @@ await test('exact tool names/schemas/annotations/descriptions retained',async()=
 });
 await test('initialize changes only version and optional client instructions',async()=>{
   const a=await call(before,'initialize'),b=await call(after,'initialize');
-  assert.equal(b.result.serverInfo.version,'0.7.5-beta');
+  assert.equal(b.result.serverInfo.version,'0.7.6-beta');
   assert.match(b.result.instructions,/production audit/);assert.match(b.result.instructions,/no inference/);assert.match(b.result.instructions,/retrieve remake_get_audit_method section core/);
   b.result.serverInfo.version=a.result.serverInfo.version;delete b.result.instructions;assert.deepEqual(b,a);
 });
-await test('landing audit, brand and no automatic input/active content',async()=>{
+await test('origin landing audit, brand and no automatic input/active content',async()=>{
   const r=await after.fetch(req('/'),{}),html=await r.text();
   assert.equal(r.status,200);assert.match(html,/Professional production audit/);assert.match(html,/concrete examples of production deliverables/);
   assert.match(html,/overlapping square outlines on charcoal/);
@@ -39,9 +39,17 @@ await test('privacy discloses static external asset and existing data boundaries
   const html=await (await after.fetch(req('/privacy'),{})).text();
   for(const s of ['raw.githubusercontent.com','network/request metadata','no-referrer','transiently in Worker memory','no inference model']) assert.ok(html.includes(s));
 });
+await test('privacy distinguishes edge delivery from origin without weakening origin policy',async()=>{
+  const r=await after.fetch(req('/privacy'),{}),html=await r.text();
+  for(const s of ['REMAKE-generated landing HTML','Cloudflare delivery','WebMCP','/.webmcp/bridge.js','Content Credentials (C2PA)','data-packs=c2pa','locally in the browser','does not verify their cryptographic signatures','does not establish that it executed']) assert.ok(html.includes(s),s);
+  assert.doesNotMatch(html,/There are no project upload fields, forms or scripts on the landing page/);
+  assert.doesNotMatch(html,/<(?:script|form|input|iframe)\b/i);
+  assert.equal(r.headers.get('referrer-policy'),'no-referrer');
+  assert.equal(r.headers.get('content-security-policy'),"default-src 'none'; style-src 'unsafe-inline'; img-src https://raw.githubusercontent.com; script-src 'none'; base-uri 'none'; form-action 'none'");
+});
 await test('discovery metadata aligns without inference/storage claims',async()=>{
   const r=await (await after.fetch(req('/.well-known/remake.json'),{})).json();
-  assert.equal(r.version,'0.7.5-beta');assert.equal(r.storage,false);assert.equal(r.inference,false);assert.equal(r.independent_media_processing,false);assert.equal(r.tools.length,10);assert.match(r.audit_role,/Host-led/);
+  assert.equal(r.version,'0.7.6-beta');assert.equal(r.storage,false);assert.equal(r.inference,false);assert.equal(r.independent_media_processing,false);assert.equal(r.tools.length,10);assert.match(r.audit_role,/Host-led/);
 });
 await test('llms method explains professional work and host boundary',async()=>{
   const html=await (await after.fetch(req('/llms.txt'),{})).text();
@@ -49,7 +57,7 @@ await test('llms method explains professional work and host boundary',async()=>{
 });
 await test('health version only; storage/inference unchanged',async()=>{
   const a=await (await before.fetch(req('/health'),{})).json(),b=await (await after.fetch(req('/health'),{})).json();
-  assert.equal(b.version,'0.7.5-beta');b.version=a.version;assert.deepEqual(b,a);
+  assert.equal(b.version,'0.7.6-beta');b.version=a.version;assert.deepEqual(b,a);
 });
 await test('diagnostic endpoints remain closed with absent configuration',async()=>{
   for(const path of ['/_selftest','/_core_selftest','/_file_selftest','/_image_selftest','/_batch_selftest']) assert.equal((await after.fetch(req(path),{})).status,404);
@@ -69,5 +77,5 @@ await test('public draft-only approval and observation guards remain closed',asy
     const out=await call(after,'tools/call',{name:'remake_project_apply_delta',arguments:{project:p,event:{event_id:'e',expected_revision:1,kind,payload,actor_claim:'USER',approval_ref:'not-real'}}});assert.equal(out.result.isError,true);
   }
 });
-const receipt={suite:'REMAKE 0.7.5-beta method/compatibility alignment',passed,total:results.length,results,execution:'Node in-memory Worker requests; synthetic fixtures, no network, no private media',host_routing:false,directorial_quality:false};
+const receipt={suite:'REMAKE 0.7.6-beta method/compatibility alignment',passed,total:results.length,results,execution:'Node in-memory Worker requests; synthetic fixtures, no network, no private media',host_routing:false,directorial_quality:false};
 console.log(JSON.stringify(receipt));
