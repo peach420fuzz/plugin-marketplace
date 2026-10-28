@@ -1,6 +1,6 @@
 {
   "name": "kinema-by-objekts",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "KINEMA by objekts researches personal cinema tastes from actual viewing histories, watchlists and festival archives.",
   "contextFileName": "GEMINI.md",
   "mcpServers": {

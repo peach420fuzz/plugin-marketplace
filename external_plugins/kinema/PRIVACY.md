@@ -1,6 +1,6 @@
 # KINEMA by objekts — privacy and data handling
 
-Updated 26 October 2026. Contact: salute@objekts.ai. Publisher: [objekts](https://objekts.ai).
+Updated 28 October 2026. Contact: salute@objekts.ai. Publisher: [objekts](https://objekts.ai).
 
 ## Skills-only plugin
 
@@ -13,6 +13,10 @@ The separate Node.js MCP server stores connected public-profile pointers, import
 When you request a Letterboxd connection, the local server requests the specified public recent RSS feed from Letterboxd. Other supported profile links are pointers for research by your assistant. Search and browser tools can contact their respective services. The local server has no paid external model API or film-database key.
 
 Use only your own history or data you are authorized to provide. Never put passwords, cookies or account tokens into chat or imported movie fields. Public visibility does not guarantee complete history or authorized automated bulk access.
+
+## Retention
+
+The local MCP has no automatic expiry or retention timer. Records remain in the configured local file until the user clears or removes that file. The skills-only package stores no independent copy; conversation and uploaded-file retention depend on the chosen assistant provider and the user’s account settings. Research providers receive queries and requested URLs according to their own policies.
 
 ## Deletion and separation
 

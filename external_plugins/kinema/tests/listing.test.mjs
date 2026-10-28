@@ -1,0 +1,10 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const root=new URL('../',import.meta.url);
+const m=JSON.parse(await readFile(new URL('plugin.json',root),'utf8'));
+const o=m.extensions['com.openai'];
+test('OpenAI translations use subtitle/description fields',()=>{for(const t of Object.values(o.publication.translations)){assert.deepEqual(Object.keys(t).sort(),['description','subtitle']);assert(t.subtitle.trim());assert(t.subtitle.length<=30);assert(t.description.length<=4000)}});
+test('listing identity and limits preserve approved KINEMA artwork',async()=>{assert.equal(o.interface.displayName,'KINEMA');assert.equal(m.author.name,'objekts');assert.equal(o.interface.category,'Entertainment');assert(o.interface.shortDescription.length<=30);assert(o.interface.longDescription.length<=4000);const b=await readFile(new URL(o.interface.logo,root));assert.equal(b.readUInt32BE(16),1254);assert.equal(b.readUInt32BE(20),1254);assert(b.length<5*1024*1024)});
+test('public skills-only release contains no private App/MCP binding',()=>{assert(!m.apps);assert(!o.apps);assert(!m.mcpServers);assert.equal(o.review.commerce,false);for(const key of ['websiteURL','supportURL','privacyPolicyURL','termsOfServiceURL'])assert.match(o.interface[key],/^https:\/\//)});
+test('privacy describes the runtime retention rather than a third-party policy',async()=>{const s=await readFile(new URL('PRIVACY.md',root),'utf8');assert.match(s,/no automatic expiry/);assert.match(s,/assistant provider/);assert.match(s,/delete_all_my_cinema_data/)});
