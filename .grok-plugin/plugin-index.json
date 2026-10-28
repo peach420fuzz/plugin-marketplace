@@ -2,8 +2,8 @@
   "version": 1,
   "plugins": {
     "axiom": {
-      "sha": "001b3a883fddd8170003aa12c236205fb9eecad6",
-      "version": "1.1.2",
+      "sha": "7f0806af8ca1e368683bcc1f2d1ff7de805f3005",
+      "version": "1.2.0",
       "components": {
         "mcpServers": [
           {
@@ -13,28 +13,36 @@
         ],
         "skills": [
           {
+            "name": "axiom-agent-created-orgs",
+            "description": "Provision a temporary Axiom organization with one unauthenticated API call, store its one-time token securely, and hand…"
+          },
+          {
             "name": "axiom-alerting",
             "description": "Create and manage Axiom monitors and notifiers via the v2 public API. Use when building alerting, routing notifications…"
           },
           {
-            "name": "axiom-sre",
-            "description": "Expert SRE investigator for incidents and debugging. Uses hypothesis-driven methodology and systematic triage. Can quer…"
-          },
-          {
-            "name": "building-dashboards",
+            "name": "axiom-building-dashboards",
             "description": "Designs and builds Axiom dashboards via API. Covers chart types, APL and metrics/MPL query patterns, SmartFilters, layo…"
           },
           {
-            "name": "controlling-costs",
+            "name": "axiom-controlling-costs",
             "description": "Analyzes Axiom query patterns to find unused data, then builds dashboards and monitors for cost optimization. Use when…"
           },
           {
-            "name": "metrics-chart",
+            "name": "axiom-ingest",
+            "description": "Send data to Axiom. Picks an org from ~/.axiom.toml, or provisions a temporary one when none is configured, creates the…"
+          },
+          {
+            "name": "axiom-metrics-chart",
             "description": "Render saved Axiom metrics v2 or v3 JSON as line charts in a terminal or transcript. Uses Unicode/ASCII by default and…"
           },
           {
-            "name": "spl-to-apl",
+            "name": "axiom-spl-to-apl",
             "description": "Translates Splunk SPL queries to Axiom APL. Provides command mappings, function equivalents, and syntax transformations…"
+          },
+          {
+            "name": "axiom-sre",
+            "description": "Expert SRE investigator for incidents and debugging. Uses hypothesis-driven methodology and systematic triage. Can quer…"
           }
         ]
       }
@@ -367,8 +375,8 @@
       }
     },
     "figma": {
-      "sha": "7047cb45d6227bb42bd9ad6d35651043c0508179",
-      "version": "2.2.163",
+      "sha": "f3f264d9cbae059d9b96289ee33ce444b5c8e7e6",
+      "version": "2.2.174",
       "components": {
         "mcpServers": [
           {
@@ -742,8 +750,8 @@
       }
     },
     "objekts-production-desk": {
-      "sha": "33a31ede6d9e658ec97d807cc0b9aa0d917132b5",
-      "version": "0.1.3",
+      "sha": "24a6576049b0eb6a82decc7c303ead757b08989e",
+      "version": "0.1.5",
       "components": {
         "mcpServers": [
           {
@@ -758,7 +766,7 @@
           },
           {
             "name": "ai-vfx-production-preflight",
-            "description": "Production preflight for AI VFX and generative VFX jobs: hard locks, source authority, safe truth layers, asset fitness…"
+            "description": "AI/VFX production preflight and VFX shoot preparation for films, series, commercials and hybrid shoots: break down shot…"
           },
           {
             "name": "character-continuity-production",
@@ -767,6 +775,38 @@
           {
             "name": "commercial-production-scope",
             "description": "Scope commercial visual production correctly: whole production vs bounded shots, master vs derived versions, recomposit…"
+          },
+          {
+            "name": "objekts-adaptive-content",
+            "description": "Classify campaign adaptations as exports, crops, recompositions or new production units while preserving master visual…"
+          },
+          {
+            "name": "objekts-agency-access-fit",
+            "description": "Classify a creative agency's recurring AI/VFX, CGI, motion and lookdev needs against the public terms of Agency Access…"
+          },
+          {
+            "name": "objekts-material-agency",
+            "description": "Art-direct material in AI/VFX imagery as behavior and consequence rather than decorative texture."
+          },
+          {
+            "name": "objekts-product-fidelity",
+            "description": "Control exact product identity in AI-assisted imagery through explicit acceptance fields, source authority and method r…"
+          },
+          {
+            "name": "objekts-production-continuity",
+            "description": "Design continuity for AI/VFX visual production by separating source authority, locked invariants and allowed variables…"
+          },
+          {
+            "name": "objekts-proof-of-concept",
+            "description": "Choose the smallest visual-production test that collapses the most expensive uncertainty before production scale."
+          },
+          {
+            "name": "objekts-source-authority",
+            "description": "Assign references by authority domain so exact product, identity, geometry and graphics are not overwritten by mood/sty…"
+          },
+          {
+            "name": "objekts-visual-authorship",
+            "description": "Evaluate visual authorship from exact evidence instead of category aesthetics or adjective stacks. Use when comparing a…"
           },
           {
             "name": "product-fidelity-production",
@@ -783,6 +823,10 @@
           {
             "name": "production-feasibility",
             "description": "Assess whether a commercial, AI-video, VFX, CGI, motion, animation, transition, DOOH or hybrid visual-production idea i…"
+          },
+          {
+            "name": "visual-production-evidence-brief",
+            "description": "Assess an AI/VFX, CGI or commercial-film brief, verify source-backed production evidence, and prepare a precise human p…"
           }
         ]
       }
@@ -855,8 +899,8 @@
       }
     },
     "pstack": {
-      "sha": "519d36aa98955bf680db01bcde5fdfba686dc901",
-      "version": "0.15.34",
+      "sha": "c742dd61706fbacc1b95f1a20b7b988cf096ce6c",
+      "version": "0.15.36",
       "components": {
         "agents": [
           {
@@ -927,7 +971,7 @@
           },
           {
             "name": "ketchup-video",
-            "description": "Catch the user up like /ketchup, with a short silent video of slides for what happened and the waiting calls as text un…"
+            "description": "Catch the user up like /ketchup, with a short subtitled video of slides for what happened and the waiting calls as text…"
           },
           {
             "name": "maintain-formal-verification-skill",
@@ -979,7 +1023,7 @@
           },
           {
             "name": "principle-explain-the-number",
-            "description": "Apply before you trust, report, or act on a number you measured: a speedup, a regression, a throughput, a latency, or a…"
+            "description": "Apply before you measure, and before you trust, report, or act on a number you measured: a speedup, a regression, a thr…"
           },
           {
             "name": "principle-fix-root-causes",
@@ -1173,8 +1217,8 @@
       }
     },
     "stripe": {
-      "sha": "acbfbb292b3d88d209d4511006c2a89a46c11f8e",
-      "version": "0.9.31",
+      "sha": "6780831d12912f6a592f7a94d2bae0dc70eda6bb",
+      "version": "0.9.32",
       "components": {
         "agents": [
           {
