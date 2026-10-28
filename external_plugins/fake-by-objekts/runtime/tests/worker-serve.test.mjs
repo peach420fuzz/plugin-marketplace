@@ -29,3 +29,10 @@ test('saved project controls remain available when WebGL cannot start',async()=>
   assert.deepEqual(events.slice(0,3),['controls','state','buttons']);
   assert.match(events[3].message,/WebGL/);assert.equal(events[3].kind,'error');
 });
+
+test('public OpenAI download points to the immutable audited artifact commit',async()=>{
+  const ref=(await readFile(new URL('../download-ref.txt',import.meta.url),'utf8')).trim();
+  const response=await worker.fetch(new Request('https://example.test/review/fake-by-objekts-openai-0.4.9.zip'),{});
+  assert.equal(response.status,302);
+  assert.equal(response.headers.get('location'),`https://raw.githubusercontent.com/peach420fuzz/plugin-marketplace/${ref}/external_plugins/fake-by-objekts/releases/0.4.9/fake-by-objekts-openai-0.4.9.zip`);
+});
