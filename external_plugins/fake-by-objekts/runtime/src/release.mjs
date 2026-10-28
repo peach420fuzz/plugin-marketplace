@@ -31,6 +31,7 @@ export function transformStudio(source,actions){
   quick=quick.slice(0,insert)+`;document.querySelector('#control-range')?.addEventListener('change',event=>{Du('Change control range');e.solverVersion=event.target.value;Gn();mt('face');eo(t);});`+quick.slice(insert);
   text=text.slice(0,quickStart)+quick+text.slice(quickEnd);
   text=replaceOnce(text,'bt=new fA(n,c0)','bt=safeViewport(n,c0)');
+  text=replaceOnce(text,'async function UA(){if(!bt||!ue)return;',`async function UA(){if(!ue)return;if(!bt){Wi();G2();u0();St('3D preview could not start. Enable WebGL or reopen Studio in a browser with GPU support.','error');return;}`);
   text=replaceOnce(text,'OA();Ur.ontoolresult=',`OA();setInterval(()=>refreshGenerationButton(),500);window.addEventListener('openai:set_globals',()=>refreshGenerationButton());Ur.ontoolresult=`);
   text=replaceOnce(text,'await Ur.connect();','await Ur.connect();installLocale({app:Ur});refreshGenerationButton();');
   text=replaceOnce(text,'t&&(t.textContent="REALTIME"),','t&&(t.textContent="REALTIME"),refreshGenerationButton(),');
