@@ -1,6 +1,0 @@
-interface:
-  display_name: "SKRIPT by objekts"
-  short_description: "Сценарный соавтор: варианты, сцены и переработка"
-  default_prompt: "Развей мой замысел в оригинальный сценарий: предложи разные направления и затем помогай писать и переписывать выбранное."
-policy:
-  allow_implicit_invocation: true
