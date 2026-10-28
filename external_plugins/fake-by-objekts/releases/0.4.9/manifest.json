@@ -6,8 +6,8 @@
     {
       "platform": "openai",
       "file": "fake-by-objekts-openai-0.4.9.zip",
-      "bytes": 1739854,
-      "sha256": "eb2f57d66b891e4bee9d2b2ddb7fba7114ae141a4b4786a90090dda63ff8844d",
+      "bytes": 1740837,
+      "sha256": "ac54659bcc931fd73fa7567c7cc4bd8f0533a88b1d4e5599ec84e0c0721373bf",
       "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
     },
     {
@@ -27,15 +27,15 @@
     {
       "platform": "agent",
       "file": "fake-by-objekts-agent-0.4.9.zip",
-      "bytes": 1739854,
-      "sha256": "eb2f57d66b891e4bee9d2b2ddb7fba7114ae141a4b4786a90090dda63ff8844d",
+      "bytes": 1740816,
+      "sha256": "cad87c6362ef832c3d2d614d88b6cacc4ed143565e59acaf6cbf944624910bd2",
       "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
     },
     {
       "platform": "public",
       "file": "fake-by-objekts-public-0.4.9.zip",
-      "bytes": 1741482,
-      "sha256": "2714cfd3827a61988739eed99b17b173b2ffc4d81d5df0d5a16ff54910e4858a",
+      "bytes": 1742444,
+      "sha256": "a0bbd5a79530c7b4542d1247bb427535d59ad9726971eb3864350976d37953e8",
       "status": "PACKAGE_VALIDATED__CLIENT_INSTALL_NOT_ASSERTED"
     }
   ],

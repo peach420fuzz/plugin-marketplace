@@ -23,8 +23,16 @@ for package in receipts['packages']:
         assert all(not n.startswith('runtime/') for n in names)
         if package['platform'] in ('openai', 'agent', 'public'):
             manifest = json.loads(archive.read('plugin.json'))
-            assert manifest == source, 'ZIP differs from canonical source'
+            expected = {**source, 'name': 'fake-by-objekts-chatgpt'} if package['platform'] == 'openai' else source
+            assert manifest == expected, 'ZIP differs from platform source'
             compat = json.loads(archive.read('.codex-plugin/plugin.json'))
+            assert compat['name'] == manifest['name']
+            if package['platform'] == 'openai':
+                for config in ('mcp.json', '.mcp.json'):
+                    servers = json.loads(archive.read(config))['mcpServers']
+                    assert list(servers) == ['fake-by-objekts-chatgpt']
+                    assert servers['fake-by-objekts-chatgpt']['url'] == 'https://fake.objekts.ai/mcp/chatgpt'
+                    assert 'headers' not in servers['fake-by-objekts-chatgpt']
             for m in (manifest, compat):
                 assert m.get('apps') is None
                 assert m.get('extensions', {}).get('com.openai', {}).get('apps') is None
