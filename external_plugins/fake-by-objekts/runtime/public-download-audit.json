@@ -1,0 +1,62 @@
+{
+  "product": "FAKE by objekts",
+  "version": "0.4.9",
+  "verified_at": "2026-10-28",
+  "source": "https://fake.objekts.ai/install",
+  "artifact_commit": "fffa75911f43386bb69902128c39e8953832d8f6",
+  "packages": [
+    {
+      "platform": "openai",
+      "bytes": 1740837,
+      "sha256": "ac54659bcc931fd73fa7567c7cc4bd8f0533a88b1d4e5599ec84e0c0721373bf",
+      "public_download": "PASS"
+    },
+    {
+      "platform": "claude",
+      "bytes": 11106,
+      "sha256": "488a6c55d9817c65c20dffa6e074ce767fd210e898765aaa06b347129f47cd38",
+      "public_download": "PASS"
+    },
+    {
+      "platform": "gemini",
+      "bytes": 9772,
+      "sha256": "8b5dcc4e3aaad60c30e5bdbf75935142bf47b36bde6d2a6b70e0e04ba604ac64",
+      "public_download": "PASS"
+    },
+    {
+      "platform": "agent",
+      "bytes": 1740816,
+      "sha256": "cad87c6362ef832c3d2d614d88b6cacc4ed143565e59acaf6cbf944624910bd2",
+      "public_download": "PASS"
+    },
+    {
+      "platform": "public",
+      "bytes": 1742444,
+      "sha256": "a0bbd5a79530c7b4542d1247bb427535d59ad9726971eb3864350976d37953e8",
+      "public_download": "PASS"
+    }
+  ],
+  "scope": "PUBLIC_FILE_DOWNLOADS__CLIENT_INSTALL_AND_DIRECTORY_PUBLICATION_NOT_ASSERTED",
+  "listing_urls": [
+    {
+      "url": "https://fake.objekts.ai/about",
+      "content": "FAKE 0.4.9 and objekts publisher metadata, JSON",
+      "public_access": "PASS"
+    },
+    {
+      "url": "https://fake.objekts.ai/support",
+      "content": "FAKE support and salute@objekts.ai",
+      "public_access": "PASS"
+    },
+    {
+      "url": "https://fake.objekts.ai/privacy",
+      "content": "FAKE state/media, generation-host sharing and deletion contact",
+      "public_access": "PASS"
+    },
+    {
+      "url": "https://fake.objekts.ai/terms",
+      "content": "FAKE use terms and host policy boundary",
+      "public_access": "PASS"
+    }
+  ]
+}
