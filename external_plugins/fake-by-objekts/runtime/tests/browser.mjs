@@ -11,6 +11,8 @@ const server=http.createServer(async(req,res)=>{try{
   const response=await fetch(upstream+req.url,{method:req.method,headers,body:['GET','HEAD'].includes(req.method)?undefined:req,duplex:'half',redirect:'manual'});
   const responseHeaders={};for(const [key,value]of response.headers)if(!['content-length','content-encoding','transfer-encoding','connection'].includes(key))responseHeaders[key]=value;
   if(req.url.startsWith('/studio/studio.js')){
+    if(!local&&!response.ok)throw new Error(`Studio JavaScript HTTP ${response.status}`);
+    if(!local&&!response.headers.get('content-type')?.includes('javascript'))throw new Error('Studio resource is not JavaScript');
     let source=local?await fs.readFile(new URL('../dist/studio.js',import.meta.url),'utf8'):await response.text();
     // Test-only evidence tap: no credentials; never included in the deployed module.
     source=source.replace('return sendHandoff({app:Ur',`window.__FAKE_TEST_REFERENCES=await Promise.all(files.map(async item=>({role:item.role,name:item.file.name,type:item.file.type,base64:await new Promise(resolve=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result.split(',')[1]);reader.readAsDataURL(item.file);})})));return sendHandoff({app:Ur`);
