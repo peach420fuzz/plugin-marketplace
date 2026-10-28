@@ -32,6 +32,17 @@ export const ru = {
   'IDENTITY MASTER':'ЭТАЛОН ИДЕНТИЧНОСТИ','SELECT MASTER IMAGE':'ВЫБРАТЬ ЭТАЛОН','USE THIS IMAGE AS MASTER':'ИСПОЛЬЗОВАТЬ КАК ЭТАЛОН','CANCEL':'ОТМЕНА','EXPORT STATE':'ЭКСПОРТ СОСТОЯНИЯ','IMPORT STATE':'ИМПОРТ СОСТОЯНИЯ','BODY':'ТЕЛО','WARDROBE':'ОДЕЖДА','LOCKS':'БЛОКИРОВКИ','IDENTITY':'ИДЕНТИЧНОСТЬ','MORPHOLOGY':'МОРФОЛОГИЯ','SURFACE':'ПОВЕРХНОСТЬ','CAPTURE':'СЪЁМКА','AUTHORED DESCRIPTION':'ОПИСАНИЕ ПЕРСОНАЖА','HEIGHT / CM':'РОСТ / СМ','MASS / KG':'МАССА / КГ','SHOULDER / HIP RATIO':'ПЛЕЧИ / БЁДРА',
   'GNM geometry ready.':'Геометрия GNM готова.','GNM geometry is not ready.':'Геометрия GNM ещё не готова.','Waiting for Character State…':'Ожидание проекта персонажа…','Preparing portrait and geometry…':'Подготовка портрета и геометрии…','Portrait request and references sent. Waiting for an actual image in the conversation.':'Запрос портрета и референсы отправлены. Ожидайте изображение в диалоге.','Generation files ready. Attach them in a conversation with image generation.':'Файлы готовы. Прикрепите их в диалоге с генерацией изображений.','GENERATE IN CHATGPT':'ГЕНЕРАЦИЯ В CHATGPT','PORTRAIT PROMPT':'ЗАПРОС ДЛЯ ПОРТРЕТА','COPY PROMPT':'СКОПИРОВАТЬ ЗАПРОС','COPIED':'СКОПИРОВАНО','CLOSE':'ЗАКРЫТЬ',
   'This host does not accept image attachments from the app. Download the references and prompt, then attach them in a conversation with image generation.':'Это приложение не может прикреплять изображения к текущему диалогу. Скачайте референсы и запрос, затем прикрепите их в диалоге с генерацией изображений.',
+  'Save did not finish. Generation was not sent.':'Сохранение не завершилось. Запрос на генерацию не отправлен.',
+  'Character State changed while preparing generation. Save, review and try again.':'Во время подготовки персонаж изменился. Сохраните изменения, проверьте лицо и повторите генерацию.',
+  'Server reference transfer is not connected.':'Передача референсов через сервер недоступна.',
+  'The server did not return a portrait reference request.':'Сервер не подтвердил подготовку референсов для портрета.',
+  'Unsupported reference image format.':'Неподдерживаемый формат референса. Выберите PNG, JPEG или WebP.',
+  'Reference image must be nonempty and at most 6 MB.':'Выберите непустое изображение размером до 6 МБ.',
+  'ChatGPT did not return a file ID. The generation request was not sent.':'ChatGPT не подтвердил загрузку файла. Запрос на генерацию не отправлен.',
+  'This host cannot attach image references. Download the real geometry and prompt to generate in an image-enabled conversation.':'Это приложение не может прикреплять референсы. Скачайте геометрию и запрос для диалога с генерацией изображений.',
+  'Send the current saved geometry, portrait direction and identity references to this conversation.':'Отправить сохранённую геометрию, описание съёмки и референсы внешности в текущий диалог.',
+  '3D preview could not start. Enable WebGL or reopen Studio in a browser with GPU support.':'Не удалось открыть 3D-превью. Включите WebGL или откройте Студию в браузере с поддержкой GPU.',
+  'WEBGL UNAVAILABLE':'WEBGL НЕДОСТУПЕН',
 };
 
 export function translate(text, language){
@@ -45,7 +56,7 @@ export function translate(text, language){
     else if(trimmed.startsWith('PRO safe ±'))result=trimmed.replace('PRO safe','Диапазон');
     else if(trimmed.startsWith('auto '))result=trimmed.replace('auto ','авто ');
     else if(/^FACE .+ · JAW .+/.test(trimmed))result=trimmed.replace('FACE','ЛИЦО').replace('JAW','ЧЕЛЮСТЬ').replaceAll(' mm',' мм');
-    else if(/^LOADING \d+%$/.test(trimmed))result=trimmed.replace('LOADING','ЗАГРУЗКА');
+    else if(/^(Generation request|Image context) was rejected by the host\. Nothing has been confirmed generated\.$/.test(trimmed))result='Приложение отклонило '+(trimmed.startsWith('Image context')?'передачу референсов.':'запрос на генерацию.')+' Создание изображения не подтверждено.';
   }
   return result?text.replace(trimmed,result):text;
 }

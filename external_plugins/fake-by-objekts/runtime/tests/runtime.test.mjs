@@ -36,6 +36,9 @@ test('foreign references are rejected before any state write',async()=>{
 });
 test('Russian UI translates controls and generated statuses without changing English prompts',()=>{
   assert.equal(translate('GENERATE PORTRAIT','ru'),'СОЗДАТЬ ПОРТРЕТ');assert.equal(translate('Nose width','ru'),'Ширина носа');assert.equal(translate('Character State v8 saved.','ru'),'Состояние v8 сохранено.');assert.equal(translate('Nose width','en'),'Nose width');
+  assert.equal(translate('Save did not finish. Generation was not sent.','ru'),'Сохранение не завершилось. Запрос на генерацию не отправлен.');
+  assert.equal(translate('Generation request was rejected by the host. Nothing has been confirmed generated.','ru'),'Приложение отклонило запрос на генерацию. Создание изображения не подтверждено.');
+  assert.equal(translate('Image context was rejected by the host. Nothing has been confirmed generated.','ru'),'Приложение отклонило передачу референсов. Создание изображения не подтверждено.');
 });
 
 test('actual MCP tool passes structured brief suggestions into project creation',async()=>{
@@ -49,6 +52,7 @@ test('MCP lists the short-lived image reader to the model and keeps preparation 
   const response=await bridge.handleFakeMcpRequest(new Request('https://example.test/mcp',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json, text/event-stream'},body:JSON.stringify({jsonrpc:'2.0',id:2,method:'tools/list'})}),{},'https://example.test');
   const result=await response.json();const tools=result.result.tools;
   assert.equal(tools.length,8);assert.deepEqual(tools.find(t=>t.name==='prepare_portrait_request')._meta.ui.visibility,['app']);assert.deepEqual(tools.find(t=>t.name==='read_portrait_request')._meta.ui.visibility,['model']);
+  for(const tool of tools)for(const hint of ['readOnlyHint','openWorldHint','destructiveHint'])assert.equal(typeof tool.annotations?.[hint],'boolean',`${tool.name}.${hint}`);
 });
 
 test('selected Master persists and is reused with exact bytes after a render edit (local SQLite/R2)',async()=>{

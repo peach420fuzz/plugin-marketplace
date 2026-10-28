@@ -1,0 +1,44 @@
+{
+  "version": "0.4.9",
+  "packages": [
+    {
+      "platform": "openai",
+      "file": "fake-by-objekts-openai-0.4.9.zip",
+      "sha256": "cad87c6362ef832c3d2d614d88b6cacc4ed143565e59acaf6cbf944624910bd2",
+      "archive_checks": "PASS"
+    },
+    {
+      "platform": "claude",
+      "file": "fake-by-objekts-claude-0.4.9.zip",
+      "sha256": "488a6c55d9817c65c20dffa6e074ce767fd210e898765aaa06b347129f47cd38",
+      "archive_checks": "PASS"
+    },
+    {
+      "platform": "gemini",
+      "file": "fake-by-objekts-gemini-0.4.9.zip",
+      "sha256": "8b5dcc4e3aaad60c30e5bdbf75935142bf47b36bde6d2a6b70e0e04ba604ac64",
+      "archive_checks": "PASS"
+    },
+    {
+      "platform": "agent",
+      "file": "fake-by-objekts-agent-0.4.9.zip",
+      "sha256": "cad87c6362ef832c3d2d614d88b6cacc4ed143565e59acaf6cbf944624910bd2",
+      "archive_checks": "PASS"
+    },
+    {
+      "platform": "public",
+      "file": "fake-by-objekts-public-0.4.9.zip",
+      "sha256": "a0bbd5a79530c7b4542d1247bb427535d59ad9726971eb3864350976d37953e8",
+      "archive_checks": "PASS"
+    }
+  ],
+  "scope": "ARCHIVE_ONLY",
+  "live_host_tests": "NOT_RUN_BY_THIS_CHECK",
+  "review_readiness": "NOT_CERTIFIED",
+  "remaining": [
+    "actual production/version agreement",
+    "real target-host generation and Master reuse",
+    "current-version reviewer video and public URL verification",
+    "developer identity and saved portal checks"
+  ]
+}

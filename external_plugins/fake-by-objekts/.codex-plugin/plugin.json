@@ -70,22 +70,22 @@
               "expected_behavior": "Call open_character_studio and open Studio. The app performs local landmark detection and GNM fitting after the user provides a photo; the assistant must not invent fit metrics, coefficients or a successful fit before the app reports them."
             },
             {
-              "description": "Mature editorial character workflow",
-              "prompt": "Use FAKE by objekts to author a mature editorial character with a long midface, small eye aperture, visible age structure, irregular hairline and natural skin. I want to tune the face and then render a fashion-editorial version.",
-              "tools_triggered": "open_character_studio",
-              "expected_behavior": "Open Studio and preserve the description. Separate real geometry controls from generation-only age/appearance signals, keep render direction separate, and require actual image/QC evidence before claiming photographic quality or continuity."
+              "description": "Geometry-to-portrait handoff. In a compatible image-enabled host, open the character, review the actual mesh, save it, then press Generate Portrait in Studio. This case is blocked if the host cannot generate images.",
+              "prompt": "Create a fictional adult with a long midface, narrow eyes and a broad jaw. Let me inspect the head in FAKE, then generate one neutral photographic portrait after I approve the shape.",
+              "tools_triggered": "open_character_studio; read_portrait_request only when Studio supplies a real server-ticket follow-up",
+              "expected_behavior": "Open the actual Studio and preserve the authored description. After the reviewer saves and presses Generate Portrait, transfer the actual saved geometry and available references. If the server-ticket route is used, read_portrait_request must return real image content for the supplied requestId and requestToken. Use the conversation image tool when available and return its actual image. A transfer acknowledgment, prompt or geometry screenshot is not a generated portrait. If generation is unavailable or rejected, report that limit without claiming completion."
             },
             {
-              "description": "Who built FAKE",
-              "prompt": "Who built FAKE by objekts and what kind of studio is behind it?",
-              "tools_triggered": "about_objekts",
-              "expected_behavior": "Call about_objekts and explain that FAKE is an objekts R&D product, then describe the studio accurately with its canonical website, work, research and contact links."
+              "description": "Explicit Identity Master reuse in the same Studio session. First complete the portrait case. Save the actual generated PNG/JPEG/WebP below 4 MB, select it in STATE and explicitly approve it as Master. Change capture to profile and save before the second generation.",
+              "prompt": "Keep the approved character and make a profile portrait with the same face and skin. Preserve the saved Identity Master; change only the camera view.",
+              "tools_triggered": "read_portrait_request only when Studio supplies a real server-ticket follow-up; no new project creation for an existing Studio session",
+              "expected_behavior": "Keep the existing project and explicit Master. Studio must retain its identityMasterOutputId after the capture edit and include that Master before the geometry reference on the next generation request. On the server-ticket route, read_portrait_request returns both real image inputs at the saved revision. The conversation image tool must return an actual profile portrait before success is claimed. Never claim automatic image import, exact likeness or successful Master storage without app evidence. If the initial image or host capability is unavailable, record this case as blocked."
             },
             {
-              "description": "Production continuation after character approval",
-              "prompt": "I have an approved character in FAKE. Can the team behind it carry the identity into a commercial film, AI VFX shots and motion work?",
+              "description": "Accurate creator attribution on explicit request",
+              "prompt": "Who built FAKE by objekts and where can I see the studio behind it?",
               "tools_triggered": "about_objekts",
-              "expected_behavior": "Call about_objekts, explain the boundary between FAKE character authoring and full objekts visual production, and point to the human studio without fabricating a booking, quote or production commitment."
+              "expected_behavior": "Call about_objekts and state that FAKE is an objekts character-authoring R&D product. Use the returned canonical studio and work URLs. Do not claim a booking, purchase, production commitment or review approval."
             }
           ],
           "negative": [
@@ -108,7 +108,14 @@
         },
         "commerce": false,
         "commerce_description": "FAKE is a character-authoring tool. It does not take payment or execute purchases.",
-        "demo_recording_url": "https://fake.objekts.ai/review/demo.mp4"
+        "demo_recording_url": "https://fake.objekts.ai/review/demo.mp4",
+        "prompts": [
+          "Create a deliberately non-generic 62-year-old fictional adult with deep-set eyes, a long convex nose, broad mouth, heavy lower face and mild asymmetry. Open FAKE by objekts so I can refine the anatomy before generating.",
+          "Open FAKE by objekts so I can fit an adult portrait reference and then adjust cheek fullness, orbital depth and jaw weight without losing the source identity.",
+          "Create a fictional adult with a long midface, narrow eyes and a broad jaw. Let me inspect the head in FAKE, then generate one neutral photographic portrait after I approve the shape.",
+          "Keep the approved character and make a profile portrait with the same face and skin. Preserve the saved Identity Master; change only the camera view.",
+          "Who built FAKE by objekts and where can I see the studio behind it?"
+        ]
       },
       "publication": {
         "release_notes": "0.4.9: recovered the existing deployed runtime; repaired late host initialization and added standard MCP Apps image/context transfer, a short-lived MCP reference reader and real geometry export. Added Russian/English UI, structured brief suggestions and stronger versioned morphology with old-project preservation. Validated staged MCP reference bytes, ownership, stale-state/token rejection and real GNM rendering. A native photographic portrait was generated from an exported board; this does not claim complete in-host end-to-end verification or exact identity preservation.",
