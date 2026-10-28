@@ -5,7 +5,7 @@ import {fileTool,preflightHostFile,filePreflightTests} from "./host-file-v028.mj
 import {visionTool,imageToMCP,imageSelfTests} from "./image-review-v029.mjs";
 import {batchTool,processHostImageBatch,batchSelfTests} from "./image-batch-v031.mjs";
 import {guardPublicDelta,publicGuardScope} from "./public-delta-guard-v033.mjs";
-const VERSION="0.7.7-beta";
+const VERSION="0.7.8-beta";
 const json=(x,status=200)=>new Response(JSON.stringify(x),{status,headers:{"content-type":"application/json; charset=utf-8","cache-control":"no-store","x-content-type-options":"nosniff"}});
 const plain=(s,status=200,type="text/html; charset=utf-8")=>new Response(s,{status,headers:{"content-type":type,"x-content-type-options":"nosniff","referrer-policy":"no-referrer","content-security-policy":"default-src 'none'; style-src 'unsafe-inline'; img-src https://raw.githubusercontent.com; script-src 'none'; base-uri 'none'; form-action 'none'"}});
 const materialProps={id:{type:"string",minLength:1,maxLength:100},kind:{type:"string",enum:["idea","text","script","image","video","audio","storyboard","document","other"]},description:{type:"string",maxLength:2000},observed:{type:"boolean"}};
@@ -73,6 +73,14 @@ const SKRIPT_SITE=Object.freeze({
 });
 export default {async fetch(req,env={}){
 const url=new URL(req.url),path=url.pathname;
+// Public OpenAI ownership value, scoped to the REMAKE HTTPS origin only.
+if(url.origin==="https://remake.objekts.ai"&&path==="/.well-known/openai-apps-challenge"){
+ if(req.method!=="GET"&&req.method!=="HEAD"){
+  const response=plain("Only GET and HEAD are supported for domain verification.",405,"text/plain; charset=utf-8");response.headers.set("allow","GET, HEAD");return response;
+ }
+ const response=plain("HxIpIAQJNAMAnRrZ6Jtyh0sJ95udVOxuH-EDDGixNro",200,"text/plain; charset=utf-8");
+ return req.method==="HEAD"?new Response(null,{status:response.status,headers:response.headers}):response;
+}
 if(path==="/skript"||path.startsWith("/skript/")){
  if(req.method!=="GET"&&req.method!=="HEAD"){
   const response=plain("Only GET and HEAD are supported for these information pages.",405,"text/plain; charset=utf-8");response.headers.set("allow","GET, HEAD");return response;

@@ -1,5 +1,11 @@
 # REMAKE public runtime changes
 
+## 0.7.8-beta — exact OpenAI domain ownership challenge
+
+Adds GET/HEAD `https://remake.objekts.ai/.well-known/openai-apps-challenge` for the exact public ownership value issued by the official OpenAI draft. GET returns only that plaintext value; HEAD has the same headers and an empty body; other methods return405. The handler is scoped to the REMAKE HTTPS origin, preserving other hosts and the apex domain. This value is intentionally public domain-verification content, not an authentication credential.
+
+The change does not establish that OpenAI accepted verification. Existing routes, four SKRIPT pages, origin CSP/referrer policy, service/security settings, nine other runtime modules, method0.39 and private packages remain unchanged apart from the runtime version metadata. Actual deployment and the portal Verify Domain result require separate receipts.
+
 ## 0.7.7-beta — SKRIPT information pages
 
 Adds four SKRIPT pages on the existing Worker: `/skript/`, `/skript/support`, `/skript/privacy` and `/skript/terms`, with canonical GET/HEAD routes, navigable links, the existing studio image and bounded writing/host/data-handling descriptions. The privacy page names the existing Cloudflare request/security metadata, raw GitHub image and WebMCP C2PA delivery component; it does not import REMAKE MCP file-processing claims into SKRIPT. There is no SKRIPT upload, account, checkout, inference endpoint or automatic studio handoff.

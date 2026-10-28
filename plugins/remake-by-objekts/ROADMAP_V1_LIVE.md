@@ -391,3 +391,8 @@ Prepared runtime0.7.5-beta carries method0.39 from only the six allowlisted publ
 Runtime0.7.7 adds canonical information pages `/skript/`, `/skript/support`, `/skript/privacy` and `/skript/terms` to the existing Worker. The pages explain actual SKRIPT0.2 writing, host processing, studio support and beta draft-output limits, with the existing overlapping-squares studio image. They disclose the current Cloudflare request/security metadata, raw GitHub image delivery and WebMCP C2PA component without importing REMAKE MCP file-processing claims into SKRIPT.
 
 Focused origin tests cover GET/HEAD, canonical links and redirects, navigation, unchanged CSP/referrer policy, privacy boundaries and rejection of upload/checkout/MCP routes. Existing MCP compatibility and safety checks remain mandatory. This source proposal does not create another hosted service or change protection, binding or pack settings. Private REMAKE0.39, SKRIPT0.2 and method0.39 are frozen separately; actual deployment, public page verification, official submissions and release gates require separate receipts.
+
+
+## 2026-10-26 — OpenAI public domain challenge source
+
+Runtime0.7.8 adds the exact plaintext ownership challenge issued for the existing official REMAKE draft, scoped to GET/HEAD on the REMAKE HTTPS origin. Unsupported methods are refused; the apex and other hosts receive no verification value. This source change preserves method0.39, the frozen private packages, four SKRIPT pages, origin policy and service settings. Exact-byte and host/method-boundary tests complement existing CI. Only the root deployment and real OpenAI Verify Domain response can establish domain verification; this entry makes no verified/submitted/published claim.
