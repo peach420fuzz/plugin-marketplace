@@ -15,7 +15,13 @@ const rpc = (method, params={}) => ({jsonrpc:'2.0',id:1,method,params});
 const call = async (w, method, params={}) => (await w.fetch(req('/mcp',rpc(method,params)),{})).json();
 const candidates = ['request-body-v035.mjs','core-v024.mjs','host-file-v028.mjs','image-batch-v031.mjs','image-integrity-v030.mjs','image-review-v029.mjs','public-delta-guard-v033.mjs'];
 const baselineHashes=JSON.parse(readFileSync(new URL('./fixtures/runtime-v072-module-sha256.json',import.meta.url)));
-for(const file of candidates) await test('unchanged '+file,()=>assert.equal(createHash('sha256').update(readFileSync(new URL('../'+file,import.meta.url))).digest('hex'),baselineHashes[file]));
+// This owner-scoped core bugfix intentionally changes core-v024.mjs. Keep the historical
+// v0.7.2 SHA snapshot immutable and pin the exact reviewed new core hash separately.
+const ownerApprovedCorePatchSha256='3d68f9cf20a10dd8cb5c6e8fa5a82d4cb40d1e7a636630737a8dfd6490bc195b';
+for(const file of candidates) await test(file==='core-v024.mjs'?'owner-reviewed candidate core SHA':'unchanged '+file,()=>assert.equal(
+  createHash('sha256').update(readFileSync(new URL('../'+file,import.meta.url))).digest('hex'),
+  file==='core-v024.mjs'?ownerApprovedCorePatchSha256:baselineHashes[file]
+));
 await test('exact tool names/schemas/annotations/descriptions retained',async()=>{
   const a=await call(before,'tools/list'),b=await call(after,'tools/list');
   assert.equal(b.result.tools.length,10);b.result.tools=b.result.tools.filter(t=>t.name!=='remake_get_audit_method');assert.deepEqual(b,a);assert.equal(b.result.tools.length,9);
