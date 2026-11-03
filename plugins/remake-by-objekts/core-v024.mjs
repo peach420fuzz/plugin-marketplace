@@ -10,6 +10,8 @@ const STATUS=new Set(["PROPOSED","USER_APPROVED","LOCKED","REJECTED","SUPERSEDED
 const record=x=>x!==null&&typeof x==="object"&&!Array.isArray(x);
 const str=x=>typeof x==="string"&&x.trim().length>0;
 const deepcopy=x=>JSON.parse(JSON.stringify(x));
+// JSON field names are data, including __proto__; never invoke its inherited setter.
+const setOwn=(object,key,value)=>Object.defineProperty(object,key,{value,writable:true,enumerable:true,configurable:true});
 const error=(code,field="")=>{throw Error(code+(field?" / "+field:""))};
 const canonical=x=>JSON.stringify(x,(_k,v)=>record(v)?Object.fromEntries(Object.entries(v).sort(([a],[b])=>a.localeCompare(b))):v);
 async function digest(event){const buf=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(canonical(event)));return [...new Uint8Array(buf)].map(x=>x.toString(16).padStart(2,"0")).join("");}
@@ -106,13 +108,13 @@ export async function applyProjectDelta({project,event}={}){
   if(!shot||!str(pl.field)||typeof pl.value!=="string")error("invalid_shot_edit");
   if(["USER_APPROVED","LOCKED"].includes(shot.status))error("approved_shot_immutable");
   if(Object.hasOwn(out.locks,pl.field)&&pl.value!==out.locks[pl.field])error("lock_conflict");
-  shot.fields[pl.field]=pl.value;
+  setOwn(shot.fields,pl.field,pl.value);
  }else if(kind==="lock_set"){
   author();
   if(!str(pl.field)||!str(pl.value))error("invalid_lock");
   if(Object.hasOwn(out.locks,pl.field)&&out.locks[pl.field]!==pl.value)error("lock_requires_explicit_unlock");
   for(const sh of out.shots)if(Object.hasOwn(sh.fields,pl.field)&&sh.fields[pl.field]!==pl.value)error("lock_conflicts_with_shot");
-  out.locks[pl.field]=pl.value;
+  setOwn(out.locks,pl.field,pl.value);
  }else if(kind==="lock_remove"){
   author();if(!Object.hasOwn(out.locks,pl.field))error("lock_not_found");delete out.locks[pl.field];
  }else if(kind==="decision_propose"){
