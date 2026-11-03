@@ -134,8 +134,10 @@ async function invoke(name,args={}) {
   if(name==="plan_deep_film_research")return researchBrief(personalDossier(),args);
   if(name==="rank_researched_films")return rankResearchedCandidates(personalDossier(),args.candidates,args.count,{mode:args.mode,asOfDate:args.asOfDate});
   if(name==="save_film_verdict") {
-    if(!["hit","miss","seen","want-to-watch","watchlist"].includes(args.verdict)||!String(args.title??"").trim())
-      throw new Error("Title and accepted verdict required");
+    if(typeof args.title!=="string" || !args.title.trim() || !["hit","miss","seen","want-to-watch","watchlist"].includes(args.verdict))
+      throw new Error("String title and accepted verdict required");
+    if(Object.hasOwn(args,"year") && !Number.isInteger(args.year)) throw new Error("Year must be an integer when supplied");
+    if(Object.hasOwn(args,"reason") && typeof args.reason!=="string") throw new Error("Reason must be a string when supplied");
     const key=filmIdentity({title:args.title,year:args.year})?.id;
     state.feedback=state.feedback.filter(f=>filmIdentity(f)?.id!==key);
     state.feedback.push({title:String(args.title).trim().slice(0,350),year:Number(args.year)||null,
