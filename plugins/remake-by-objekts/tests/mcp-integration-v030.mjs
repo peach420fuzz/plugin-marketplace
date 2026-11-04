@@ -69,6 +69,28 @@ try{
  assert.equal(badHost.result.isError,true);passed++;
  const made=await rpc("tools/call",{name:"remake_project_create",arguments:{project_id:"ci-project",title:"test"}});
  assert.equal(made.result.structuredContent.project.revision,1);passed++;
+ // Accepted JSON field names must survive the public dispatcher and transport.
+ // These are synthetic unapproved drafts; no authenticated author is asserted.
+ const draft=await rpc("tools/call",{name:"remake_project_apply_delta",arguments:{project:made.result.structuredContent.project,event:{event_id:"own-field-shot",expected_revision:1,kind:"shot_add",payload:{id:"own-field-shot",status:"PROPOSED",source_ids:[],fields:{camera:"static"},visible_action:"Synthetic draft action"}}}});
+ assert.equal(draft.result.isError,false);
+ const beforeField=JSON.stringify(draft.result.structuredContent.project);
+ const fieldEvent={event_id:"own-field-edit",expected_revision:2,kind:"shot_field_set",payload:{shot_id:"own-field-shot",field:"__proto__",value:"literal-draft-data"}};
+ const field=await rpc("tools/call",{name:"remake_project_apply_delta",arguments:{project:draft.result.structuredContent.project,event:fieldEvent}});
+ assert.equal(field.result.isError,false);
+ const returned=field.result.structuredContent.project;
+ assert.equal(Object.hasOwn(returned.shots[0].fields,"__proto__"),true);
+ assert.equal(returned.shots[0].fields.__proto__,"literal-draft-data");
+ assert.equal(Object.getPrototypeOf(returned.shots[0].fields),Object.prototype);
+ assert.equal(returned.shots[0].status,"PROPOSED");
+ assert.equal(JSON.stringify(draft.result.structuredContent.project),beforeField);passed++;
+ const fieldReplay=await rpc("tools/call",{name:"remake_project_apply_delta",arguments:{project:returned,event:fieldEvent}});
+ assert.equal(fieldReplay.result.isError,false);
+ assert.equal(fieldReplay.result.structuredContent.idempotent_replay,true);
+ assert.deepEqual(fieldReplay.result.structuredContent.project,returned);passed++;
+ const forbiddenLock=await rpc("tools/call",{name:"remake_project_apply_delta",arguments:{project:returned,event:{event_id:"own-field-forbidden-lock",expected_revision:3,kind:"lock_set",actor_claim:"USER",payload:{field:"__proto__",value:"pretend-approval"}}}});
+ assert.equal(forbiddenLock.result.isError,true);
+ assert.match(forbiddenLock.result.content[0].text,/requires_authenticated_human_approval/);
+ assert.deepEqual(returned.locks,{});passed++;
  const conflicts=await rpc("tools/call",{name:"check_explicit_project_locks",arguments:{locks:[{key:"CAMERA",value:"static"}],proposed_changes:[{key:"CAMERA",new_value:"dolly"}]}});
  assert.equal(conflicts.result.structuredContent.allow_edit,false);passed++;
  const protectedPath="https://remake.objekts.ai/_image_selftest";
@@ -83,5 +105,5 @@ try{
  }
  const health=await worker.fetch(new Request("https://remake.objekts.ai/health"),{});
  assert.equal((await health.json()).storage,false);passed++;
- process.stdout.write(JSON.stringify({suite:"MCP dispatcher E2E",passed,total:17,synthetic:true,host:"node-inmemory",actual_chatgpt_attachment:false})+"\n");
+ process.stdout.write(JSON.stringify({suite:"MCP dispatcher E2E",passed,total:20,synthetic:true,host:"node-inmemory",actual_chatgpt_attachment:false})+"\n");
 }finally{globalThis.fetch=originalFetch;}
