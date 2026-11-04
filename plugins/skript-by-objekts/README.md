@@ -1,17 +1,21 @@
-# SKRIPT by objekts — 0.2.0 private beta
+# SKRIPT by objekts — 0.2.1 beta
 
-SKRIPT is a collaborative screenwriting plugin. Bring an idea or synopsis: develop materially different directions, choose one, write scenes and a complete draft at the requested scale, and revise its actual weaknesses. Film, series, advertising, music videos and animation have separate working references. REMAKE by objekts remains the distinct review and production-audit product.
+Bring an idea, synopsis or unfinished scene. SKRIPT helps compare different story directions, develop the chosen one, write complete scenes and drafts at the agreed scale, and revise their actual weaknesses. Film, series, advertising, music videos and animation have separate working references. REMAKE by objekts provides the separate creative and production audit.
 
-The package contains one portable skill and supporting original method files. It runs through the model and supported tools of the host where it is selected; it supplies no separate inference server, API key, account system, media generator or proprietary trained model. No MCP connection is required. Account creation, installation and tool routing must not be inferred from this source folder.
+The package supplies a portable writing method and references for the host model. It has no separate inference server, API key, media generator or proprietary trained model. No MCP connection is required. Installation and available tools depend on the selected host; this source does not establish compatibility with every model.
 
-The source map records the actual extent of reading. Complete books, courses and films were not consumed merely because an author is listed. Seventeen source cards include full articles, partial readings and indexed excerpts; inaccessible sources and publisher descriptions are explicitly separate. The plugin does not redistribute their full text. Fictional calibration cases and the writing/revision exercise are original teaching material, not client cases, measured artistic results or tests of an installed release.
+In 0.2.1, the writing workflow requires a whole-draft pass before delivery: dates and ages, story time versus screen time, prop state, character knowledge, practical alternatives to the conflict and the actual consequence of the ending. Criticism must check the whole supplied text before claiming a fact is missing. A local rewrite must identify dependencies on unchanged earlier scenes.
 
-Start naturally:
+The source map distinguishes actual reading, partial access and unavailable material. Listed books and films were not automatically consumed in full. Source cards and original exercises support the method; they are not professional artistic acceptance. An actual fictional ChatGPT workshop trial produced a complete draft and editorial iteration, and exposed remaining defects. That trial does not establish reliable artistic quality or validate the revised method on unseen projects.
 
-- «Вот синопсис. Дай три разных направления, выбери одно и напиши законченный короткий сценарий».
-- «Для этой услуги нужен 30-секундный ролик. Используй только подтверждённые свойства; затем напиши отдельную 15-секундную версию».
-- «Разработай пилот и покажи, какие три последующие серии действительно вытекают из действий героев».
+Start with your material and constraints:
 
-Private beta. Source/package checks and AI editorial exercises do not establish professional artistic acceptance or reliability on every model. No public directory submission or approval is implied. Official preparation still needs a plugin-specific published listing, applicable policies, confirmed publisher/country/commerce declarations and the owner's final authorization.
+- «Вот синопсис. Предложи три разные версии, выбери одну и напиши законченный короткий сценарий».
+- «Нужны 30-секундный ролик и отдельная 15-секундная версия. Используй только подтверждённые свойства продукта».
+- «Перепиши эту сцену, сохранив действующих лиц и отношения. Найди причину слабости и измени конкретное действие».
 
-The supplied overlapping-square studio mark is used unchanged on the already prepared charcoal background. It is not a letter O. Studio: https://objekts.ai/; contact: salute@objekts.ai. This website identifies the publisher, but it is not claimed as a completed SKRIPT public-directory listing page.
+Beta source and saved personal releases remain distinct from official catalog approval. No professional read-through or independent artistic acceptance is claimed. The owner retains the final OpenAI review submission; eligibility and review decisions belong to each platform.
+
+The supplied overlapping-square studio mark is unchanged on its approved charcoal background.
+
+[Product](https://remake.objekts.ai/skript/) · [Support](https://remake.objekts.ai/skript/support) · [Privacy](https://remake.objekts.ai/skript/privacy) · [Terms](https://remake.objekts.ai/skript/terms). Publisher: [objekts](https://objekts.ai/); contact: salute@objekts.ai.

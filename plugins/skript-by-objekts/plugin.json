@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "skript-by-objekts",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "SKRIPT by objekts develops original screenplays from an idea or synopsis: different story directions, complete scenes and coherent drafts, followed by substantive revisions.",
   "author": {
     "name": "objekts",
@@ -33,7 +33,11 @@
         ],
         "logo": "./assets/objekts-squares-charcoal.png",
         "composerIcon": "./assets/objekts-squares-charcoal.png",
-        "brandColor": "#242321"
+        "brandColor": "#242321",
+        "websiteURL": "https://remake.objekts.ai/skript/",
+        "supportURL": "https://remake.objekts.ai/skript/support",
+        "privacyPolicyURL": "https://remake.objekts.ai/skript/privacy",
+        "termsOfServiceURL": "https://remake.objekts.ai/skript/terms"
       },
       "review": {
         "prompts": [
@@ -45,9 +49,9 @@
         ]
       },
       "publication": {
-        "release_notes": "0.2.0: develops actions from established knowledge, distinguishes character knowledge from audience access, preserves limited perspective and nonlinear disclosure, and checks prop continuity. Adds a scoped reading of one complete short screenplay and an original revision exercise. Workplace-comedy revision addresses scenes replaced by exemplary business communication. Studio listing follows the objekts naming and avatar pattern. Structural checks and AI writing exercises are not professional artistic or target-host acceptance."
+        "release_notes": "0.2.1: adds a mandatory whole-draft consistency pass before delivery: chronology versus screen time, prop state, character knowledge, practical alternatives and the literal consequence of the ending. Local rewrites must disclose unresolved dependencies on earlier scenes. Based on defects observed in an actual fictional ChatGPT workshop trial; no professional artistic acceptance or universal host compatibility is claimed."
       }
     }
   },
-  "homepage": "https://objekts.ai/"
+  "homepage": "https://remake.objekts.ai/skript/"
 }
