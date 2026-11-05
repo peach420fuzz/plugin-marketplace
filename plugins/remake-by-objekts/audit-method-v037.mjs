@@ -65,6 +65,11 @@ export function getAuditMethod(args) {
       source_gate:'Check exact KN-ID, evidence status, scope, primary source, counterexample and tests',
       dependency_gate:'Translate relevant scene action to performer/blocking, optical view, light/material, sound/edit and finishing',
       actual_use_gate:'Retrieved != used; require authored decisions and output-specific evidence',
+      curated_problem_index:'46 unapproved S10 problem-to-KN routes; exact source and family compatibility still required',
+      downstream_research_options:'Not selected; never assert used from a related-specialty suggestion alone',
+      receipt_protocol:'objekts.craft-consumer-receipt/1',
+      receipt_authority:'LOCAL_HOST_ONLY_NO_AUTO_SEND',
+      receipt_test_status:'AUTHOR_DECLARED_USE_UNOBSERVED_NO_MEDIA_PASS',
       output_status:'METHOD_INSTRUCTIONS_ONLY_NOT_AN_ATLAS_RESULT'
     };
   }

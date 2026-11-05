@@ -68,6 +68,9 @@ await test('craft context method contains only a safe public transport contract'
  const r=getAuditMethod({section:'craft'});
  assert.equal(r.craft_context.protocol,'objekts.craft-context/1');
  assert.equal(r.craft_context.server_fetches_private_github,false);
+ assert.equal(r.craft_context.receipt_protocol,'objekts.craft-consumer-receipt/1');
+ assert.equal(r.craft_context.receipt_authority,'LOCAL_HOST_ONLY_NO_AUTO_SEND');
+ assert.match(r.craft_context.downstream_research_options,/Not selected/);
  assert.equal(r.craft_context.receives_or_transmits_private_evidence,false);
  assert.equal(JSON.stringify(r).includes('KN-20261104-100-'),false);
  assert.throws(()=>getAuditMethod({section:'craft',department_ids:['01']}));
