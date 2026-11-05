@@ -70,6 +70,25 @@ export function getAuditMethod(args) {
       receipt_protocol:'objekts.craft-consumer-receipt/1',
       receipt_authority:'LOCAL_HOST_ONLY_NO_AUTO_SEND',
       receipt_test_status:'AUTHOR_DECLARED_USE_UNOBSERVED_NO_MEDIA_PASS',
+      local_workbench:{
+        request_protocol:'objekts.craft-workbench-request/1',
+        result_protocol:'objekts.craft-workbench-result/1',
+        source_repository:'peach420fuzz/objekts-ops',
+        source_path:'tools/craft_workbench.mjs',
+        source_branch:'integration/craft-atlas-prompt-doctrine-20261105',
+        status:'DRAFT_LOCAL_SOURCE_NOT_INSTALLED_BY_THIS_MCP',
+        actions:['context','explore','produce','record'],
+        remake_actions:['context','explore','record'],
+        consumer:'remake',
+        prompt_regimes:['FULL_MASTER','FRAME_CONTINUATION','LOCAL_DELTA'],
+        actual_local_atlas_required:true,
+        expected_source_digest_recommended:true,
+        record_requires:'Original context, author decisions, actual artifact text and matching UTF16 output spans',
+        output_binding:'SHA256 of authored text plus exact excerpt hashes; not a semantic or artistic judgement',
+        source_coverage:'Host response distinguishes original manuals actually retrieved from unread links; archive reuse is not measured quality',
+        auto_execute:false,
+        public_mcp_receives_artifact:false
+      },
       output_status:'METHOD_INSTRUCTIONS_ONLY_NOT_AN_ATLAS_RESULT'
     };
   }
