@@ -16,3 +16,8 @@ Cinematic Atlas's S10 index includes 46 proposed problem-to-KN routes, and `down
 
 
 **Production verification boundary:** A caller-provided Craft Context packet or a claimed SHA256 is not sufficient provenance. The verified OPS wrapper must reload the authorized local `atlasDir` and regenerate source candidate membership, source URLs, LOCKs, family routes and corpus digest before it can issue a source-use receipt. A public plugin has no such local private checkout and therefore must not claim verified Atlas usage.
+
+
+## Optional frame-accurate and optical checks
+
+An authorized private/local host can run the proposed OPS tools/craft_sequence_qa.mjs with an explicitly authored frame-based shot/multiscreen timeline, and tools/craft_optical_preflight.mjs with user-specified optical geometry, focal length, distances, camera height, format, aperture, CoC, FPS and shutter. The checks maintain source/canon LOCKs, distinguish author-approved in-shot and between-cut changes, and flag physically inconsistent draft instructions. Optical math uses only pinhole and thin-lens approximations, not a real calibrated lens, measured light, genuine source film or AI video playback. Neither test automatically rewrites a scene or proves artistic quality. Both are source code candidates on private OPS PR #168, not included in this public plugin or deployed to a host. Do not send private client media or Atlas records to a public MCP to perform these tests.
