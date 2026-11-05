@@ -63,5 +63,20 @@ await test('in-memory MCP transport returns method, selected departments and han
 await test('in-memory MCP transport returns explicit error for invalid selection/private extra',async()=>{
  for(const args of [{section:'departments',department_ids:['99']},{section:'departments',department_ids:['04','04']},{section:'core',input:'synthetic-private-canary'}])assert.equal((await rpc(args)).isError,true);
 });
+
+await test('craft context method contains only a safe public transport contract',()=>{
+ const r=getAuditMethod({section:'craft'});
+ assert.equal(r.craft_context.protocol,'objekts.craft-context/1');
+ assert.equal(r.craft_context.server_fetches_private_github,false);
+ assert.equal(r.craft_context.receives_or_transmits_private_evidence,false);
+ assert.equal(JSON.stringify(r).includes('KN-20261104-100-'),false);
+ assert.throws(()=>getAuditMethod({section:'craft',department_ids:['01']}));
+});
+await test('in-memory MCP tool gives craft integration policy only',async()=>{
+ const r=await rpc({section:'craft'});
+ assert.equal(r.isError,false);
+ assert.equal(r.structuredContent.craft_context.output_status,'METHOD_INSTRUCTIONS_ONLY_NOT_AN_ATLAS_RESULT');
+});
+
 const receipt={suite:'REMAKE actual method delivery contract',method_version:data.version,method_sha256:data.sha256,passed,total:results.length,results,execution:'Local direct + in-memory MCP requests; public authored method and synthetic invalid fixtures only',host_routing:false,actual_creative_application:false,private_media_used:false};
 console.log(JSON.stringify(receipt));

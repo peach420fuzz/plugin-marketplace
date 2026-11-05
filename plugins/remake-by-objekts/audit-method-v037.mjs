@@ -4,11 +4,11 @@ import method from './audit-method-data-v037.mjs';
 const ids = method.departments.departments.map(d => d.id);
 export const auditMethodTool = {
   name: 'remake_get_audit_method',
-  description: 'Read the actual versioned REMAKE production-audit method, not a generated verdict. Before a substantive REMAKE audit, retrieve core, then the relevant department contracts and handoffs; apply them to material the host actually inspected. Core includes the full 22-function coverage index. Departments can be read all at once or selected by stable IDs. The server does not infer, inspect media, certify quality, approve work or send sources to the studio.',
+  description: 'Read the actual versioned REMAKE production-audit method, not a generated verdict. Before a substantive REMAKE audit, retrieve core, then the relevant department contracts and handoffs; apply them to material the host actually inspected. Core includes the full 22-function coverage index. Departments can be read all at once or selected by stable IDs. The craft section returns a public, no-private-data integration contract. The server does not infer, inspect media, certify quality, approve work or send sources to the studio.',
   inputSchema: {
     type: 'object',
     properties: {
-      section: {type:'string', enum:['core','departments','handoffs']},
+      section: {type:'string', enum:['core','departments','handoffs','craft']},
       department_ids: {type:'array', minItems:1, maxItems:22, uniqueItems:true, items:{type:'string', enum:ids}}
     },
     required:['section'], additionalProperties:false
@@ -19,7 +19,7 @@ export const auditMethodTool = {
 export function getAuditMethod(args) {
   if (!args || typeof args !== 'object' || Array.isArray(args)) throw new Error('method arguments must be an object');
   if (Object.keys(args).some(k => !['section','department_ids'].includes(k))) throw new Error('unknown method argument');
-  if (!['core','departments','handoffs'].includes(args.section)) throw new Error('unknown method section');
+  if (!['core','departments','handoffs','craft'].includes(args.section)) throw new Error('unknown method section');
   if ('department_ids' in args) {
     if (args.section !== 'departments') throw new Error('department_ids only applies to departments');
     const selected=args.department_ids;
@@ -47,10 +47,26 @@ export function getAuditMethod(args) {
     result.contract = {...method.departments, departments:method.departments.departments.filter(d=>chosen.includes(d.id))};
     result.returned_department_ids = result.contract.departments.map(d=>d.id);
     result.omitted_department_ids = ids.filter(id=>!chosen.includes(id));
-  } else {
+  } else if (args.section==='handoffs') {
     result.handoffs = method.handoffs;
     result.playbook = method.playbook;
     result.studio_bridge = method.studio_bridge;
+  } else {
+    result.craft_context = {
+      protocol:'objekts.craft-context/1',
+      visibility:'PUBLIC_METHOD_ONLY_PRIVATE_CORPUS_NOT_LOADED',
+      source_role:'100',
+      source_status:'RESEARCH_DRAFT_NOT_OWNER_ADOPTED',
+      retrieval:'Authorized local craft_bridge.mjs packet from host; no private GitHub credentials on public REMAKE MCP',
+      receives_or_transmits_private_evidence:false,
+      server_fetches_private_github:false,
+      server_creative_inference:false,
+      mandatory_locks:'Latest approved project canon and actual source authority',
+      source_gate:'Check exact KN-ID, evidence status, scope, primary source, counterexample and tests',
+      dependency_gate:'Translate relevant scene action to performer/blocking, optical view, light/material, sound/edit and finishing',
+      actual_use_gate:'Retrieved != used; require authored decisions and output-specific evidence',
+      output_status:'METHOD_INSTRUCTIONS_ONLY_NOT_AN_ATLAS_RESULT'
+    };
   }
   // A caller must never be able to mutate the cached canonical method snapshot.
   return JSON.parse(JSON.stringify(result));
