@@ -26,3 +26,19 @@ This is a **local, permissioned** protocol; the public portable Skill does not r
 ## Optional frame-accurate and optical checks
 
 An authorized private/local host can run the proposed OPS tools/craft_sequence_qa.mjs with an explicitly authored frame-based shot/multiscreen timeline, and tools/craft_optical_preflight.mjs with user-specified optical geometry, focal length, distances, camera height, format, aperture, CoC, FPS and shutter. The checks maintain source/canon LOCKs, distinguish author-approved in-shot and between-cut changes, and flag physically inconsistent draft instructions. Optical math uses only pinhole and thin-lens approximations, not a real calibrated lens, measured light, genuine source film or AI video playback. Neither test automatically rewrites a scene or proves artistic quality. Both are source code candidates on private OPS PR #168, not included in this public plugin or deployed to a host. Do not send private client media or Atlas records to a public MCP to perform these tests.
+
+
+## Local review and next-experiment feedback
+
+The authorized private OPS Workbench now also proposes `action:"feedback"`
+(and `objekts_craft_feedback` on its stdio adapter). Supply the original local
+`record` request, retained source/project digests and reviewer observations tied
+to actual local result files configured at host startup with `--review-manifest`.
+The host recompiles the authored decision and hashes result bytes. Report only
+criteria actually reviewed; missing or inconclusive evidence remains explicit.
+These are caller-reported observations, not independent media inspection,
+provider execution or artistic acceptance. Proposed experiments grant no change
+authority: preserve approved LOCKs/reference roles and use the normal revision
+guard for authorized changes. No automatic adoption or retrieval reweighting.
+This public product document neither installs that private host nor accepts
+private result files, prompts, source records or review evidence through its MCP.

@@ -12,7 +12,7 @@ test('REMAKE advertises exact local workbench protocols without adding a remote 
 test('REMAKE stays in its diagnostic consumer route, not the prompt compiler',()=>{
  const local=getAuditMethod({section:'craft'}).craft_context.local_workbench;
  assert.equal(local.consumer,'remake');
- assert.deepEqual(local.remake_actions,['context','explore','record']);
+ assert.deepEqual(local.remake_actions,['context','explore','record','feedback']);
  assert.equal(local.remake_actions.includes('produce'),false);
  assert(local.prompt_regimes.includes('FRAME_CONTINUATION'));
 });
@@ -50,4 +50,13 @@ test('public MCP refuses private artifact and action parameters',()=>{
  assert.throws(()=>getAuditMethod({section:'craft',artifact:{text:'private-canary'}}),/unknown method argument/);
  assert.throws(()=>getAuditMethod({section:'craft',action:'record'}),/unknown method argument/);
  assert.throws(()=>getAuditMethod({section:'craft',department_ids:['01']}),/department_ids only/);
+});
+test('local feedback contract preserves reviewer/evidence limits and revision authority',()=>{
+ const local=getAuditMethod({section:'craft'}).craft_context.local_workbench;
+ assert.match(local.feedback_requires,/startup-configured local review-asset manifest/);
+ assert.match(local.feedback_scope,/observations caller-reported/);
+ assert.match(local.feedback_scope,/no independent image\/audio inspection/);
+ assert.match(local.feedback_next_experiments,/Proposals only/);
+ assert.equal(local.public_mcp_receives_artifact,false);
+ assert.throws(()=>getAuditMethod({section:'craft',review:{note:'private'}}),/unknown method argument/);
 });
