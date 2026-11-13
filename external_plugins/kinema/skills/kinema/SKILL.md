@@ -44,7 +44,7 @@ For six recommendations investigate at least 24 candidates; scale to four candid
 For each serious candidate establish:
 
 - Original and translated titles, year, director, stable IDs or verified aliases. Disambiguate remakes, shorts, series, cuts and premiere/release-year differences.
-- A specific facet and two formal connections to separate positively evaluated films where evidence permits. Support facts with opened sources; label aesthetic comparison as interpretation.
+- A specific facet and two formal connections to separate positively evaluated films where evidence permits. Support facts with opened sources; label aesthetic comparison as interpretation. If a rated favorite's year was not imported, the tool may return `tentative-title-only-year-unverified` for a unique title match; verify the exact work independently before making specific production claims.
 - A meaningful difference and possible mismatch grounded in negative evidence. Avoid blanket penalties for a genre or director.
 - Sources supporting the candidate itself and the comparisons. Two URLs can repeat one press release; inspect substance and independence. A tool-accepted URL remains evidence awaiting host verification.
 - Separate watched and watchlist findings with provenance and uncertainty.

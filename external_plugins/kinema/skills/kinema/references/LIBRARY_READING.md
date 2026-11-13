@@ -51,3 +51,7 @@ Title/year deduplication requires careful handling of records without stable IDs
 ## Several platforms in one local archive
 
 An archive is a single viewer's evidence. When it already contains a different service, ask whether both account histories belong to the same viewer before connecting or importing an additional platform. The local MCP exposes `mergeWithExistingViewer: true` as an explicit opt-in for that case; never set it without affirmative user confirmation. A conflicting handle for one existing platform remains blocked. Use separate `CINEMA42_DATA_FILE` paths for different viewers and do not move personal archives to a shared server. This flag is a record of user-directed linking, not proof that platform identities are identical.
+
+## Alias coverage and exposed uncertainty
+
+An authorized import can contain many translated or variant names for one identified work. Runtime dossiers report `counts.aliasTruncations` and set `aliasCoverageTruncated` when per-film stored aliases reach the bounded limit. A missing alias from a truncated record cannot establish a film was never viewed. Use stable IDs or source-verified original titles when comparing finalists. A uniquely matching high-rated favorite with no stored year may appear as a tentative anchor with an explicit unresolved-year status. Treat it as a research lead and check the exact work before using scene-specific evidence.

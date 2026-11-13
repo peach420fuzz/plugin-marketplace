@@ -54,3 +54,7 @@ This release is a draft code candidate. No deployed ChatGPT App, Claude desktop 
 ## Identity and multi-platform safeguards
 
 When multiple cinema-service accounts are connected to one archive, confirm that both accounts belong to the same viewer. `mergeWithExistingViewer: true` is the explicitly user-authorized merge flag in `connect_cinema_profile` and `import_film_history`; mismatched handles on the same platform still require separate archives. Release-year values explicitly supplied in a history file or feedback must be within the supported film-year range. Unknown-year reactions remain ambiguous when different films or remakes could share a title. A negative reaction can conservatively suppress a single plausible high-rated anchor without creating a fabricated watched or numeric-rating observation.
+
+## Source identity and evidence limits
+
+The engine retains localized primary titles when stable film IDs link records across platforms. A bounded alias inventory (64 displayed title variants, 80 additional internal IDs per film) protects large imports from excessive memory growth; truncated inventory is reported in the dossier. Resolved IMDb/TMDB IDs remain available for precise matching. A small official RSS sample may omit many watched and watchlist films. High-rated titles imported without release years can guide research provisionally only after an unambiguous title match, with `tentative-title-only-year-unverified` recorded on the connection. The host verifies the exact film and cited formal comparison before displaying it.

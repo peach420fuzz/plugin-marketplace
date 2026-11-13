@@ -7,6 +7,8 @@
 
 export const BRAND = "KINEMA by objekts";
 export const PLATFORMS = ["letterboxd", "imdb", "kinopoisk", "myshows"];
+const MAX_FILM_TITLE_ALIASES=64;
+const MAX_FILM_ID_ALIASES=80;
 export const AXES = [
   "duration-and-temporality", "camera-distance-and-movement", "blocking-and-bodies",
   "editing-and-rhythm", "sound-and-silence", "light-and-color", "material-and-texture",
@@ -265,13 +267,25 @@ export function buildDossier(rows = []) {
     // Promote the entry before any later same-title film with a DIFFERENT ID arrives.
     if (record.imdbId && !entry.imdbId) entry.imdbId=record.imdbId;
     if (record.tmdbId && !entry.tmdbId) entry.tmdbId=record.tmdbId;
-    for (const title of record.alternateTitles ?? []) if (!entry.alternateTitles.includes(title))
-      entry.alternateTitles.push(title);
+    // A merged source can supply a localized primary title that differs from
+    // the first observed label. Retain that language variant for future
+    // first-watch exclusion, feedback and original-title lookup.
+    const rememberTitle=(title)=>{
+      if(normalizeTitle(title)===normalizeTitle(entry.title)
+          || entry.alternateTitles.some(other=>normalizeTitle(other)===normalizeTitle(title))) return;
+      if(entry.alternateTitles.length<MAX_FILM_TITLE_ALIASES) entry.alternateTitles.push(title);
+      else entry.aliasCoverageTruncated=true;
+    };
+    rememberTitle(record.title);
+    for (const title of record.alternateTitles ?? []) rememberTitle(title);
     if (collided && !hasStrongId) entry.identityUnresolved=true;
     for (const alias of safeAliases) {
       if (!byAlias.has(alias)) byAlias.set(alias,entry);
       if (alias !== entry.id && alias !== entry.titleKey && !entry.alternateIds.includes(alias)
-          && !alias.startsWith("unresolved:")) entry.alternateIds.push(alias);
+          && !alias.startsWith("unresolved:")) {
+        if(entry.alternateIds.length<MAX_FILM_ID_ALIASES) entry.alternateIds.push(alias);
+        else entry.aliasCoverageTruncated=true;
+      }
     }
     if (record.rating != null && Number.isFinite(record.rating) && record.rating >= 0 && record.rating <= 10)
       entry.ratingEvidence.push({rating:record.rating, observedAt:record.observedAt ?? null});
@@ -312,6 +326,7 @@ export function buildDossier(rows = []) {
   return {
     brand:BRAND, counts:{ratingConflicts:all.filter(f=>f.ratingConflict).length,
       identityAmbiguities:all.filter(f=>f.identityUnresolved).length,
+      aliasTruncations:all.filter(f=>f.aliasCoverageTruncated).length,
       observations:rows.length, unique:all.length, watched:all.filter((f) => f.watched).length,
       rated:ratings.length, liked:all.filter((f) => f.liked).length, rewatched:all.filter((f) => f.rewatch).length,
       watchlist:all.filter((f) => f.watchlist).length},
@@ -403,10 +418,20 @@ export function buildPersonalDossier(rows = [], feedback = []) {
 function validConnection(connection, anchors) {
   if (!connection || !AXES.includes(connection.axis)) return null;
   const reference = filmIdentity(connection.anchor ?? {});
-  const anchor = reference && anchors.find((p) => isSameFilm(reference, p));
-  if (!anchor || !String(connection.analysis ?? "").trim() || !normalizeUrl(connection.sourceUrl))
+  if(!reference) return null;
+  const matches=anchors.map(p=>({p,identity:filmIdentityMatch(reference,p)}))
+    .filter(x=>x.identity!=="none");
+  const direct=matches.filter(x=>x.identity!=="possible");
+  // Never credit two homonymous rated works as one anchor. A single title-only
+  // rating with no captured year can contribute tentatively, with the missing
+  // identity proof exposed to the caller for independent source checking.
+  const resolved=direct.length===1?direct[0]:direct.length===0 && matches.length===1?matches[0]:null;
+  if (!resolved || !String(connection.analysis ?? "").trim() || !normalizeUrl(connection.sourceUrl))
     return null;
+  const anchor=resolved.p;
   return {anchor:{title:anchor.title,year:anchor.year,rating:anchor.rating,liked:anchor.liked,rewatch:anchor.rewatch},
+    anchorIdentityStatus:resolved.identity==="possible"?"tentative-title-only-year-unverified":"archive-title-or-id-match",
+    suppliedAnchorYear:reference.year,
     axis:connection.axis,analysis:String(connection.analysis).trim().slice(0,1000),
     sourceUrl:normalizeUrl(connection.sourceUrl)};
 }
@@ -569,6 +594,8 @@ export function rankResearchedCandidates(dossier, candidates, count = 6, options
     audit:{selectionMethod:"citation-gated heuristic and MMR-inspired diversity reranking",
       training:"none",formalFilmResearch:"provided by host LLM; verify cited links",
       completeWatchedCoverage:Boolean(dossier.fullHistoryVerified),
+      selectedTentativeAnchorConnections:selected.reduce((n,x)=>n+x.connections.filter(
+        c=>c.anchorIdentityStatus==="tentative-title-only-year-unverified").length,0),
       requestedWatchlistSlots:desiredWatchlist,filledWatchlistSlots:watchlist.length,
       coveredTasteFacets:coveredFacets,
       facetCoverage:{enabled:diversifyFacets,policy:"facet-first among qualified candidates without flagged negative relations; then diversity reranking",

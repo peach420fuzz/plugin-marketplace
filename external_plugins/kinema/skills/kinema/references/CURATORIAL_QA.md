@@ -4,7 +4,7 @@ Use this guide after source research and before presenting a recommendation. The
 
 ## Build an actual candidate ledger
 
-For each investigated film retain identity, source URLs opened, access date, supported facts, proposed facet, personally evaluated anchor films, formal connections, possible mismatch and separate exposure/watchlist evidence. Track the actual longlist. Four candidates per final film is the working protocol, not permission to declare an unperformed research count. If access ends early, give the supported result and its scope.
+For each investigated film retain identity, source URLs opened, access date, supported facts, proposed facet, personally evaluated anchor films, formal connections, possible mismatch and separate exposure/watchlist evidence. Mark `anchorIdentityStatus: tentative-title-only-year-unverified` when the viewer's recorded high rating lacks a release year. Confirm that the title refers to the intended work before citing specific cinematography, edit, authorship or context as a personal connection. Film exposure status uses a separate conservative gate. Track the actual longlist. Four candidates per final film is the working protocol, not permission to declare an unperformed research count. If access ends early, give the supported result and its scope.
 
 Use primary film institutions, credited maker interviews, distributors and festival archives for identity and production facts. Attribute critical interpretation. A trailer or poster can suggest a question; it does not establish the film's sustained camera grammar, sound design, pacing or performance. Subtitle text cannot prove lens, lighting ratio or visual staging.
 

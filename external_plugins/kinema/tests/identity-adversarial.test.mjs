@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {buildDossier,filmIdentity,rankResearchedCandidates,buildPersonalDossier} from '../server/taste-engine.mjs';
+import {buildDossier,filmIdentity,filmIdentityMatch,rankResearchedCandidates,buildPersonalDossier} from '../server/taste-engine.mjs';
 const observation=(title,year,imdbId,other={})=>({title,year,imdbId,kind:'rated',rating:8,...other});
 test('same original title+year with different verified IMDb IDs remain distinct after unidentified record',()=>{
  const x=buildDossier([
@@ -92,4 +92,59 @@ test('canonical identity remains stable when IMDb and TMDB observations arrive i
   assert.equal(dossier.counts.unique,1);
   assert.equal(dossier.all[0].id,'imdb:tt0000501');
  }
+});
+
+test('distinct observed language titles sharing stable ID remain searchable as aliases',()=>{
+ const d=buildDossier([
+  {title:'Russian title',year:1982,imdbId:'tt0000712',kind:'rated',rating:10},
+  {title:'English title',year:1982,imdbId:'tt0000712',kind:'rated',rating:10}
+ ]);
+ assert.equal(d.counts.unique,1);
+ const entry=d.all[0];
+ const candidate={title:'English title',year:1982};
+ assert.equal(filmIdentityMatch(entry,candidate),'title-year');
+});
+
+test('pathological repeat labels cannot grow a film alias list without bound',()=>{
+ const rows=Array.from({length:1200},(_,i)=>({title:'Variant '+i,year:1980,imdbId:'tt0000123',kind:'rated',rating:10}));
+ const dossier=buildDossier(rows);
+ assert.equal(dossier.counts.unique,1);
+ assert(dossier.all[0].alternateTitles.length<=64);
+ assert(dossier.all[0].alternateIds.length<=80);
+ assert.equal(dossier.all[0].aliasCoverageTruncated,true);
+ assert.equal(dossier.counts.aliasTruncations,1);
+});
+
+test('two uniquely named favorite titles without stored years still support tentative researched connections',()=>{
+ const d=buildDossier([
+  {title:'Horse Money',year:null,kind:'rated',rating:10},
+  {title:'Close-Up',year:null,kind:'rated',rating:10}
+ ]);
+ const result=rankResearchedCandidates(d,[{
+  title:'Candidate X',year:2010,director:'Director X',tasteFacet:'historical duration',
+  sources:['https://bfi.org.uk/films/candidate'],productiveDifference:'A distinct structure',
+  connections:[
+   {anchor:{title:'Horse Money',year:2014},axis:'duration-and-temporality',analysis:'Synthetic duration check',sourceUrl:'https://moma.org/film'},
+   {anchor:{title:'Close-Up',year:1990},axis:'performance-and-gesture',analysis:'Synthetic performance check',sourceUrl:'https://eyefilm.nl/film'}
+  ]
+ }]);
+ assert.equal(result.selected.length,1);
+ assert(result.selected[0].connections.every(x=>x.anchorIdentityStatus==='tentative-title-only-year-unverified'));
+});
+
+test('two homonymous maximum ratings with distinct IDs cannot be merged as one film anchor',()=>{
+ const d=buildDossier([
+  {title:'Clown',year:null,imdbId:'tt0000001',kind:'rated',rating:10},
+  {title:'Clown',year:null,imdbId:'tt0000002',kind:'rated',rating:10},
+  {title:'Close-Up',year:null,kind:'rated',rating:10}
+ ]);
+ const result=rankResearchedCandidates(d,[{
+  title:'Candidate X',year:2010,director:'Director X',tasteFacet:'history',sources:['https://bfi.org.uk/films/candidate'],productiveDifference:'Different form',
+  connections:[
+   {anchor:{title:'Clown',year:2007},axis:'duration-and-temporality',analysis:'Synthetic ambiguous title',sourceUrl:'https://moma.org/film'},
+   {anchor:{title:'Close-Up',year:1990},axis:'performance-and-gesture',analysis:'Synthetic title',sourceUrl:'https://eyefilm.nl/film'}
+  ]
+ }]);
+ assert.equal(result.selected.length,0);
+ assert.equal(result.rejected[0].reason,'insufficient_credited_film_research');
 });
