@@ -227,10 +227,15 @@ export function buildDossier(rows = []) {
   for (const raw of rows) {
     const film=raw && typeof raw==="object" ? filmIdentity(raw) : null;
     if (!film) continue;
-    let ids=idsByTitle.get(film.titleKey);
-    if (!ids) {ids={imdb:new Set(),tmdb:new Set()};idsByTitle.set(film.titleKey,ids);}
-    if (film.imdbId) ids.imdb.add(film.imdbId);
-    if (film.tmdbId) ids.tmdb.add(film.tmdbId);
+    // Include verified title aliases in the ambiguity census: translated
+    // names can collide even when the two canonical titles differ.
+    for (const alias of observedAliases(film)) {
+      if (!alias.startsWith("title:")) continue;
+      let ids=idsByTitle.get(alias);
+      if (!ids) {ids={imdb:new Set(),tmdb:new Set()};idsByTitle.set(alias,ids);}
+      if (film.imdbId) ids.imdb.add(film.imdbId);
+      if (film.tmdbId) ids.tmdb.add(film.tmdbId);
+    }
   }
   const titleCollisions=new Set([...idsByTitle].filter(([,v])=>v.imdb.size>1 || v.tmdb.size>1)
     .map(([key])=>key));
@@ -240,7 +245,7 @@ export function buildDossier(rows = []) {
     if (!identity) continue;
     const record = { ...identity, ...raw, id:identity.id, titleKey:identity.titleKey,
       rating:raw.rating == null ? null : Number(raw.rating) };
-    const collided=titleCollisions.has(record.titleKey);
+    const collided=[...observedAliases(record)].some(alias=>titleCollisions.has(alias));
     const hasStrongId=Boolean(record.imdbId || record.tmdbId);
     const unresolvedKey=`unresolved:${record.titleKey}`;
     const safeAliases=collided ? (hasStrongId

@@ -39,3 +39,15 @@ test('same title with no source year does not certify candidate as watched',()=>
  const result=rankResearchedCandidates(d,[{title:'Clown',year:2014,director:'Director',tasteFacet:'a',sources:[],connections:[],productiveDifference:'different'}]);
  assert(!result.rejected.some(x=>x.reason==='already_watched'), 'wildcard title is an ambiguous identity, not a verified watch');
 });
+
+test('a translated title shared by separate strong IDs never absorbs unidentified ratings',()=>{
+ const d=buildDossier([
+  {title:'Film A',originalTitle:'Shared translated name',year:2000,imdbId:'tt0000001',kind:'rated',rating:9},
+  {title:'Shared translated name',year:2000,imdbId:'tt0000002',kind:'rated',rating:4},
+  {title:'Shared translated name',year:2000,kind:'rated',rating:8}
+ ]);
+ assert.equal(d.counts.unique,3);
+ assert.equal(d.counts.identityAmbiguities,1);
+ assert.equal(d.all.find(x=>x.imdbId==='tt0000001').rating,9);
+ assert.equal(d.all.find(x=>x.imdbId==='tt0000002').rating,4);
+});
