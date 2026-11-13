@@ -17,7 +17,7 @@ async function run(messages){
 }
 const call=(name,args={})=>({method:'tools/call',params:{name,arguments:args}});
 const data=r=>JSON.parse(r.result.content[0].text);
-test('stdio initialize negotiates and publishes the current version',async()=>{const r=await run([{method:'initialize'}]);assert.equal(r.responses[0].result.serverInfo.version,'0.4.0')});
+test('stdio initialize negotiates and publishes the current version',async()=>{const r=await run([{method:'initialize'}]);assert.equal(r.responses[0].result.serverInfo.version,'0.4.2-rc.2')});
 test('all seven tools declare read/world/destructive annotations',async()=>{const r=await run([{method:'tools/list'}]);assert.equal(r.responses[0].result.tools.length,7);for(const t of r.responses[0].result.tools){for(const key of ['readOnlyHint','openWorldHint','destructiveHint'])assert.equal(typeof t.annotations[key],'boolean')}});
 test('import and dossier preserve owner ratings and restrictive disk mode',async()=>{const r=await run([call('import_film_history',{platform:'imdb',csv:'Title,Year,Your Rating\nAnchor A,2000,10\nAnchor B,2000,9'}),call('get_cinema_taste_dossier')]);assert.equal(data(r.responses[1]).counts.rated,2);assert.equal(r.mode,0o600);assert.equal(JSON.parse(r.data).observations.length,2)});
 test('scoped delete clears archive fields',async()=>{const r=await run([call('import_film_history',{platform:'imdb',csv:'Title,Your Rating\nA,10'}),call('delete_all_my_cinema_data',{confirm:true})]);assert.equal(data(r.responses[1]).deleted,true);assert.deepEqual(JSON.parse(r.data),{schema:1,profiles:[],observations:[],feedback:[]})});

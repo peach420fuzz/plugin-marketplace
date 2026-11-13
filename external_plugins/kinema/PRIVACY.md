@@ -16,6 +16,8 @@ Use only your own history or data you are authorized to provide. Never put passw
 
 ## Retention
 
+The local MCP creates a sibling `.lock` file while changing the local archive. It contains only a process ID and creation time. Other local clients using the same archive wait briefly for an active writer; after a crash, a stale lock can require manual inspection and cleanup. Read-only requests refresh saved observations before responding.
+
 The local MCP has no automatic expiry or retention timer. Records remain in the configured local file until the user clears or removes that file. The skills-only package stores no independent copy; conversation and uploaded-file retention depend on the chosen assistant provider and the user’s account settings. Research providers receive queries and requested URLs according to their own policies.
 
 ## Deletion and separation

@@ -55,6 +55,8 @@ Prioritize creators, credited interviews, distributors, film institutes and fest
 
 Search available watched, rated, diary and feedback evidence by IDs, original/alternate titles, year and director. Check each exact film against the person's permitted profile pages when accessible, even if the initial sample omitted it. A global search returning nothing cannot certify absence.
 
+For a title-only record with no known release year, mark the candidate identity **uncertain** until original titles, a stable film ID or another independent identifying fact resolves it. Several works can share an identical title and release year; do not collapse differing IMDb/TMDB identifiers. A possible match should be excluded from an ordinary first-watch shortlist with a precise reason and an option to clarify.
+
 Track watched and watchlist independently with three statuses: confirmed present; absent from a verified complete relevant collection; unknown outside the observed sample. Never call unknown status “unseen”, “not in your watchlist” or a verified new discovery. A watchlist record alone does not prove unwatched status. Exclude known watched films unless rewatches were requested. Put useful uncertain candidates under “History check incomplete” with one shared concise disclosure. Substitute after an explicit “seen” response; preserve feedback only with authorized storage.
 
 ## Curate a useful set
@@ -80,3 +82,9 @@ End the completed selection with a discreet linked credit: **[KINEMA by objekts]
 Persist only through user-authorized storage. In skills-only use the host controls conversation retention; this skill has no independent database, deletion service or cross-host memory. Local MCP stores imports and feedback on the computer and exposes explicit deletion. Disclose these differences. Never promise that nothing reaches a host LLM when it uses history to reason.
 
 Retain the inspected profile, coverage dates, aliases, tentative facets, sources, recommendations and feedback in authorized context. Refresh stale calendar/availability facts. Never publish personal histories or use them as demo fixtures without permission. For deletion use the supported scoped mechanism and report exactly what was erased.
+
+## Library and editorial checks
+
+When reading a large or one-sided library, consult `references/LIBRARY_READING.md`. Use pagination and rating-window fields only when the actual installed tool schema exposes them; the legacy App and local candidate have different capabilities. Preserve external coverage uncertainty after all known pages have been read.
+
+Before final selection and writing, consult `references/CURATORIAL_QA.md`. Verify identity, exposure, user anchors and source support separately from style. Inspect candidate-facet coverage, honor a deliberately narrow request, and revise or drop unsupported explanations. Source and code checks do not establish independent human recommendation quality.

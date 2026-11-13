@@ -1,47 +1,52 @@
-# KINEMA by objekts
+# KINEMA by objekts — 0.4.2-rc.2
 
-Free personal cinema research for skill-aware AI assistants. Start with a Letterboxd, Kinopoisk, IMDb or MyShows username/profile link, or your own film list. The assistant studies actual ratings, likes, dislikes and reviews, maps different interests, researches candidates, and explains watchlist picks and further discoveries through film form and verified sources.
+**Local review candidate.** This package is not a public catalog release and does not replace the existing hosted ChatGPT App. It continues the existing KINEMA source at public base `1237da26f3844b99a34b01056beea7fb168213fa`, including the previously reviewed feedback/alias patch.
 
-History coverage is stated explicitly. A recent feed is a sample; a title missing from it has unknown watched/watchlist status. The assistant checks finalists individually where permitted access allows. KINEMA requires the host's research capabilities for source verification. No paid external model or movie API key is required by the package. The host service may have its own subscription or usage charges.
+KINEMA helps an AI assistant research films from actual ratings, likes, dislikes, viewing history and watchlists. It preserves multiple interests, checks known exposure and asks the host to verify film facts, comparisons and calendar context through available sources. A public nickname is a starting point; private or ambiguous accounts may need a direct profile link. Exports are optional. No paid external model or film-database API is required by the package. The host service can have its own usage charges.
 
-## Install
+## Candidate changes
 
-### ChatGPT
+- Feedback and watchlist share one evidence view. Explicit seen facts survive subsequent preference changes. Recommendation reactions alone do not fabricate viewing or ratings.
+- Verified original-title aliases match incomplete older records while conflicting IDs and remake years remain separate.
+- Known watchlist/history pages expose offsets, continuation and a snapshot guard. Filter observed history by normalized rating bands. External completeness stays unverified.
+- Qualified taste facets receive coverage before normal diversity reranking. Negative relations are not force-selected to fill a facet. Narrow requests can disable that preference.
+- Platform routes distinguish film/person pages from viewer profiles, support actual IMDb profile forms and MyShows root handles, and preserve unresolved display names without a false saved connection.
+- Import rejects non-text titles and explicitly invalid ratings, reports rejected row indexes, and refuses ambiguous duplicate CSV headings.
+- Bundled reading and writing guides require source-level factual checks and explicit keep/revise/drop decisions.
 
-The public-upload package is skills-only and uses the host's permitted research/file tools. Public directory review and approval are separate from source publication. The existing private development plugin has its own App identity; do not create duplicate private plugins while submitting an update.
+## Local use
 
-### Claude / Cowork / Claude Code
-
-This folder includes `.claude-plugin/plugin.json` and `skills/kinema/SKILL.md`. Submit the GitHub repository `peach420fuzz/plugin-marketplace`, branch `main`, plugin path `external_plugins/kinema` through the Claude directory portal. Directory approval is required for an official listing. For local imports and evidence auditing, a separate MCPB bundle includes the Node.js server.
-
-### Gemini CLI
-
-A self-contained extension release branch places `gemini-extension.json` at its root:
+Node.js22 or newer; no npm dependency installation is required.
 
 ```sh
-gemini extensions install https://github.com/peach420fuzz/plugin-marketplace --ref kinema-gemini-v0.4.0
+node server/mcp-stdio.mjs
 ```
 
-Restart the client after installation. This is direct source installation. Gallery inclusion requires Google's discovery and validation process; it is not claimed here.
+That command is an MCP stdio process, not an interactive recommendation command. Configure it in a compatible MCP host with an absolute path. Local data defaults to `~/.local/share/objekts/cinema42.json`. Set `CINEMA42_DATA_FILE` to a distinct file for another viewer. Run one writer per archive; the snapshot guard is not a multi-process lock.
 
-### Other local MCP clients
+The separately built `.mcpb` contains the same Node server and approved square icon. The Gemini CLI archive contains its root manifest, GEMINI.md, server and skill. Client-specific installation and official gallery acceptance must be verified independently. There is no new ChatGPT skills-only submission claim, remote OAuth service, Alice voice webhook or universal auto-login connector in this candidate.
 
-With Node.js 22 or newer, configure a stdio MCP server using `node /absolute/path/to/server/mcp-stdio.mjs`. For a different viewer set a distinct `CINEMA42_DATA_FILE`. The server exposes seven tools for profile pointers/recent RSS, imports, dossiers, research planning, candidate auditing, feedback and scoped deletion. It does not generate recommendations autonomously or verify source pages.
-
-The portable skill can guide other assistants that accept user instructions, subject to their actual tool support. A local MCP bundle does not automatically create a voice skill for Alice or a public listing in any service.
-
-## Development
+## Tests and review
 
 ```sh
 node --test tests/*.test.mjs
 ```
 
-The version 0.4.0 release fixes rating changes, contradictory ratings, negative rewatches, localized-title matching, duplicate evidence scoring and calendar-date validation. Tests check deterministic behavior. Personal recommendation quality still needs real-viewer evaluation; no accuracy percentage is claimed.
+Use the supplied independent Python transport harness for initialized JSON-RPC, tool-schema validation and isolated positive/negative operations. It uses Python3.10+ and jsonschema. Tests use synthetic temporary archives. They establish local behavior, not personal recommendation accuracy, Apple Silicon execution or installed Claude/Gemini acceptance.
 
-## Support
+The review archive retains source hashes, before/after checks, a clean patch replay, package-level runs and a source-qualified quality rubric. No personal library is bundled. Existing private ChatGPT skill1.2.1 and the public repository remain unchanged by this archive.
 
-Contact [objekts](https://objekts.ai/contact) or salute@objekts.ai. Provide redacted data only. [Privacy and data handling](PRIVACY.md). [MIT license and usage terms](LICENSE).
+## Data and studio
 
-## Studio
+Read [PRIVACY.md](PRIVACY.md). The local server has no automatic expiry. Selected evidence is returned to the connected AI host; local storage does not prevent host processing. Erasing the active archive does not erase host conversations or backups.
 
-Created by [objekts](https://objekts.ai), a visual production studio creating films, images and visual worlds. Direction, AI production, VFX and animation — from first idea to final frame. Barcelona / Moscow / Worldwide. [Work and studio](https://objekts.ai) · [Contact](https://objekts.ai/contact).
+Created by [objekts](https://objekts.ai), a visual production studio creating films, images and visual worlds. Direction, AI production, VFX and animation — from first idea to final frame. Barcelona / Moscow / Worldwide. Support: salute@objekts.ai. [MIT license](LICENSE).
+
+## 0.4.2-rc.2 source improvements (13 November 2026)
+
+- Reject conflation of different films that share a title/year but have contradictory stable IMDb or TMDB IDs; keep unkeyed collisions separately flagged.
+- Classify a same-title possible viewing with unknown release year as an identity question, and avoid asserting it was definitely watched.
+- Keep local shared archive mutations atomic between simultaneous installed clients through a short-held filesystem lock. Read-only tools refresh persisted state, and stale continuation cursors are rejected. Stale `.lock` recovery is a manual, inspect-before-removal operation.
+- Reject non-text candidate titles as identities; preserve previous feedback, account, import and paginated library checks.
+
+This release is a draft code candidate. No deployed ChatGPT App, Claude desktop client, Gemini Gallery or Alice voice skill is implied by the version field. The user provides an approved connected account or permitted viewing evidence; profile coverage is declared explicitly.
