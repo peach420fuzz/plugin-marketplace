@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "kinema",
-  "version": "0.4.1",
+  "version": "0.4.2-rc.2",
   "description": "KINEMA by objekts: personal cinema research from actual ratings, watchlists and multiple film tastes.",
   "author": {
     "name": "objekts",
@@ -41,7 +41,7 @@
         "commerce": false
       },
       "publication": {
-        "release_notes": "Corrected translated listing keys to the current OpenAI subtitle/description contract. Clarified host research responsibilities and actual data retention. Preserved KINEMA identity and original objekts artwork. Local MCP runtime remains 0.4.0.",
+        "release_notes": "Local review candidate only. Consistent feedback/watchlist evidence; verified alias matching; snapshot-aware library pagination and rating windows; qualified taste-facet coverage; safer public-profile routing. Hosted App, public portal review and catalog publication remain separate and unperformed.",
         "countries": [],
         "translations": {
           "ru-RU": {
