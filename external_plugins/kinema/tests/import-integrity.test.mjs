@@ -23,3 +23,9 @@ test('all-invalid import produces no archive',async()=>{const r=await run([{Titl
 test('mixed input reports rejected indexes and saves only valid records',async()=>{const r=await run([{Title:'Valid fixture',Rating:8},{Title:{broken:true},Rating:9},{Title:'Broken rating',Rating:99}]);assert.equal(r.result.isError,false);const result=JSON.parse(r.result.content[0].text);assert.equal(result.accepted,1);assert.equal(result.rejected,2);assert.deepEqual(result.rejectedRowIndexes,[1,2]);assert.equal(JSON.parse(r.stored).observations.length,1)});
 test('duplicate semantic CSV headings fail before ambiguous field replacement',()=>assert.throws(()=>parseCsv('Title, title ,Rating\nFirst,Second,8\n'),/duplicate/i));
 test('final CSV record without newline still obeys the row limit',()=>assert.throws(()=>parseCsv('Title\nOne\nTwo',1),/row limit/i));
+
+test('explicit impossible release year cannot enter a film-history import',()=>{
+ assert.equal(normalizeObservation({Title:'Film X',Year:'2205',Rating:'9'},'imdb','ratings'),null);
+ assert.equal(normalizeObservation({Title:'Film X',Year:'nineteen eighty',Rating:'9'},'imdb','ratings'),null);
+ assert.equal(normalizeObservation({Title:'Film X',Rating:'9'},'imdb','ratings')?.year,null);
+});

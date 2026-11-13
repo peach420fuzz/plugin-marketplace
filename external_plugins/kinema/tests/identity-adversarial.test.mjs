@@ -51,3 +51,45 @@ test('a translated title shared by separate strong IDs never absorbs unidentifie
  assert.equal(d.all.find(x=>x.imdbId==='tt0000001').rating,9);
  assert.equal(d.all.find(x=>x.imdbId==='tt0000002').rating,4);
 });
+
+test('unknown-year watchlist feedback does not certify a particular named remake',()=>{
+ const d=buildPersonalDossier([], [{title:'A Common Title',verdict:'watchlist'}]);
+ assert.equal(d.all.length,1);
+ const source={title:'A Common Title',year:2015,director:'Director',tasteFacet:'a',sources:[],connections:[],productiveDifference:'different'};
+ const ranked=rankResearchedCandidates(d,[source],1,{mode:'watchlist'});
+ assert.equal(ranked.rejected[0].reason,'possible_watchlist_identity_unverified');
+});
+
+test('ambiguous feedback does not attach a watchlist to one identified remake',()=>{
+ const d=buildPersonalDossier([
+  {title:'A Common Title',year:1999,imdbId:'tt0012345',kind:'rated',rating:9},
+  {title:'A Common Title',year:2015,imdbId:'tt0098765',kind:'watched'}
+ ],[{title:'A Common Title',verdict:'watchlist'}]);
+ assert.equal(d.counts.unique,3);
+ assert.equal(d.all.filter(x=>x.watchlist && x.year!==null).length,0);
+});
+
+test('feedback without year cannot be called verified rejection of a remake',()=>{
+ const d=buildPersonalDossier([], [{title:'A Common Title',verdict:'miss'}]);
+ const c={title:'A Common Title',year:2015,director:'Director',tasteFacet:'a',sources:[],connections:[],productiveDifference:'different'};
+ const result=rankResearchedCandidates(d,[c]);
+ assert.equal(result.rejected[0].reason,'possible_prior_feedback_identity_unverified');
+});
+
+test('undated ambiguous dislike never erases two identified high-rating anchors',()=>{
+ const d=buildPersonalDossier([
+  {title:'Film 1',originalTitle:'Alias',year:null,imdbId:'tt0000001',rating:10,kind:'rated'},
+  {title:'Film 2',originalTitle:'Alias',year:null,imdbId:'tt0000002',rating:10,kind:'rated'}
+ ],[{title:'Alias',verdict:'miss'}]);
+ assert.equal(d.positiveAnchors.length,2);
+});
+
+test('canonical identity remains stable when IMDb and TMDB observations arrive in reverse order',()=>{
+ const tmdb={title:'Film A',year:2000,tmdbId:'501',kind:'rated',rating:8};
+ const both={title:'Film A',year:2000,imdbId:'tt0000501',tmdbId:'501',kind:'liked',liked:true};
+ for(const rows of [[tmdb,both],[both,tmdb]]){
+  const dossier=buildDossier(rows);
+  assert.equal(dossier.counts.unique,1);
+  assert.equal(dossier.all[0].id,'imdb:tt0000501');
+ }
+});

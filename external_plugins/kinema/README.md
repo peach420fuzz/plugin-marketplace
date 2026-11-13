@@ -22,7 +22,7 @@ Node.js22 or newer; no npm dependency installation is required.
 node server/mcp-stdio.mjs
 ```
 
-That command is an MCP stdio process, not an interactive recommendation command. Configure it in a compatible MCP host with an absolute path. Local data defaults to `~/.local/share/objekts/cinema42.json`. Set `CINEMA42_DATA_FILE` to a distinct file for another viewer. Run one writer per archive; the snapshot guard is not a multi-process lock.
+That command is an MCP stdio process, not an interactive recommendation command. Configure it in a compatible MCP host with an absolute path. Local data defaults to `~/.local/share/objekts/cinema42.json`. Set `CINEMA42_DATA_FILE` to a distinct file for another viewer. Local MCP clients use a bounded filesystem lock for archive mutations, reload the latest stored state before every call and write updates atomically. A stale lock fails closed and requires deliberate inspection before recovery.
 
 The separately built `.mcpb` contains the same Node server and approved square icon. The Gemini CLI archive contains its root manifest, GEMINI.md, server and skill. Client-specific installation and official gallery acceptance must be verified independently. There is no new ChatGPT skills-only submission claim, remote OAuth service, Alice voice webhook or universal auto-login connector in this candidate.
 
@@ -50,3 +50,7 @@ Created by [objekts](https://objekts.ai), a visual production studio creating fi
 - Reject non-text candidate titles as identities; preserve previous feedback, account, import and paginated library checks.
 
 This release is a draft code candidate. No deployed ChatGPT App, Claude desktop client, Gemini Gallery or Alice voice skill is implied by the version field. The user provides an approved connected account or permitted viewing evidence; profile coverage is declared explicitly.
+
+## Identity and multi-platform safeguards
+
+When multiple cinema-service accounts are connected to one archive, confirm that both accounts belong to the same viewer. `mergeWithExistingViewer: true` is the explicitly user-authorized merge flag in `connect_cinema_profile` and `import_film_history`; mismatched handles on the same platform still require separate archives. Release-year values explicitly supplied in a history file or feedback must be within the supported film-year range. Unknown-year reactions remain ambiguous when different films or remakes could share a title. A negative reaction can conservatively suppress a single plausible high-rated anchor without creating a fabricated watched or numeric-rating observation.

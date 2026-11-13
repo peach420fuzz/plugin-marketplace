@@ -25,3 +25,35 @@ test('delete without explicit confirmation leaves prior data intact',async()=>{c
 test('switching platform account cannot silently merge two viewers',async()=>{const r=await run([call('connect_cinema_profile',{platform:'kinopoisk',username:'123'}),call('connect_cinema_profile',{platform:'kinopoisk',username:'456'})]);assert.equal(r.responses[1].result.isError,true);assert.equal(JSON.parse(r.data).profiles[0].handle,'123')});
 test('oversized row batch rejected before write',async()=>{const r=await run([call('import_film_history',{platform:'imdb',rows:Array.from({length:1201},()=>({Title:'A'}))})]);assert.equal(r.responses[0].result.isError,true);assert.equal(r.data,null)});
 test('watched watchlist entries not offered as pending picks',async()=>{const r=await run([call('import_film_history',{platform:'imdb',source:'watchlist',rows:[{Title:'A',Year:2000}]}),call('import_film_history',{platform:'imdb',rows:[{Title:'A',Year:2000,Rating:9}]}),call('get_cinema_taste_dossier')]);assert.deepEqual(data(r.responses[2]).knownWatchlist,[])});
+test('verdict with invalid explicit release year fails before creating archive',async()=>{
+ const r=await run([call('save_film_verdict',{title:'Film X',verdict:'watchlist',year:2300})]);
+ assert.equal(r.responses[0].result.isError,true);
+ assert.equal(r.data,null);
+});
+test('different cinema platforms cannot silently merge viewer profiles in one archive',async()=>{
+ const r=await run([
+  call('connect_cinema_profile',{platform:'kinopoisk',username:'12345'}),
+  call('connect_cinema_profile',{platform:'imdb',username:'ur12345'}),
+  call('get_cinema_taste_dossier')
+ ]);
+ assert.equal(r.responses[1].result.isError,true);
+ assert.equal(data(r.responses[2]).profiles.length,1);
+});
+test('explicit confirmed same-viewer flag permits cross-platform profile union',async()=>{
+ const r=await run([
+  call('connect_cinema_profile',{platform:'kinopoisk',username:'12345'}),
+  call('connect_cinema_profile',{platform:'imdb',username:'ur12345',mergeWithExistingViewer:true}),
+  call('get_cinema_taste_dossier')
+ ]);
+ assert.equal(r.responses[1].result.isError,false);
+ assert.equal(data(r.responses[2]).profiles.length,2);
+});
+test('cross-platform imported histories require explicit single-viewer merge intent',async()=>{
+ const r=await run([
+  call('import_film_history',{platform:'imdb',source:'ratings',csv:'Title,Your Rating\nX,8'}),
+  call('import_film_history',{platform:'kinopoisk',source:'ratings',csv:'Title,Rating\nY,8'}),
+  call('get_cinema_taste_dossier')
+ ]);
+ assert.equal(r.responses[1].result.isError,true);
+ assert.equal(data(r.responses[2]).counts.observations,1);
+});

@@ -73,9 +73,13 @@ export function normalizeObservation(row, platform = "letterboxd", kindHint = "r
     suppliedTitle=value.trim();break;
   }
   if (!suppliedTitle) return null;
+  const suppliedYear=formField(row, "Year", "Release Year", "Год");
+  // Invalid explicit years are not equivalent to an absent release-year field:
+  // silently dropping a supplied year can join different remakes by title.
+  if (suppliedYear && validYear(suppliedYear)===null) return null;
   const film = filmIdentity({
     title: suppliedTitle,
-    year: formField(row, "Year", "Release Year", "Год"),
+    year: suppliedYear,
     imdbId: formField(row, "Const", "imdbID", "IMDb ID"),
     tmdbId: formField(row, "tmdbID", "TMDB ID"),
     originalTitle:formField(row,"Original Title"), alternateTitles:row.alternateTitles
@@ -280,6 +284,13 @@ export function buildDossier(rows = []) {
     if (normalizeUrl(record.sourceUrl) && !entry.sources.includes(record.sourceUrl)) entry.sources.push(record.sourceUrl);
   }
   const all = [...films.values()];
+  // An observation can arrive with a TMDB ID before a later IMDb record
+  // establishes a stronger canonical identifier. Stabilize the external key
+  // independent of file ordering; aliases remain available for matching.
+  for (const entry of all) {
+    if (entry.imdbId) entry.id=`imdb:${entry.imdbId}`;
+    else if (entry.tmdbId) entry.id=`tmdb:${entry.tmdbId}`;
+  }
   for (const entry of all) {
     const evidence=entry.ratingEvidence;
     const dated=evidence.filter(x=>/^\d{4}-\d{2}-\d{2}/.test(x.observedAt ?? "") && Number.isFinite(Date.parse(x.observedAt)));
@@ -327,7 +338,10 @@ export function filmIdentityMatch(a,b) {
   if (a.year!=null && b.year!=null && a.year!==b.year) return "none";
   return a.year==null || b.year==null ? "possible" : "title-year";
 }
-const isSameFilm = (a,b) => filmIdentityMatch(a,b)!=="none";
+// Use only resolved identities for durable feedback and candidate de-duplication.
+// "possible" means a title could be a remake or alternate cut and must never
+// turn an unqualified viewer reaction into a definite film-level observation.
+const isSameFilm = (a,b) => ["verified-id","title-year"].includes(filmIdentityMatch(a,b));
 /** Project explicit feedback into the same evidence view used by all read tools.
  * Observation counts and ratings remain tied to imported records. Feedback never
  * creates a rating, like or rewatch; only an explicit seen fact establishes viewing.
@@ -361,8 +375,18 @@ export function buildPersonalDossier(rows = [], feedback = []) {
       if (!entry.provenance.includes("user-reported-seen")) entry.provenance.push("user-reported-seen");
     }
   }
+  // A negative reaction is safe to suppress as a positive anchor when exactly
+  // one already-observed work could be meant by an undated title/alias. This
+  // removes a potentially contradictory recommendation signal without creating
+  // a new watched/rated fact. Several plausible works remain unresolved.
+  const negativeAnchorMatch=(entry,film)=>{
+    if (isSameFilm(entry,film)) return true;
+    if (filmIdentityMatch(entry,film)!=="possible") return false;
+    const plausible=dossier.all.filter(x=>filmIdentityMatch(x,film)!=="none");
+    return plausible.length===1 && plausible[0]===entry;
+  };
   dossier.positiveAnchors=dossier.positiveAnchors.filter(entry=>!verdicts.some(
-    ({raw,film})=>raw.verdict==="miss" && isSameFilm(entry,film)));
+    ({raw,film})=>raw.verdict==="miss" && negativeAnchorMatch(entry,film)));
   dossier.eligibleWatchlist=dossier.all.filter(entry=>entry.watchlist && !entry.watched
     && !verdicts.some(({raw,film})=>["hit","miss","seen"].includes(raw.verdict) && isSameFilm(entry,film)));
   dossier.counts={...dossier.counts,unique:dossier.all.length,
@@ -477,12 +501,15 @@ export function rankResearchedCandidates(dossier, candidates, count = 6, options
     if (watchlistMatches.length && !foundWatchlist) {
       rejected.push({title:film.title,reason:"possible_watchlist_identity_unverified"});continue;
     }
-    const priorVerdict = (dossier.feedback??[]).find((f) => {
-      const seenFilm=filmIdentity(f);
-      return seenFilm && isSameFilm(film,seenFilm);
-    });
+    const priorFeedbackMatches=(dossier.feedback??[]).map(f=>({f,
+      match:filmIdentityMatch(film,filmIdentity(f) ?? {})}))
+      .filter(x=>x.match!=="none");
+    const priorVerdict=priorFeedbackMatches.find(x=>x.match!=="possible")?.f;
     if(priorVerdict && ["miss","seen","hit"].includes(priorVerdict.verdict)) {
       rejected.push({title:film.title,reason:`previous_feedback_${priorVerdict.verdict}`});continue;
+    }
+    if(priorFeedbackMatches.length && !priorVerdict) {
+      rejected.push({title:film.title,reason:"possible_prior_feedback_identity_unverified"});continue;
     }
     const watchedLater=foundWatchlist || ["watchlist","want-to-watch"].includes(priorVerdict?.verdict)
       || (raw.watchlistEvidence?.status==="present" && normalizeUrl(raw.watchlistEvidence.sourceUrl));

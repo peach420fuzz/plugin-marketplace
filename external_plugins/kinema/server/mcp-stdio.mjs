@@ -80,10 +80,12 @@ const annotate=(tool,readOnlyHint,openWorldHint=false,destructiveHint=false)=>({
 });
 const tools=[
   annotate({name:"connect_cinema_profile",description:`KINEMA by objekts. Connect by PUBLIC nickname or profile URL. For Letterboxd, fetch only its official RSS of recent activity; other providers return profile links and coverage limits. No password or API key.`,
-    inputSchema:properties({platform:{type:"string",enum:PLATFORMS},username:string},["platform","username"])},false,true),
+    inputSchema:properties({platform:{type:"string",enum:PLATFORMS},username:string,
+      mergeWithExistingViewer:{type:"boolean"}},["platform","username"])},false,true),
   annotate({name:"import_film_history",description:"Import owner-supplied CSV text or explicit film observations. Supports user exports; includes accurate seen/liked/watchlist distinctions. No automated bulk scraping.",
     inputSchema:properties({platform:{type:"string",enum:PLATFORMS},source:{type:"string",enum:["ratings","watched","watchlist","likes"]},
-      csv:string,rows:{type:"array",maxItems:1200,items:{type:"object"}}},["platform"])},false),
+      csv:string,rows:{type:"array",maxItems:1200,items:{type:"object"}},
+      mergeWithExistingViewer:{type:"boolean"}},["platform"])},false),
   annotate({name:"get_cinema_taste_dossier",description:"Read rating evidence and paginated known history/watchlist. Defaults preserve 400 watchlist and up to 10000 history rows when requested. Use smaller page limits and nextOffset; pass archiveSnapshot as expectedSnapshot on continuation. Exhausting known pages does not verify external completeness.",
     inputSchema:properties({includeHistory:{type:"boolean"},limit:{type:"integer",minimum:1,maximum:200},
       watchlistOffset:{type:"integer",minimum:0,maximum:150000},watchlistLimit:{type:"integer",minimum:1,maximum:400},
@@ -133,6 +135,14 @@ function pageWindow(items,offset,limit) {
 
 const lookup=(name)=>tools.find(t=>t.name===name);
 const personalDossier=()=>buildPersonalDossier(state.observations,state.feedback);
+function requireViewerScope(platform,args) {
+  if (Object.hasOwn(args,"mergeWithExistingViewer") && typeof args.mergeWithExistingViewer!=="boolean")
+    throw new Error("mergeWithExistingViewer must be a boolean confirmed by the user");
+  const differentConnected=state.profiles.some(p=>p.platform!==platform);
+  const differentImported=state.observations.some(o=>o.platform!==platform);
+  if ((differentConnected || differentImported) && args.mergeWithExistingViewer!==true)
+    throw new Error("This archive already contains another cinema platform. Confirm both profiles are the same viewer before merging, or use a separate CINEMA42_DATA_FILE for a distinct viewer.");
+}
 function mergeObservations(incoming) {
   if(incoming.length>150000) throw new Error("Personal archive reaches 150k observation limit");
   const indexed=new Map(state.observations.map(o=>[`${o.platform}|${o.id}|${o.kind}|${o.observedAt??""}`,o]));
@@ -149,6 +159,7 @@ async function invoke(name,args={}) {
       fullHistoryImported:false,warning:"Resolve the supplied public display name using permitted host research before attributing any history. No profile or observations were saved."};
     const prior=state.profiles.find(x=>x.platform===p.platform);
     if (prior && prior.handle!==p.handle) throw new Error("Another profile is active for this platform. Use a separate CINEMA42_DATA_FILE for another viewer or explicitly delete the current viewer's archive first.");
+    requireViewerScope(p.platform,args);
     let imported=0,reason=null;
     if(p.rssUrl) {
       try {
@@ -172,6 +183,7 @@ async function invoke(name,args={}) {
   }
   if(name==="import_film_history") {
     if(!PLATFORMS.includes(args.platform)) throw new Error("Unsupported platform");
+    requireViewerScope(args.platform,args);
     if(args.csv!=null && typeof args.csv!=="string") throw new Error("CSV must be text");
     if(Array.isArray(args.rows) && args.rows.length>1200) throw new Error("Observation array exceeds 1200 rows; split it or use CSV");
     if(!args.csv && !Array.isArray(args.rows)) throw new Error("Provide CSV text or observations array");
@@ -225,7 +237,8 @@ async function invoke(name,args={}) {
   if(name==="save_film_verdict") {
     if(typeof args.title!=="string" || !args.title.trim() || !["hit","miss","seen","want-to-watch","watchlist"].includes(args.verdict))
       throw new Error("String title and accepted verdict required");
-    if(Object.hasOwn(args,"year") && !Number.isInteger(args.year)) throw new Error("Year must be an integer when supplied");
+    if(Object.hasOwn(args,"year") && (!Number.isInteger(args.year) || args.year<1880 || args.year>2100))
+      throw new Error("Release year must be an integer from 1880 through 2100 when supplied");
     if(Object.hasOwn(args,"reason") && typeof args.reason!=="string") throw new Error("Reason must be a string when supplied");
     const key=filmIdentity({title:args.title,year:args.year})?.id;
     const seen=args.verdict==="seen" || state.feedback.some(f=>filmIdentity(f)?.id===key
