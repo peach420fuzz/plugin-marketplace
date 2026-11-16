@@ -1,6 +1,6 @@
 # KINEMA review fixture
 
-These are real films with **fictional viewer ratings**, prepared for the hosted KINEMA MCP contract 0.2.1. They are not the owner's history, and are not a general taste-quality benchmark. The portable local runtime has a separate tool contract. This source checkpoint does not release, deploy, approve or publicly list an App.
+These are real films with **fictional viewer ratings**, prepared for the hosted KINEMA MCP contract 0.2.2. They are not the owner's history, and are not a general taste-quality benchmark. The portable local runtime has a separate tool contract. This source checkpoint does not release, deploy, approve or publicly list an App.
 
 Use only a dedicated disposable reviewer account whose owner has authorized test writes and deletion. Never import this fixture into a real viewer's archive.
 

@@ -1,0 +1,78 @@
+{
+  "scope": "Production MCP route, store, schema and Drizzle D1 driver with an isolated in-memory SQLite D1-shaped adapter. Real-film fixture uses fictional ratings. Not live D1, OAuth, a host conversation, taste-quality validation, or OpenAI review-case certification.",
+  "sourceCommit": "3248afc2be8cb2af215369a4bbcb7220c0fd748d",
+  "sourceWorktreeClean": true,
+  "fixtureId": "kinema-real-films-fictional-ratings-20261116",
+  "passed": 5,
+  "failed": 0,
+  "networkRequests": 0,
+  "reports": [
+    {
+      "name": "Four fictional ratings on verified real films plus one watchlist import",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact one-film request retains partial history and requires research",
+      "status": "PASS"
+    },
+    {
+      "name": "Actual SQL-backed ranking returns one eligible film and rejects seen / insufficient evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "Seen then planned rewatch remains excluded with no invented numeric rating",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit fixture-only deletion and real empty readback",
+      "status": "PASS"
+    }
+  ],
+  "rankingRuns": [
+    {
+      "selected": [
+        {
+          "title": "Syndromes and a Century",
+          "year": 2006,
+          "seenStatus": "unverified-outside-observed-history"
+        }
+      ],
+      "rejected": [
+        {
+          "title": "Still Life",
+          "reason": "already_watched"
+        },
+        {
+          "title": "Ossos",
+          "reason": "insufficient_credited_film_research"
+        }
+      ]
+    },
+    {
+      "selected": [
+        {
+          "title": "Syndromes and a Century",
+          "year": 2006,
+          "seenStatus": "unverified-outside-observed-history"
+        }
+      ],
+      "rejected": [
+        {
+          "title": "Good Morning",
+          "reason": "already_watched"
+        },
+        {
+          "title": "Still Life",
+          "reason": "already_watched"
+        },
+        {
+          "title": "Ossos",
+          "reason": "insufficient_credited_film_research"
+        }
+      ]
+    }
+  ],
+  "fullLocalTraceSha256": "f215babc6eb939b27f084b3ec5d1cfc738d3a4b44ece0377f571ba4302aa917d",
+  "intendedHostReviewCases": "NOT_RUN",
+  "reviewApproval": "NOT_ESTABLISHED"
+}
