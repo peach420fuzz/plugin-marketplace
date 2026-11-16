@@ -1,0 +1,86 @@
+{
+  "fixtureId": "kinema-real-films-fictional-ratings-20261116",
+  "purpose": "Reproducible core-workflow QA. Real films, explicitly fictional viewer ratings. Not owner history, a taste-quality benchmark, proof of film viewing, or an external-profile import.",
+  "sourceCheckDate": "2026-11-16",
+  "imports": [
+    {
+      "platform": "letterboxd",
+      "source": "ratings",
+      "rows": [
+        {"Title": "Close-Up", "Year": 1990, "Rating": 5},
+        {"Title": "PlayTime", "Year": 1967, "Rating": 4.5},
+        {"Title": "Tropical Malady", "Year": 2004, "Rating": 3},
+        {"Title": "Still Life", "Year": 2006, "Rating": 1}
+      ]
+    },
+    {
+      "platform": "letterboxd",
+      "source": "watchlist",
+      "rows": [{"Title": "Ossos", "Year": 1997}]
+    }
+  ],
+  "protocol": {"count": 1, "obscurity": "balanced", "intent": "Compare everyday social comedy and open narrative form using this small fictional QA profile. Preserve its limited coverage."},
+  "ranking": {
+    "count": 1,
+    "mode": "mixed",
+    "candidates": [
+      {
+        "title": "Good Morning",
+        "originalTitle": "Ohayo",
+        "year": 1959,
+        "director": "Yasujiro Ozu",
+        "tasteFacet": "Everyday social comedy and communication",
+        "sources": ["https://www.criterion.com/films/624", "https://www.shochiku.co.jp/global/en/cinema/award/", "https://www.criterion.com/films/651"],
+        "connections": [
+          {"axis": "sound-and-silence", "anchor": {"title": "PlayTime", "year": 1967}, "analysis": "Interpretive comparison: Ozu's conflict over speech and silence offers a different test of communication from Tati's largely wordless social choreography. These catalog descriptions support the comparison, not a claim of identical sound design.", "sourceUrl": "https://www.criterion.com/films/624"},
+          {"axis": "humor-and-tonal-instability", "anchor": {"title": "PlayTime", "year": 1967}, "analysis": "Interpretive comparison: both distributor descriptions locate comedy in ordinary social behavior shaped by consumer modernity. This is a modest candidate link to a fictional high rating, not evidence of shared authorial intent or guaranteed appeal.", "sourceUrl": "https://www.criterion.com/films/651"}
+        ],
+        "productiveDifference": "The sources place Ozu's comedy in a suburban family and neighborhood, rather than Tati's choreographed traversal of modern Paris. No matching lens, camera, or production technique is asserted."
+      },
+      {
+        "title": "Syndromes and a Century",
+        "originalTitle": "Sang Sattawat",
+        "year": 2006,
+        "director": "Apichatpong Weerasethakul",
+        "tasteFacet": "Repetition, memory and inhabited space",
+        "sources": ["https://www.kickthemachine.com/films/syndromes-and-a-century/", "https://www.criterion.com/films/1092-close-up", "https://www.criterion.com/films/651"],
+        "connections": [
+          {"axis": "narrative-structure", "anchor": {"title": "Close-Up", "year": 1990}, "analysis": "Interpretive comparison: the director's account of memory and repeated situations offers another way to question a single authoritative narrative, alongside the documented reality and reenactment interplay in Close-Up. The sources do not establish direct influence.", "sourceUrl": "https://www.kickthemachine.com/films/syndromes-and-a-century/"},
+          {"axis": "space-and-architecture", "anchor": {"title": "PlayTime", "year": 1967}, "analysis": "Interpretive comparison: the director's contrast between two hospital settings invites attention to how built environments organize experience. Tati's documented modern-Paris setting provides a second spatial anchor, without implying the same comic tone or camera grammar.", "sourceUrl": "https://www.criterion.com/films/651"}
+        ],
+        "productiveDifference": "The official interview centers family memory and repeated hospital situations; this differs from Tati's social comedy and Kiarostami's documented case. The fictional middling Tropical Malady rating also cautions against inferring universal enthusiasm for this director."
+      },
+      {
+        "title": "Still Life",
+        "originalTitle": "San Xia Hao Ren",
+        "year": 2006,
+        "director": "Jia Zhangke",
+        "sources": ["https://store.cinemaguild.com/homevideo/product/5310.html"],
+        "connections": [],
+        "productiveDifference": "Deliberate exclusion control: this real film is already rated in the fictional viewer history. It must not be recommended as unseen."
+      },
+      {
+        "title": "Ossos",
+        "originalTitle": "Ossos",
+        "year": 1997,
+        "director": "Pedro Costa",
+        "sources": ["https://www.criterion.com/films/21942"],
+        "connections": [],
+        "productiveDifference": "Deliberately incomplete candidate: known watchlist membership and verified credits do not supply two researched formal links. Reject it rather than filling the requested count with weak evidence."
+      }
+    ]
+  },
+  "expected": {
+    "importAccepted": [4, 1],
+    "normalizedRatings10": {"Close-Up": 10, "PlayTime": 9, "Tropical Malady": 6, "Still Life": 2},
+    "ratedCount": 4,
+    "seenCount": 4,
+    "knownWatchlistCount": 1,
+    "completeExternalHistory": false,
+    "requestedCount": 1,
+    "eligibleTitles": ["Good Morning", "Syndromes and a Century"],
+    "excluded": {"Still Life": "already_watched", "Ossos": "insufficient_credited_film_research"},
+    "selectedStatus": "unverified-outside-observed-history",
+    "urlChecksAreNotFactCertification": true
+  }
+}
