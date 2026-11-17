@@ -1,0 +1,13 @@
+{
+  "name": "kinema-by-objekts",
+  "version": "0.4.2-rc.3",
+  "description": "Local film-taste research from authorized viewing histories, ratings and watchlists.",
+  "author": {
+    "name": "objekts",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai"
+  },
+  "homepage": "https://objekts.ai",
+  "license": "MIT",
+  "keywords": ["kinema", "objekts kinema", "kinema-by-objekts"]
+}

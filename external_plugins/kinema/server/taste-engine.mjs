@@ -1,0 +1,629 @@
+/*
+ * KINEMA by objekts
+ * Evidence-driven film research support. The engine never invents films, credits,
+ * aesthetic features or references: the host LLM supplies researched candidates.
+ * Copyright 2026 objekts.ai. MIT license.
+ */
+
+export const BRAND = "KINEMA by objekts";
+export const PLATFORMS = ["letterboxd", "imdb", "kinopoisk", "myshows"];
+const MAX_FILM_TITLE_ALIASES=64;
+const MAX_FILM_ID_ALIASES=80;
+export const AXES = [
+  "duration-and-temporality", "camera-distance-and-movement", "blocking-and-bodies",
+  "editing-and-rhythm", "sound-and-silence", "light-and-color", "material-and-texture",
+  "performance-and-gesture", "space-and-architecture", "humor-and-tonal-instability",
+  "narrative-structure", "political-and-historical-context", "ritual-and-repetition",
+  "animation-and-practical-form", "genre-transformation"
+];
+
+const normalizeTitle = (value) => String(value ?? "").normalize("NFKD")
+  .replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase("und")
+  .replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+const decimal = (value) => value == null || value === "" ? null : Number(String(value).replace(",", "."));
+const bounded = (v, low, high) => Math.max(low, Math.min(high, v));
+const validYear = (value) => {
+  const n = Number(value);
+  return Number.isInteger(n) && n >= 1880 && n <= 2100 ? n : null;
+};
+const normalizeUrl = (value) => {
+  try {
+    const url = new URL(String(value));
+    if (url.protocol !== "https:" || url.username || url.password || url.href.length > 1200) return null;
+    const host=url.hostname.toLowerCase();
+    if (host === "localhost" || host.endsWith(".localhost") || host.includes(":")
+      || /^[\d.]+$/.test(host) || /(^|\.)(example\.(com|org|net)|invalid|test)$/.test(host)) return null;
+    return url.href.slice(0, 1200);
+  } catch { return null; }
+};
+const formField = (row, ...keys) => {
+  const map = new Map(Object.entries(row).map(([k, v]) => [k.toLowerCase().replace(/[\s_-]/g, ""), v]));
+  for (const key of keys) {
+    const value = map.get(key.toLowerCase().replace(/[\s_-]/g, ""));
+    if (value != null && String(value).trim()) return String(value).trim();
+  }
+  return "";
+};
+
+export function filmIdentity(row) {
+  const titleValue=row.title ?? row.Title ?? row.Name ?? "";
+  // Source data can contain arrays and objects: their stringified forms are not film titles.
+  if (typeof titleValue !== "string") return null;
+  const title=titleValue.trim().slice(0,350);
+  if (!title) return null;
+  const year = validYear(row.year ?? row.Year);
+  const imdbId = String(row.imdbId ?? row.imdbID ?? row.Const ?? "").trim().toLowerCase();
+  const tmdbId = String(row.tmdbId ?? row.tmdbID ?? "").trim();
+  const id = /^tt\d{5,12}$/.test(imdbId) ? `imdb:${imdbId}`
+    : /^\d+$/.test(tmdbId) ? `tmdb:${tmdbId}`
+    : `title:${normalizeTitle(title)}:${year ?? "?"}`;
+  const alternateTitles = [...new Set([row.originalTitle, ...(Array.isArray(row.alternateTitles) ? row.alternateTitles : [])]
+    .filter(x=>typeof x === "string" && x.trim()).map(x=>x.trim().slice(0,350)))].slice(0,20);
+  return { id, title, year, alternateTitles, imdbId: /^tt\d{5,12}$/.test(imdbId) ? imdbId : null,
+    tmdbId: /^\d+$/.test(tmdbId) ? tmdbId : null,
+    titleKey: `title:${normalizeTitle(title)}:${year ?? "?"}` };
+}
+
+export function normalizeObservation(row, platform = "letterboxd", kindHint = "ratings") {
+  if (!PLATFORMS.includes(platform) || !row || typeof row !== "object") return null;
+  const titleFields=new Map(Object.entries(row).map(([key,value])=>[key.toLowerCase().replace(/[\s_-]/g,""),value]));
+  let suppliedTitle=null;
+  for (const key of ["title","name","originaltitle","movie","название","film","show"]) {
+    const value=titleFields.get(key);
+    if (value==null || (typeof value==="string" && !value.trim())) continue;
+    if (typeof value!=="string") return null;
+    suppliedTitle=value.trim();break;
+  }
+  if (!suppliedTitle) return null;
+  const suppliedYear=formField(row, "Year", "Release Year", "Год");
+  // Invalid explicit years are not equivalent to an absent release-year field:
+  // silently dropping a supplied year can join different remakes by title.
+  if (suppliedYear && validYear(suppliedYear)===null) return null;
+  const film = filmIdentity({
+    title: suppliedTitle,
+    year: suppliedYear,
+    imdbId: formField(row, "Const", "imdbID", "IMDb ID"),
+    tmdbId: formField(row, "tmdbID", "TMDB ID"),
+    originalTitle:formField(row,"Original Title"), alternateTitles:row.alternateTitles
+  });
+  if (!film) return null;
+  const raw = formField(row, "Your Rating", "Rating10", "Rating", "Оценка", "Personal Rating");
+  const n = decimal(raw);
+  const maxRating = platform === "letterboxd" && !formField(row, "Your Rating", "Rating10") ? 5 : 10;
+  if (raw && (n==null || !Number.isFinite(n) || n<=0 || n>maxRating)) return null;
+  const rating = n != null && Number.isFinite(n) && n > 0 && n <= maxRating
+    ? Math.round(n * 10 / maxRating * 100) / 100 : null;
+  const liked = kindHint === "likes" || /^(yes|true|1|liked)$/i.test(formField(row, "Liked", "Like"));
+  const rewatch = /^(yes|true|1)$/i.test(formField(row, "Rewatch", "Rewatched"));
+  const kind = kindHint === "watchlist" ? "watchlist" : liked ? "liked"
+    : rewatch ? "rewatched" : rating != null ? "rated" : "watched";
+  return { ...film, platform, kind, rating, liked, rewatch,
+    sourceUrl: normalizeUrl(formField(row, "Letterboxd URI", "URL", "Link")),
+    observedAt: formField(row, "Watched Date", "WatchedDate", "Date Rated", "Date") || null,
+    originalRating: raw || null, ratingScale: maxRating, provenance: "user-provided-file" };
+}
+
+export function parseCsv(text, maxRows = 100000) {
+  if (typeof text !== "string" || text.length > 25_000_000) throw new Error("CSV must be a string smaller than 25 MB");
+  const source = text.replace(/^\uFEFF/, "");
+  const rows = []; let row = []; let field = ""; let quoted = false;
+  for (let i = 0; i < source.length; i++) {
+    const c = source[i];
+    if (c === '"') {
+      if (quoted && source[i + 1] === '"') { field += '"'; i++; }
+      else quoted = !quoted;
+    } else if (c === "," && !quoted) { row.push(field); field = ""; }
+    else if ((c === "\n" || c === "\r") && !quoted) {
+      if (c === "\r" && source[i + 1] === "\n") i++;
+      row.push(field); if (row.some((x) => x !== "")) rows.push(row);
+      if (rows.length > maxRows + 1) throw new Error("CSV row limit exceeded");
+      row = []; field = "";
+    } else field += c;
+  }
+  if (quoted) throw new Error("Unclosed CSV quoted field");
+  row.push(field); if (row.some((x) => x !== "")) rows.push(row);
+  if (!rows.length) return [];
+  const [headers, ...data] = rows;
+  if (data.length > maxRows) throw new Error("CSV row limit exceeded");
+  if (headers.length > 128) throw new Error("CSV column limit exceeded");
+  const namedHeaders=headers.map(h=>h.toLowerCase().replace(/[\s_-]/g,"")).filter(Boolean);
+  if (new Set(namedHeaders).size!==namedHeaders.length) throw new Error("Duplicate CSV headings are ambiguous");
+  return data.map((cells) => Object.fromEntries(headers.map((h, i) => [h.trim(), cells[i] ?? ""])));
+}
+
+const extractTag = (xml, name) => {
+  const safeName = name.replace(/[.*+?^$\{\}()|[\]\\]/g, "\\$&");
+  const raw = xml.match(new RegExp(`<${safeName}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${safeName}>`, "i"))?.[1] ?? "";
+  return raw.replace(/^<!\[CDATA\[([\s\S]*?)\]\]>$/, "$1")
+    .replace(/&#(x[\da-f]+|\d+);/gi, (_, n) => String.fromCodePoint(n[0].toLowerCase() === "x" ? parseInt(n.slice(1), 16) : parseInt(n, 10)))
+    .replace(/&(amp|lt|gt|quot|apos);/g, (_, n) => ({amp:"&",lt:"<",gt:">",quot:'"',apos:"'"}[n]));
+};
+
+export function parseLetterboxdRss(xml) {
+  if (typeof xml !== "string" || xml.length > 2_000_000 || !xml.includes("<rss"))
+    throw new Error("Expected a Letterboxd RSS feed under 2 MB");
+  const records = [];
+  for (const item of xml.match(/<item(?:\s[^>]*)?>[\s\S]*?<\/item>/gi) ?? []) {
+    const film = filmIdentity({
+      title: extractTag(item, "letterboxd:filmTitle"),
+      year: extractTag(item, "letterboxd:filmYear"),
+      tmdbId: extractTag(item, "tmdb:movieId")
+    });
+    if (!film) continue;
+    const n = decimal(extractTag(item, "letterboxd:memberRating"));
+    const rating = n != null && n > 0 && n <= 5 ? n * 2 : null;
+    const liked = extractTag(item, "letterboxd:memberLike").toLowerCase() === "yes";
+    const rewatch = extractTag(item, "letterboxd:rewatch").toLowerCase() === "yes";
+    records.push({ ...film, platform:"letterboxd", kind: liked ? "liked" : rewatch ? "rewatched" : rating != null ? "rated" : "watched",
+      rating, liked, rewatch, sourceUrl: normalizeUrl(extractTag(item, "link")),
+      observedAt: extractTag(item, "letterboxd:watchedDate") || null,
+      originalRating: n, ratingScale: 5, provenance: "public-official-rss-recent" });
+  }
+  return records;
+}
+
+export function profileLink(platform, input) {
+  if (!PLATFORMS.includes(platform)) throw new Error("Unknown film platform");
+  if (typeof input!=="string") throw new Error("Provide a public username or profile URL as text");
+  let handle=input.trim(),submittedProfileUrl=null;
+  const isUrl=/^https:\/\//.test(handle);
+  if (isUrl) {
+    const parsed=new URL(handle);
+    const permitted={letterboxd:["letterboxd.com"],imdb:["www.imdb.com","imdb.com"],
+      kinopoisk:["www.kinopoisk.ru","kinopoisk.ru"],myshows:["myshows.me","en.myshows.me"]}[platform];
+    if(parsed.username || parsed.password || parsed.port || !permitted.includes(parsed.hostname)) throw new Error("Profile URL does not match the platform");
+    const pieces=parsed.pathname.split("/").filter(Boolean).map(x=>decodeURIComponent(x));
+    if(platform==="letterboxd") {
+      const reserved=new Set(["film","films","search","lists","members","journal","about","help","pro","patron","sign-in","settings"]);
+      if(!pieces[0] || reserved.has(pieces[0].toLowerCase())) throw new Error("Expected a Letterboxd user profile, not a film or site page");
+      handle=pieces[0];
+    } else if(platform==="imdb" || platform==="kinopoisk") {
+      if(pieces[0]!=="user" || !pieces[1]) throw new Error("Expected a public /user/ profile URL");
+      handle=pieces[1];submittedProfileUrl=parsed.origin+"/user/"+encodeURIComponent(handle)+"/";
+    } else {
+      const reserved=new Set(["profile","about","news","view","search","movies","shows","login","settings","awards","api"]);
+      if(pieces.length!==1 || reserved.has(pieces[0].toLowerCase())) throw new Error("Expected a public MyShows username profile URL");
+      handle=pieces[0];submittedProfileUrl=parsed.origin+"/"+encodeURIComponent(handle);
+    }
+  }
+  const handleShape=/^[\p{L}\p{N}_.-]{1,80}$/u;
+  // IMDb and Kinopoisk display names may need identity resolution by the host.
+  // No URI, account existence or imported history is inferred for such names.
+  if(!handleShape.test(handle)) {
+    const displayNameAllowed=!isUrl && ["imdb","kinopoisk"].includes(platform)
+      && /^[\p{L}\p{N}_. -]{1,80}$/u.test(handle);
+    if(!displayNameAllowed) throw new Error("Invalid public username");
+  }
+  let url=null;
+  if(platform==="letterboxd")url=`https://letterboxd.com/${encodeURIComponent(handle)}/`;
+  if(platform==="imdb")url=submittedProfileUrl || (/^(ur\d+|p\.[\p{L}\p{N}_.-]+)$/u.test(handle)?`https://www.imdb.com/user/${encodeURIComponent(handle)}/`:null);
+  if(platform==="kinopoisk")url=submittedProfileUrl || (/^\d+$/.test(handle)?`https://www.kinopoisk.ru/user/${encodeURIComponent(handle)}/`:null);
+  if(platform==="myshows")url=submittedProfileUrl || `https://myshows.me/${encodeURIComponent(handle)}`;
+  const researchPages=platform==="letterboxd"?{
+    highestRated:`https://letterboxd.com/${encodeURIComponent(handle)}/films/rated/5/by/date/`,
+    highRated:`https://letterboxd.com/${encodeURIComponent(handle)}/films/rated/4.5/by/date/`,
+    liked:`https://letterboxd.com/${encodeURIComponent(handle)}/likes/films/`,
+    allRated:`https://letterboxd.com/${encodeURIComponent(handle)}/films/by/entry-rating/`,
+    diary:`https://letterboxd.com/${encodeURIComponent(handle)}/films/diary/`,
+    watchlist:`https://letterboxd.com/${encodeURIComponent(handle)}/watchlist/`
+  }:null;
+  const status=platform==="letterboxd"?"rss-eligible":url?"public-link-only":"public-profile-needs-resolution";
+  return {platform,handle,url,status,identityVerified:false,
+    rssUrl:platform==="letterboxd"?`https://letterboxd.com/${encodeURIComponent(handle)}/rss/`:null,researchPages};
+}
+
+function observedAliases(record) {
+  const all = new Set([record.id, record.titleKey]);
+  if (record.imdbId) all.add(`imdb:${record.imdbId}`);
+  if (record.tmdbId) all.add(`tmdb:${record.tmdbId}`);
+  for (const title of record.alternateTitles ?? []) all.add(`title:${normalizeTitle(title)}:${record.year ?? "?"}`);
+  // Only identifiers produced by the engine are accepted as additional aliases.
+  for (const id of record.alternateIds ?? []) if (/^(imdb:tt\d+|tmdb:\d+|title:.+)$/.test(id)) all.add(id);
+  return all;
+}
+
+export function buildDossier(rows = []) {
+  if (!Array.isArray(rows)) throw new Error("Observations must be an array");
+  const films = new Map();
+  const byAlias = new Map();
+  // A title/year shared by several independently identified works is not a
+  // sufficient join key. Discover such collisions before assigning any
+  // identifier-free export observation to a particular work.
+  const idsByTitle=new Map();
+  for (const raw of rows) {
+    const film=raw && typeof raw==="object" ? filmIdentity(raw) : null;
+    if (!film) continue;
+    // Include verified title aliases in the ambiguity census: translated
+    // names can collide even when the two canonical titles differ.
+    for (const alias of observedAliases(film)) {
+      if (!alias.startsWith("title:")) continue;
+      let ids=idsByTitle.get(alias);
+      if (!ids) {ids={imdb:new Set(),tmdb:new Set()};idsByTitle.set(alias,ids);}
+      if (film.imdbId) ids.imdb.add(film.imdbId);
+      if (film.tmdbId) ids.tmdb.add(film.tmdbId);
+    }
+  }
+  const titleCollisions=new Set([...idsByTitle].filter(([,v])=>v.imdb.size>1 || v.tmdb.size>1)
+    .map(([key])=>key));
+  for (const raw of rows ?? []) {
+    if (!raw || typeof raw !== "object") continue;
+    const identity = filmIdentity(raw);
+    if (!identity) continue;
+    const record = { ...identity, ...raw, id:identity.id, titleKey:identity.titleKey,
+      rating:raw.rating == null ? null : Number(raw.rating) };
+    const collided=[...observedAliases(record)].some(alias=>titleCollisions.has(alias));
+    const hasStrongId=Boolean(record.imdbId || record.tmdbId);
+    const unresolvedKey=`unresolved:${record.titleKey}`;
+    const safeAliases=collided ? (hasStrongId
+      ? [...observedAliases(record)].filter(alias=>alias.startsWith("imdb:") || alias.startsWith("tmdb:"))
+      : [unresolvedKey]) : [...observedAliases(record)];
+    const found = safeAliases.map(alias => byAlias.get(alias))
+      .find((p) => p && !(record.imdbId && p.imdbId && record.imdbId!==p.imdbId)
+        && !(record.tmdbId && p.tmdbId && record.tmdbId!==p.tmdbId));
+    const entry = found ?? { ...identity, rating:null, liked:false, rewatch:false, watched:false, watchlist:false,
+      platforms:[], sources:[], provenance:[], alternateIds:[], ratingEvidence:[] };
+    if (!found) films.set(identity.id, entry);
+    // An ID-less export can arrive before the same film with an authoritative ID.
+    // Promote the entry before any later same-title film with a DIFFERENT ID arrives.
+    if (record.imdbId && !entry.imdbId) entry.imdbId=record.imdbId;
+    if (record.tmdbId && !entry.tmdbId) entry.tmdbId=record.tmdbId;
+    // A merged source can supply a localized primary title that differs from
+    // the first observed label. Retain that language variant for future
+    // first-watch exclusion, feedback and original-title lookup.
+    const rememberTitle=(title)=>{
+      if(normalizeTitle(title)===normalizeTitle(entry.title)
+          || entry.alternateTitles.some(other=>normalizeTitle(other)===normalizeTitle(title))) return;
+      if(entry.alternateTitles.length<MAX_FILM_TITLE_ALIASES) entry.alternateTitles.push(title);
+      else entry.aliasCoverageTruncated=true;
+    };
+    rememberTitle(record.title);
+    for (const title of record.alternateTitles ?? []) rememberTitle(title);
+    if (collided && !hasStrongId) entry.identityUnresolved=true;
+    for (const alias of safeAliases) {
+      if (!byAlias.has(alias)) byAlias.set(alias,entry);
+      if (alias !== entry.id && alias !== entry.titleKey && !entry.alternateIds.includes(alias)
+          && !alias.startsWith("unresolved:")) {
+        if(entry.alternateIds.length<MAX_FILM_ID_ALIASES) entry.alternateIds.push(alias);
+        else entry.aliasCoverageTruncated=true;
+      }
+    }
+    if (record.rating != null && Number.isFinite(record.rating) && record.rating >= 0 && record.rating <= 10)
+      entry.ratingEvidence.push({rating:record.rating, observedAt:record.observedAt ?? null});
+    entry.liked ||= Boolean(record.liked || record.kind === "liked");
+    entry.rewatch ||= Boolean(record.rewatch || record.kind === "rewatched");
+    entry.watchlist ||= record.kind === "watchlist";
+    entry.watched ||= record.kind !== "watchlist";
+    if (record.platform && !entry.platforms.includes(record.platform)) entry.platforms.push(record.platform);
+    if (record.provenance && !entry.provenance.includes(record.provenance)) entry.provenance.push(record.provenance);
+    if (normalizeUrl(record.sourceUrl) && !entry.sources.includes(record.sourceUrl)) entry.sources.push(record.sourceUrl);
+  }
+  const all = [...films.values()];
+  // An observation can arrive with a TMDB ID before a later IMDb record
+  // establishes a stronger canonical identifier. Stabilize the external key
+  // independent of file ordering; aliases remain available for matching.
+  for (const entry of all) {
+    if (entry.imdbId) entry.id=`imdb:${entry.imdbId}`;
+    else if (entry.tmdbId) entry.id=`tmdb:${entry.tmdbId}`;
+  }
+  for (const entry of all) {
+    const evidence=entry.ratingEvidence;
+    const dated=evidence.filter(x=>/^\d{4}-\d{2}-\d{2}/.test(x.observedAt ?? "") && Number.isFinite(Date.parse(x.observedAt)));
+    const pool=dated.length ? dated.filter(x=>Date.parse(x.observedAt)===Math.max(...dated.map(y=>Date.parse(y.observedAt)))) : evidence;
+    const values=[...new Set(pool.map(x=>x.rating))];
+    entry.rating=values.length===1 ? values[0] : null;
+    entry.ratingConflict=values.length>1;
+  }
+  const ratings = all.filter((f) => f.watched && f.rating != null).map((f) => f.rating).sort((a, b) => a - b);
+  const percentile = (v) => ratings.length ? ratings[Math.floor((ratings.length - 1) * v)] : null;
+  const highBar = Math.min(8, percentile(.8) ?? 7.5);
+  const lowBar = Math.min(5, percentile(.2) ?? 5);
+  const positives = all.filter((f) => f.watched && !f.ratingConflict
+    && (f.rating == null ? f.liked : f.rating >= highBar && (f.rating > lowBar || f.liked)))
+    .sort((a, b) => Number(b.rewatch) - Number(a.rewatch) || Number(b.liked) - Number(a.liked) || (b.rating ?? 0) - (a.rating ?? 0));
+  const negatives = all.filter((f) => f.watched && f.rating != null && f.rating <= lowBar && f.rating < highBar)
+    .sort((a, b) => (a.rating ?? 0) - (b.rating ?? 0));
+  const coverage = [...new Set(all.flatMap((f) => f.provenance))];
+  return {
+    brand:BRAND, counts:{ratingConflicts:all.filter(f=>f.ratingConflict).length,
+      identityAmbiguities:all.filter(f=>f.identityUnresolved).length,
+      aliasTruncations:all.filter(f=>f.aliasCoverageTruncated).length,
+      observations:rows.length, unique:all.length, watched:all.filter((f) => f.watched).length,
+      rated:ratings.length, liked:all.filter((f) => f.liked).length, rewatched:all.filter((f) => f.rewatch).length,
+      watchlist:all.filter((f) => f.watchlist).length},
+    thresholds:{highBar,lowBar}, positiveAnchors:positives.slice(0,80), negativeAnchors:negatives.slice(0,40),
+    all, coverage, fullHistoryVerified:false,
+    limitations:["Public RSS shows recent activity. Full-history coverage requires authorized data.",
+      "Watched, rated, liked, rewatched and watchlist are separate signals.",
+      "No candidate can be called unseen unless complete history has been verified.",
+      "Film style, authorship and artistic lineages require researched citations."]
+  };
+}
+
+/** Whether two observations represent the same film, with explicit ambiguity.
+ * A shared title where a year is missing is an unresolved identity. It must not
+ * support the definite "already watched" label, especially for remakes.
+ */
+export function filmIdentityMatch(a,b) {
+  if (a.imdbId && b.imdbId && a.imdbId !== b.imdbId) return "none";
+  if (a.tmdbId && b.tmdbId && a.tmdbId !== b.tmdbId) return "none";
+  if ((a.imdbId && a.imdbId===b.imdbId) || (a.tmdbId && a.tmdbId===b.tmdbId)) return "verified-id";
+  const titlesA=new Set([a.title,...(a.alternateTitles ?? [])].map(normalizeTitle).filter(Boolean));
+  const titlesB=[b.title,...(b.alternateTitles ?? [])].map(normalizeTitle).filter(Boolean);
+  if (!titlesB.some(t=>titlesA.has(t))) return "none";
+  if (a.year!=null && b.year!=null && a.year!==b.year) return "none";
+  return a.year==null || b.year==null ? "possible" : "title-year";
+}
+// Use only resolved identities for durable feedback and candidate de-duplication.
+// "possible" means a title could be a remake or alternate cut and must never
+// turn an unqualified viewer reaction into a definite film-level observation.
+const isSameFilm = (a,b) => ["verified-id","title-year"].includes(filmIdentityMatch(a,b));
+/** Project explicit feedback into the same evidence view used by all read tools.
+ * Observation counts and ratings remain tied to imported records. Feedback never
+ * creates a rating, like or rewatch; only an explicit seen fact establishes viewing.
+ */
+export function buildPersonalDossier(rows = [], feedback = []) {
+  if (!Array.isArray(feedback)) throw new Error("Feedback must be an array");
+  const dossier=buildDossier(rows);
+  const importedWatchlist=dossier.counts.watchlist;
+  for (const entry of dossier.all) entry.watchlistFromImport=entry.watchlist;
+  const verdicts=feedback.filter(f=>f && typeof f.title==="string"
+    && ["hit","miss","seen","want-to-watch","watchlist"].includes(f.verdict))
+    .map(f=>({raw:f,film:filmIdentity(f)})).filter(f=>f.film);
+  dossier.feedback=verdicts.map(f=>f.raw);
+  for (const {raw,film} of verdicts) {
+    const watchlist=["watchlist","want-to-watch"].includes(raw.verdict);
+    const seen=raw.verdict==="seen" || raw.seen===true;
+    if (!watchlist && !seen) continue;
+    let entry=dossier.all.find(item=>isSameFilm(item,film));
+    if (!entry) {
+      entry={...film,rating:null,ratingConflict:false,liked:false,rewatch:false,
+        watched:false,watchlist:false,watchlistFromImport:false,platforms:[],
+        sources:[],provenance:[],alternateIds:[],ratingEvidence:[]};
+      dossier.all.push(entry);
+    }
+    if (watchlist) {
+      entry.watchlist=true;
+      if (!entry.provenance.includes("user-reported-watchlist")) entry.provenance.push("user-reported-watchlist");
+    }
+    if (seen) {
+      entry.watched=true;
+      if (!entry.provenance.includes("user-reported-seen")) entry.provenance.push("user-reported-seen");
+    }
+  }
+  // A negative reaction is safe to suppress as a positive anchor when exactly
+  // one already-observed work could be meant by an undated title/alias. This
+  // removes a potentially contradictory recommendation signal without creating
+  // a new watched/rated fact. Several plausible works remain unresolved.
+  const negativeAnchorMatch=(entry,film)=>{
+    if (isSameFilm(entry,film)) return true;
+    if (filmIdentityMatch(entry,film)!=="possible") return false;
+    const plausible=dossier.all.filter(x=>filmIdentityMatch(x,film)!=="none");
+    return plausible.length===1 && plausible[0]===entry;
+  };
+  dossier.positiveAnchors=dossier.positiveAnchors.filter(entry=>!verdicts.some(
+    ({raw,film})=>raw.verdict==="miss" && negativeAnchorMatch(entry,film)));
+  dossier.eligibleWatchlist=dossier.all.filter(entry=>entry.watchlist && !entry.watched
+    && !verdicts.some(({raw,film})=>["hit","miss","seen"].includes(raw.verdict) && isSameFilm(entry,film)));
+  dossier.counts={...dossier.counts,unique:dossier.all.length,
+    watched:dossier.all.filter(f=>f.watched).length,
+    watchlist:dossier.all.filter(f=>f.watchlist).length,
+    eligibleWatchlist:dossier.eligibleWatchlist.length,feedbackRecords:verdicts.length};
+  dossier.coverage=[...new Set(dossier.all.flatMap(f=>f.provenance))];
+  dossier.watchlistCoverage={imported:importedWatchlist,known:dossier.counts.watchlist,
+    eligible:dossier.eligibleWatchlist.length,listedUpTo:400,
+    returned:Math.min(400,dossier.eligibleWatchlist.length),completeExternalWatchlistVerified:false};
+  return dossier;
+}
+
+function validConnection(connection, anchors) {
+  if (!connection || !AXES.includes(connection.axis)) return null;
+  const reference = filmIdentity(connection.anchor ?? {});
+  if(!reference) return null;
+  const matches=anchors.map(p=>({p,identity:filmIdentityMatch(reference,p)}))
+    .filter(x=>x.identity!=="none");
+  const direct=matches.filter(x=>x.identity!=="possible");
+  // Never credit two homonymous rated works as one anchor. A single title-only
+  // rating with no captured year can contribute tentatively, with the missing
+  // identity proof exposed to the caller for independent source checking.
+  const resolved=direct.length===1?direct[0]:direct.length===0 && matches.length===1?matches[0]:null;
+  if (!resolved || !String(connection.analysis ?? "").trim() || !normalizeUrl(connection.sourceUrl))
+    return null;
+  const anchor=resolved.p;
+  return {anchor:{title:anchor.title,year:anchor.year,rating:anchor.rating,liked:anchor.liked,rewatch:anchor.rewatch},
+    anchorIdentityStatus:resolved.identity==="possible"?"tentative-title-only-year-unverified":"archive-title-or-id-match",
+    suppliedAnchorYear:reference.year,
+    axis:connection.axis,analysis:String(connection.analysis).trim().slice(0,1000),
+    sourceUrl:normalizeUrl(connection.sourceUrl)};
+}
+
+function contextualEvidence(raw, asOfDate) {
+  if (!raw || typeof raw !== "object") return null;
+  const kinds = ["festival-award", "festival-program", "holiday", "anniversary", "retrospective", "release"];
+  if (!kinds.includes(raw.kind) || !String(raw.event ?? "").trim()) return null;
+  const sourceUrl = normalizeUrl(raw.sourceUrl);
+  if (!sourceUrl) return null;
+  const date = (value) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value ?? ""))) return null;
+    const parsed=new Date(`${value}T00:00:00Z`);
+    return Number.isFinite(parsed.getTime()) && parsed.toISOString().slice(0,10)===value ? value : null;
+  };
+  const startDate = date(raw.startDate), endDate = date(raw.endDate);
+  const asOf = date(asOfDate);
+  let calendarStatus = "date-unverified";
+  if (asOf && startDate && endDate && startDate <= endDate) {
+    if (asOf >= startDate && asOf <= endDate) calendarStatus = "ongoing-by-supplied-dates";
+    else if (asOf < startDate) calendarStatus = "upcoming-by-supplied-dates";
+    else calendarStatus = "historical-by-supplied-dates";
+  }
+  return {kind:raw.kind,event:String(raw.event).trim().slice(0,160),
+    connection:String(raw.connection ?? "").trim().slice(0,450),sourceUrl,
+    startDate,endDate,awardYear:validYear(raw.awardYear),
+    awardName:String(raw.awardName ?? "").trim().slice(0,120),
+    calendarStatus,sourceVerification:"host-must-open-and-verify"};
+}
+
+function pickDiverse(pool, amount, previous = [], diversifyFacets = true) {
+  const picked = [], remaining = [...pool];
+  while (remaining.length && picked.length < amount) {
+    // Coverage operates only after the existing evidence/exposure gates. A
+    // negative relation never earns a forced slot solely to add another facet.
+    const represented=new Set([...previous,...picked].map(x=>normalizeTitle(x.tasteFacet)));
+    const fresh=new Set(remaining.filter(x=>!x.riskConnections.length
+      && !represented.has(normalizeTitle(x.tasteFacet))));
+    const coverFresh=diversifyFacets && fresh.size>0;
+    let best = 0, bestScore = -Infinity;
+    for (let i=0;i<remaining.length;i++) {
+      const candidate=remaining[i];
+      if (coverFresh && !fresh.has(candidate)) continue;
+      const redundancy=[...previous,...picked].reduce((cost,other) => {
+        const sharedAxes=candidate.axes.filter(a=>other.axes.includes(a)).length;
+        const sameDirector=normalizeTitle(candidate.director)===normalizeTitle(other.director)?10:0;
+        const sameFacet=candidate.tasteFacet && other.tasteFacet
+          && normalizeTitle(candidate.tasteFacet)===normalizeTitle(other.tasteFacet)?6:0;
+        const sameDecade=candidate.year!=null && other.year!=null
+          && Math.floor(candidate.year/10)===Math.floor(other.year/10)?2:0;
+        return Math.max(cost,sameDirector+sameFacet+sameDecade+sharedAxes*1.5);
+      },0);
+      const score=candidate.baseScore-redundancy;
+      if (score>bestScore) {best=i;bestScore=score;}
+    }
+    const candidate=remaining.splice(best,1)[0];
+    picked.push({...candidate,diversityAdjustedScore:Math.round(bestScore*100)/100});
+  }
+  return picked;
+}
+
+/**
+ * Deterministic evidence audit + diversity ranking for LLM-researched candidates.
+ * Candidate evidence is user/host supplied; URLs are syntax-checked but their
+ * contents must be independently opened and cited by the model.
+ */
+export function rankResearchedCandidates(dossier, candidates, count = 6, options = {}) {
+  const limit = bounded(Math.trunc(Number(count)) || 6, 1, 30);
+  const mode = ["mixed","watchlist","discovery"].includes(options?.mode) ? options.mode : "mixed";
+  if (options.diversifyFacets!==undefined && typeof options.diversifyFacets!=="boolean") throw new Error("diversifyFacets must be boolean");
+  const diversifyFacets=options.diversifyFacets!==false;
+  const passed = []; const rejected = [];
+  const known = dossier.all ?? [];
+  const anchors = dossier.positiveAnchors ?? [];
+  for (const raw of (candidates ?? []).slice(0, 300)) {
+    const film = filmIdentity(raw ?? {});
+    if (!film) { rejected.push({title:null,reason:"missing_title"});continue;}
+    if (film.year === null) {rejected.push({title:film.title,reason:"missing_release_year"});continue;}
+    if (passed.some(x=>isSameFilm(x,film))) {rejected.push({title:film.title,reason:"duplicate_candidate"});continue;}
+    const knownWatched=known.filter(k=>k.watched).map(k=>({k,match:filmIdentityMatch(film,k)}))
+      .filter(x=>x.match!=="none");
+    if (knownWatched.some(x=>x.match!=="possible")) {
+      rejected.push({title:film.title,reason:"already_watched"});continue;
+    }
+    if (knownWatched.length) {
+      rejected.push({title:film.title,reason:"possible_prior_viewing_identity_unverified"});continue;
+    }
+    const watchlistMatches=known.filter(k=>k.watchlist).map(k=>({k,match:filmIdentityMatch(film,k)}))
+      .filter(x=>x.match!=="none");
+    const watchlistRecord=watchlistMatches.find(x=>x.match!=="possible")?.k;
+    const foundWatchlist=Boolean(watchlistRecord);
+    if (watchlistMatches.length && !foundWatchlist) {
+      rejected.push({title:film.title,reason:"possible_watchlist_identity_unverified"});continue;
+    }
+    const priorFeedbackMatches=(dossier.feedback??[]).map(f=>({f,
+      match:filmIdentityMatch(film,filmIdentity(f) ?? {})}))
+      .filter(x=>x.match!=="none");
+    const priorVerdict=priorFeedbackMatches.find(x=>x.match!=="possible")?.f;
+    if(priorVerdict && ["miss","seen","hit"].includes(priorVerdict.verdict)) {
+      rejected.push({title:film.title,reason:`previous_feedback_${priorVerdict.verdict}`});continue;
+    }
+    if(priorFeedbackMatches.length && !priorVerdict) {
+      rejected.push({title:film.title,reason:"possible_prior_feedback_identity_unverified"});continue;
+    }
+    const watchedLater=foundWatchlist || ["watchlist","want-to-watch"].includes(priorVerdict?.verdict)
+      || (raw.watchlistEvidence?.status==="present" && normalizeUrl(raw.watchlistEvidence.sourceUrl));
+    const lane=watchedLater?"watchlist":"discovery";
+    if (mode==="discovery" && watchedLater) {rejected.push({title:film.title,reason:"already_on_watchlist"});continue;}
+    if (mode==="watchlist" && !watchedLater) {rejected.push({title:film.title,reason:"watchlist_membership_unverified"});continue;}
+    const connections = [...new Map((Array.isArray(raw.connections) ? raw.connections : []).slice(0,60)
+      .map(c=>validConnection(c,anchors)).filter(Boolean)
+      .map(c=>[`${normalizeTitle(c.anchor.title)}:${c.anchor.year}|${c.axis}`,c])).values()];
+    const riskConnections = (Array.isArray(raw.riskConnections) ? raw.riskConnections : [])
+      .map((c) => validConnection(c, dossier.negativeAnchors??[])).filter(Boolean);
+    const axes = [...new Set(connections.map((c) => c.axis))];
+    const sources = [...new Set((Array.isArray(raw.sources) ? raw.sources : []).map(normalizeUrl).filter(Boolean))];
+    const allSources = [...new Set([...sources,...connections.map((c) => c.sourceUrl)])];
+    const difference = String(raw.productiveDifference ?? "").trim().slice(0,600);
+    const director = String(raw.director ?? "").trim().slice(0,200);
+    const independentAnchors = new Set(connections.map((c) => `${normalizeTitle(c.anchor.title)}:${c.anchor.year ?? "?"}`));
+    const neededAnchors = Math.min(2, anchors.length);
+    if (!director || !normalizeTitle(raw.tasteFacet) || axes.length < 2 || sources.length < 1 || allSources.length < 2 || !difference || independentAnchors.size < neededAnchors) {
+      rejected.push({title:film.title,reason:"insufficient_credited_film_research",
+        missing:{director:!director,distinctFormalAxes:axes.length,sourceUrls:allSources.length,
+          distinctRatedAnchors:independentAnchors.size,requiredRatedAnchors:neededAnchors,productiveDifference:!difference}});
+      continue;
+    }
+    const anchorSupport = connections.reduce((v, c) => v + (c.anchor.rewatch ? 2.5 : c.anchor.liked ? 2 : (c.anchor.rating ?? 7.5)/5), 0);
+    const context=contextualEvidence(raw.context,options?.asOfDate);
+    const score = 4 * axes.length + Math.min(12,anchorSupport) + Math.min(8,allSources.length * 1.5)
+      + Math.min(5,independentAnchors.size)
+      - riskConnections.length * 6 + (context ? 1.5 : 0);
+    passed.push({...film,director,originalTitle:String(raw.originalTitle ?? "").trim() || film.title,
+      connections,riskConnections,axes,sourceUrls:allSources,productiveDifference:difference,
+      tasteFacet:String(raw.tasteFacet ?? "").trim().slice(0,120) || null,
+      context,category:lane,watchlistStatus:watchedLater
+        ? (foundWatchlist?(watchlistRecord.watchlistFromImport===false?"user-reported":"confirmed-imported-record"):priorVerdict?"user-reported":"host-reported-source-unverified")
+        : "not-in-observed-watchlist-unknown-in-full-history",
+      relationStatus:"research-claims-await-independent-source-verification",
+      seenStatus:"unverified-outside-observed-history",baseScore:Math.round(score*100)/100});
+  }
+  const watchlistPool=passed.filter(x=>x.category==="watchlist");
+  const discoveryPool=passed.filter(x=>x.category==="discovery");
+  const desiredWatchlist=mode==="watchlist"?limit:mode==="mixed"?Math.max(1,Math.round(limit*.4)):0;
+  const watchlist=pickDiverse(watchlistPool,desiredWatchlist,[],diversifyFacets);
+  const desiredDiscovery=mode==="watchlist"?0:limit-watchlist.length;
+  const discovery=pickDiverse(discoveryPool,desiredDiscovery,watchlist,diversifyFacets);
+  // Keep a balanced list when source research supplied more watchlist titles than expected.
+  const remaining=limit-watchlist.length-discovery.length;
+  if (remaining>0 && mode==="mixed") {
+    const picked=new Set(watchlist.map(x=>x.id));
+    watchlist.push(...pickDiverse(watchlistPool.filter(x=>!picked.has(x.id)),remaining,[...watchlist,...discovery],diversifyFacets));
+  }
+  const selected=[...watchlist,...discovery];
+  const facetLabels=items=>[...new Map(items.filter(x=>normalizeTitle(x.tasteFacet))
+    .map(x=>[normalizeTitle(x.tasteFacet),x.tasteFacet.trim()])).values()];
+  const availableFacets=facetLabels(passed),coveredFacets=facetLabels(selected);
+  const coveredKeys=new Set(coveredFacets.map(normalizeTitle));
+  return {brand:BRAND,mode,groups:{watchlist,discovery},selected,rejected,shortlistSize:passed.length,
+    audit:{selectionMethod:"citation-gated heuristic and MMR-inspired diversity reranking",
+      training:"none",formalFilmResearch:"provided by host LLM; verify cited links",
+      completeWatchedCoverage:Boolean(dossier.fullHistoryVerified),
+      selectedTentativeAnchorConnections:selected.reduce((n,x)=>n+x.connections.filter(
+        c=>c.anchorIdentityStatus==="tentative-title-only-year-unverified").length,0),
+      requestedWatchlistSlots:desiredWatchlist,filledWatchlistSlots:watchlist.length,
+      coveredTasteFacets:coveredFacets,
+      facetCoverage:{enabled:diversifyFacets,policy:"facet-first among qualified candidates without flagged negative relations; then diversity reranking",
+        available:availableFacets,covered:coveredFacets,notSelected:availableFacets.filter(x=>!coveredKeys.has(normalizeTitle(x))),
+        provesUserTasteCoverage:false},
+      calendarEvidence:selected.filter(x=>x.context).length,
+      uncertainty:"Every selected film requires external factual checking before final presentation."}};
+}
+
+export function researchBrief(dossier, {count=6,intent="discover",obscurity="deep",asOfDate=null}={}) {
+  const n=bounded(Math.trunc(Number(count))||6,1,30);
+  return {brand:BRAND,intent,obscurity,asOfDate,requested:n,longlistTarget:n*4,outputLanes:{watchlist:Math.max(1,Math.round(n*.4)),discovery:n-Math.max(1,Math.round(n*.4))},knownSample:dossier.counts,
+    topAnchors:dossier.positiveAnchors?.slice(0,40) ?? [],
+    negativeAnchors:dossier.negativeAnchors?.slice(0,20) ?? [],
+    pastVerdicts:(dossier.feedback??[]).slice(-30),
+    instructions:[
+      "Start from individual relative ratings, likes and rewatches across decades. Four pinned favorites cannot stand for the entire taste profile.",
+      "Trace form, sound, temporality, performance, architecture, humor, editing, materiality and cultural genealogy using films actually present in the user evidence.",
+      "Research at least four candidates per requested recommendation. Use original-language festival archives, cinematheques, verified credits, filmmaker and cinematographer interviews, academic film scholarship and specialist criticism.",
+      "Provide film title, original title, year, director, at least two cited formal connections on DIFFERENT artistic axes and, where evidence permits, DIFFERENT rated films, plus one meaningful divergence.",
+      "Ground concrete camera, production, credit, festival and author assertions in checked primary sources. Critical readings are explicitly interpretive.",
+      "Confirm watch history and watchlist from connected data; with a public RSS sample the user's unwatched status remains unknown.",
+      "Create 3–8 evidence-anchored taste facets across the viewer's ENTIRE rated spectrum, including contradictions. Source a distinct recommendation for each major facet rather than repeating the same aesthetic cluster.",
+      "Select both known watchlist films (viewer intent) and fresh discoveries (not recorded in the observed watchlist). Label every unknown watchlist/watched status explicitly; never infer verified absence from a partial profile.",
+      "Check today's date and official festival schedules, historical awards, local cinematheque seasons and holidays. Include a context-led candidate only where its artistic fit stands on actual user ratings; verify award year, schedule and relevance.",
+      "Supply each candidate to rank_researched_films with the exact anchor films, distinct axes, analyses, HTTPS sources and productiveDifference.",
+      "Rerank for relevance and breadth across filmmakers, eras, geographies and forms. Explain why every selection is specific to this user.",
+      "Never invent films, credits, scene details, sources, viewing status or availability. Label uncertainty and ask for targeted feedback."
+    ]};
+}
+

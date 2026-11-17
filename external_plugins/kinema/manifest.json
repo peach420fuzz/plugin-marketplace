@@ -1,0 +1,45 @@
+{
+  "manifest_version": "0.3",
+  "name": "kinema-by-objekts",
+  "display_name": "KINEMA by objekts",
+  "version": "0.4.2-rc.3",
+  "description": "Research personal film tastes from authorized viewing histories, ratings and watchlists.",
+  "long_description": "Local MCP research engine for an AI assistant. Import authorized film observations, inspect coverage and conflicting ratings, plan source-based research, audit candidate films, save explicit feedback and erase the active local archive. The assistant independently verifies sources. A public profile pointer or recent RSS sample never establishes complete viewing history. No paid film or model API is required by the server; the chosen host has its own usage terms.",
+  "author": {
+    "name": "objekts",
+    "email": "salute@objekts.ai",
+    "url": "https://objekts.ai"
+  },
+  "homepage": "https://objekts.ai",
+  "icon": "assets/objekts-squares-charcoal.png",
+  "server": {
+    "type": "node",
+    "entry_point": "server/mcp-stdio.mjs",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/server/mcp-stdio.mjs"],
+      "env": {
+        "CINEMA42_DATA_FILE": "${user_config.archive_file}"
+      }
+    }
+  },
+  "tools_generated": true,
+  "prompts_generated": true,
+  "keywords": ["kinema", "objekts", "film research", "viewing history", "watchlist"],
+  "license": "MIT",
+  "compatibility": {
+    "platforms": ["darwin"],
+    "runtimes": {
+      "node": ">=22.0.0"
+    }
+  },
+  "user_config": {
+    "archive_file": {
+      "type": "string",
+      "title": "Cinema archive file",
+      "description": "Optional absolute path to a JSON archive for one viewer. Leave empty to use ~/.local/share/objekts/cinema42.json. Selected archive evidence is returned to your AI host.",
+      "required": false,
+      "default": ""
+    }
+  }
+}
