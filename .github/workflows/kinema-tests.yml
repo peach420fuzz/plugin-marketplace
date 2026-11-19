@@ -1,0 +1,28 @@
+name: KINEMA runtime and source checks
+on:
+  pull_request:
+    paths:
+      - 'external_plugins/kinema/**'
+      - '.github/workflows/kinema-tests.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'external_plugins/kinema/**'
+      - '.github/workflows/kinema-tests.yml'
+permissions:
+  contents: read
+jobs:
+  kinema:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Checkout PR source
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
+        with:
+          persist-credentials: false
+      - name: Node 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Native MCP, film identity, privacy and import regressions
+        run: node --test external_plugins/kinema/tests/*.test.mjs
