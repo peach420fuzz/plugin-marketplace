@@ -1,0 +1,32 @@
+name: FAKE recovered runtime
+on:
+  push:
+    branches: ['recover/fake-runtime-20261026']
+    paths: ['external_plugins/fake-by-objekts/runtime/**', '.github/workflows/fake-runtime-recovery.yml']
+  pull_request:
+    paths: ['external_plugins/fake-by-objekts/runtime/**', '.github/workflows/fake-runtime-recovery.yml']
+permissions:
+  contents: read
+jobs:
+  runtime:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    defaults:
+      run:
+        working-directory: external_plugins/fake-by-objekts/runtime
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node build.mjs
+      - run: node --test tests/*.test.mjs
+      - run: node --check dist/worker.mjs && node --input-type=module --check < dist/studio.js
+      - run: npm install --no-save playwright@1.56.1 && npx playwright install --with-deps chromium
+      - run: node tests/browser.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fake-recovered-runtime-evidence
+          path: external_plugins/fake-by-objekts/runtime/qa-artifacts/
+          retention-days: 14

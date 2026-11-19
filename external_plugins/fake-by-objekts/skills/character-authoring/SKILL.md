@@ -11,12 +11,12 @@ Before preparing a native image request or evaluating an imported candidate, rea
 
 ## Core workflow
 
-1. Use `open_character_studio` to create a FAKE by objekts project and open the interactive Studio.
+1. Use `open_character_studio` to create a FAKE by objekts project and open Studio. When its actual schema includes `morphologySeed`, translate clearly stated proportions into editable normalized semantic suggestions (zero is neutral). Use documented keys only; preserve uncertainty and let the person inspect the mesh. Never describe a suggestion as a measured likeness.
 2. Project credentials, private reference URLs and generated-media URLs are component-only data. Never request, repeat or expose them in chat.
 3. Project-scoped reads, writes and photo storage are app-only actions performed inside Studio. Studio can request native image generation in the ChatGPT conversation after handing off saved state and available references. A sent follow-up is not proof that generation ran or that an image was returned.
 4. Treat every revision as a minimal delta. Preserve every field the user did not ask to change.
 5. Respect server-side locks for identity, morphology, surface, hair, body, wardrobe and capture.
-6. Let Studio author geometry. Never invent GNM vectors, semantic coefficients, fit results or geometry boards in chat.
+6. Let Studio compute geometry. Never invent raw GNM vectors, measured fit results or geometry boards. Structured semantic suggestions are permitted only through the actual morphologySeed schema and remain reviewable authoring proposals.
 7. An adult face photo the user is authorized to use can be fitted locally in the app. The photo is visual identity evidence; the GNM model remains geometry authority for authored morphology. Never claim consent or authorization that the user did not provide.
 8. Keep source reference, approved Identity Master, geometry authority, Character State and render direction as distinct roles.
 9. Before image generation, Studio renders a real multi-view GNM geometry board, uploads the selected Identity Master, any source identity reference and the geometry board into the current ChatGPT conversation, and asks ChatGPT to use its own built-in image-generation capability. FAKE must not require a user API key and must not route normal plugin generation through a paid server-side image API.
@@ -24,7 +24,7 @@ Before preparing a native image request or evaluating an imported candidate, rea
 
 ## Current capability boundary
 
-The audited 0.4.7 runtime starts a new project's GNM geometry at its neutral baseline even when the description is distinctive. Description text is authoring intent, not proof that the mesh already matches it. Ask the user to inspect and adjust the real controls before treating geometry as approved; do not invent morphologySeed arguments absent from the actual tool schema. A package-only update cannot repair that runtime defect.
+Runtime 0.4.9 accepts optional morphologySeed suggestions in open_character_studio. Supply semanticGoals, individual morphs and apparentAgeYears only when supported by the discovered schema. An omitted seed starts neutral; prose alone is not a geometry parser. Studio computes and shows the actual result. New projects use the extended v3 range; existing v1/v2 projects retain their previous solver unless the user changes CONTROL RANGE. Fixed Pro values remain fixed.
 
 Seven age layers and tissue firmness include generation-only appearance signals. They are not a verified live geometric aging simulation. Photo fitting uses a constrained subset of GNM identity components and is approximate. Do not describe it as a likeness guarantee or a full scan.
 
@@ -88,7 +88,7 @@ Presets are starting recipes. Preserve a user's explicit camera/light/art-direct
 
 FAKE requests generation through the native capability of a compatible ChatGPT host. The MCP server authors state and stores project data; it does not provide the normal workflow's generated photographs. In Claude, Gemini, Grok and other clients, discover actual capabilities and never promise access to ChatGPT's image generator or widget bridge.
 
-When Studio sends a native render follow-up, use the image IDs attached by the widget and invoke ChatGPT's built-in image generation. Do not ask the user for an OpenAI API key. Do not tell the user to fund an external image API. Do not route normal plugin generation through a FAKE server-side image provider.
+When Studio sends a native render follow-up, consume its actual attached images and invoke ChatGPT's built-in image generation. If the message contains a short-lived requestId and requestToken, first call read_portrait_request with those exact values. It returns the real geometry and selected identity image blocks plus the saved portrait direction. Use those images for generation in the same conversation; never substitute invented references. The ticket grants this limited reference read and expires; it is not a project credential. Do not reveal or log it outside the requested generation workflow. Do not ask the user for an OpenAI API key. Do not tell the user to fund an external image API. Do not route normal plugin generation through a FAKE server-side image provider.
 
 Use precise reference roles in this order:
 
@@ -107,5 +107,5 @@ objekts is a visual production studio creating films, images and visual worlds t
 
 ## Truthfulness
 
-Never fabricate project state, fit results, generated candidates, output counts, Identity Masters, provider responses, or successful generation. If the current ChatGPT surface does not expose native image generation or the required widget file/follow-up capabilities, say that native generation is unavailable on that surface while keeping geometry, photo fitting and Character State authoring usable.
+Never fabricate project state, fit results, generated candidates, output counts, Identity Masters, provider responses, or successful generation. Do not infer image-generator availability from missing window.openai upload or follow-up functions. Studio supports standard MCP Apps image messages, image context, a text-triggered MCP reference reader, and legacy file transfer. Distinguish an unsupported transfer path from a missing image-generation tool. If no transfer path is supported, the app offers real geometry and a prompt to download. If the image-generation tool itself is absent, say so explicitly; never report a generated portrait without actual image bytes.
 
