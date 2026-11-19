@@ -28,17 +28,18 @@ export function isConfigured(env){
     return issuer.origin===jwks.origin&&aud.toString()==="https://remake.objekts.ai/account/mcp"&&jwks.pathname!=="/"&&jwks.pathname!=="";
   } catch {return false;}
 }
-let jwksCache=null,cacheExpiry=0;
+let jwksCache=null,cacheExpiry=0,jwksCacheKey=null;
 export async function loadTrustedJWKS(env){
   if(!isConfigured(env))fail("idp_not_configured");
-  if(jwksCache&&Date.now()<cacheExpiry)return jwksCache;
+  const cacheKey=JSON.stringify([env.REMAKE_OIDC_ISSUER,env.REMAKE_OIDC_AUDIENCE,env.REMAKE_OIDC_JWKS_URI]);
+  if(jwksCache&&jwksCacheKey===cacheKey&&Date.now()<cacheExpiry)return jwksCache;
   const response=await fetch(env.REMAKE_OIDC_JWKS_URI,{redirect:"error",headers:{accept:"application/json"},signal:AbortSignal.timeout(4000)});
   if(!response.ok)fail("idp_key_fetch_failed");
   const text=await response.text();
   if(text.length>65536)fail("oversized_jwks");
   let jwks;try{jwks=JSON.parse(text);}catch{fail("invalid_jwks");}
   if(!jwks||!Array.isArray(jwks.keys)||jwks.keys.length>32)fail("invalid_jwks");
-  jwksCache=jwks;cacheExpiry=Date.now()+180000;
+  jwksCache=jwks;jwksCacheKey=cacheKey;cacheExpiry=Date.now()+180000;
   return jwks;
 }
 export async function verifyAccessJWT(token,config,{now=Math.floor(Date.now()/1000),requiredScope=null}={}){
